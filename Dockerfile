@@ -26,6 +26,7 @@ RUN /home/steam/steamcmd/steamcmd.sh \
 	+quit
 
 COPY /run.sh /home/steam/
+RUN chmod +x /home/steam/run.sh
 
 EXPOSE 10999/udp
 VOLUME ["/home/steam/.klei/DoNotStarveTogether"]
