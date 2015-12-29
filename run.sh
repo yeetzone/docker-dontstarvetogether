@@ -29,6 +29,7 @@ cat <<- EOF > $FILE_SETTINGS
 	[misc]
 	console_enabled = $CONSOLE_ENABLED
 	autocompiler_enabled = $AUTOCOMPILER_ENABLED
+	mods_enabled = $MODS_ENABLED
 
 	[shard]
 	shard_enable = $SHARD_ENABLE
