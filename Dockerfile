@@ -9,6 +9,9 @@ RUN dpkg --add-architecture i386 \
 
 RUN useradd -m steam
 
+COPY /run.sh /home/steam/
+RUN chmod +x /home/steam/run.sh
+
 USER steam
 
 RUN mkdir -p /home/steam/.klei/DoNotStarveTogether \
@@ -24,9 +27,6 @@ RUN /home/steam/steamcmd/steamcmd.sh \
 	+force_install_dir /home/steam/steamapps/DST \
 	+app_update 343050 validate \
 	+quit
-
-COPY /run.sh /home/steam/
-RUN chmod +x /home/steam/run.sh
 
 EXPOSE 10999/udp
 VOLUME ["/home/steam/.klei/DoNotStarveTogether"]
