@@ -11,6 +11,7 @@ cat <<- EOF > $FILE_SETTINGS
 	server_password = $SERVER_PASSWORD
 	offline_server = $OFFLINE_SERVER
 	max_players = $MAX_PLAYERS
+	whitelist_slots = $WHITELIST_SLOTS
 	pvp = $PVP
 	game_mode = $GAME_MODE
 	server_intention = $SERVER_INTENTION
