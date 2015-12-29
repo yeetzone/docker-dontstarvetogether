@@ -23,6 +23,8 @@ RUN cd /home/steam/steamcmd \
 	&& rm steamcmd_linux.tar.gz
 
 RUN /home/steam/steamcmd/steamcmd.sh \
+	+@ShutdownOnFailedCommand 1 \
+	+@NoPromptForPassword 1 \
 	+login anonymous \
 	+force_install_dir /home/steam/steamapps/DST \
 	+app_update 343050 validate \
