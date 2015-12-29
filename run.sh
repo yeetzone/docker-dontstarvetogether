@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+# Update game and mods.
+/home/steam/steamcmd/steamcmd.sh \
+  +@ShutdownOnFailedCommand 1 \
+  +@NoPromptForPassword 1 \
+  +login anonymous \
+  +force_install_dir /home/steam/steamapps/DST \
+  +app_update 343050 validate \
+  +quit
+
 # Create the settings.ini file.
 FILE_SETTINGS="/home/steam/.klei/DoNotStarveTogether/settings.ini"
 if [ ! -f $FILE_SETTINGS ]; then
