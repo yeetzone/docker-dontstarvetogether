@@ -31,6 +31,9 @@ cat <<- EOF > $FILE_SETTINGS
 	pause_when_empty = $PAUSE_WHEN_EMPTY
 	steam_authentication_port = $STEAM_AUTHENTICATION_PORT
 	steam_master_server_port = $STEAM_MASTER_SERVER_PORT
+	steam_group_id = $STEAM_GROUP_ID
+	steam_group_only = $STEAM_GROUP_ONLY
+	steam_group_admins = $STEAM_GROUP_ADMINS
 
 	[account]
 	server_token = $SERVER_TOKEN
