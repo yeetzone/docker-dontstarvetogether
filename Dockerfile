@@ -14,24 +14,23 @@ RUN chmod +x /home/steam/run.sh
 
 USER steam
 
-RUN mkdir -p /home/steam/.klei/DoNotStarveTogether \
-	&& mkdir /home/steam/steamcmd
+RUN mkdir -p /home/steam/.klei/DoNotStarveTogether
 
-RUN cd /home/steam/steamcmd \
+RUN cd /home/steam \
 	&& curl -SLO "http://media.steampowered.com/installer/steamcmd_linux.tar.gz" \
-	&& tar -xvf steamcmd_linux.tar.gz -C /home/steam/steamcmd \
+	&& tar -xvf steamcmd_linux.tar.gz -C /home/steam \
 	&& rm steamcmd_linux.tar.gz
 
-RUN /home/steam/steamcmd/steamcmd.sh \
+RUN /home/steam/steamcmd.sh \
 	+@ShutdownOnFailedCommand 1 \
 	+@NoPromptForPassword 1 \
 	+login anonymous \
-	+force_install_dir /home/steam/steamapps/DST \
+	+force_install_dir /home/steam/DoNotStarveTogether \
 	+app_update 343050 validate \
 	+quit
 
 EXPOSE 10999/udp
 VOLUME ["/home/steam/.klei/DoNotStarveTogether"]
 
-WORKDIR /home/steam/steamapps/DST/data/
+WORKDIR /home/steam/DoNotStarveTogether/data/
 ENTRYPOINT ["/home/steam/run.sh"]

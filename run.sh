@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 # Update game and mods.
-/home/steam/steamcmd/steamcmd.sh \
+/home/steam/steamcmd.sh \
   +@ShutdownOnFailedCommand 1 \
   +@NoPromptForPassword 1 \
   +login anonymous \
-  +force_install_dir /home/steam/steamapps/DST \
+  +force_install_dir /home/steam/DoNotStarveTogether \
   +app_update 343050 validate \
   +quit
 
@@ -67,4 +67,4 @@ EOF
 fi
 
 # Run the DST executable.
-/home/steam/steamapps/DST/bin/dontstarve_dedicated_server_nullrenderer $@
+/home/steam/DoNotStarveTogether/bin/dontstarve_dedicated_server_nullrenderer $@
