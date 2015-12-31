@@ -58,7 +58,25 @@ cat <<- EOF > $FILE_SETTINGS
 EOF
 fi
 
-# Enable caves.
+# Create the adminlist.txt file.
+FILE_ADMINLIST="/home/steam/.klei/DoNotStarveTogether/save/adminlist.txt"
+if [ -n "$ADMINLIST" ] && [ ! -f $FILE_ADMINLIST ]; then
+  echo $ADMINLIST | tr , '\n' > $FILE_ADMINLIST
+fi
+
+# Create the whitelist.txt file.
+FILE_WHITELIST="/home/steam/.klei/DoNotStarveTogether/save/whitelist.txt"
+if [ -n "$WHITELIST" ] && [ ! -f $FILE_WHITELIST ]; then
+  echo $WHITELIST | tr , '\n' > $FILE_WHITELIST
+fi
+
+# Create the blocklist.txt file.
+FILE_BLOCKLIST="/home/steam/.klei/DoNotStarveTogether/save/blocklist.txt"
+if [ -n "$BLOCKLIST" ] && [ ! -f $FILE_BLOCKLIST ]; then
+  echo $BLOCKLIST | tr , '\n' > $FILE_BLOCKLIST
+fi
+
+# Configure the world preset.
 FILE_WORLD="/home/steam/.klei/DoNotStarveTogether/worldgenoverride.lua"
 if [ -n "$WORLD_PRESET" ] && [ ! -f $FILE_WORLD ]; then
 cat <<- EOF > $FILE_WORLD
