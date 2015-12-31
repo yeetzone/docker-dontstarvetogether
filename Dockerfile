@@ -41,7 +41,7 @@ ENV MODS_ENABLED true
 ENV DISABLECLOUD true
 
 EXPOSE 10999/udp
-VOLUME ["/home/steam/.klei/DoNotStarveTogether"]
+VOLUME ["/home/steam/.klei/DoNotStarveTogether/save/"]
 
 WORKDIR /home/steam/DoNotStarveTogether/data/
 ENTRYPOINT ["/home/steam/run.sh"]
