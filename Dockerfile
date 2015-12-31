@@ -29,6 +29,17 @@ RUN /home/steam/steamcmd.sh \
 	+app_update 343050 validate \
 	+quit
 
+ENV DEFAULT_SERVER_NAME Dont Starve Together
+ENV DEFAULT_SERVER_DESCRIPTION Powered by DST-Academy.
+ENV SERVER_PORT 10999
+ENV MAX_PLAYERS 4
+ENV GAME_MODE survival
+ENV SERVER_INTENTION cooperative
+ENV ENABLE_AUTOSAVER true
+ENV TICK_RATE 15
+ENV MODS_ENABLED true
+ENV DISABLECLOUD true
+
 EXPOSE 10999/udp
 VOLUME ["/home/steam/.klei/DoNotStarveTogether"]
 
