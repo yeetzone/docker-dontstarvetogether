@@ -69,5 +69,31 @@ cat <<- EOF > $FILE_WORLD
 EOF
 fi
 
+# Install mods.
+FILE_MODS="/home/steam/DoNotStarveTogether/mods/dedicated_server_mods_setup.lua"
+if [ -n "$MODS" ]; then
+
+  > $FILE_MODS
+
+  IFS=","
+  for MOD in $MODS; do
+    echo "ServerModSetup(\"$MOD\")" >> $FILE_MODS
+  done
+fi
+
+# Configure Mods.
+FILE_MODS_OVERRIDES="/home/steam/.klei/DoNotStarveTogether/modoverrides.lua"
+if [ -n "$MODS" ] && [ -n "$MODS_OVERRIDES" ] && [ ! -f $FILE_MODS_OVERRIDES ]; then
+  echo "$MODS_OVERRIDES" > $FILE_MODS_OVERRIDES
+elif [ -n "$MODS" ] && [ ! -f $FILE_MODS_OVERRIDES ]; then
+  echo "return {" >> $FILE_MODS_OVERRIDES
+
+  for MOD in $MODS; do
+    echo "[\"workshop-$MOD\"] = { enabled = true }," >> $FILE_MODS_OVERRIDES
+  done
+
+  echo "}" >> $FILE_MODS_OVERRIDES
+fi
+
 # Run the DST executable.
 /home/steam/DoNotStarveTogether/bin/dontstarve_dedicated_server_nullrenderer $@
