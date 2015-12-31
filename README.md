@@ -1,9 +1,14 @@
-# DST-Academy Don't Starve Together Server
-> Don't Starve Together Dedicated Server for Docker.
+# DST:A Dedicated Server
+> Don't Starve Together Academy Dedicated Server for Docker.
+
+This repository provides a `Dockerfile` for building the DST:A Dedicated Server
+for the online multi-player survival-game [*Don't Starve Together*][website].
+
+If you want to set up your own server, have a look at the [DST:A Suite][suite].
 
 ## Setup
 Setting up the server is pretty easy if you got Docker already running.
-Find a quick step-by-step guide how to setup the dedicated DST server below.
+Find a quick step-by-step guide how to setup the dedicated server below.
 
 ### Overview
 
@@ -20,7 +25,7 @@ game or installed mods provide updates and will download and install them. Thus 
 minutes before the server shows up on the server-list.
 
 ### Basic Commands
-Basic commands to maintain the DST server.
+Basic commands to maintain the DST:A Dedicated Server.
 
 **Start the Server**  
 Docker Engine:
@@ -296,7 +301,7 @@ configuration into a separate file and read it into the variable beforehand.
 
 ## Frequently Asked Questions
 
-- **Does Docker automatically restart a running DST server/container when the host-system is rebooted?**  
+- **Does Docker automatically restart a running DST:A Dedicated Server when the host-system is rebooted?**  
   *Yes.*
 
 ## References and Links
@@ -305,6 +310,8 @@ configuration into a separate file and read it into the variable beforehand.
 - [Dedicated Server Guide (Wikia)](http://dont-starve-game.wikia.com/wiki/Guides/Don%E2%80%99t_Starve_Together_Dedicated_Servers)
 - [Server Console Commands (Wikia)](http://dont-starve-game.wikia.com/wiki/Console/Don't_Starve_Together_Commands)
 
+[website]: http://www.dontstarvetogether.com/
+[suite]: https://github.com/dst-academy/suite
 [image]: https://hub.docker.com/r/dstacademy/server/
 [engine-setup]: https://docs.docker.com/engine/installation/
 [compose-setup]: https://docs.docker.com/compose/install/
