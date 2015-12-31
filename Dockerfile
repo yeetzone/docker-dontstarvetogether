@@ -14,7 +14,7 @@ RUN chmod +x /home/steam/run.sh
 
 USER steam
 
-RUN mkdir -p /home/steam/.klei/DoNotStarveTogether
+RUN mkdir -p /home/steam/.klei/DoNotStarveTogether/save/
 
 RUN cd /home/steam \
 	&& curl -SLO "http://media.steampowered.com/installer/steamcmd_linux.tar.gz" \
