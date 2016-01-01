@@ -2,7 +2,7 @@
 > Don't Starve Together Academy Dedicated Server for Docker.
 
 This repository provides a `Dockerfile` for building the DST:A Dedicated Server
-for the online multi-player survival-game [*Don't Starve Together*][website].
+for the online multi-player survival game [*Don't Starve Together*][website].
 
 If you want to set up your own server, have a look at the [DST:A Suite][suite].
 
@@ -18,6 +18,8 @@ Find a quick step-by-step guide how to setup the dedicated server below.
 4. Configure a [`docker-compose.yml`][compose-file] configuration. *(optional but recommended)*
 5. [Start a container][engine-run] i.e. [launch the service][compose-up].
 
+The [DST:A Suite][suite] provides common Docker Compose configurations.
+
 ## Usage
 Server-lifecycle is controlled via default [Docker Engine][engine-cli] or [Docker Compose][compose-cli]
 commands. Every time the server is restarted manually it performs an update-task to check if the
@@ -28,24 +30,28 @@ minutes before the server shows up on the server-list.
 Basic commands to maintain the DST:A Dedicated Server.
 
 **Start the Server**  
+Starts the server. On boot the game-server checks for updates and performs them.  
 Docker Engine:
-`docker run -d -p 10999:10999/udp --name="dst-server" -e SERVER_TOKEN="server-token" dstacademy/server`  
+`docker run -itd -p 10999:10999/udp --name="dst-server" -e SERVER_TOKEN="server-token" dstacademy/server`  
 Docker Compose:
 `docker-compose up -d`
 
 **Stop the Server**  
+Stops the server.  
 Docker Engine:
 `docker stop dst-server`  
 Docker Compose:
 `docker-compose stop`
 
 **Restart the Server**  
+Restarts the server. On boot the game-server checks for updates and performs them.  
 Docker Engine:
 `docker restart dst-server`  
 Docker Compose:
 `docker-compose restart`
 
 **Remove the Server**  
+Deletes the server.  
 Docker Engine:
 `docker rm -f dst-server`  
 Docker Compose:
@@ -55,16 +61,24 @@ Docker Compose:
 More advanced commands to maintain the server-image and other stuff.
 
 **Update the Server-Image**  
+Updates the `dstacademy/server` image from the Docker Hub if updates are available.  
 Docker Engine:
 `docker pull dstacademy/server`  
 Docker Compose:
 `docker-compose pull`
 
 **List all created servers/containers**  
+Prints an overview of all available servers.  
 Docker Engine:
 `docker ps -a`  
 Docker Compose:
 `docker-compose ps`
+
+**Attach to the Server**
+Attaches the terminal to a running server which enables input of server [commands][reference-commands]
+and to observe the server output. To detach without stopping the server press `ctrl+p` followed by `ctrl+q`.
+Docker Engine:
+`docker attach dst-server`  
 
 ## Configuration
 Configuration of the server happens through environment variables, which can be passed to
@@ -73,7 +87,7 @@ to use `docker-compose` instead, which makes it easier to configure all environm
 
 **Example**:
 ```sh
-docker run -d -e SERVER_TOKEN="Token" -e DEFAULT_SERVER_NAME="Name" -e MAX_PLAYERS=10 dstacademy/server
+docker run -itd -e SERVER_TOKEN="Token" -e DEFAULT_SERVER_NAME="Name" -e MAX_PLAYERS=10 dstacademy/server
 ```
 
 You can chain as many variables as you need. If you want to pass lots of them, it's easier and more
@@ -81,7 +95,7 @@ convenient to create an `.env` file and pass it's path to the command.
 
 **Examples**:
 ```sh
-docker run -d --env-file=".env" dstacademy/server
+docker run -itd --env-file=".env" dstacademy/server
 ```
 
 An `.env` file's contents must look like this and can hold all needed variables:
@@ -302,13 +316,17 @@ configuration into a separate file and read it into the variable beforehand.
 ## Frequently Asked Questions
 
 - **Does Docker automatically restart a running DST:A Dedicated Server when the host-system is rebooted?**  
-  *Yes.*
+  Yes.
+
+- **On which operating systems can I run Docker and the DST:A Dedicated Server?**  
+  Docker runs natively on Linux, but there are official solutions for running Docker on Windows and OSX.
+  Have a look at Docker's [Kitematic][docker-kitematic] and Docker's [Toolbox][docker-kitematic].
 
 ## References and Links
-- [Dedicated Server Discussion (Klei Forums)](http://forums.kleientertainment.com/forum/83-dont-starve-together-beta-dedicated-server-discussion/)
-- [Shards and Migration Portals (Klei Forums)](http://forums.kleientertainment.com/topic/59174-understanding-shards-and-migration-portals/)
-- [Dedicated Server Guide (Wikia)](http://dont-starve-game.wikia.com/wiki/Guides/Don%E2%80%99t_Starve_Together_Dedicated_Servers)
-- [Server Console Commands (Wikia)](http://dont-starve-game.wikia.com/wiki/Console/Don't_Starve_Together_Commands)
+- [Dedicated Server Discussion (Klei Forums)][reference-dedicated]
+- [Shards and Migration Portals (Klei Forums)][reference-shards]
+- [Dedicated Server Guide (Wikia)][reference-guide]
+- [Server Console Commands (Wikia)][reference-commands]
 
 [website]: http://www.dontstarvetogether.com/
 [suite]: https://github.com/dst-academy/suite
@@ -321,3 +339,9 @@ configuration into a separate file and read it into the variable beforehand.
 [engine-run]: https://docs.docker.com/engine/reference/run/
 [compose-up]: https://docs.docker.com/compose/reference/up/
 [howto-token]: http://dont-starve-game.wikia.com/wiki/Guides/Don%E2%80%99t_Starve_Together_Dedicated_Servers#Server_Tokens
+[docker-kitematic]: https://kitematic.com/
+[docker-toolbox]: https://www.docker.com/docker-toolbox
+[reference-dedicated]: http://forums.kleientertainment.com/forum/83-dont-starve-together-beta-dedicated-server-discussion/
+[reference-shards]: http://forums.kleientertainment.com/topic/59174-understanding-shards-and-migration-portals/
+[reference-guide]: http://dont-starve-game.wikia.com/wiki/Guides/Don%E2%80%99t_Starve_Together_Dedicated_Servers
+[reference-commands]: http://dont-starve-game.wikia.com/wiki/Console/Don't_Starve_Together_Commands
