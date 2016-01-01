@@ -59,4 +59,4 @@ EXPOSE 10999/udp
 VOLUME ["/home/steam/.klei/DoNotStarveTogether/save/"]
 
 WORKDIR /home/steam/DoNotStarveTogether/data/
-ENTRYPOINT ["/home/steam/run.sh"]
+ENTRYPOINT ["/home/steam/run.sh", "-console"]

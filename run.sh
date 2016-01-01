@@ -114,4 +114,4 @@ elif [ -n "$MODS" ] && [ ! -f $FILE_MODS_OVERRIDES ]; then
 fi
 
 # Run the DST executable.
-/home/steam/DoNotStarveTogether/bin/dontstarve_dedicated_server_nullrenderer $@
+/home/steam/DoNotStarveTogether/bin/dontstarve_dedicated_server_nullrenderer "$@"
