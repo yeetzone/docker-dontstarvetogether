@@ -2,7 +2,8 @@ world:
   build: .
   container_name: world
   hostname: world
-  restart: always
+  tty: true
+  stdin_open: true
   ports:
     - "10999:10999/udp"
   environment:
