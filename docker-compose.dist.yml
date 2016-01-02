@@ -7,7 +7,7 @@ world:
   ports:
     - "10999:10999/udp"
   environment:
-    - DEFAULT_SERVER_NAME=Dont Starve Together
+    - DEFAULT_SERVER_NAME=Don't Starve Together
     - DEFAULT_SERVER_DESCRIPTION=Powered by DST-Academy.
     - SERVER_PORT=10999
     - SERVER_PASSWORD=
