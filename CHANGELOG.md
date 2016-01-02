@@ -2,6 +2,13 @@
 
 ## [next]
 
+### Added
+- Make the null-renderer `conf_dir` argument configurable.
+
+### Changed
+- Improve the `docker-compose.yml` configuration.
+- Improve the entrypoint script.
+
 ## [0.1.0]
 
 ### Added
