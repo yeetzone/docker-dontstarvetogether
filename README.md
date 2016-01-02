@@ -6,6 +6,15 @@ for the online multi-player survival game [*Don't Starve Together*][website].
 
 If you want to set up your own server, have a look at the [DST:A Suite][suite].
 
+## Features
+- [x] Configuration via ENV variables.
+- [x] World presets including caves.
+- [x] Mods and custom mod-configuration.
+- [x] Connected worlds via sharding.
+- [ ] World-persistence on container destruction.
+- [ ] Automatic update of the game and mods.
+- [ ] Sharing game and mod-files between instances.
+
 ## Setup
 Setting up the server is pretty easy if you got Docker already running.
 Find a quick step-by-step guide how to setup the dedicated server below.
@@ -78,7 +87,7 @@ Docker Compose:
 Attaches the terminal to a running server which enables input of server [commands][reference-commands]
 and to observe the server output. To detach without stopping the server press `ctrl+p` followed by `ctrl+q`.
 Docker Engine:
-`docker attach dst-server`  
+`docker attach dst-server`
 
 ## Configuration
 Configuration of the server happens through environment variables, which can be passed to
@@ -107,6 +116,8 @@ MAX_PLAYERS=10
 ```
 
 ### Environment Variables
+Environment variables can be used to customize certain settings of the server. Most of the
+available environment variables correspond to the `settings.ini` variables used by DST.
 
 #### Account
 Sets account-related options.
