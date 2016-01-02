@@ -84,9 +84,9 @@ Docker Engine:
 Docker Compose:
 `docker-compose ps`
 
-**Attach to the Server**
+**Attach to the Server**  
 Attaches the terminal to a running server which enables input of server [commands][reference-commands]
-and to observe the server output. To detach without stopping the server press `ctrl+p` followed by `ctrl+q`.
+and to observe the server output. To detach without stopping the server press `ctrl+p` followed by `ctrl+q`.  
 Docker Engine:
 `docker attach dst-server`
 
