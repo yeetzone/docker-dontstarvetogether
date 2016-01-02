@@ -11,6 +11,7 @@ If you want to set up your own server, have a look at the [DST:A Suite][suite].
 - [x] World presets including caves.
 - [x] Mods and custom mod-configuration.
 - [x] Connected worlds via sharding.
+- [x] Control the server directly on the CLI.
 - [ ] World-persistence on container destruction.
 - [ ] Automatic update of the game and mods.
 - [ ] Sharing game and mod-files between instances.
@@ -23,9 +24,8 @@ Find a quick step-by-step guide how to setup the dedicated server below.
 
 1. Install [Docker Engine][engine-setup].
 2. Install [Docker Compose][compose-setup]. *(optional but recommended)*
-3. Pull the [`dstacademy/server`][image] image.
-4. Configure a [`docker-compose.yml`][compose-file] configuration. *(optional but recommended)*
-5. [Start a container][engine-run] i.e. [launch the service][compose-up].
+3. Configure a [`docker-compose.yml`][compose-file] configuration. *(optional but recommended)*
+4. [Start a container][engine-run] i.e. [launch the service][compose-up].
 
 The [DST:A Suite][suite] provides common Docker Compose configurations.
 
