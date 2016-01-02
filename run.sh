@@ -79,9 +79,11 @@ if [ -n "$BLOCKLIST" ] && [ ! -f $FILE_BLOCKLIST ]; then
   echo $BLOCKLIST | tr , '\n' > $FILE_BLOCKLIST
 fi
 
-# Configure the world preset.
+# Configure custom world generation and presets.
 FILE_WORLD="/home/steam/.klei/$CONF_DIR/worldgenoverride.lua"
-if [ -n "$WORLD_PRESET" ] && [ ! -f $FILE_WORLD ]; then
+if [ -n "$WORLD_OVERRIDES" ] && [ ! -f $FILE_WORLD ]; then
+  echo "$WORLD_OVERRIDES" > $FILE_WORLD
+elif [ -n "$WORLD_PRESET" ] && [ ! -f $FILE_WORLD ]; then
 cat <<- EOF > $FILE_WORLD
 	return {
 	    override_enabled = true,

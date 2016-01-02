@@ -41,6 +41,7 @@ world:
     - CLUSTER_KEY=random-secret-key
     - DISABLECLOUD=true
     - WORLD_PRESET=
+    - WORLD_OVERRIDES
     - ADMINLIST=
     - WHITELIST=
     - BLOCKLIST=

@@ -9,7 +9,7 @@ If you want to set up your own server, have a look at the [DST:A Suite][suite].
 ## Features
 - [x] Configuration via ENV variables.
 - [x] World presets including caves.
-- [ ] Customized world generation.
+- [x] Customized world generation.
 - [x] Mods and custom mod-configuration.
 - [x] Connected worlds via sharding.
 - [x] Control the server directly on the CLI.
@@ -318,6 +318,13 @@ Defines some pre-configured world settings for the server.
 - SURVIVAL_DEFAULT_PLUS
 - COMPLETE_DARKNESS
 - DST_CAVE
+
+**WORLD_OVERRIDES**  
+Sets the overrides-configuration for world generation. Basically it's just the content for the
+`worldgenoverride.lua` file. As this value can be pretty large it's recommended to put the
+configuration into a separate file and read it into the variable beforehand. When this is set
+`WORLD_PRESET` has no effect.
+- *string*
 
 #### Mods
 Mods-related settings.
