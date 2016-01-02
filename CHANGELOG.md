@@ -4,6 +4,7 @@
 
 ### Added
 - Make the null-renderer `conf_dir` argument configurable.
+- Make world generation configurable via the `WORLD_OVERRIDES` variable.
 
 ### Changed
 - Improve the `docker-compose.yml` configuration.
