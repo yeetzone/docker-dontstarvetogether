@@ -55,7 +55,7 @@ ENV CONF_DIR="DoNotStarveTogether" \
 	DISABLECLOUD=true
 
 EXPOSE 10999/udp
-VOLUME ["/home/steam/.klei/DoNotStarveTogether/save/"]
+VOLUME ["/home/steam/.klei/${CONF_DIR}/save/"]
 
 WORKDIR /home/steam/DoNotStarveTogether/data/
 ENTRYPOINT ["/home/steam/run.sh"]
