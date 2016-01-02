@@ -9,6 +9,7 @@ If you want to set up your own server, have a look at the [DST:A Suite][suite].
 ## Features
 - [x] Configuration via ENV variables.
 - [x] World presets including caves.
+- [ ] Customized world generation.
 - [x] Mods and custom mod-configuration.
 - [x] Connected worlds via sharding.
 - [x] Control the server directly on the CLI.
@@ -153,11 +154,11 @@ the server's port-number, because the external/public port-number can be configu
 -  *number* *[default: 10999]*
 
 **SERVER_PASSWORD**  
-Defines the server's password which is needed for players to connect.
+Defines a server password so only players knowing the password can connect.
 - *text*
 
 **OFFLINE_SERVER**  
-Controls if the server should be listed online and accessible publicly.
+Controls if the server is listed and accessible publicly.
 - true
 - false *[default]*
 
