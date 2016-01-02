@@ -119,6 +119,14 @@ MAX_PLAYERS=10
 Environment variables can be used to customize certain settings of the server. Most of the
 available environment variables correspond to the `settings.ini` variables used by DST.
 
+#### Application
+Sets application-specific options.
+
+**CONF_DIR**  
+Defines an alternative directory-name for writing and reading server configuration and save-games.
+- *text* *[default: DoNotStarveTogether]*  
+  *Example:* `dst`
+
 #### Account
 Sets account-related options.
 
@@ -332,6 +340,11 @@ configuration into a separate file and read it into the variable beforehand.
 - **On which operating systems can I run Docker and the DST:A Dedicated Server?**  
   Docker runs natively on Linux, but there are official solutions for running Docker on Windows and OSX.
   Have a look at Docker's [Kitematic][docker-kitematic] and Docker's [Toolbox][docker-kitematic].
+
+- **Why does Steam take so long to update the game?**  
+  It can happen that Steam takes a really long time to update the game. This is a known problem with
+  SteamCMD - sort of a bug. One solution is to install a DNS cache on your system, which was reported
+  to help regarding download speed.
 
 ## References and Links
 - [Dedicated Server Discussion (Klei Forums)][reference-dedicated]
