@@ -9,8 +9,11 @@
   +app_update 343050 validate \
   +quit
 
+# Create data directory.
+mkdir -p "/home/steam/.klei/$CONF_DIR/save/"
+
 # Create the settings.ini file.
-FILE_SETTINGS="/home/steam/.klei/DoNotStarveTogether/settings.ini"
+FILE_SETTINGS="/home/steam/.klei/$CONF_DIR/settings.ini"
 if [ ! -f $FILE_SETTINGS ]; then
 cat <<- EOF > $FILE_SETTINGS
 	[network]
@@ -59,25 +62,25 @@ EOF
 fi
 
 # Create the adminlist.txt file.
-FILE_ADMINLIST="/home/steam/.klei/DoNotStarveTogether/save/adminlist.txt"
+FILE_ADMINLIST="/home/steam/.klei/$CONF_DIR/save/adminlist.txt"
 if [ -n "$ADMINLIST" ] && [ ! -f $FILE_ADMINLIST ]; then
   echo $ADMINLIST | tr , '\n' > $FILE_ADMINLIST
 fi
 
 # Create the whitelist.txt file.
-FILE_WHITELIST="/home/steam/.klei/DoNotStarveTogether/save/whitelist.txt"
+FILE_WHITELIST="/home/steam/.klei/$CONF_DIR/save/whitelist.txt"
 if [ -n "$WHITELIST" ] && [ ! -f $FILE_WHITELIST ]; then
   echo $WHITELIST | tr , '\n' > $FILE_WHITELIST
 fi
 
 # Create the blocklist.txt file.
-FILE_BLOCKLIST="/home/steam/.klei/DoNotStarveTogether/save/blocklist.txt"
+FILE_BLOCKLIST="/home/steam/.klei/$CONF_DIR/save/blocklist.txt"
 if [ -n "$BLOCKLIST" ] && [ ! -f $FILE_BLOCKLIST ]; then
   echo $BLOCKLIST | tr , '\n' > $FILE_BLOCKLIST
 fi
 
 # Configure the world preset.
-FILE_WORLD="/home/steam/.klei/DoNotStarveTogether/worldgenoverride.lua"
+FILE_WORLD="/home/steam/.klei/$CONF_DIR/worldgenoverride.lua"
 if [ -n "$WORLD_PRESET" ] && [ ! -f $FILE_WORLD ]; then
 cat <<- EOF > $FILE_WORLD
 	return {
@@ -100,7 +103,7 @@ if [ -n "$MODS" ]; then
 fi
 
 # Configure Mods.
-FILE_MODS_OVERRIDES="/home/steam/.klei/DoNotStarveTogether/modoverrides.lua"
+FILE_MODS_OVERRIDES="/home/steam/.klei/$CONF_DIR/modoverrides.lua"
 if [ -n "$MODS" ] && [ -n "$MODS_OVERRIDES" ] && [ ! -f $FILE_MODS_OVERRIDES ]; then
   echo "$MODS_OVERRIDES" > $FILE_MODS_OVERRIDES
 elif [ -n "$MODS" ] && [ ! -f $FILE_MODS_OVERRIDES ]; then
@@ -114,4 +117,4 @@ elif [ -n "$MODS" ] && [ ! -f $FILE_MODS_OVERRIDES ]; then
 fi
 
 # Run the DST executable.
-/home/steam/DoNotStarveTogether/bin/dontstarve_dedicated_server_nullrenderer "$@"
+/home/steam/DoNotStarveTogether/bin/dontstarve_dedicated_server_nullrenderer -console -conf_dir $CONF_DIR "$@"

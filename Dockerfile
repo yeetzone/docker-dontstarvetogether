@@ -14,8 +14,6 @@ RUN chmod +x /home/steam/run.sh
 
 USER steam
 
-RUN mkdir -p /home/steam/.klei/DoNotStarveTogether/save/
-
 RUN cd /home/steam \
 	&& curl -SLO "http://media.steampowered.com/installer/steamcmd_linux.tar.gz" \
 	&& tar -xvf steamcmd_linux.tar.gz -C /home/steam \
@@ -29,7 +27,8 @@ RUN /home/steam/steamcmd.sh \
 	+app_update 343050 validate \
 	+quit
 
-ENV DEFAULT_SERVER_NAME="Dont Starve Together" \
+ENV CONF_DIR="DoNotStarveTogether" \
+	DEFAULT_SERVER_NAME="Dont Starve Together" \
 	DEFAULT_SERVER_DESCRIPTION="Powered by DST-Academy." \
 	SERVER_PORT=10999 \
 	OFFLINE_SERVER=false \
@@ -59,4 +58,4 @@ EXPOSE 10999/udp
 VOLUME ["/home/steam/.klei/DoNotStarveTogether/save/"]
 
 WORKDIR /home/steam/DoNotStarveTogether/data/
-ENTRYPOINT ["/home/steam/run.sh", "-console"]
+ENTRYPOINT ["/home/steam/run.sh"]
