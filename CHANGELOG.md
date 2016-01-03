@@ -5,6 +5,7 @@
 ### Added
 - Make the null-renderer `conf_dir` argument configurable.
 - Make world generation configurable via the `WORLD_OVERRIDES` variable.
+- Make the Steam App-ID configurable via the `STEAM_APP_ID` variable.
 
 ### Changed
 - Improve the `docker-compose.yml` configuration.

@@ -6,7 +6,7 @@
   +@NoPromptForPassword 1 \
   +login anonymous \
   +force_install_dir /home/steam/DoNotStarveTogether \
-  +app_update 343050 validate \
+  +app_update $STEAM_APP_ID validate \
   +quit
 
 # Create data directory.
