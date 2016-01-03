@@ -37,8 +37,8 @@ RUN dpkg --add-architecture i386 \
 
 RUN useradd -m steam
 
-COPY /run.sh /home/steam/
-RUN chmod +x /home/steam/run.sh
+COPY /entrypoint.sh /home/steam/
+RUN chmod +x /home/steam/entrypoint.sh
 
 USER steam
 
@@ -58,4 +58,4 @@ RUN /home/steam/steamcmd.sh \
 EXPOSE 10999/udp
 
 WORKDIR /home/steam/DoNotStarveTogether/data/
-ENTRYPOINT ["/home/steam/run.sh"]
+ENTRYPOINT ["/home/steam/entrypoint.sh"]

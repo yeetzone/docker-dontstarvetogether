@@ -1,4 +1,5 @@
 # Development
-/Vagrantfile
 /.vagrant/
-/docker-compose.yml
+
+# Project
+/build/docker-compose.yml
