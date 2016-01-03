@@ -3,7 +3,7 @@ MAINTAINER Thomas Deinhamer <thasmo@gmail.com>
 
 ENV CONF_DIR="DoNotStarveTogether" \
 	DEFAULT_SERVER_NAME="Dont Starve Together" \
-	DEFAULT_SERVER_DESCRIPTION="Powered by DST-Academy." \
+	DEFAULT_SERVER_DESCRIPTION="Powered by DST Academy." \
 	SERVER_PORT=10999 \
 	OFFLINE_SERVER=false \
 	MAX_PLAYERS=4 \
