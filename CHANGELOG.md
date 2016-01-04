@@ -2,6 +2,9 @@
 
 ## [next]
 
+### Added
+- Add `UPDATE_ON_BOOT` variable to configure update-behavior on boot.
+
 ## [0.2.0]
 
 ### Added
