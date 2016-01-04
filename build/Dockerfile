@@ -4,6 +4,7 @@ MAINTAINER Thomas Deinhamer <thasmo@gmail.com>
 # Set environment variables.
 ENV STORAGE_ROOT="/home/steam/.klei/" \
 	CONF_DIR="DoNotStarveTogether" \
+	UPDATE_ON_BOOT=true \
 	DEFAULT_SERVER_NAME="Dont Starve Together" \
 	DEFAULT_SERVER_DESCRIPTION="Powered by DST Academy." \
 	SERVER_PORT=10999 \

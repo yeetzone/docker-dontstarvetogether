@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 
 # Update game and mods.
-/home/steam/steamcmd.sh \
-  +@ShutdownOnFailedCommand 1 \
-  +@NoPromptForPassword 1 \
-  +login anonymous \
-  +force_install_dir /home/steam/DoNotStarveTogether \
-  +app_update $STEAM_APP_ID validate \
-  +quit
+if [ "$UPDATE_ON_BOOT" = "true" ]; then
+  /home/steam/steamcmd.sh \
+    +@ShutdownOnFailedCommand 1 \
+    +@NoPromptForPassword 1 \
+    +login anonymous \
+    +force_install_dir /home/steam/DoNotStarveTogether \
+    +app_update $STEAM_APP_ID validate \
+    +quit
+fi
 
 # Create data directory.
 mkdir -p "$STORAGE_ROOT/$CONF_DIR/save/" \
