@@ -13,7 +13,7 @@ If you want to set up your own server, have a look at the [DST:A Suite][suite].
 - [x] Mods and custom mod-configuration.
 - [x] Connected worlds via sharding.
 - [x] Control the server directly on the CLI.
-- [ ] World-persistence on container destruction.
+- [x] World-persistence on container destruction.
 - [ ] Automatic update of the game and mods.
 - [ ] Sharing game and mod-files between instances.
 
