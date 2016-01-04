@@ -6,11 +6,15 @@
   +@NoPromptForPassword 1 \
   +login anonymous \
   +force_install_dir /home/steam/DoNotStarveTogether \
-  +app_update 343050 validate \
+  +app_update $STEAM_APP_ID validate \
   +quit
 
+# Create data directory.
+mkdir -p "$STORAGE_ROOT/$CONF_DIR/save/" \
+  && chown -R steam:steam "$STORAGE_ROOT/$CONF_DIR/"
+
 # Create the settings.ini file.
-FILE_SETTINGS="/home/steam/.klei/DoNotStarveTogether/settings.ini"
+FILE_SETTINGS="$STORAGE_ROOT/$CONF_DIR/settings.ini"
 if [ ! -f $FILE_SETTINGS ]; then
 cat <<- EOF > $FILE_SETTINGS
 	[network]
@@ -59,26 +63,28 @@ EOF
 fi
 
 # Create the adminlist.txt file.
-FILE_ADMINLIST="/home/steam/.klei/DoNotStarveTogether/save/adminlist.txt"
+FILE_ADMINLIST="$STORAGE_ROOT/$CONF_DIR/save/adminlist.txt"
 if [ -n "$ADMINLIST" ] && [ ! -f $FILE_ADMINLIST ]; then
   echo $ADMINLIST | tr , '\n' > $FILE_ADMINLIST
 fi
 
 # Create the whitelist.txt file.
-FILE_WHITELIST="/home/steam/.klei/DoNotStarveTogether/save/whitelist.txt"
+FILE_WHITELIST="$STORAGE_ROOT/$CONF_DIR/save/whitelist.txt"
 if [ -n "$WHITELIST" ] && [ ! -f $FILE_WHITELIST ]; then
   echo $WHITELIST | tr , '\n' > $FILE_WHITELIST
 fi
 
 # Create the blocklist.txt file.
-FILE_BLOCKLIST="/home/steam/.klei/DoNotStarveTogether/save/blocklist.txt"
+FILE_BLOCKLIST="$STORAGE_ROOT/$CONF_DIR/save/blocklist.txt"
 if [ -n "$BLOCKLIST" ] && [ ! -f $FILE_BLOCKLIST ]; then
   echo $BLOCKLIST | tr , '\n' > $FILE_BLOCKLIST
 fi
 
-# Configure the world preset.
-FILE_WORLD="/home/steam/.klei/DoNotStarveTogether/worldgenoverride.lua"
-if [ -n "$WORLD_PRESET" ] && [ ! -f $FILE_WORLD ]; then
+# Configure custom world generation and presets.
+FILE_WORLD="$STORAGE_ROOT/$CONF_DIR/worldgenoverride.lua"
+if [ -n "$WORLD_OVERRIDES" ] && [ ! -f $FILE_WORLD ]; then
+  echo "$WORLD_OVERRIDES" > $FILE_WORLD
+elif [ -n "$WORLD_PRESET" ] && [ ! -f $FILE_WORLD ]; then
 cat <<- EOF > $FILE_WORLD
 	return {
 	    override_enabled = true,
@@ -100,7 +106,7 @@ if [ -n "$MODS" ]; then
 fi
 
 # Configure Mods.
-FILE_MODS_OVERRIDES="/home/steam/.klei/DoNotStarveTogether/modoverrides.lua"
+FILE_MODS_OVERRIDES="$STORAGE_ROOT/$CONF_DIR/modoverrides.lua"
 if [ -n "$MODS" ] && [ -n "$MODS_OVERRIDES" ] && [ ! -f $FILE_MODS_OVERRIDES ]; then
   echo "$MODS_OVERRIDES" > $FILE_MODS_OVERRIDES
 elif [ -n "$MODS" ] && [ ! -f $FILE_MODS_OVERRIDES ]; then
@@ -114,4 +120,8 @@ elif [ -n "$MODS" ] && [ ! -f $FILE_MODS_OVERRIDES ]; then
 fi
 
 # Run the DST executable.
-/home/steam/DoNotStarveTogether/bin/dontstarve_dedicated_server_nullrenderer $@
+exec gosu steam /home/steam/DoNotStarveTogether/bin/dontstarve_dedicated_server_nullrenderer \
+  -console \
+  -persistent_storage_root "$STORAGE_ROOT" \
+  -conf_dir "$CONF_DIR" \
+  "$@"

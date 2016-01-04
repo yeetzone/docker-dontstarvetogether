@@ -2,11 +2,15 @@ world:
   build: .
   container_name: world
   hostname: world
-  restart: always
+  tty: true
+  stdin_open: true
+  volume_driver: local
+  volumes:
+    - world:/home/steam/.klei/DoNotStarveTogether/save/
   ports:
     - "10999:10999/udp"
   environment:
-    - DEFAULT_SERVER_NAME=Dont Starve Together
+    - DEFAULT_SERVER_NAME=Don't Starve Together
     - DEFAULT_SERVER_DESCRIPTION=Powered by DST-Academy.
     - SERVER_PORT=10999
     - SERVER_PASSWORD=
@@ -40,6 +44,7 @@ world:
     - CLUSTER_KEY=random-secret-key
     - DISABLECLOUD=true
     - WORLD_PRESET=
+    - WORLD_OVERRIDES
     - ADMINLIST=
     - WHITELIST=
     - BLOCKLIST=
