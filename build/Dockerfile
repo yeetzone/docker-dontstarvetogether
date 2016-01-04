@@ -1,7 +1,8 @@
 FROM ubuntu:14.04
 MAINTAINER Thomas Deinhamer <thasmo@gmail.com>
 
-ENV CONF_DIR="DoNotStarveTogether" \
+ENV STORAGE_ROOT="/home/steam/.klei/" \
+	CONF_DIR="DoNotStarveTogether" \
 	DEFAULT_SERVER_NAME="Dont Starve Together" \
 	DEFAULT_SERVER_DESCRIPTION="Powered by DST Academy." \
 	SERVER_PORT=10999 \
@@ -35,12 +36,17 @@ RUN dpkg --add-architecture i386 \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
+RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4
+RUN curl -o /usr/local/bin/gosu -fSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" \
+	&& curl -o /usr/local/bin/gosu.asc -fSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture).asc" \
+	&& gpg --verify /usr/local/bin/gosu.asc \
+	&& rm /usr/local/bin/gosu.asc \
+	&& chmod +x /usr/local/bin/gosu
+
 RUN useradd -m steam
 
 COPY /entrypoint.sh /home/steam/
 RUN chmod +x /home/steam/entrypoint.sh
-
-USER steam
 
 RUN cd /home/steam \
 	&& curl -SLO "http://media.steampowered.com/installer/steamcmd_linux.tar.gz" \
@@ -56,6 +62,7 @@ RUN /home/steam/steamcmd.sh \
 	+quit
 
 EXPOSE 10999/udp
+VOLUME ["${STORAGE_ROOT}/${CONF_DIR}/save"]
 
 WORKDIR /home/steam/DoNotStarveTogether/data/
 ENTRYPOINT ["/home/steam/entrypoint.sh"]

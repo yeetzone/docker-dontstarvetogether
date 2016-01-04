@@ -4,6 +4,9 @@ world:
   hostname: world
   tty: true
   stdin_open: true
+  volume_driver: local
+  volumes:
+    - world:/home/steam/.klei/DoNotStarveTogether/save/
   ports:
     - "10999:10999/udp"
   environment:
