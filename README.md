@@ -1,6 +1,8 @@
 # DST:A Dedicated Server
 > Don't Starve Together Academy Dedicated Server for Docker.
 
+![Docker Pulls](https://img.shields.io/docker/pulls/dstacademy/server.svg)
+
 This repository provides a `Dockerfile` for building the DST:A Dedicated Server
 for the online multi-player survival game [*Don't Starve Together*][website].
 
