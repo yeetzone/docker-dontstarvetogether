@@ -15,7 +15,7 @@ If you want to set up your own server, have a look at the [DST:A Suite][suite].
 - [x] Control the server directly on the CLI.
 - [x] World-persistence on container destruction.
 - [ ] Automatic update of the game and mods.
-- [ ] Sharing game and mod-files between instances.
+- [x] Sharing game and mod-files between instances.
 
 ## Setup
 Setting up the server is pretty easy if you got Docker already running.
@@ -130,6 +130,11 @@ Configures the root path of the save directory. Should not be changed under most
 **CONF_DIR**  
 Defines an alternative directory-name for writing and reading server configuration and save-games.
 - *text* *[default: DoNotStarveTogether]*
+
+**UPDATE_ON_BOOT**  
+Enables/disables checking for game and mod updates on boot.
+- true *[default]*
+- false
 
 #### Account
 Sets account-related options.
