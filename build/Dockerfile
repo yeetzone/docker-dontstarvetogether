@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM debian:jessie
 MAINTAINER Thomas Deinhamer <thasmo@gmail.com>
 
 # Set environment variables.
