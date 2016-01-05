@@ -17,3 +17,4 @@ The [DST:A Suite][suite] provides common Docker Compose configurations.
 [engine-run]: https://docs.docker.com/engine/reference/run/
 [compose-up]: https://docs.docker.com/compose/reference/up/
 [compose-file]: https://docs.docker.com/compose/compose-file/
+[suite]: https://github.com/dst-academy/suite/
