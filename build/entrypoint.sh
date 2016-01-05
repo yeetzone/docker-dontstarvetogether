@@ -18,6 +18,16 @@ mkdir -p "$STORAGE_ROOT/$CONF_DIR/save/" \
 # Create the settings.ini file.
 FILE_SETTINGS="$STORAGE_ROOT/$CONF_DIR/settings.ini"
 if [ ! -f $FILE_SETTINGS ]; then
+  if [ -z "$DEFAULT_SERVER_NAME" ]; then
+    selectRandomLine(){
+      mapfile list < $1
+      echo ${list[$RANDOM % ${#list[@]}]}
+    }
+
+    DEFAULT_SERVER_NAME="`selectRandomLine /home/steam/adjectives.txt` `selectRandomLine /home/steam/names.txt`"
+    echo "'$DEFAULT_SERVER_NAME' has been set as the server\'s name."
+  fi
+
 cat <<- EOF > $FILE_SETTINGS
 	[network]
 	default_server_name = $DEFAULT_SERVER_NAME
