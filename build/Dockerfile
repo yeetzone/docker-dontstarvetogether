@@ -35,7 +35,7 @@ ENV STORAGE_ROOT="/home/steam/.klei/" \
 # Install dependencies.
 RUN dpkg --add-architecture i386 \
 	&& apt-get update -y \
-	&& apt-get install -y curl lib32gcc1 lib32stdc++6 libcurl4-gnutls-dev:i386 \
+	&& apt-get install -y --no-install-recommends curl lib32gcc1 lib32stdc++6 libcurl4-gnutls-dev:i386 \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
