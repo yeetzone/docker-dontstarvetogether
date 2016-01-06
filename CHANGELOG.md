@@ -4,6 +4,11 @@
 
 ### Added
 - Add `UPDATE_ON_BOOT` variable to configure update-behavior on boot.
+- Add `SERVER_NAME_PREFIX` variable to configure a prefix for the server's name.
+
+### Changed
+- Generate a random server name if no name was configured.
+- Use the Debian base image instead of Ubuntu.
 
 ## [0.2.0]
 
