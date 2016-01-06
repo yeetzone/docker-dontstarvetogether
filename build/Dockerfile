@@ -6,33 +6,30 @@ RUN dpkg --add-architecture i386 \
 	&& apt-get update -y \
 	&& apt-get install -y --no-install-recommends ca-certificates curl lib32gcc1 lib32stdc++6 libcurl4-gnutls-dev:i386 \
 	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/*
-
-# Add steam user.
-RUN useradd -m steam
-
-# Install SteamCMD.
-RUN cd /home/steam \
-	&& curl -SLO "http://media.steampowered.com/installer/steamcmd_linux.tar.gz" \
-	&& tar -xvf steamcmd_linux.tar.gz -C /home/steam \
-	&& rm steamcmd_linux.tar.gz
-
-# Install Don't Starve Together Server.
-RUN /home/steam/steamcmd.sh \
-	+@ShutdownOnFailedCommand 1 \
-	+@NoPromptForPassword 1 \
-	+login anonymous \
-	+force_install_dir /home/steam/DoNotStarveTogether \
-	+app_update 343050 validate \
-	+quit
-
-# Install gosu.
-RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4
-RUN curl -o /usr/local/bin/gosu -fSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" \
+	&& rm -rf /var/lib/apt/lists/* \
+	&& gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 \
+	&& curl -o /usr/local/bin/gosu -fSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" \
 	&& curl -o /usr/local/bin/gosu.asc -fSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture).asc" \
 	&& gpg --verify /usr/local/bin/gosu.asc \
 	&& rm /usr/local/bin/gosu.asc \
 	&& chmod +x /usr/local/bin/gosu
+
+# Add steam user.
+RUN adduser --home /var/lib/steam --disabled-login --gecos "Steam" steam
+
+# Install SteamCMD.
+RUN gosu steam mkdir -p /var/lib/steam/steamcmd/ \
+	&& curl -SL "http://media.steampowered.com/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC /var/lib/steam/steamcmd \
+	&& chmod 744 /var/lib/steam/steamcmd/steamcmd.sh \
+	&& gosu steam /var/lib/steam/steamcmd/steamcmd.sh \
+		+@ShutdownOnFailedCommand 1 \
+		+quit
+
+# Install Don't Starve Together Server.
+COPY /update_dst.sh /var/lib/steam/
+RUN chown steam:steam /var/lib/steam/update_dst.sh \
+	&& sync \
+	&& /var/lib/steam/update_dst.sh
 
 # Set environment variables.
 ENV UPDATE_ON_BOOT=true \
@@ -63,11 +60,11 @@ ENV UPDATE_ON_BOOT=true \
 	DISABLECLOUD=true
 
 # Add entrypoint script.
-COPY /entrypoint.sh /adjectives.txt /names.txt /home/steam/
-RUN chmod +x /home/steam/entrypoint.sh
+COPY /entrypoint.sh /adjectives.txt /names.txt /var/lib/steam/
+RUN chmod +x /var/lib/steam/entrypoint.sh
 
 EXPOSE 10999/udp
-VOLUME [/home/steam/.klei/DoNotStarveTogether/save"]
+VOLUME ["/var/lib/steam/.klei/DoNotStarveTogether/save"]
 
-WORKDIR /home/steam/DoNotStarveTogether/data/
-ENTRYPOINT ["/home/steam/entrypoint.sh"]
+WORKDIR /var/lib/steam/DoNotStarveTogether/bin/
+ENTRYPOINT ["/var/lib/steam/entrypoint.sh"]
