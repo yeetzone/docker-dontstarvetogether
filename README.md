@@ -1,8 +1,5 @@
-# DST:A Dedicated Server
+# DST:A Dedicated Server [![Build Status](https://travis-ci.org/dst-academy/server.svg?branch=develop)](https://travis-ci.org/dst-academy/server) [![Docker Pulls](https://img.shields.io/docker/pulls/dstacademy/server.svg)](https://hub.docker.com/r/dstacademy/server/)
 > Don't Starve Together Academy Dedicated Server for Docker.
-
-[![Build Status](https://travis-ci.org/dst-academy/server.svg?branch=develop)](https://travis-ci.org/dst-academy/server)
-[![Docker Pulls](https://img.shields.io/docker/pulls/dstacademy/server.svg)](https://hub.docker.com/r/dstacademy/server/)
 
 This repository provides a `Dockerfile` for building the DST:A Dedicated Server
 for the online multi-player survival game [*Don't Starve Together*][website].
