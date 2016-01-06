@@ -1,19 +1,16 @@
 #!/usr/bin/env bash
 
+STORAGE_ROOT="/var/lib/dsta/server"
+CONF_DIR="DoNotStarveTogether"
+
 # Update game and mods.
 if [ "$UPDATE_ON_BOOT" = "true" ]; then
-  /home/steam/steamcmd.sh \
-    +@ShutdownOnFailedCommand 1 \
-    +@NoPromptForPassword 1 \
-    +login anonymous \
-    +force_install_dir /home/steam/DoNotStarveTogether \
-    +app_update $STEAM_APP_ID validate \
-    +quit
+  /var/lib/steam/update_dst.sh
 fi
 
 # Create data directory.
 mkdir -p "$STORAGE_ROOT/$CONF_DIR/save/" \
-  && chown -R steam:steam "$STORAGE_ROOT/$CONF_DIR/"
+  && chown -R dsta:dsta "$STORAGE_ROOT/"
 
 # Create the settings.ini file.
 FILE_SETTINGS="$STORAGE_ROOT/$CONF_DIR/settings.ini"
@@ -24,7 +21,7 @@ if [ ! -f $FILE_SETTINGS ]; then
       echo ${list[$RANDOM % ${#list[@]}]}
     }
 
-    DEFAULT_SERVER_NAME="`selectRandomLine /home/steam/adjectives.txt` `selectRandomLine /home/steam/names.txt`"
+    DEFAULT_SERVER_NAME="`selectRandomLine /var/lib/dsta/adjectives.txt` `selectRandomLine /var/lib/dsta/names.txt`"
     echo "'$DEFAULT_SERVER_NAME' has been set as the server's name."
   fi
 
@@ -72,6 +69,7 @@ cat <<- EOF > $FILE_SETTINGS
 	[steam]
 	disablecloud = $DISABLECLOUD
 EOF
+chown dsta:dsta $FILE_SETTINGS
 fi
 
 # Create the adminlist.txt file.
@@ -106,7 +104,7 @@ EOF
 fi
 
 # Install mods.
-FILE_MODS="/home/steam/DoNotStarveTogether/mods/dedicated_server_mods_setup.lua"
+FILE_MODS="/var/lib/steam/DoNotStarveTogether/mods/dedicated_server_mods_setup.lua"
 if [ -n "$MODS" ]; then
 
   > $FILE_MODS
@@ -132,7 +130,7 @@ elif [ -n "$MODS" ] && [ ! -f $FILE_MODS_OVERRIDES ]; then
 fi
 
 # Run the DST executable.
-exec gosu steam /home/steam/DoNotStarveTogether/bin/dontstarve_dedicated_server_nullrenderer \
+exec gosu dsta ./dontstarve_dedicated_server_nullrenderer \
   -console \
   -persistent_storage_root "$STORAGE_ROOT" \
   -conf_dir "$CONF_DIR" \
