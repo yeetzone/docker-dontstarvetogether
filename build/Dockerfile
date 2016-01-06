@@ -31,6 +31,9 @@ RUN chown steam:steam /var/lib/steam/update_dst.sh \
 	&& sync \
 	&& /var/lib/steam/update_dst.sh
 
+# Add dsta user.
+RUN adduser --home /var/lib/dsta --disabled-login --gecos "DST Academy" dsta
+
 # Set environment variables.
 ENV UPDATE_ON_BOOT=true \
 	DEFAULT_SERVER_NAME= \
@@ -60,11 +63,11 @@ ENV UPDATE_ON_BOOT=true \
 	DISABLECLOUD=true
 
 # Add entrypoint script.
-COPY /entrypoint.sh /adjectives.txt /names.txt /var/lib/steam/
-RUN chmod +x /var/lib/steam/entrypoint.sh
+COPY /entrypoint.sh /adjectives.txt /names.txt /var/lib/dsta/
+RUN chown dsta:dsta -R /var/lib/dsta/
 
 EXPOSE 10999/udp
-VOLUME ["/var/lib/steam/.klei/DoNotStarveTogether/save"]
+VOLUME ["/var/lib/dsta/server/DoNotStarveTogether/save"]
 
 WORKDIR /var/lib/steam/DoNotStarveTogether/bin/
-ENTRYPOINT ["/var/lib/steam/entrypoint.sh"]
+ENTRYPOINT ["/var/lib/dsta/entrypoint.sh"]
