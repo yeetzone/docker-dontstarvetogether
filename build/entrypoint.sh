@@ -25,7 +25,7 @@ if [ ! -f $FILE_SETTINGS ]; then
     }
 
     DEFAULT_SERVER_NAME="`selectRandomLine /home/steam/adjectives.txt` `selectRandomLine /home/steam/names.txt`"
-    echo "'$DEFAULT_SERVER_NAME' has been set as the server\'s name."
+    echo "'$DEFAULT_SERVER_NAME' has been set as the server's name."
   fi
 
 cat <<- EOF > $FILE_SETTINGS
