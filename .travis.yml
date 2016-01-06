@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+  - docker
+
+env:
+  - DOCKER_IMAGE_NAME=dstacademy/server
+
+script:
+  - docker build -t $DOCKER_IMAGE_NAME .
