@@ -7,7 +7,7 @@ if [ "$UPDATE_ON_BOOT" = "true" ]; then
     +@NoPromptForPassword 1 \
     +login anonymous \
     +force_install_dir /home/steam/DoNotStarveTogether \
-    +app_update $STEAM_APP_ID validate \
+    +app_update 343050 validate \
     +quit
 fi
 
