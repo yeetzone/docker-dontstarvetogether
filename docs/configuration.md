@@ -59,7 +59,8 @@ Configures network-related settings.
 **DEFAULT_SERVER_NAME**  
 Sets the server's name. Shows up on the public server-list and in-game.
 Setting a custom server-name is not required but highly recommended.
-- *text* *[default: Don't Starve Together]*
+If no name is configured, a random name will be generated.
+- *text* *[default: *RANDOM*]*
 
 **DEFAULT_SERVER_DESCRIPTION**  
 Sets the server's description. Shows up on the public server-list and in-game.
