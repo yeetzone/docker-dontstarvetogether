@@ -32,14 +32,6 @@ available environment variables correspond to the `settings.ini` variables used 
 ### Application
 Sets application-specific options.
 
-**STORAGE_ROOT**  
-Configures the root path of the save directory. Should not be changed under most circumstances.
-- *text* *[default: /home/steam/.klei/]*
-
-**CONF_DIR**  
-Defines an alternative directory-name for writing and reading server configuration and save-games.
-- *text* *[default: DoNotStarveTogether]*
-
 **UPDATE_ON_BOOT**  
 Enables/disables checking for game and mod updates on boot.
 - true *[default]*
