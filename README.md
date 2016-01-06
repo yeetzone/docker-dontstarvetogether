@@ -1,6 +1,7 @@
 # DST:A Dedicated Server
 > Don't Starve Together Academy Dedicated Server for Docker.
 
+[![Build Status](https://travis-ci.org/dst-academy/server.svg?branch=develop)](https://travis-ci.org/dst-academy/server)
 ![Docker Pulls](https://img.shields.io/docker/pulls/dstacademy/server.svg)
 
 This repository provides a `Dockerfile` for building the DST:A Dedicated Server
