@@ -40,7 +40,7 @@ Enables/disables checking for game and mod updates on boot.
 ### Account
 Sets account-related options.
 
-**SERVER_TOKEN**  *required*  
+**SERVER_TOKEN** *required*  
 Defines the server's token which is needed to run it.
 To [generate a token][howto-token] you need a copy of DST.
 - *text*
