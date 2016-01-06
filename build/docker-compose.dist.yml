@@ -6,7 +6,7 @@ world:
   stdin_open: true
   volume_driver: local
   volumes:
-    - world:/home/steam/.klei/DoNotStarveTogether/save/
+    - world:/var/lib/dsta/server/DoNotStarveTogether/save/
   ports:
     - "10999:10999/udp"
   environment:
