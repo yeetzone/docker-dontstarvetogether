@@ -133,10 +133,6 @@ Enables/disables pausing of the world when no player is connected.
 - true *[default]*
 - false
 
-**STEAM_APP_ID**  
-Sets the ID of the app to be installed. Generally it's not needed to change this.
-- *number* *[default: 343050]*
-
 **STEAM_AUTHENTICATION_PORT**  
 Sets the authentication port-number for Steam. Generally it's not needed to change this.
 - *number* *[default: 8766]*
