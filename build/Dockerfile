@@ -5,7 +5,7 @@ MAINTAINER Thomas Deinhamer <thasmo@gmail.com>
 ENV STORAGE_ROOT="/home/steam/.klei/" \
 	CONF_DIR="DoNotStarveTogether" \
 	UPDATE_ON_BOOT=true \
-	DEFAULT_SERVER_NAME="Dont Starve Together" \
+	DEFAULT_SERVER_NAME= \
 	DEFAULT_SERVER_DESCRIPTION="Powered by DST Academy." \
 	SERVER_PORT=10999 \
 	OFFLINE_SERVER=false \
@@ -51,7 +51,7 @@ RUN curl -o /usr/local/bin/gosu -fSL "https://github.com/tianon/gosu/releases/do
 RUN useradd -m steam
 
 # Add entrypoint script.
-COPY /entrypoint.sh /home/steam/
+COPY /entrypoint.sh /adjectives.txt /names.txt /home/steam/
 RUN chmod +x /home/steam/entrypoint.sh
 
 # Install SteamCMD.
