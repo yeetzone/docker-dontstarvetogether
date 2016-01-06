@@ -9,6 +9,12 @@
 ### Changed
 - Generate a random server name if no name was configured.
 - Use the Debian base image instead of Ubuntu.
+- Relocate Steam and DST files in the image.
+- Create separate users for running Steam and the DST server.
+
+### Removed
+- Remove the `CONF_DIR` environment variable.
+- Remove the `STORAGE_ROOT ` environment variable.
 
 ## [0.2.0]
 
