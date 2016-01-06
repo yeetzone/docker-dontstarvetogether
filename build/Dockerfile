@@ -35,9 +35,7 @@ RUN curl -o /usr/local/bin/gosu -fSL "https://github.com/tianon/gosu/releases/do
 	&& chmod +x /usr/local/bin/gosu
 
 # Set environment variables.
-ENV STORAGE_ROOT="/home/steam/.klei/" \
-	CONF_DIR="DoNotStarveTogether" \
-	UPDATE_ON_BOOT=true \
+ENV UPDATE_ON_BOOT=true \
 	DEFAULT_SERVER_NAME= \
 	DEFAULT_SERVER_DESCRIPTION="Powered by DST Academy." \
 	SERVER_PORT=10999 \
@@ -69,7 +67,7 @@ COPY /entrypoint.sh /adjectives.txt /names.txt /home/steam/
 RUN chmod +x /home/steam/entrypoint.sh
 
 EXPOSE 10999/udp
-VOLUME ["${STORAGE_ROOT}/${CONF_DIR}/save"]
+VOLUME [/home/steam/.klei/DoNotStarveTogether/save"]
 
 WORKDIR /home/steam/DoNotStarveTogether/data/
 ENTRYPOINT ["/home/steam/entrypoint.sh"]

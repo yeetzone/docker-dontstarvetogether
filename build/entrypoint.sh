@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+STORAGE_ROOT="/home/steam/.klei/"
+CONF_DIR="DoNotStarveTogether"
+
 # Update game and mods.
 if [ "$UPDATE_ON_BOOT" = "true" ]; then
   /home/steam/steamcmd.sh \
