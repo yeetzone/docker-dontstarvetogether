@@ -30,7 +30,7 @@ if [ ! -f $FILE_SETTINGS ]; then
 
 cat <<- EOF > $FILE_SETTINGS
 	[network]
-	default_server_name = $DEFAULT_SERVER_NAME
+	default_server_name = $SERVER_NAME_PREFIX $DEFAULT_SERVER_NAME
 	default_server_description = $DEFAULT_SERVER_DESCRIPTION
 	server_port = $SERVER_PORT
 	server_password = $SERVER_PASSWORD
