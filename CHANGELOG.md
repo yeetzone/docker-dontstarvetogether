@@ -14,7 +14,8 @@
 
 ### Removed
 - Remove the `CONF_DIR` environment variable.
-- Remove the `STORAGE_ROOT ` environment variable.
+- Remove the `STORAGE_ROOT` environment variable.
+- Remove the `STEAM_APP_ID` environment variable.
 
 ## [0.2.0]
 
