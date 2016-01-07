@@ -6,7 +6,7 @@ world:
   stdin_open: true
   volume_driver: local
   volumes:
-    - world:/var/lib/dsta/server/DoNotStarveTogether/save/
+    - world:/var/lib/dsta/server/
   ports:
     - "10999:10999/udp"
   environment:
