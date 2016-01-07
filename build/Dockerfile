@@ -67,7 +67,7 @@ COPY /entrypoint.sh /adjectives.txt /names.txt /var/lib/dsta/
 RUN chown dsta:dsta -R /var/lib/dsta/
 
 EXPOSE 10999/udp
-VOLUME ["/var/lib/dsta/server/DoNotStarveTogether/save"]
+VOLUME ["/var/lib/dsta/server"]
 
 WORKDIR /var/lib/steam/DoNotStarveTogether/bin/
 ENTRYPOINT ["/var/lib/dsta/entrypoint.sh"]

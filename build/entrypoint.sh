@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-STORAGE_ROOT="/var/lib/dsta/server"
-CONF_DIR="DoNotStarveTogether"
+STORAGE_ROOT="/var/lib/dsta"
+CONF_DIR="server"
 
 # Update game and mods.
 if [ "$UPDATE_ON_BOOT" = "true" ]; then
@@ -10,7 +10,7 @@ fi
 
 # Create data directory.
 mkdir -p "$STORAGE_ROOT/$CONF_DIR/save/" \
-  && chown -R dsta:dsta "$STORAGE_ROOT/"
+  && chown -R dsta:dsta "$STORAGE_ROOT/$CONF_DIR/"
 
 # Create the settings.ini file.
 FILE_SETTINGS="$STORAGE_ROOT/$CONF_DIR/settings.ini"
