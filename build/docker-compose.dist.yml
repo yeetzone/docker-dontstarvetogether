@@ -6,47 +6,46 @@ world:
   stdin_open: true
   volume_driver: local
   volumes:
-    - world:/home/steam/.klei/DoNotStarveTogether/save/
+    - world:/var/lib/dsta/server/
   ports:
     - "10999:10999/udp"
   environment:
-    - DEFAULT_SERVER_NAME=Don't Starve Together
-    - DEFAULT_SERVER_DESCRIPTION=Powered by DST-Academy.
-    - SERVER_PORT=10999
-    - SERVER_PASSWORD=
-    - OFFLINE_SERVER=false
-    - MAX_PLAYERS=1
-    - WHITELIST_SLOTS=1
-    - PVP=false
-    - GAME_MODE=survival
-    - SERVER_INTENTION=cooperative
-    - ENABLE_AUTOSAVER=true
-    - TICK_RATE=30
-    - CONNECTION_TIMEOUT=30000
-    - ENABLE_VOTE_KICK=true
-    - PAUSE_WHEN_EMPTY=true
-    - STEAM_AUTHENTICATION_PORT=8766
-    - STEAM_MASTER_SERVER_PORT=27016
-    - STEAM_GROUP_ID=
-    - STEAM_GROUP_ONLY=false
-    - STEAM_GROUP_ADMINS=false
-    - SERVER_TOKEN=your-server-token
-    - CONSOLE_ENABLED=true
-    - AUTOCOMPILER_ENABLED=true
-    - MODS_ENABLED=true
-    - SHARD_ENABLE=false
-    - SHARD_NAME=world
-    - SHARD_ID=1
-    - IS_MASTER=true
-    - MASTER_IP=
-    - MASTER_PORT=
-    - BIND_IP=
-    - CLUSTER_KEY=random-secret-key
-    - DISABLECLOUD=true
-    - WORLD_PRESET=
-    - WORLD_OVERRIDES
-    - ADMINLIST=
-    - WHITELIST=
-    - BLOCKLIST=
-    - MODS=
-    - MODS_OVERRIDES
+    - SERVER_TOKEN=server-token
+#    - UPDATE_ON_BOOT=true
+#    - DEFAULT_SERVER_NAME=Server
+#    - DEFAULT_SERVER_DESCRIPTION=Let's play Don't Starve Together together.
+#    - SERVER_NAME_PREFIX=DST Academy's
+#    - SERVER_PORT=10999
+#    - SERVER_PASSWORD=
+#    - OFFLINE_SERVER=false
+#    - MAX_PLAYERS=4
+#    - WHITELIST_SLOTS=0
+#    - PVP=true
+#    - GAME_MODE=survival
+#    - SERVER_INTENTION=cooperative
+#    - ENABLE_AUTOSAVER=true
+#    - TICK_RATE=60
+#    - CONNECTION_TIMEOUT=30000
+#    - ENABLE_VOTE_KICK=true
+#    - PAUSE_WHEN_EMPTY=true
+#    - STEAM_AUTHENTICATION_PORT=8766
+#    - STEAM_MASTER_SERVER_PORT=27016
+#    - STEAM_GROUP_ID=
+#    - STEAM_GROUP_ONLY=true
+#    - STEAM_GROUP_ADMINS=true
+#    - CONSOLE_ENABLED=true
+#    - AUTOCOMPILER_ENABLED=true
+#    - MODS_ENABLED=true
+#    - SHARD_ENABLE=true
+#    - SHARD_NAME=master
+#    - SHARD_ID=1
+#    - IS_MASTER=true
+#    - MASTER_IP=
+#    - MASTER_PORT=
+#    - BIND_IP=0.0.0.0
+#    - CLUSTER_KEY=secret-cluster-key
+#    - DISABLECLOUD=true
+#    - WORLD_PRESET=DST_CAVE
+#    - WORLD_OVERRIDES
+#    - MODS=
+#    - MODS_OVERRIDES

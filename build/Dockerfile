@@ -1,9 +1,42 @@
-FROM ubuntu:14.04
+FROM debian:jessie
 MAINTAINER Thomas Deinhamer <thasmo@gmail.com>
 
-ENV STORAGE_ROOT="/home/steam/.klei/" \
-	CONF_DIR="DoNotStarveTogether" \
-	DEFAULT_SERVER_NAME="Dont Starve Together" \
+# Install dependencies.
+RUN dpkg --add-architecture i386 \
+	&& apt-get update -y \
+	&& apt-get install -y --no-install-recommends ca-certificates curl lib32gcc1 lib32stdc++6 libcurl4-gnutls-dev:i386 \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/* \
+	&& gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 \
+	&& curl -o /usr/local/bin/gosu -fSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" \
+	&& curl -o /usr/local/bin/gosu.asc -fSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture).asc" \
+	&& gpg --verify /usr/local/bin/gosu.asc \
+	&& rm /usr/local/bin/gosu.asc \
+	&& chmod +x /usr/local/bin/gosu
+
+# Add steam user.
+RUN adduser --home /var/lib/steam --disabled-login --gecos "Steam" steam
+
+# Install SteamCMD.
+RUN gosu steam mkdir -p /var/lib/steam/steamcmd/ \
+	&& curl -SL "http://media.steampowered.com/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC /var/lib/steam/steamcmd \
+	&& chmod 744 /var/lib/steam/steamcmd/steamcmd.sh \
+	&& gosu steam /var/lib/steam/steamcmd/steamcmd.sh \
+		+@ShutdownOnFailedCommand 1 \
+		+quit
+
+# Install Don't Starve Together Server.
+COPY /update_dst.sh /var/lib/steam/
+RUN chown steam:steam /var/lib/steam/update_dst.sh \
+	&& sync \
+	&& /var/lib/steam/update_dst.sh
+
+# Add dsta user.
+RUN adduser --home /var/lib/dsta --disabled-login --gecos "DST Academy" dsta
+
+# Set environment variables.
+ENV UPDATE_ON_BOOT=true \
+	DEFAULT_SERVER_NAME= \
 	DEFAULT_SERVER_DESCRIPTION="Powered by DST Academy." \
 	SERVER_PORT=10999 \
 	OFFLINE_SERVER=false \
@@ -17,7 +50,6 @@ ENV STORAGE_ROOT="/home/steam/.klei/" \
 	CONNECTION_TIMEOUT=5000 \
 	ENABLE_VOTE_KICK=true \
 	PAUSE_WHEN_EMPTY=true \
-	STEAM_APP_ID=343050 \
 	STEAM_AUTHENTICATION_PORT=8766 \
 	STEAM_MASTER_SERVER_PORT=27016 \
 	STEAM_GROUP_ONLY=false \
@@ -30,39 +62,12 @@ ENV STORAGE_ROOT="/home/steam/.klei/" \
 	BIND_IP="0.0.0.0" \
 	DISABLECLOUD=true
 
-RUN dpkg --add-architecture i386 \
-	&& apt-get update -y \
-	&& apt-get install -y curl lib32gcc1 lib32stdc++6 libcurl4-gnutls-dev:i386 \
-	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/*
-
-RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4
-RUN curl -o /usr/local/bin/gosu -fSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" \
-	&& curl -o /usr/local/bin/gosu.asc -fSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture).asc" \
-	&& gpg --verify /usr/local/bin/gosu.asc \
-	&& rm /usr/local/bin/gosu.asc \
-	&& chmod +x /usr/local/bin/gosu
-
-RUN useradd -m steam
-
-COPY /entrypoint.sh /home/steam/
-RUN chmod +x /home/steam/entrypoint.sh
-
-RUN cd /home/steam \
-	&& curl -SLO "http://media.steampowered.com/installer/steamcmd_linux.tar.gz" \
-	&& tar -xvf steamcmd_linux.tar.gz -C /home/steam \
-	&& rm steamcmd_linux.tar.gz
-
-RUN /home/steam/steamcmd.sh \
-	+@ShutdownOnFailedCommand 1 \
-	+@NoPromptForPassword 1 \
-	+login anonymous \
-	+force_install_dir /home/steam/DoNotStarveTogether \
-	+app_update ${STEAM_APP_ID} validate \
-	+quit
+# Add entrypoint script.
+COPY /entrypoint.sh /adjectives.txt /names.txt /var/lib/dsta/
+RUN chown dsta:dsta -R /var/lib/dsta/
 
 EXPOSE 10999/udp
-VOLUME ["${STORAGE_ROOT}/${CONF_DIR}/save"]
+VOLUME ["/var/lib/dsta/server"]
 
-WORKDIR /home/steam/DoNotStarveTogether/data/
-ENTRYPOINT ["/home/steam/entrypoint.sh"]
+WORKDIR /var/lib/steam/DoNotStarveTogether/bin/
+ENTRYPOINT ["/var/lib/dsta/entrypoint.sh"]
