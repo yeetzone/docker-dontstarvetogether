@@ -12,8 +12,17 @@ cd "$( dirname "$0" )"
 image_name=dstacademy/server
 docker build -t $image_name ../build || build_error
 
-bin="find -mindepth 2 -maxdepth 2 -type f -name run.sh"
-test_count=`$bin | wc -l`
+tests=`mktemp`
+if [ $# -eq 0 ]
+then
+  find -mindepth 2 -maxdepth 2 -type f -name run.sh > $tests
+else
+  for test_name in "$@"
+  do
+    echo "./$test_name/run.sh" >> $tests
+  done
+fi
+test_count=`wc -l < $tests`
 i=1
 error_count=0
 
@@ -28,7 +37,9 @@ do
     ((error_count++))
   fi
   ((i++))
-done <<< "`$bin`"
+done <<< "`cat $tests`"
+
+rm $tests # TODO trap signal
 
 if [ $error_count -ne 0 ]
 then
