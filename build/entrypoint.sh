@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+if [ $# -eq 0 ]
+then
 STORAGE_ROOT="/var/lib/dsta"
 CONF_DIR="server"
 
@@ -135,3 +137,6 @@ exec gosu dsta ./dontstarve_dedicated_server_nullrenderer \
   -persistent_storage_root "$STORAGE_ROOT" \
   -conf_dir "$CONF_DIR" \
   "$@"
+else
+  exec $@
+fi
