@@ -43,5 +43,6 @@ rm $tests # TODO trap signal
 
 if [ $error_count -ne 0 ]
 then
+  echoerr "Failed $error_count/$test_count tests."
   exit 1
 fi
