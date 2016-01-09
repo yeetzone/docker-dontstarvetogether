@@ -25,6 +25,7 @@ RUN mkdir -p /opt/steam \
 	&& curl -fsSL "http://media.steampowered.com/installer/steamcmd_linux.tar.gz" | tar -xzvC /opt/steam/ \
 	&& chmod +x /opt/steam/steamcmd.sh \
 	&& chmod +x /usr/local/bin/steamcmd \
+	&& sync \
 	&& steamcmd \
 		+@ShutdownOnFailedCommand 1 \
 		+quit
