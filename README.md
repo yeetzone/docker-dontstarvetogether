@@ -23,6 +23,10 @@ If you want to set up your own server, have a look at the [DST:A Suite][suite].
 - [Configuration][docs-configuration]
 - [Usage][docs-usage]
 
+## Contribution
+Do you want to contribute to the project?
+Check out our [contribution guide][contribution-guide].
+
 ## Frequently Asked Questions
 
 - **Does Docker automatically restart a running DST:A Dedicated Server when the host-system is rebooted?**  
@@ -48,6 +52,7 @@ If you want to set up your own server, have a look at the [DST:A Suite][suite].
 [docs-usage]: /docs/usage.md
 [website]: http://www.dontstarvetogether.com/
 [suite]: https://github.com/dst-academy/suite
+[contribution-guide]: /CONTRIBUTING.md
 [docker-kitematic]: https://kitematic.com/
 [docker-toolbox]: https://www.docker.com/docker-toolbox
 [reference-dedicated]: http://forums.kleientertainment.com/forum/83-dont-starve-together-beta-dedicated-server-discussion/
