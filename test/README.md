@@ -1,4 +1,4 @@
-# Test suit
+# Test Suite
 
 ## How to run the tests
 ```sh

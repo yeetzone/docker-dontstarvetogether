@@ -7,7 +7,7 @@ CONF_DIR="server"
 
 # Update game and mods.
 if [ "$UPDATE_ON_BOOT" = "true" ]; then
-  update_dst.sh
+  update.sh
 fi
 
 # Create data directory.

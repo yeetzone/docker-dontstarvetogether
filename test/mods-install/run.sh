@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 clean() {
   rm -f $log_txt

@@ -16,7 +16,7 @@ RUN dpkg --add-architecture i386 \
 
 # Add steam user.
 RUN adduser --home /opt/steam --disabled-login --gecos "Steam" steam
-COPY /steamcmd /usr/local/bin/
+COPY /script/steamcmd /usr/local/bin/
 
 # Install SteamCMD.
 RUN gosu steam mkdir -p /opt/steam/steamcmd/ \
@@ -29,14 +29,13 @@ RUN gosu steam mkdir -p /opt/steam/steamcmd/ \
 		+quit
 
 # Install Don't Starve Together Server.
-COPY /update_dst.sh /usr/local/bin/
-RUN chown steam:steam /usr/local/bin/update_dst.sh \
+COPY /script/update.sh /usr/local/bin/
+RUN chown steam:steam /usr/local/bin/update.sh \
 	&& sync \
-	&& update_dst.sh
+	&& update.sh
 
 # Set environment variables.
 ENV UPDATE_ON_BOOT=true \
-	DEFAULT_SERVER_NAME= \
 	DEFAULT_SERVER_DESCRIPTION="Powered by DST Academy." \
 	SERVER_PORT=10999 \
 	OFFLINE_SERVER=false \
@@ -63,7 +62,7 @@ ENV UPDATE_ON_BOOT=true \
 	DISABLECLOUD=true
 
 # Add entrypoint script.
-COPY /entrypoint.sh /adjectives.txt /names.txt /usr/local/dsta/
+COPY /entrypoint.sh /data/adjectives.txt /data/names.txt /usr/local/dsta/
 
 EXPOSE 10999/udp
 VOLUME ["/var/lib/dsta/server"]
