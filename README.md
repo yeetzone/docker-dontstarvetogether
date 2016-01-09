@@ -29,9 +29,6 @@ Check out our [contribution guide][contribution-guide].
 
 ## Frequently Asked Questions
 
-- **Does Docker automatically restart a running DST:A Dedicated Server when the host-system is rebooted?**  
-  Yes.
-
 - **On which operating systems can I run Docker and the DST:A Dedicated Server?**  
   Docker runs natively on Linux, but there are official solutions for running Docker on Windows and OSX.
   Have a look at Docker's [Kitematic][docker-kitematic] and Docker's [Toolbox][docker-kitematic].

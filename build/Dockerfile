@@ -6,25 +6,25 @@ RUN dpkg --add-architecture i386 \
 	&& apt-get update -y \
 	&& apt-get install -y --no-install-recommends ca-certificates curl lib32gcc1 lib32stdc++6 libcurl4-gnutls-dev:i386 \
 	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/* \
-	&& gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 \
-	&& curl -o /usr/local/bin/gosu -fSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" \
-	&& curl -o /usr/local/bin/gosu.asc -fSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture).asc" \
+	&& rm -rf /var/lib/apt/lists/*
+
+# Install gosu.
+RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 \
+	&& curl -o /usr/local/bin/gosu -fsSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" \
+	&& curl -o /usr/local/bin/gosu.asc -fsSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture).asc" \
 	&& gpg --verify /usr/local/bin/gosu.asc \
 	&& rm /usr/local/bin/gosu.asc \
 	&& chmod +x /usr/local/bin/gosu
 
 # Add steam user.
-RUN adduser --home /opt/steam --disabled-login --gecos "Steam" steam
-COPY /script/steamcmd /usr/local/bin/
+RUN adduser --disabled-login --gecos "Steam" steam
 
 # Install SteamCMD.
-RUN gosu steam mkdir -p /opt/steam/steamcmd/ \
-	&& curl -SL "http://media.steampowered.com/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC /opt/steam/steamcmd \
-	&& chown steam:steam /usr/local/bin/steamcmd \
-	&& chmod 744 /usr/local/bin/steamcmd \
-	&& sync \
-	&& gosu steam steamcmd \
+COPY /script/steamcmd /usr/local/bin/
+RUN mkdir -p /opt/steam \
+	&& curl -fsSL "http://media.steampowered.com/installer/steamcmd_linux.tar.gz" | tar -xzvC /opt/steam/ \
+	&& chmod +x /opt/steam/steamcmd.sh \
+	&& steamcmd \
 		+@ShutdownOnFailedCommand 1 \
 		+quit
 
@@ -62,11 +62,14 @@ ENV UPDATE_ON_BOOT=true \
 	DISABLECLOUD=true
 
 # Add entrypoint script.
-COPY /entrypoint.sh /data/adjectives.txt /data/names.txt /usr/local/dsta/
-RUN chmod +x /usr/local/dsta/entrypoint.sh
+COPY /entrypoint.sh /
+RUN chmod +x /entrypoint.sh
+
+# Add data files.
+COPY /data/ /home/steam/
 
 EXPOSE 10999/udp
-VOLUME ["/var/lib/dsta/server"]
+VOLUME ["/home/steam/dst/"]
 
-WORKDIR /opt/steam/DoNotStarveTogether/bin/
-ENTRYPOINT ["/usr/local/dsta/entrypoint.sh"]
+WORKDIR /opt/dst/bin/
+ENTRYPOINT ["/entrypoint.sh"]

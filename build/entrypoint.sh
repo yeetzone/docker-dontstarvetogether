@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 
-if [ $# -eq 0 ]
-then
-STORAGE_ROOT="/var/lib/dsta"
-CONF_DIR="server"
+STORAGE_ROOT="/home/steam/"
+CONF_DIR="dst"
+USER="steam"
+
+# Run custom command and exit.
+if [ $# -ne 0 ]; then
+  exec "$@"
+  exit
+fi
 
 # Update game and mods.
 if [ "$UPDATE_ON_BOOT" = "true" ]; then
@@ -12,7 +17,7 @@ fi
 
 # Create data directory.
 mkdir -p "$STORAGE_ROOT/$CONF_DIR/save/" \
-  && chown -R steam:steam "$STORAGE_ROOT/$CONF_DIR/"
+  && chown -R $USER:$USER "$STORAGE_ROOT/$CONF_DIR/"
 
 # Create the settings.ini file.
 FILE_SETTINGS="$STORAGE_ROOT/$CONF_DIR/settings.ini"
@@ -23,11 +28,11 @@ if [ ! -f $FILE_SETTINGS ]; then
       echo ${list[$RANDOM % ${#list[@]}]}
     }
 
-    DEFAULT_SERVER_NAME="`selectRandomLine /usr/local/dsta/adjectives.txt` `selectRandomLine /usr/local/dsta/names.txt`"
+    DEFAULT_SERVER_NAME="`selectRandomLine /home/steam/adjectives.txt` `selectRandomLine /home/steam/names.txt`"
     echo "'$DEFAULT_SERVER_NAME' has been set as the server's name."
   fi
 
-cat <<- EOF > $FILE_SETTINGS
+  cat <<- EOF > $FILE_SETTINGS
 	[network]
 	default_server_name = $SERVER_NAME_PREFIX $DEFAULT_SERVER_NAME
 	default_server_description = $DEFAULT_SERVER_DESCRIPTION
@@ -71,7 +76,7 @@ cat <<- EOF > $FILE_SETTINGS
 	[steam]
 	disablecloud = $DISABLECLOUD
 EOF
-chown steam:stem $FILE_SETTINGS
+  chown $USER:$USER $FILE_SETTINGS
 fi
 
 # Create the adminlist.txt file.
@@ -97,7 +102,7 @@ FILE_WORLD="$STORAGE_ROOT/$CONF_DIR/worldgenoverride.lua"
 if [ -n "$WORLD_OVERRIDES" ] && [ ! -f $FILE_WORLD ]; then
   echo "$WORLD_OVERRIDES" > $FILE_WORLD
 elif [ -n "$WORLD_PRESET" ] && [ ! -f $FILE_WORLD ]; then
-cat <<- EOF > $FILE_WORLD
+  cat <<- EOF > $FILE_WORLD
 	return {
 	    override_enabled = true,
 	    preset = "$WORLD_PRESET",
@@ -106,9 +111,8 @@ EOF
 fi
 
 # Install mods.
-FILE_MODS="/opt/steam/DoNotStarveTogether/mods/dedicated_server_mods_setup.lua"
+FILE_MODS="/opt/dst/mods/dedicated_server_mods_setup.lua"
 if [ -n "$MODS" ]; then
-
   > $FILE_MODS
 
   IFS=","
@@ -137,6 +141,3 @@ exec gosu steam ./dontstarve_dedicated_server_nullrenderer \
   -persistent_storage_root "$STORAGE_ROOT" \
   -conf_dir "$CONF_DIR" \
   "$@"
-else
-  exec $@
-fi
