@@ -63,6 +63,7 @@ ENV UPDATE_ON_BOOT=true \
 
 # Add entrypoint script.
 COPY /entrypoint.sh /data/adjectives.txt /data/names.txt /usr/local/dsta/
+RUN chmod +x /usr/local/dsta/entrypoint.sh
 
 EXPOSE 10999/udp
 VOLUME ["/var/lib/dsta/server"]
