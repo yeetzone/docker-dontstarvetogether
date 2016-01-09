@@ -27,6 +27,7 @@ To stay on track we ask you to respect the following **contribution rules**:
 
 Feel free to contact us if you have questions or feedback.
 
+- Join our [Slack Channel][contact-slack].
 - Join our [Steam Group][contact-steam].
 - Join our discussion on the [Klei Forums][contact-forums].
 
@@ -35,5 +36,6 @@ Feel free to contact us if you have questions or feedback.
 [file-editorconfig]: https://github.com/dst-academy/server/blob/develop/.editorconfig
 [file-readme]: https://github.com/dst-academy/server/blob/develop/README.md
 [file-changelog]: https://github.com/dst-academy/server/blob/develop/CHANGELOG.md
+[contact-slack]: http://slack.dst.academy/
 [contact-steam]: https://steamcommunity.com/groups/dst-academy
 [contact-forums]: http://forums.kleientertainment.com/topic/61674-custom-dedicated-server-with-docker/
