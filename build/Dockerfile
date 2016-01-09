@@ -15,24 +15,24 @@ RUN dpkg --add-architecture i386 \
 	&& chmod +x /usr/local/bin/gosu
 
 # Add steam user.
-RUN adduser --home /var/lib/steam --disabled-login --gecos "Steam" steam
+RUN adduser --home /opt/steam --disabled-login --gecos "Steam" steam
+COPY /steamcmd /usr/local/bin/
 
 # Install SteamCMD.
-RUN gosu steam mkdir -p /var/lib/steam/steamcmd/ \
-	&& curl -SL "http://media.steampowered.com/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC /var/lib/steam/steamcmd \
-	&& chmod 744 /var/lib/steam/steamcmd/steamcmd.sh \
-	&& gosu steam /var/lib/steam/steamcmd/steamcmd.sh \
+RUN gosu steam mkdir -p /opt/steam/steamcmd/ \
+	&& curl -SL "http://media.steampowered.com/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC /opt/steam/steamcmd \
+	&& chown steam:steam /usr/local/bin/steamcmd \
+	&& chmod 744 /usr/local/bin/steamcmd \
+	&& sync \
+	&& gosu steam steamcmd \
 		+@ShutdownOnFailedCommand 1 \
 		+quit
 
 # Install Don't Starve Together Server.
-COPY /update_dst.sh /var/lib/steam/
-RUN chown steam:steam /var/lib/steam/update_dst.sh \
+COPY /update_dst.sh /usr/local/bin/
+RUN chown steam:steam /usr/local/bin/update_dst.sh \
 	&& sync \
-	&& /var/lib/steam/update_dst.sh
-
-# Add dsta user.
-RUN adduser --home /var/lib/dsta --disabled-login --gecos "DST Academy" dsta
+	&& update_dst.sh
 
 # Set environment variables.
 ENV UPDATE_ON_BOOT=true \
@@ -63,11 +63,10 @@ ENV UPDATE_ON_BOOT=true \
 	DISABLECLOUD=true
 
 # Add entrypoint script.
-COPY /entrypoint.sh /adjectives.txt /names.txt /var/lib/dsta/
-RUN chown dsta:dsta -R /var/lib/dsta/
+COPY /entrypoint.sh /adjectives.txt /names.txt /usr/local/dsta/
 
 EXPOSE 10999/udp
 VOLUME ["/var/lib/dsta/server"]
 
-WORKDIR /var/lib/steam/DoNotStarveTogether/bin/
-ENTRYPOINT ["/var/lib/dsta/entrypoint.sh"]
+WORKDIR /opt/steam/DoNotStarveTogether/bin/
+ENTRYPOINT ["/usr/local/dsta/entrypoint.sh"]

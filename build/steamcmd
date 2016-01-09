@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/opt/steam/steamcmd/steamcmd.sh $@
