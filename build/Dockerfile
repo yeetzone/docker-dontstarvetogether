@@ -30,7 +30,7 @@ RUN gosu steam mkdir -p /opt/steam/steamcmd/ \
 
 # Install Don't Starve Together Server.
 COPY /script/update.sh /usr/local/bin/
-RUN chown steam:steam /usr/local/bin/update.sh \
+RUN chmod +x /usr/local/bin/update.sh \
 	&& sync \
 	&& update.sh
 
