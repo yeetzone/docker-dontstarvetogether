@@ -6,7 +6,7 @@ to use `docker-compose` instead, which makes it easier to configure all environm
 
 **Example**:
 ```sh
-docker run -itd -e SERVER_TOKEN="Token" -e DEFAULT_SERVER_NAME="Name" -e MAX_PLAYERS=10 dstacademy/server
+docker run -itd -p 10999:10999/udp -e SERVER_TOKEN="Token" -e DEFAULT_SERVER_NAME="Name" -e MAX_PLAYERS=10 dstacademy/server
 ```
 
 You can chain as many variables as you need. If you want to pass lots of them, it's easier and more
