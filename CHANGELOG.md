@@ -2,6 +2,9 @@
 
 ## [next]
 
+### Changed
+- Relocate DST files in the image.
+
 ## [0.3.0]
 
 ### Added
