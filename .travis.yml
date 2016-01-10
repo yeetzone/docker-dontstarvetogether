@@ -5,7 +5,10 @@ services:
   - docker
 
 env:
-  - DOCKER_IMAGE_NAME=dstacademy/server
+  global:
+    secure: Xbp2jfXoAoKZxZTyoUhh3b21QWhst+h4FWsS8/s7hLTR/C6oDBZxyuA3y6udvLb6z8YvPduLhjk6imjQ9vuwnzcazypbpz182XQsN/+t9z0IIij+EuWLULJOgEawG8j9q0/YerBH/Ia1Ctni970M0AZeq8nkuwJzwacqBnhaTFmkbk0m0JveqrWHs+ZfvM2rjQaqQ1QC1Uu1b1H2BiR9ND6L3/iUdytyEX4HoHPlzNqijHtsVuPKB8ITNQYqkKQ3LYOXnegwfMWZurxjZxqHudywxxeQgk058Jl09tCSSvfOww9GI5wTsSoBlpN8E7jpS47awVAUOVuAlOiFdrS69Umd65BwW8+fd6SRFDJ0/yAMFtrJF2p4dvRBw3s+1QOkLvtJ7kcweWu0vxo6IIICJ4RQnDVivrpb+87ITXd9LEEIExHZHt/Sl10H2tWh9WNlQD2PBTePhmwrsqwFDN1bUfz9KtgnBy4iuUoDqsE8R9wpWSHXYPis7pqNRiDKkKqDdfk3JA1MumUD0ZuWfCMFGAyJRCLPDG6T9HYjnvFmpydojtuzwb9Hb2cdkvQA5x7rbH6o5jWw1EebXzsEcBlgryae6TiCWromFCsw2CDbeR5azf0bRjqA3VsPXJWLK3XuklCjzQXELpzJMMkt1nAOqTfHHraql6m3gIw9d9fAdUQ=
+  matrix:
+    - DOCKER_IMAGE_NAME=dstacademy/server
 
 script:
   - docker build -t $DOCKER_IMAGE_NAME ./build
