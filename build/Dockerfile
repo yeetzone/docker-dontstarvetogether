@@ -17,12 +17,12 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4
 	&& chmod +x /usr/local/bin/gosu
 
 # Add steam user.
-RUN adduser --disabled-login --gecos "Steam" steam
+RUN adduser --disabled-login --gecos "Steam" --home /opt/steam/ steam
 
 # Install SteamCMD.
 COPY /script/steamcmd /usr/local/bin/
 RUN mkdir -p /opt/steam \
-	&& curl -fsSL "http://media.steampowered.com/installer/steamcmd_linux.tar.gz" | tar -xzvC /opt/steam/ \
+	&& curl -fsSL "http://media.steampowered.com/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC /opt/steam/ \
 	&& chmod +x /opt/steam/steamcmd.sh \
 	&& chmod +x /usr/local/bin/steamcmd \
 	&& sync \
@@ -32,7 +32,9 @@ RUN mkdir -p /opt/steam \
 
 # Install Don't Starve Together Server.
 COPY /script/update.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/update.sh \
+RUN mkdir -p /opt/dst/ \
+	&& chown steam:steam /opt/dst/ \
+	&& chmod +x /usr/local/bin/update.sh \
 	&& sync \
 	&& update.sh
 
@@ -68,10 +70,10 @@ COPY /entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
 # Add data files.
-COPY /data/ /home/steam/
+COPY /data/ /opt/steam/
 
 EXPOSE 10999/udp
-VOLUME ["/home/steam/dst/"]
+VOLUME ["/opt/steam/dst/"]
 
 WORKDIR /opt/dst/bin/
 ENTRYPOINT ["/entrypoint.sh"]

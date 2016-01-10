@@ -6,4 +6,4 @@ clean() {
 trap clean EXIT
 
 file1=`mktemp`
-docker run --rm $1 gosu steam steamcmd +quit > $file1 || exit 1
+docker run --rm $1 steamcmd +quit > $file1 || exit 1

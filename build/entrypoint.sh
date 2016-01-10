@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-STORAGE_ROOT="/home/steam/"
+STORAGE_ROOT="/opt/steam/"
 CONF_DIR="dst"
 USER="steam"
 
@@ -28,7 +28,7 @@ if [ ! -f $FILE_SETTINGS ]; then
       echo ${list[$RANDOM % ${#list[@]}]}
     }
 
-    DEFAULT_SERVER_NAME="`selectRandomLine /home/steam/adjectives.txt` `selectRandomLine /home/steam/names.txt`"
+    DEFAULT_SERVER_NAME="`selectRandomLine /opt/steam/adjectives.txt` `selectRandomLine /opt/steam/names.txt`"
     echo "'$DEFAULT_SERVER_NAME' has been set as the server's name."
   fi
 
