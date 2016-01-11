@@ -65,8 +65,8 @@ ENV UPDATE_ON_BOOT=true \
 	BIND_IP="0.0.0.0" \
 	DISABLECLOUD=true
 
-# Add entrypoint script.
-COPY /entrypoint.sh /
+# Copy entrypoint script.
+COPY /docker-entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Add data files.
