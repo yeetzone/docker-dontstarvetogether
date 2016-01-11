@@ -22,7 +22,7 @@ RUN adduser --disabled-login --gecos "Steam" --home /opt/steam/ steam
 # Install SteamCMD.
 COPY /script/steamcmd /usr/local/bin/
 RUN mkdir -p /opt/steam \
-	&& curl -fsSL "http://media.steampowered.com/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC /opt/steam/ \
+	&& curl -fsSL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC /opt/steam/ \
 	&& chmod +x /opt/steam/steamcmd.sh \
 	&& chmod +x /usr/local/bin/steamcmd \
 	&& sync \
