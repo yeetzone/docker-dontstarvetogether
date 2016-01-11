@@ -23,8 +23,6 @@ RUN adduser --disabled-login --gecos "Steam" --home /opt/steam/ steam
 COPY /script/steamcmd /usr/local/bin/
 RUN mkdir -p /opt/steam \
 	&& curl -fsSL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC /opt/steam/ \
-	&& chmod +x /usr/local/bin/steamcmd \
-	&& sync \
 	&& steamcmd \
 		+@ShutdownOnFailedCommand 1 \
 		+quit
@@ -33,7 +31,6 @@ RUN mkdir -p /opt/steam \
 COPY /script/update.sh /usr/local/bin/
 RUN mkdir -p /opt/dst/ \
 	&& chown steam:steam /opt/dst/ \
-	&& chmod +x /usr/local/bin/update.sh \
 	&& sync \
 	&& update.sh
 
@@ -66,7 +63,6 @@ ENV UPDATE_ON_BOOT=true \
 
 # Copy entrypoint script.
 COPY /docker-entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
 
 # Add data files.
 COPY /data/ /opt/steam/
