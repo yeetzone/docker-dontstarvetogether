@@ -17,12 +17,11 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4
 	&& chmod +x /usr/local/bin/gosu
 
 # Add steam user.
-RUN adduser --disabled-login --gecos "Steam" --home /opt/steam/ steam
+RUN adduser --disabled-login --gecos "Steam" --home /opt/steam steam
 
 # Install SteamCMD.
 COPY /script/steamcmd /usr/local/bin/
-RUN mkdir -p /opt/steam \
-	&& curl -fsSL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC /opt/steam/ \
+RUN curl -fsSL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC /opt/steam/ \
 	&& steamcmd \
 		+@ShutdownOnFailedCommand 1 \
 		+quit
