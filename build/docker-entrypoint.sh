@@ -136,8 +136,4 @@ elif [ -n "$MODS" ] && [ ! -f $FILE_MODS_OVERRIDES ]; then
 fi
 
 # Run the DST executable.
-exec gosu steam ./dontstarve_dedicated_server_nullrenderer \
-  -console \
-  -persistent_storage_root "$STORAGE_ROOT" \
-  -conf_dir "$CONF_DIR" \
-  "$@"
+exec dontstarve_dedicated_server_nullrenderer "$@"

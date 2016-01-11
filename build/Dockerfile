@@ -33,6 +33,8 @@ RUN mkdir -p /opt/dst/ \
 	&& sync \
 	&& update.sh
 
+COPY /script/dontstarve_dedicated_server_nullrenderer /usr/local/bin/
+
 # Set environment variables.
 ENV UPDATE_ON_BOOT=true \
 	DEFAULT_SERVER_DESCRIPTION="Powered by DST Academy." \
@@ -72,5 +74,5 @@ RUN chown -R steam:steam /usr/local/lib/dsta/ \
 EXPOSE 10999/udp
 VOLUME ["/var/lib/dsta/config"]
 
-WORKDIR /opt/dst/bin/
+WORKDIR /var/lib/dsta/config
 ENTRYPOINT ["/entrypoint.sh"]
