@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-STORAGE_ROOT="/opt/steam/"
-CONF_DIR="dst"
+STORAGE_ROOT="/var/lib/dsta"
+CONF_DIR="config"
 USER="steam"
 
 # Run custom command and exit.
@@ -28,7 +28,7 @@ if [ ! -f $FILE_SETTINGS ]; then
       echo ${list[$RANDOM % ${#list[@]}]}
     }
 
-    DEFAULT_SERVER_NAME="`selectRandomLine /opt/steam/adjectives.txt` `selectRandomLine /opt/steam/names.txt`"
+    DEFAULT_SERVER_NAME="`selectRandomLine /usr/local/lib/dsta/data/adjectives.txt` `selectRandomLine /usr/local/lib/dsta/data/names.txt`"
     echo "'$DEFAULT_SERVER_NAME' has been set as the server's name."
   fi
 

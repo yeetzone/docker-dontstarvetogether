@@ -17,15 +17,11 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4
 	&& chmod +x /usr/local/bin/gosu
 
 # Add steam user.
-RUN adduser --disabled-login --gecos "Steam" --home /opt/steam/ steam
+RUN adduser --disabled-login --gecos "Steam" --home /opt/steam steam
 
 # Install SteamCMD.
 COPY /script/steamcmd /usr/local/bin/
-RUN mkdir -p /opt/steam \
-	&& curl -fsSL "http://media.steampowered.com/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC /opt/steam/ \
-	&& chmod +x /opt/steam/steamcmd.sh \
-	&& chmod +x /usr/local/bin/steamcmd \
-	&& sync \
+RUN curl -fsSL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC /opt/steam/ \
 	&& steamcmd \
 		+@ShutdownOnFailedCommand 1 \
 		+quit
@@ -34,7 +30,6 @@ RUN mkdir -p /opt/steam \
 COPY /script/update.sh /usr/local/bin/
 RUN mkdir -p /opt/dst/ \
 	&& chown steam:steam /opt/dst/ \
-	&& chmod +x /usr/local/bin/update.sh \
 	&& sync \
 	&& update.sh
 
@@ -65,15 +60,17 @@ ENV UPDATE_ON_BOOT=true \
 	BIND_IP="0.0.0.0" \
 	DISABLECLOUD=true
 
-# Add entrypoint script.
-COPY /entrypoint.sh /
-RUN chmod +x /entrypoint.sh
+# Copy entrypoint script.
+COPY /docker-entrypoint.sh /entrypoint.sh
 
 # Add data files.
-COPY /data/ /opt/steam/
+COPY /data /usr/local/lib/dsta/data
+RUN chown -R steam:steam /usr/local/lib/dsta/ \
+	&& mkdir -p /var/lib/dsta/ \
+	&& chown steam:steam /var/lib/dsta/
 
 EXPOSE 10999/udp
-VOLUME ["/opt/steam/dst/"]
+VOLUME ["/var/lib/dsta/config"]
 
 WORKDIR /opt/dst/bin/
 ENTRYPOINT ["/entrypoint.sh"]
