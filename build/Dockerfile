@@ -64,10 +64,13 @@ ENV UPDATE_ON_BOOT=true \
 COPY /docker-entrypoint.sh /entrypoint.sh
 
 # Add data files.
-COPY /data/ /opt/steam/
+COPY /data /usr/local/lib/dsta/data
+RUN chown -R steam:steam /usr/local/lib/dsta/ \
+	&& mkdir -p /var/lib/dsta/ \
+	&& chown steam:steam /var/lib/dsta/
 
 EXPOSE 10999/udp
-VOLUME ["/opt/steam/dst/"]
+VOLUME ["/var/lib/dsta/config"]
 
 WORKDIR /opt/dst/bin/
 ENTRYPOINT ["/entrypoint.sh"]
