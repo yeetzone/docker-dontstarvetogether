@@ -33,7 +33,7 @@ RUN mkdir -p /opt/dst/ \
 	&& sync \
 	&& update.sh
 
-COPY /script/dontstarve_dedicated_server_nullrenderer /usr/local/bin/
+COPY /script/dontstarve_dedicated_server_nullrenderer /script/dst-server /usr/local/bin/
 
 # Set environment variables.
 ENV UPDATE_ON_BOOT=true \
@@ -76,3 +76,4 @@ VOLUME ["/var/lib/dsta/config"]
 
 WORKDIR /var/lib/dsta/config
 ENTRYPOINT ["/entrypoint.sh"]
+CMD ["dst-server", "start"]
