@@ -67,8 +67,8 @@ ENV DEFAULT_SERVER_DESCRIPTION="Powered by DST Academy." \
 # Copy entrypoint script.
 COPY /docker-entrypoint.sh /entrypoint.sh
 
-# Add data files.
-COPY /data /usr/local/lib/dsta/data
+# Copy static files.
+COPY /static /usr/local/lib/dsta
 RUN chown -R steam:steam /usr/local/lib/dsta/ \
 	&& mkdir -p /var/lib/dsta/ \
 	&& chown steam:steam /var/lib/dsta/
