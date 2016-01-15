@@ -36,8 +36,7 @@ RUN mkdir -p /opt/dst/ \
 COPY /script/dontstarve_dedicated_server_nullrenderer /script/dst-server /usr/local/bin/
 
 # Set environment variables.
-ENV UPDATE_ON_BOOT=true \
-	DEFAULT_SERVER_DESCRIPTION="Powered by DST Academy." \
+ENV DEFAULT_SERVER_DESCRIPTION="Powered by DST Academy." \
 	SERVER_PORT=10999 \
 	OFFLINE_SERVER=false \
 	MAX_PLAYERS=4 \
