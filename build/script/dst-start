@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+usage(){
+  cat <<- EOF
+usage: dst-server start [--update=all|none|game|mods]
+
+   --update=all
+      Update the game and the mods before launch the server.
+   --update=none
+      Update nothing, just start the server.
+   --update=game
+      Update just the game (no the mods) and lauch the server.
+   --update=mods
+      Update the mods and launch the server. This is the default behaviour.
+EOF
+}
+
+if [ $# -eq 0 ]
+then
+  update=2
+elif [ $1 == "--help" ]
+then
+  usage
+  exit 0
+elif [ $# -eq 1 ]
+then
+  case $1 in
+    --update=all)
+      update=3
+      ;;
+    --update=none)
+      update=0
+      ;;
+    --update=game)
+      update=1
+      ;;
+    --update=mods)
+      update=2
+      ;;
+  esac
+fi
+if [ -z "$update" ]
+then
+  usage 1>&2
+  exit 1
+fi
+if (((update & 1) != 0))
+then
+  update.sh
+fi
+if (((update & 2) != 0))
+then
+  exec dontstarve_dedicated_server_nullrenderer
+else
+  exec dontstarve_dedicated_server_nullrenderer -skip_update_server_mods
+fi

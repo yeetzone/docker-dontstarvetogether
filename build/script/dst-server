@@ -13,33 +13,6 @@ See 'dst-server help <command>' to read about a specific command.
 EOF
 }
 
-usage_start(){
-  cat <<- EOF
-usage: dst-server start [--update=all|none|game|mods]
-
-   --update=all
-      Update the game and the mods before launch the server.
-   --update=none
-      Update nothing, just start the server.
-   --update=game
-      Update just the game (no the mods) and lauch the server.
-   --update=mods
-      Update the mods and launch the server. This is the default behaviour.
-EOF
-}
-
-usage_update(){
-  cat <<- EOF
-usage: dst-server update [--all|--game|--mods]
-EOF
-}
-
-usage_log(){
-  cat <<- EOF
-usage: dst-server log [--server|--chat]
-EOF
-}
-
 if [ $# -eq 0 ]
 then
   usage
@@ -50,108 +23,26 @@ case $@ in
   --help|help)
     usage
     ;;
-  --help\ start|--help\ start\ *|help\ start|help\ start\ *|start\ --help|start\ --help\ *)
-    usage_start
+  --help\ start|--help\ start\ *|help\ start|help\ start\ *)
+    exec dst-start --help
     ;;
-  --help\ update|--help\ update\ *|help\ update|help\ update\ *|update\ --help|update\ --help\ *)
-    usage_update
+  --help\ update|--help\ update\ *|help\ update|help\ update\ *)
+    exec dst-update --help
     ;;
-  --help\ log|--help\ log\ *|help\ log|help\ log\ *|log\ --help|log\ --help\ *)
-    usage_log
+  --help\ log|--help\ log\ *|help\ log|help\ log\ *)
+    exec dst-log --help
     ;;
   start*)
     shift
-    if [ $# -eq 0 ]
-    then
-      update=2
-    elif [ $# -eq 1 ]
-    then
-      case $1 in
-        --update=all)
-          update=3
-          ;;
-        --update=none)
-          update=0
-          ;;
-        --update=game)
-          update=1
-          ;;
-        --update=mods)
-          update=2
-          ;;
-      esac
-    fi
-    if [ -z "$update" ]
-    then
-      usage_start 1>&2
-      exit 1
-    fi
-    if (((update & 1) != 0))
-    then
-      update.sh
-    fi
-    if (((update & 2) != 0))
-    then
-      exec dontstarve_dedicated_server_nullrenderer
-    else
-      exec dontstarve_dedicated_server_nullrenderer -skip_update_server_mods
-    fi
+    exec dst-start "$@"
     ;;
   update*)
     shift
-    if [ $# -eq 0 ]
-    then
-      update=3
-    elif [ $# -eq 1 ]
-    then
-      case $1 in
-        --all)
-          update=3
-          ;;
-        --game)
-          update=1
-          ;;
-        --mods)
-          update=2
-          ;;
-      esac
-    fi
-    if [ -z "$update" ]
-    then
-      usage_update 1>&2
-      exit 1
-    fi
-    if (((update & 1) != 0))
-    then
-      update.sh
-    fi
-    if (((update & 2) != 0))
-    then
-      exec dontstarve_dedicated_server_nullrenderer -only_update_server_mods
-    fi
+    exec dst-update "$@"
     ;;
   log*)
     shift
-    if [ $# -eq 0 ]
-    then
-      log=/var/lib/dsta/config/log.txt
-    elif [ $# -eq 1 ]
-    then
-      if [ $1 == "--chat" ]
-      then
-        log=/var/lib/dsta/config/log_chat.txt
-      elif [ $1 == "--server" ]
-      then
-        log=/var/lib/dsta/config/log.txt
-      fi
-    fi
-    if [ -n "$log" ]
-    then
-      cat $log
-    else
-      usage_log 1>&2
-      exit 1
-    fi
+    exec dst-log "$@"
     ;;
   *)
     usage 1>&2
