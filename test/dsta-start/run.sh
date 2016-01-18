@@ -67,6 +67,6 @@ usage: dst-server start [--update=all|none|game|mods]
       Update the mods and launch the server. This is the default behaviour.
 EOF
 docker run --rm $1 dst-server start foo >/dev/null 2> $file2 && exit 1
-cmp $file1 $file2 || exit 1
+diff $file1 $file2 || exit 1
 docker run --rm $1 dst-server start --update=foo >/dev/null  2> $file2 && exit 1
-cmp $file1 $file2 || exit 1
+diff $file1 $file2 || exit 1

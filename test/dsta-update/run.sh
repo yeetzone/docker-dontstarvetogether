@@ -32,16 +32,16 @@ cat > $file1 <<- EOF
 usage: dst-server update [--all|--game|--mods]
 EOF
 docker run --rm $1 dst-server update --game --mods >/dev/null 2> $file2 && exit 1
-cmp $file1 $file2 || exit 1
+diff $file1 $file2 || exit 1
 docker run --rm $1 dst-server update --all --game >/dev/null 2> $file2 && exit 1
-cmp $file1 $file2 || exit 1
+diff $file1 $file2 || exit 1
 docker run --rm $1 dst-server update --all --mods >/dev/null 2> $file2 && exit 1
-cmp $file1 $file2 || exit 1
+diff $file1 $file2 || exit 1
 docker run --rm $1 dst-server update --game --game >/dev/null 2> $file2 && exit 1
-cmp $file1 $file2 || exit 1
+diff $file1 $file2 || exit 1
 docker run --rm $1 dst-server update foo >/dev/null 2> $file2 && exit 1
-cmp $file1 $file2 || exit 1
+diff $file1 $file2 || exit 1
 docker run --rm $1 dst-server update --bar >/dev/null 2> $file2 && exit 1
-cmp $file1 $file2 || exit 1
+diff $file1 $file2 || exit 1
 docker run --rm $1 dst-server update --bar=foo >/dev/null 2> $file2 && exit 1
-cmp $file1 $file2 || exit 1
+diff $file1 $file2 || exit 1
