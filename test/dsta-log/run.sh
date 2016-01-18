@@ -2,8 +2,7 @@
 
 clean() {
   rm -f $log_txt $log_chat_txt $aux
-  if [ -n "$container_id" ]
-  then
+  if [ -n "$container_id" ];  then
     docker rm -fv $container_id > /dev/null
   fi
 }

@@ -13,8 +13,7 @@ See 'dst-server help <command>' to read about a specific command.
 EOF
 }
 
-if [ $# -eq 0 ]
-then
+if [ $# -eq 0 ]; then
   usage
   exit 1
 fi

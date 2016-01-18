@@ -13,8 +13,7 @@ image_name=dstacademy/server
 docker build -t $image_name ../build || build_error
 
 tests=`mktemp`
-if [ $# -eq 0 ]
-then
+if [ $# -eq 0 ]; then
   find -mindepth 2 -maxdepth 2 -type f -name run.sh > $tests
 else
   for test_name in "$@"
@@ -31,8 +30,7 @@ while read t
 do
   test_name=`echo $t | cut -d'/' -f2`
   echo "Running $test_name [$i/$test_count]"
-  if ! $t $image_name
-  then
+  if ! $t $image_name; then
     echoerr "[FAIL] $test_name"
     ((error_count++))
   fi
@@ -41,8 +39,7 @@ done <<< "`cat $tests`"
 
 rm $tests # TODO trap signal
 
-if [ $error_count -ne 0 ]
-then
+if [ $error_count -ne 0 ]; then
   echoerr "Failed $error_count/$test_count tests."
   exit 1
 fi

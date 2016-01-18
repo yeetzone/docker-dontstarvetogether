@@ -6,15 +6,12 @@ usage: dst-server update [--all|--game|--mods]
 EOF
 }
 
-if [ $# -eq 0 ]
-then
+if [ $# -eq 0 ]; then
   update=3
-elif [ $1 == "--help" ]
-then
+elif [ $1 == "--help" ]; then
   usage
   exit 0
-elif [ $# -eq 1 ]
-then
+elif [ $# -eq 1 ]; then
   case $1 in
     --all)
       update=3
@@ -27,16 +24,16 @@ then
       ;;
   esac
 fi
-if [ -z "$update" ]
-then
+
+if [ -z "$update" ]; then
   usage 1>&2
   exit 1
 fi
-if (((update & 1) != 0))
-then
+
+if (((update & 1) != 0)); then
   update.sh
 fi
-if (((update & 2) != 0))
-then
+
+if (((update & 2) != 0)); then
   exec dontstarve_dedicated_server_nullrenderer -only_update_server_mods
 fi

@@ -2,8 +2,7 @@
 
 clean() {
   rm -f $file1 $file2
-  if [ -n "`docker ps -qf id=$container_id`" ]
-  then
+  if [ -n "`docker ps -qf id=$container_id`" ]; then
     docker rm -fv $container_id > /dev/null
   fi
 }
@@ -14,48 +13,42 @@ file2=`mktemp`
 
 container_id=`docker run -d $1 || exit 1`
 sleep 20
-if [ -z "`docker ps -qf id=$container_id`" ]
-then
+if [ -z "`docker ps -qf id=$container_id`" ]; then
   exit 1
 fi
 docker rm -fv $container_id > /dev/null
 
 container_id=`docker run -d $1 dst-server start || exit 1`
 sleep 20
-if [ -z "`docker ps -qf id=$container_id`" ]
-then
+if [ -z "`docker ps -qf id=$container_id`" ]; then
   exit 1
 fi
 docker rm -fv $container_id > /dev/null
 
 container_id=`docker run -d $1 dst-server start --update=all || exit 1`
 sleep 20
-if [ -z "`docker ps -qf id=$container_id`" ]
-then
+if [ -z "`docker ps -qf id=$container_id`" ]; then
   exit 1
 fi
 docker rm -fv $container_id > /dev/null
 
 container_id=`docker run -d $1 dst-server start --update=none || exit 1`
 sleep 20
-if [ -z "`docker ps -qf id=$container_id`" ]
-then
+if [ -z "`docker ps -qf id=$container_id`" ]; then
   exit 1
 fi
 docker rm -fv $container_id > /dev/null
 
 container_id=`docker run -d $1 dst-server start --update=game || exit 1`
 sleep 20
-if [ -z "`docker ps -qf id=$container_id`" ]
-then
+if [ -z "`docker ps -qf id=$container_id`" ]; then
   exit 1
 fi
 docker rm -fv $container_id > /dev/null
 
 container_id=`docker run -d $1 dst-server start --update=mods || exit 1`
 sleep 20
-if [ -z "`docker ps -qf id=$container_id`" ]
-then
+if [ -z "`docker ps -qf id=$container_id`" ]; then
   exit 1
 fi
 docker rm -fv $container_id > /dev/null

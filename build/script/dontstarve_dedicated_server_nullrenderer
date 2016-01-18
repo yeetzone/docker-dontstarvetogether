@@ -3,8 +3,7 @@
 # TODO here we are going to trap the signals
 
 cd /opt/dst/bin
-if [ `whoami` != "steam" ]
-then
+if [ `whoami` != "steam" ]; then
   gosu="gosu steam"
 fi
 

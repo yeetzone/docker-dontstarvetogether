@@ -6,15 +6,12 @@ usage: dst-server log [--server|--chat]
 EOF
 }
 
-if [ $# -eq 0 ]
-then
+if [ $# -eq 0 ]; then
   log=/var/lib/dsta/config/log.txt
-elif [ $1 == "--help" ]
-then
+elif [ $1 == "--help" ]; then
   usage
   exit 0
-elif [ $# -eq 1 ]
-then
+elif [ $# -eq 1 ]; then
   case $1 in
     --server)
       log=/var/lib/dsta/config/log.txt
@@ -24,8 +21,8 @@ then
       ;;
   esac
 fi
-if [ -n "$log" ]
-then
+
+if [ -n "$log" ]; then
   cat $log
 else
   usage 1>&2
