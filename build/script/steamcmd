@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-if [ `whoami` == "steam" ]
-then
-	/opt/steam/steamcmd.sh "$@"
-else
-	gosu steam /opt/steam/steamcmd.sh "$@"
+if [ `whoami` != "steam" ]; then
+  gosu="gosu steam"
 fi
+
+$gosu /opt/steam/steamcmd.sh "$@"

@@ -29,14 +29,6 @@ MAX_PLAYERS=10
 Environment variables can be used to customize certain settings of the server. Most of the
 available environment variables correspond to the `settings.ini` variables used by DST.
 
-### Application
-Sets application-specific options.
-
-**UPDATE_ON_BOOT**  
-Enables/disables checking for game and mod updates on boot.
-- true *[default]*
-- false
-
 ### Account
 Sets account-related options.
 

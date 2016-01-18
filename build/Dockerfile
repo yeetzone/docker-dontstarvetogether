@@ -16,26 +16,30 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4
 	&& rm /usr/local/bin/gosu.asc \
 	&& chmod +x /usr/local/bin/gosu
 
+# We just copy the necessary scripts to download the game. This improves the development speed
+# because we don't need to download the game again if it's not necessary.
+COPY /script/steamcmd /script/update.sh /usr/local/bin/
+
 # Add steam user.
 RUN adduser --disabled-login --gecos "Steam" --home /opt/steam steam
 
 # Install SteamCMD.
-COPY /script/steamcmd /usr/local/bin/
 RUN curl -fsSL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC /opt/steam/ \
 	&& steamcmd \
 		+@ShutdownOnFailedCommand 1 \
 		+quit
 
 # Install Don't Starve Together Server.
-COPY /script/update.sh /usr/local/bin/
 RUN mkdir -p /opt/dst/ \
 	&& chown steam:steam /opt/dst/ \
 	&& sync \
 	&& update.sh
 
+# Install all the needed scripts
+COPY /script/* /usr/local/bin/
+
 # Set environment variables.
-ENV UPDATE_ON_BOOT=true \
-	DEFAULT_SERVER_DESCRIPTION="Powered by DST Academy." \
+ENV DEFAULT_SERVER_DESCRIPTION="Powered by DST Academy." \
 	SERVER_PORT=10999 \
 	OFFLINE_SERVER=false \
 	MAX_PLAYERS=4 \
@@ -63,8 +67,8 @@ ENV UPDATE_ON_BOOT=true \
 # Copy entrypoint script.
 COPY /docker-entrypoint.sh /entrypoint.sh
 
-# Add data files.
-COPY /data /usr/local/lib/dsta/data
+# Copy static files.
+COPY /static /usr/local/lib/dsta
 RUN chown -R steam:steam /usr/local/lib/dsta/ \
 	&& mkdir -p /var/lib/dsta/ \
 	&& chown steam:steam /var/lib/dsta/
@@ -72,5 +76,6 @@ RUN chown -R steam:steam /usr/local/lib/dsta/ \
 EXPOSE 10999/udp
 VOLUME ["/var/lib/dsta/config"]
 
-WORKDIR /opt/dst/bin/
+WORKDIR /var/lib/dsta/config
 ENTRYPOINT ["/entrypoint.sh"]
+CMD ["dst-server", "start"]

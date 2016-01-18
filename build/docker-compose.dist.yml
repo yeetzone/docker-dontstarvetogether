@@ -11,7 +11,6 @@ world:
     - "10999:10999/udp"
   environment:
     - SERVER_TOKEN=server-token
-#    - UPDATE_ON_BOOT=true
 #    - DEFAULT_SERVER_NAME=Server
 #    - DEFAULT_SERVER_DESCRIPTION=Let's play Don't Starve Together together.
 #    - SERVER_NAME_PREFIX=DST Academy's
