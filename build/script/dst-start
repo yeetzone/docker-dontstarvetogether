@@ -1,18 +1,7 @@
 #!/usr/bin/env bash
 
 usage(){
-  cat <<- EOF
-usage: dst-server start [--update=all|none|game|mods]
-
-   --update=all
-      Update the game and the mods before launch the server.
-   --update=none
-      Update nothing, just start the server.
-   --update=game
-      Update just the game (no the mods) and lauch the server.
-   --update=mods
-      Update the mods and launch the server. This is the default behaviour.
-EOF
+  cat /usr/local/lib/dsta/doc/dst-start.usage
 }
 
 if [ $# -eq 0 ]; then

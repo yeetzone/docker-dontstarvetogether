@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
 usage(){
-  cat <<- EOF
-usage: dst-server log [--server|--chat]
-EOF
+  cat /usr/local/lib/dsta/doc/dst-log.usage
 }
 
 if [ $# -eq 0 ]; then

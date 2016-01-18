@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
 usage(){
-  cat <<- EOF
-usage: dst-server update [--all|--game|--mods]
-EOF
+  cat /usr/local/lib/dsta/doc/dst-update.usage
 }
 
 if [ $# -eq 0 ]; then
