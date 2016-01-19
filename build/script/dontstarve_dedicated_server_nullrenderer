@@ -4,11 +4,11 @@
 
 cd /opt/dst/bin
 if [ `whoami` != "steam" ]; then
-  gosu="gosu steam"
+	gosu="gosu steam"
 fi
 
 exec $gosu ./dontstarve_dedicated_server_nullrenderer \
-  -console \
-  -persistent_storage_root "/var/lib/dsta" \
-  -conf_dir "config" \
-  "$@"
+	-console \
+	-persistent_storage_root "/var/lib/dsta" \
+	-conf_dir "config" \
+	"$@"

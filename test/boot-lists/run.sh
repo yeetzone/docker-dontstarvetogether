@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 clean() {
-  rm -f $aux $adminlist $whitelist $blocklist
-  if [ -n "`docker ps -qf id=$container_id`" ]; then
-    docker rm -fv $container_id > /dev/null
-  fi
+	rm -f $aux $adminlist $whitelist $blocklist
+	if [ -n "`docker ps -qf id=$container_id`" ]; then
+		docker rm -fv $container_id > /dev/null
+	fi
 }
 trap clean EXIT
 

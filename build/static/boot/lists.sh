@@ -4,12 +4,12 @@ config_path=$1
 gosu steam mkdir "$config_path/save"
 
 create_list(){
-  list=$1
-  file=$2
-  if [ -n "$list" ] && [ ! -f $file ]; then
-    echo $list | tr , '\n' > $file
-    chown steam:steam $file
-  fi
+	list=$1
+	file=$2
+	if [ -n "$list" ] && [ ! -f $file ]; then
+		echo $list | tr , '\n' > $file
+		chown steam:steam $file
+	fi
 }
 
 # Create the adminlist.txt file.

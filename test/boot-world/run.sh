@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 clean() {
-  rm -f $aux $file1 $file2
-  if [ -n "`docker ps -qf id=$container_id`" ]; then
-    docker rm -fv $container_id > /dev/null
-  fi
+	rm -f $aux $file1 $file2
+	if [ -n "`docker ps -qf id=$container_id`" ]; then
+		docker rm -fv $container_id > /dev/null
+	fi
 }
 trap clean EXIT
 

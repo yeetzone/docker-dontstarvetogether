@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 clean() {
-  rm -f $file1 $file2
+	rm -f $file1 $file2
 }
 trap clean EXIT
 

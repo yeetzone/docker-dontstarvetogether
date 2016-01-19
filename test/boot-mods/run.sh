@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 clean() {
-  rm -f $aux $aux2 $mods_setup1 $mods_setup2 $mods_setup3 $modoverrides1 $modoverrides2 $modoverrides3
-  if [ -n "`docker ps -qf id=$container_id`" ]; then
-    docker rm -fv $container_id > /dev/null
-  fi
+	rm -f $aux $aux2 $mods_setup1 $mods_setup2 $mods_setup3 $modoverrides1 $modoverrides2 $modoverrides3
+	if [ -n "`docker ps -qf id=$container_id`" ]; then
+		docker rm -fv $container_id > /dev/null
+	fi
 }
 trap clean EXIT
 
