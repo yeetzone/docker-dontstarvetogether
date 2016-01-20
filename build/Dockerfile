@@ -21,8 +21,7 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4
 	&& rm /usr/local/bin/gosu.asc \
 	&& chmod +x /usr/local/bin/gosu
 
-# We just copy the necessary scripts to download the game. This improves the development speed
-# because we don't need to download the game again if it's not necessary.
+# Copy setup files.
 COPY /script/steamcmd /script/update.sh /usr/local/bin/
 
 # Add steam user.
@@ -42,6 +41,16 @@ RUN mkdir -p /opt/dst/ \
 
 # Install all the needed scripts
 COPY /script/* /usr/local/bin/
+
+# Copy entrypoint script.
+COPY /docker-entrypoint.sh /entrypoint.sh
+
+# Copy static files.
+COPY /static /usr/local/lib/dsta
+RUN mkfifo /usr/local/lib/dsta/console \
+	&& chown -R steam:steam /usr/local/lib/dsta/ \
+	&& mkdir -p /var/lib/dsta/ \
+	&& chown steam:steam /var/lib/dsta/
 
 # Set environment variables.
 ENV DEFAULT_SERVER_DESCRIPTION="Powered by DST Academy." \
@@ -69,19 +78,15 @@ ENV DEFAULT_SERVER_DESCRIPTION="Powered by DST Academy." \
 	BIND_IP="0.0.0.0" \
 	DISABLECLOUD=true
 
-# Copy entrypoint script.
-COPY /docker-entrypoint.sh /entrypoint.sh
-
-# Copy static files.
-COPY /static /usr/local/lib/dsta
-RUN mkfifo /usr/local/lib/dsta/console \
-	&& chown -R steam:steam /usr/local/lib/dsta/ \
-	&& mkdir -p /var/lib/dsta/ \
-	&& chown steam:steam /var/lib/dsta/
-
+# Expose default server port.
 EXPOSE 10999/udp
+
+# Set up a volume for configuration files.
 VOLUME ["/var/lib/dsta/config"]
 
+# Configure working directory.
 WORKDIR /var/lib/dsta/config
+
+# Set entrypoint and default command.
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["dst-server", "start"]
