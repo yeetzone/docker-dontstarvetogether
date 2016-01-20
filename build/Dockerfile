@@ -74,7 +74,8 @@ COPY /docker-entrypoint.sh /entrypoint.sh
 
 # Copy static files.
 COPY /static /usr/local/lib/dsta
-RUN chown -R steam:steam /usr/local/lib/dsta/ \
+RUN mkfifo /usr/local/lib/dsta/console \
+	&& chown -R steam:steam /usr/local/lib/dsta/ \
 	&& mkdir -p /var/lib/dsta/ \
 	&& chown steam:steam /var/lib/dsta/
 
