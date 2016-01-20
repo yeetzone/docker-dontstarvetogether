@@ -4,7 +4,12 @@ MAINTAINER Thomas Deinhamer <thasmo@gmail.com>
 # Install dependencies.
 RUN dpkg --add-architecture i386 \
 	&& apt-get update -y \
-	&& apt-get install -y --no-install-recommends ca-certificates curl lib32gcc1 lib32stdc++6 libcurl4-gnutls-dev:i386 \
+	&& apt-get install -y --no-install-recommends \
+		ca-certificates \
+		curl \
+		lib32gcc1 \
+		lib32stdc++6 \
+		libcurl4-gnutls-dev:i386 \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
@@ -69,7 +74,8 @@ COPY /docker-entrypoint.sh /entrypoint.sh
 
 # Copy static files.
 COPY /static /usr/local/lib/dsta
-RUN chown -R steam:steam /usr/local/lib/dsta/ \
+RUN mkfifo /usr/local/lib/dsta/console \
+	&& chown -R steam:steam /usr/local/lib/dsta/ \
 	&& mkdir -p /var/lib/dsta/ \
 	&& chown steam:steam /var/lib/dsta/
 

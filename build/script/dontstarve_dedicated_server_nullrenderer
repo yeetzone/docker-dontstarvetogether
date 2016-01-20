@@ -7,8 +7,11 @@ if [ `whoami` != "steam" ]; then
 	gosu="gosu steam"
 fi
 
+# We must have at least one writer
+sleep infinity > /usr/local/lib/dsta/console &
+
 exec $gosu ./dontstarve_dedicated_server_nullrenderer \
 	-console \
 	-persistent_storage_root "/var/lib/dsta" \
 	-conf_dir "config" \
-	"$@"
+	"$@" < /usr/local/lib/dsta/console
