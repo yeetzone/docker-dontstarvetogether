@@ -20,19 +20,19 @@ The commands are:
 See 'dst-server help <command>' to read about a specific command.
 EOF
 
-docker run --rm -e DEFAULT_SERVER_NAME=bar $1 dst-server > $file2 && exit 1
+docker run --rm -e SERVER_NAME=bar $1 dst-server > $file2 && exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e DEFAULT_SERVER_NAME=bar $1 dst-server help > $file2 || exit 1
+docker run --rm -e SERVER_NAME=bar $1 dst-server help > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e DEFAULT_SERVER_NAME=bar $1 dst-server --help > $file2 || exit 1
+docker run --rm -e SERVER_NAME=bar $1 dst-server --help > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e DEFAULT_SERVER_NAME=bar $1 dst-server --foo 2> $file2 && exit 1
+docker run --rm -e SERVER_NAME=bar $1 dst-server --foo 2> $file2 && exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e DEFAULT_SERVER_NAME=bar $1 dst-server foo 2> $file2 && exit 1
+docker run --rm -e SERVER_NAME=bar $1 dst-server foo 2> $file2 && exit 1
 diff $file1 $file2 || exit 1
 
 # dst-server start
@@ -49,16 +49,16 @@ usage: dst-server start [--update=all|none|game|mods]
       Update the mods and launch the server. This is the default behaviour.
 EOF
 
-docker run --rm -e DEFAULT_SERVER_NAME=bar $1 dst-server help start > $file2 || exit 1
+docker run --rm -e SERVER_NAME=bar $1 dst-server help start > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e DEFAULT_SERVER_NAME=bar $1 dst-server --help start > $file2 || exit 1
+docker run --rm -e SERVER_NAME=bar $1 dst-server --help start > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e DEFAULT_SERVER_NAME=bar $1 dst-server start --help > $file2 || exit 1
+docker run --rm -e SERVER_NAME=bar $1 dst-server start --help > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e DEFAULT_SERVER_NAME=bar $1 dst-server start --help foo > $file2 || exit 1
+docker run --rm -e SERVER_NAME=bar $1 dst-server start --help foo > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
 # dst-server update
@@ -66,16 +66,16 @@ cat > $file1 <<- EOF
 usage: dst-server update [--all|--game|--mods]
 EOF
 
-docker run --rm -e DEFAULT_SERVER_NAME=bar $1 dst-server help update > $file2 || exit 1
+docker run --rm -e SERVER_NAME=bar $1 dst-server help update > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e DEFAULT_SERVER_NAME=bar $1 dst-server --help update > $file2 || exit 1
+docker run --rm -e SERVER_NAME=bar $1 dst-server --help update > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e DEFAULT_SERVER_NAME=bar $1 dst-server update --help > $file2 || exit 1
+docker run --rm -e SERVER_NAME=bar $1 dst-server update --help > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e DEFAULT_SERVER_NAME=bar $1 dst-server update --help foo > $file2 || exit 1
+docker run --rm -e SERVER_NAME=bar $1 dst-server update --help foo > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
 # dst-server log
@@ -83,14 +83,14 @@ cat > $file1 <<- EOF
 usage: dst-server log [--server|--chat]
 EOF
 
-docker run --rm -e DEFAULT_SERVER_NAME=bar $1 dst-server help log > $file2 || exit 1
+docker run --rm -e SERVER_NAME=bar $1 dst-server help log > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e DEFAULT_SERVER_NAME=bar $1 dst-server --help log > $file2 || exit 1
+docker run --rm -e SERVER_NAME=bar $1 dst-server --help log > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e DEFAULT_SERVER_NAME=bar $1 dst-server log --help > $file2 || exit 1
+docker run --rm -e SERVER_NAME=bar $1 dst-server log --help > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e DEFAULT_SERVER_NAME=bar $1 dst-server log --help foo > $file2 || exit 1
+docker run --rm -e SERVER_NAME=bar $1 dst-server log --help foo > $file2 || exit 1
 diff $file1 $file2 || exit 1

@@ -53,30 +53,30 @@ RUN mkfifo /usr/local/lib/dsta/console \
 	&& chown steam:steam /var/lib/dsta/
 
 # Set environment variables.
-ENV DEFAULT_SERVER_DESCRIPTION="Powered by DST Academy." \
+ENV SERVER_DESCRIPTION="Powered by DST Academy." \
 	SERVER_PORT=10999 \
-	OFFLINE_SERVER=false \
+	OFFLINE_ENABLE=false \
 	MAX_PLAYERS=4 \
 	WHITELIST_SLOTS=0 \
-	PVP=false \
+	PVP_ENABLE=false \
 	GAME_MODE=survival \
 	SERVER_INTENTION=cooperative \
-	ENABLE_AUTOSAVER=true \
+	AUTOSAVER_ENABLE=true \
 	TICK_RATE=15 \
 	CONNECTION_TIMEOUT=5000 \
-	ENABLE_VOTE_KICK=true \
+	VOTE_KICK_ENABLE=true \
 	PAUSE_WHEN_EMPTY=true \
 	STEAM_AUTHENTICATION_PORT=8766 \
 	STEAM_MASTER_SERVER_PORT=27016 \
 	STEAM_GROUP_ONLY=false \
 	STEAM_GROUP_ADMINS=false \
-	CONSOLE_ENABLED=true \
-	AUTOCOMPILER_ENABLED=true \
-	MODS_ENABLED=true \
+	CONSOLE_ENABLE=true \
+	AUTOCOMPILER_ENABLE=true \
+	MODS_ENABLE=true \
 	SHARD_ENABLE=false \
-	IS_MASTER=false \
-	BIND_IP="0.0.0.0" \
-	DISABLECLOUD=true
+	SHARD_IS_MASTER=false \
+	SHARD_BIND_IP="0.0.0.0" \
+	STEAM_CLOUD_DISABLE=true
 
 # Expose default server port.
 EXPOSE 10999/udp

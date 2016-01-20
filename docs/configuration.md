@@ -6,7 +6,7 @@ to use `docker-compose` instead, which makes it easier to configure all environm
 
 **Example**:
 ```sh
-docker run -itd -p 10999:10999/udp -e SERVER_TOKEN="Token" -e DEFAULT_SERVER_NAME="Name" -e MAX_PLAYERS=10 dstacademy/server
+docker run -itd -p 10999:10999/udp -e SERVER_TOKEN="Token" -e SERVER_NAME="Name" -e MAX_PLAYERS=10 dstacademy/server
 ```
 
 You can chain as many variables as you need. If you want to pass lots of them, it's easier and more
@@ -21,7 +21,7 @@ An `.env` file's contents must look like this and can hold all needed variables:
 ```ini
 # This is a comment
 SERVER_TOKEN=Token
-DEFAULT_SERVER_NAME=Name
+SERVER_NAME=Name
 MAX_PLAYERS=10
 ```
 
@@ -40,13 +40,13 @@ To [generate a token][howto-token] you need a copy of DST.
 ### Network
 Configures network-related settings.
 
-**DEFAULT_SERVER_NAME**  
+**SERVER_NAME**  
 Sets the server's name. Shows up on the public server-list and in-game.
 Setting a custom server-name is not required but highly recommended.
 If no name is configured, a random name will be generated.
 - *text* *[default: *RANDOM*]*
 
-**DEFAULT_SERVER_DESCRIPTION**  
+**SERVER_DESCRIPTION**  
 Sets the server's description. Shows up on the public server-list and in-game.
 - *text* *[default: Powered by DST-Academy.]*
 
@@ -63,7 +63,7 @@ the server's port-number, because the external/public port-number can be configu
 Defines a server password so only players knowing the password can connect.
 - *text*
 
-**OFFLINE_SERVER**  
+**OFFLINE_ENABLE**  
 Controls if the server is listed and accessible publicly.
 - true
 - false *[default]*
@@ -80,7 +80,7 @@ players which can connect to the server. The sum of `MAX_PLAYERS` and `WHITELIST
 how many players can connect to the server simultaneously.
 - *number* *[default: 0]*
 
-**PVP**  
+**PVP_ENABLE**  
 Enables/disables PVP, which basically defines if players can attack each other.
 - true
 - false *[default]*
@@ -98,7 +98,7 @@ Configures the server's gameplay-intention for players.
 - competitive
 - madness
 
-**ENABLE_AUTOSAVER**  
+**AUTOSAVER_ENABLE**  
 Enables/disables automatic saving of the world's state after each ingame-day.
 - true *[default]*
 - false
@@ -115,7 +115,7 @@ Defines the time in milliseconds after a non-responding player gets disconnected
 - *number*  *[default: 5000]*  
   *Example:* `10000` *(10 seconds)*
 
-**ENABLE_VOTE_KICK**  
+**VOTE_KICK_ENABLE**  
 Enables/disables the possibility to kick players via voting.
 - true *[default]*
 - false
@@ -150,16 +150,16 @@ Enables/disables promoting steam-group officers to server administrators.
 ### Misc
 Defines various other configuration options.
 
-**CONSOLE_ENABLED**  
+**CONSOLE_ENABLE**  
 Disables/enables the ingame-console for administrators.
 - true *[default]*
 - false
 
-**AUTOCOMPILER_ENABLED**  
+**AUTOCOMPILER_ENABLE**  
 - true *[default]*
 - false
 
-**MODS_ENABLED**  
+**MODS_ENABLE**  
 Enables/disables mod-support.
 - true *[default]*
 - false
@@ -181,26 +181,26 @@ Sets a unique shard ID for this server-shard.
 - *number*  
   *Example:* `1`
 
-**IS_MASTER**  
+**SHARD_IS_MASTER**  
 Defines whether this server is the main server.
 - true
 - false *[default]*
 
-**MASTER_IP**  
+**SHARD_MASTER_IP**  
 Defines the master-server's ip-address for slave-servers.
 - *ip-address*
 
-**MASTER_PORT**  
+**SHARD_MASTER_PORT**  
 Defines the master-server's port. This needs to be set to
 the same port for the master-server and all slave-servers.
 - *port-number*
 
-**BIND_IP**  
+**SHARD_BIND_IP**  
 Configures the IP-address for which to allow incoming shard-connections from.
 Generally this should not be changed to work with Docker properly.
 - *ip-address* *[default: 0.0.0.0]*  
 
-**CLUSTER_KEY**  
+**SHARD_CLUSTER_KEY**  
 Sets a unique and secret cluster key for validating incoming shard-connections.
 This needs to be the same for the master-server and all slave-servers.
 - *text*  
@@ -209,7 +209,7 @@ This needs to be the same for the master-server and all slave-servers.
 ### Steam
 Sets Steam-related options.
 
-**DISABLECLOUD**  
+**STEAM_CLOUD_DISABLE**  
 Enables/diables the Steam Cloud synchronization.
 - true *[default]*
 - false
