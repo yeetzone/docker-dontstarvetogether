@@ -84,9 +84,6 @@ EXPOSE 10999/udp
 # Set up a volume for configuration files.
 VOLUME ["/var/lib/dsta/config"]
 
-# Configure working directory.
-WORKDIR /var/lib/dsta/config
-
 # Set entrypoint and default command.
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["dst-server", "start"]
