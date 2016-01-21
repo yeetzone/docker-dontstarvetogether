@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-config_path=$1
-file_settings="$config_path/settings.ini"
+file_settings="$CONFIG_PATH/settings.ini"
 if [ -f $file_settings ]; then
 	exit 0
 fi
@@ -12,7 +11,7 @@ if [ -z "$SERVER_NAME" ]; then
 		echo ${list[$RANDOM % ${#list[@]}]}
 	}
 
-	SERVER_NAME="`selectRandomLine /usr/local/lib/dsta/data/adjectives.txt` `selectRandomLine /usr/local/lib/dsta/data/names.txt`"
+	SERVER_NAME="`selectRandomLine $DSTA_HOME/data/adjectives.txt` `selectRandomLine $DSTA_HOME/data/names.txt`"
 	echo "'$SERVER_NAME' has been set as the server's name."
 fi
 

@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
-config_path=$1
-
-file_mods="/opt/dst/mods/dedicated_server_mods_setup.lua"
-file_mods_overrides="$config_path/modoverrides.lua"
+file_mods="$DST_HOME/mods/dedicated_server_mods_setup.lua"
+file_mods_overrides="$CONFIG_PATH/modoverrides.lua"
 if [ -f $file_mods_overrides ]; then
 	exit 0
 fi

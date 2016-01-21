@@ -62,7 +62,7 @@ usage: dst-server start [--update=all|none|game|mods]
    --update=none
       Update nothing, just start the server.
    --update=game
-      Update just the game (no the mods) and lauch the server.
+      Update just the game (no the mods) and launch the server.
    --update=mods
       Update the mods and launch the server. This is the default behaviour.
 EOF

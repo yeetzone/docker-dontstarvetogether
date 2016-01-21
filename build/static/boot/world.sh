@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-config_path=$1
-file_world_override="$config_path/worldgenoverride.lua"
+file_world_override="$CONFIG_PATH/worldgenoverride.lua"
 
 if [ -f $file_world_override ]; then
 	exit 0

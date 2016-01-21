@@ -1,23 +1,26 @@
 #!/usr/bin/env bash
 
 usage(){
-	cat /usr/local/lib/dsta/doc/dst-update.usage
+	cat $DSTA_HOME/doc/start.usage
 }
 
 if [ $# -eq 0 ]; then
-	update=3
+	update=2
 elif [ $1 == "--help" ]; then
 	usage
 	exit 0
 elif [ $# -eq 1 ]; then
 	case $1 in
-		--all)
+		--update=all)
 			update=3
 			;;
-		--game)
+		--update=none)
+			update=0
+			;;
+		--update=game)
 			update=1
 			;;
-		--mods)
+		--update=mods)
 			update=2
 			;;
 	esac
@@ -32,6 +35,8 @@ if (((update & 1) != 0)); then
 	update.sh
 fi
 
-if (((update & 2) != 0)); then
-	exec dontstarve_dedicated_server_nullrenderer -only_update_server_mods
+if (((update & 2) == 0)); then
+	flag="-skip_update_server_mods"
 fi
+
+exec dontstarve_dedicated_server_nullrenderer $flag

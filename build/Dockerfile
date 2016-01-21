@@ -21,36 +21,38 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4
 	&& rm /usr/local/bin/gosu.asc \
 	&& chmod +x /usr/local/bin/gosu
 
-# Copy setup files.
-COPY /script/steamcmd /script/update.sh /usr/local/bin/
+ENV STEAM_HOME="/opt/steam" \
+	DST_HOME="/opt/dst" \
+	DSTA_HOME="/usr/local/lib/dsta" \
+	CONFIG_PATH="/var/lib/dsta/config"
+
+# Install all the needed scripts.
+COPY /script/* /usr/local/bin/
 
 # Add steam user.
-RUN adduser --disabled-login --gecos "Steam" --home /opt/steam steam
+RUN adduser --disabled-login --gecos "Steam" --home $STEAM_HOME steam
 
 # Install SteamCMD.
-RUN curl -fsSL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC /opt/steam/ \
+RUN curl -fsSL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC $STEAM_HOME \
 	&& steamcmd \
 		+@ShutdownOnFailedCommand 1 \
 		+quit
 
 # Install Don't Starve Together Server.
-RUN mkdir -p /opt/dst/ \
-	&& chown steam:steam /opt/dst/ \
+RUN mkdir -p $DST_HOME \
+	&& chown steam:steam $DST_HOME \
 	&& sync \
 	&& update.sh
-
-# Install all the needed scripts
-COPY /script/* /usr/local/bin/
 
 # Copy entrypoint script.
 COPY /docker-entrypoint.sh /entrypoint.sh
 
 # Copy static files.
-COPY /static /usr/local/lib/dsta
-RUN mkfifo /usr/local/lib/dsta/console \
-	&& chown -R steam:steam /usr/local/lib/dsta/ \
-	&& mkdir -p /var/lib/dsta/ \
-	&& chown steam:steam /var/lib/dsta/
+COPY /static $DSTA_HOME
+RUN mkfifo $DSTA_HOME/console \
+	&& chown -R steam:steam $DSTA_HOME \
+	&& mkdir -p `dirname $CONFIG_PATH` \
+	&& chown steam:steam `dirname $CONFIG_PATH`
 
 # Set environment variables.
 ENV SERVER_DESCRIPTION="Powered by DST Academy." \
@@ -82,10 +84,7 @@ ENV SERVER_DESCRIPTION="Powered by DST Academy." \
 EXPOSE 10999/udp
 
 # Set up a volume for configuration files.
-VOLUME ["/var/lib/dsta/config"]
-
-# Configure working directory.
-WORKDIR /var/lib/dsta/config
+VOLUME ["$CONFIG_PATH"]
 
 # Set entrypoint and default command.
 ENTRYPOINT ["/entrypoint.sh"]

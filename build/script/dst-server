@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 usage(){
-	cat /usr/local/lib/dsta/doc/dst-server.usage
+	cat $DSTA_HOME/doc/dst-server.usage
 }
 
 if [ $# -eq 0 ]; then
@@ -12,29 +12,18 @@ fi
 case $@ in
 	--help|help)
 		usage
+		exit 0
 		;;
-	--help\ start|--help\ start\ *|help\ start|help\ start\ *)
-		exec dst-start --help
+	--help\ *|help\ *)
+		set $2 --help
 		;;
-	--help\ update|--help\ update\ *|help\ update|help\ update\ *)
-		exec dst-update --help
-		;;
-	--help\ log|--help\ log\ *|help\ log|help\ log\ *)
-		exec dst-log --help
-		;;
-	start*)
-		shift
-		exec dst-start "$@"
-		;;
-	update*)
-		shift
-		exec dst-update "$@"
-		;;
-	log*)
-		shift
-		exec dst-log "$@"
-		;;
-	*)
-		usage 1>&2
-		exit 1
 esac
+
+bin="$DSTA_HOME/bin/$1.sh"
+if [ -f $bin ]; then
+	shift
+	exec $bin "$@"
+else
+	usage 1>&2
+	exit 1
+fi

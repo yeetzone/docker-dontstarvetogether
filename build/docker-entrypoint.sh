@@ -4,17 +4,12 @@ if [ $1 == "dst-server" ]; then
 	set -e
 
 	# Configure the server
-	storage_path="/var/lib/dsta"
-	config_dir="config"
-	config_path="$storage_path/$config_dir"
-	dsta_home="/usr/local/lib/dsta"
+	chown steam:steam $CONFIG_PATH
 
-	chown steam:steam $config_path
-
-	$dsta_home/boot/settings.sh $config_path
-	$dsta_home/boot/lists.sh $config_path
-	$dsta_home/boot/world.sh $config_path
-	$dsta_home/boot/mods.sh $config_path
+	$DSTA_HOME/boot/settings.sh
+	$DSTA_HOME/boot/lists.sh
+	$DSTA_HOME/boot/world.sh
+	$DSTA_HOME/boot/mods.sh
 fi
 
 exec "$@"
