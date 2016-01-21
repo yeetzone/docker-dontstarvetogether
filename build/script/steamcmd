@@ -4,4 +4,4 @@ if [ `whoami` != "steam" ]; then
 	gosu="gosu steam"
 fi
 
-$gosu /opt/steam/steamcmd.sh "$@"
+$gosu $STEAM_HOME/steamcmd.sh "$@"

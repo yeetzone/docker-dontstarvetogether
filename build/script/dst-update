@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 usage(){
-	cat /usr/local/lib/dsta/doc/dst-update.usage
+	cat $DSTA_HOME/doc/dst-update.usage
 }
 
 if [ $# -eq 0 ]; then

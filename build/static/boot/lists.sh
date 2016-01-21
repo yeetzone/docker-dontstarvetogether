@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-config_path=$1
-gosu steam mkdir "$config_path/save"
+gosu steam mkdir "$CONFIG_PATH/save"
 
 create_list(){
 	list=$1
@@ -13,10 +12,10 @@ create_list(){
 }
 
 # Create the adminlist.txt file.
-create_list "$ADMINLIST" "$config_path/save/adminlist.txt"
+create_list "$ADMINLIST" "$CONFIG_PATH/save/adminlist.txt"
 
 # Create the whitelist.txt file.
-create_list "$WHITELIST" "$config_path/save/whitelist.txt"
+create_list "$WHITELIST" "$CONFIG_PATH/save/whitelist.txt"
 
 # Create the blocklist.txt file.
-create_list "$BLOCKLIST" "$config_path/save/blocklist.txt"
+create_list "$BLOCKLIST" "$CONFIG_PATH/save/blocklist.txt"

@@ -2,16 +2,16 @@
 
 # TODO here we are going to trap the signals
 
-cd /opt/dst/bin
+cd $DST_HOME/bin
 if [ `whoami` != "steam" ]; then
 	gosu="gosu steam"
 fi
 
 # We must have at least one writer
-sleep infinity > /usr/local/lib/dsta/console &
+sleep infinity > $DSTA_HOME/console &
 
 exec $gosu ./dontstarve_dedicated_server_nullrenderer \
 	-console \
-	-persistent_storage_root "/var/lib/dsta" \
-	-conf_dir "config" \
-	"$@" < /usr/local/lib/dsta/console
+	-persistent_storage_root `dirname $CONFIG_PATH` \
+	-conf_dir `basename $CONFIG_PATH` \
+	"$@" < $DSTA_HOME/console

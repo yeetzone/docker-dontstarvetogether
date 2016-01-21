@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 
 usage(){
-	cat /usr/local/lib/dsta/doc/dst-log.usage
+	cat $DSTA_HOME/doc/dst-log.usage
 }
 
 if [ $# -eq 0 ]; then
-	log=/var/lib/dsta/config/log.txt
+	log=$CONFIG_PATH/log.txt
 elif [ $1 == "--help" ]; then
 	usage
 	exit 0
 elif [ $# -eq 1 ]; then
 	case $1 in
 		--server)
-			log=/var/lib/dsta/config/log.txt
+			log=$CONFIG_PATH/log.txt
 			;;
 		--chat)
-			log=/var/lib/dsta/config/log_chat.txt
+			log=$CONFIG_PATH/log_chat.txt
 			;;
 	esac
 fi
