@@ -2,6 +2,7 @@ usage: dst-server [--help] <command> [<args>]
 
 The commands are:
    start    Start the server
+   console  Execute commands in the server console
    update   Update game and/or mods
    log      Show a log
 

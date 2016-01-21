@@ -14,6 +14,7 @@ usage: dst-server [--help] <command> [<args>]
 
 The commands are:
    start    Start the server
+   console  Execute commands in the server console
    update   Update game and/or mods
    log      Show a log
 
@@ -93,4 +94,25 @@ docker run --rm -e SERVER_NAME=bar $1 dst-server log --help > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
 docker run --rm -e SERVER_NAME=bar $1 dst-server log --help foo > $file2 || exit 1
+diff $file1 $file2 || exit 1
+
+# dst-server log
+cat > $file1 <<- EOF
+usage: dst-server console [command ...]
+
+The console utility executes commands in the Don't Starve Together server console.
+The commands are executed in command-line order.
+If command is a single dash ('-') or absent, console reads from the standard input.
+EOF
+
+docker run --rm -e SERVER_NAME=bar $1 dst-server help console > $file2 || exit 1
+diff $file1 $file2 || exit 1
+
+docker run --rm -e SERVER_NAME=bar $1 dst-server --help console > $file2 || exit 1
+diff $file1 $file2 || exit 1
+
+docker run --rm -e SERVER_NAME=bar $1 dst-server console --help > $file2 || exit 1
+diff $file1 $file2 || exit 1
+
+docker run --rm -e SERVER_NAME=bar $1 dst-server console --help foo > $file2 || exit 1
 diff $file1 $file2 || exit 1
