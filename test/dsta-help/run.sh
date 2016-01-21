@@ -14,7 +14,7 @@ usage: dst-server [--help] <command> [<args>]
 
 The commands are:
    start    Start the server
-   update   Run game and mod updates
+   update   Update game and/or mods
    log      Show a log
 
 See 'dst-server help <command>' to read about a specific command.
@@ -44,7 +44,7 @@ usage: dst-server start [--update=all|none|game|mods]
    --update=none
       Update nothing, just start the server.
    --update=game
-      Update just the game (no the mods) and lauch the server.
+      Update just the game (no the mods) and launch the server.
    --update=mods
       Update the mods and launch the server. This is the default behaviour.
 EOF
