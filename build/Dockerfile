@@ -26,8 +26,8 @@ ENV STEAM_HOME="/opt/steam" \
 	DSTA_HOME="/usr/local/lib/dsta" \
 	CONFIG_PATH="/var/lib/dsta/config"
 
-# Copy setup files.
-COPY /script/steamcmd /script/update.sh /usr/local/bin/
+# Install all the needed scripts.
+COPY /script/* /usr/local/bin/
 
 # Add steam user.
 RUN adduser --disabled-login --gecos "Steam" --home $STEAM_HOME steam
@@ -43,9 +43,6 @@ RUN mkdir -p $DST_HOME \
 	&& chown steam:steam $DST_HOME \
 	&& sync \
 	&& update.sh
-
-# Install all the needed scripts
-COPY /script/* /usr/local/bin/
 
 # Copy entrypoint script.
 COPY /docker-entrypoint.sh /entrypoint.sh

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 usage(){
-	cat $DSTA_HOME/doc/dst-log.usage
+	cat $DSTA_HOME/doc/log.usage
 }
 
 if [ $# -eq 0 ]; then
