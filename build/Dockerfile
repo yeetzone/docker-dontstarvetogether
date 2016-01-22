@@ -26,15 +26,12 @@ ENV STEAM_HOME="/opt/steam" \
 	DSTA_HOME="/usr/local/lib/dsta" \
 	CONFIG_PATH="/var/lib/dsta/config"
 
-# Install all the needed scripts.
-COPY /script/* /usr/local/bin/
-
 # Add steam user.
 RUN adduser --disabled-login --gecos "Steam" --home $STEAM_HOME steam
 
 # Install SteamCMD.
 RUN curl -fsSL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC $STEAM_HOME \
-	&& steamcmd \
+	&& gosu steam $STEAM_HOME/steamcmd.sh \
 		+@ShutdownOnFailedCommand 1 \
 		+quit
 
@@ -42,7 +39,15 @@ RUN curl -fsSL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.
 RUN mkdir -p $DST_HOME \
 	&& chown steam:steam $DST_HOME \
 	&& sync \
-	&& update.sh
+	&& gosu steam $STEAM_HOME/steamcmd.sh \
+		+@ShutdownOnFailedCommand 1 \
+		+login anonymous \
+		+force_install_dir $DST_HOME \
+		+app_update 343050 validate \
+		+quit
+
+# Install all the needed scripts.
+COPY /script/* /usr/local/bin/
 
 # Copy entrypoint script.
 COPY /docker-entrypoint.sh /entrypoint.sh
