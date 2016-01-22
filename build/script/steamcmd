@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ `whoami` != "steam" ]; then
-	gosu="gosu steam"
+	exec gosu steam $0 "$@"
 fi
 
-$gosu $STEAM_HOME/steamcmd.sh "$@"
+$STEAM_HOME/steamcmd.sh "$@"
