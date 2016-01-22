@@ -2,8 +2,17 @@
 
 ## [next]
 
+### Added
+- Add test cases to ensure code functionality.
+- Introduce sub-commands `start`, `update`, `log` and `console`.
+
 ### Changed
 - Relocate DST files in the image.
+- Rename some environment variables for a more consistent naming scheme.
+
+### Removed
+- Remove `UPDATE_ON_BOOT` environment variable.
+- Remove `WORKDIR` directive from the Dockerfile.
 
 ## [0.3.0]
 
