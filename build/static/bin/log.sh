@@ -21,7 +21,7 @@ elif [ $# -eq 1 ]; then
 fi
 
 if [ -n "$log" ]; then
-	cat $log
+	exec cat $log
 else
 	usage 1>&2
 	exit 1

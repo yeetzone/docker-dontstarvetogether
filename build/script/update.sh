@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-steamcmd \
+exec steamcmd \
 	+@ShutdownOnFailedCommand 1 \
 	+login anonymous \
 	+force_install_dir $DST_HOME \
