@@ -9,6 +9,7 @@
 ### Changed
 - Relocate DST files in the image.
 - Rename some environment variables for a more consistent naming scheme.
+- Set `AUTOCOMPILER_ENABLE` to `false` by default.
 
 ### Removed
 - Remove `UPDATE_ON_BOOT` environment variable.
