@@ -7,9 +7,6 @@ trap clean EXIT
 
 file1=`mktemp`
 file2=`mktemp`
-cat > $file1 <<- EOF
-Usage
-EOF
 
 docker run --rm $1 dst-server update > $file2 || exit 1
 grep -Fq "Success! App '343050' fully installed." $file2 || exit 1
