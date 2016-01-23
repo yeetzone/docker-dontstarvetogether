@@ -2,48 +2,59 @@
 
 clean() {
 	rm -f $file1 $file2
-	if [ -n "`docker ps -qf id=$container_id`" ]; then
+	if [ -n "`docker ps -qf name=$container_id`" ]; then
 		docker rm -fv $container_id > /dev/null
 	fi
 }
 trap clean EXIT
 
+container_id=`uuidgen`
 file1=`mktemp`
 file2=`mktemp`
 
-container_id=`docker run -d $1 dst-server start || exit 1`
+docker run --name "$container_id" $1 dst-server start > $file2 &
 sleep 20
-if [ -z "`docker ps -qf id=$container_id`" ]; then
+if [ -z "`docker ps -qf name=$container_id`" ]; then
 	exit 1
 fi
+grep -Fq "Success! App '343050' fully installed." $file2 && exit 1
+grep -Fq "DownloadMods" $file2 || exit 1
 docker rm -fv $container_id > /dev/null
 
-container_id=`docker run -d $1 dst-server start --update=all || exit 1`
-sleep 20
-if [ -z "`docker ps -qf id=$container_id`" ]; then
+docker run --name "$container_id" $1 dst-server start --update=all > $file2 &
+sleep 60
+if [ -z "`docker ps -qf name=$container_id`" ]; then
 	exit 1
 fi
+grep -Fq "Success! App '343050' fully installed." $file2 || exit 1
+grep -Fq "DownloadMods" $file2 || exit 1
 docker rm -fv $container_id > /dev/null
 
-container_id=`docker run -d $1 dst-server start --update=none || exit 1`
+docker run --name "$container_id" $1 dst-server start --update=none > $file2 &
 sleep 20
-if [ -z "`docker ps -qf id=$container_id`" ]; then
+if [ -z "`docker ps -qf name=$container_id`" ]; then
 	exit 1
 fi
+grep -Fq "Success! App '343050' fully installed." $file2 && exit 1
+grep -Fq "DownloadMods" $file2 && exit 1
 docker rm -fv $container_id > /dev/null
 
-container_id=`docker run -d $1 dst-server start --update=game || exit 1`
-sleep 20
-if [ -z "`docker ps -qf id=$container_id`" ]; then
+docker run --name "$container_id" $1 dst-server start --update=game > $file2 &
+sleep 60
+if [ -z "`docker ps -qf name=$container_id`" ]; then
 	exit 1
 fi
+grep -Fq "Success! App '343050' fully installed." $file2 || exit 1
+grep -Fq "DownloadMods" $file2 && exit 1
 docker rm -fv $container_id > /dev/null
 
-container_id=`docker run -d $1 dst-server start --update=mods || exit 1`
+docker run --name "$container_id" $1 dst-server start --update=mods > $file2 &
 sleep 20
-if [ -z "`docker ps -qf id=$container_id`" ]; then
+if [ -z "`docker ps -qf name=$container_id`" ]; then
 	exit 1
 fi
+grep -Fq "Success! App '343050' fully installed." $file2 && exit 1
+grep -Fq "DownloadMods" $file2 || exit 1
 docker rm -fv $container_id > /dev/null
 
 # Errors
