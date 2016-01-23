@@ -11,13 +11,6 @@ trap clean EXIT
 file1=`mktemp`
 file2=`mktemp`
 
-container_id=`docker run -d $1 || exit 1`
-sleep 20
-if [ -z "`docker ps -qf id=$container_id`" ]; then
-	exit 1
-fi
-docker rm -fv $container_id > /dev/null
-
 container_id=`docker run -d $1 dst-server start || exit 1`
 sleep 20
 if [ -z "`docker ps -qf id=$container_id`" ]; then
