@@ -10,7 +10,7 @@ trap clean EXIT
 
 file1=`mktemp`
 
-container_id=`docker run -d $1 || exit 1`
+container_id=`docker run -d $1 dst-server start --update=none || exit 1`
 docker exec -i $container_id dst-server console < dsta-console/commands1.txt || exit 1
 docker exec -i $container_id dst-server console - < dsta-console/commands2.txt || exit 1
 docker exec -i $container_id dst-server console "asdf" || exit 1

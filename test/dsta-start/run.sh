@@ -13,16 +13,16 @@ file1=`mktemp`
 file2=`mktemp`
 
 docker run --name "$container_id" $1 dst-server start > $file2 &
-sleep 20
+sleep 40
 if [ -z "`docker ps -qf name=$container_id`" ]; then
 	exit 1
 fi
-grep -Fq "Success! App '343050' already up to date." $file2 && exit 1
+grep -Fq "Success! App '343050' already up to date." $file2 || exit 1
 grep -Fq "DownloadMods" $file2 || exit 1
 docker rm -fv $container_id > /dev/null
 
 docker run --name "$container_id" $1 dst-server start --update=all > $file2 &
-sleep 60
+sleep 40
 if [ -z "`docker ps -qf name=$container_id`" ]; then
 	exit 1
 fi
@@ -40,7 +40,7 @@ grep -Fq "DownloadMods" $file2 && exit 1
 docker rm -fv $container_id > /dev/null
 
 docker run --name "$container_id" $1 dst-server start --update=game > $file2 &
-sleep 60
+sleep 40
 if [ -z "`docker ps -qf name=$container_id`" ]; then
 	exit 1
 fi
@@ -62,13 +62,13 @@ cat > $file1 <<- EOF
 usage: dst-server start [--update=all|none|game|mods]
 
    --update=all
-      Update the game and the mods before launch the server.
+      Update the game and the mods before launch the server. This is the default behaviour.
    --update=none
       Update nothing, just start the server.
    --update=game
       Update just the game (no the mods) and launch the server.
    --update=mods
-      Update the mods and launch the server. This is the default behaviour.
+      Update the mods and launch the server.
 EOF
 docker run --rm $1 dst-server start foo >/dev/null 2> $file2 && exit 1
 diff $file1 $file2 || exit 1

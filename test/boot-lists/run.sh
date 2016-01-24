@@ -17,7 +17,7 @@ printf "foo\nbar\nxy_:z\n" > $adminlist
 printf "foo\n" > $whitelist
 printf "foo\nbar\n" > $blocklist
 
-container_id=`docker run -d -e ADMINLIST="foo,bar,xy_:z" -e WHITELIST="foo" -e BLOCKLIST="foo,bar" $1 || exit 1`
+container_id=`docker run -d -e ADMINLIST="foo,bar,xy_:z" -e WHITELIST="foo" -e BLOCKLIST="foo,bar" $1 dst-server start --update=none || exit 1`
 sleep 5
 docker cp $container_id:/var/lib/dsta/config/save/adminlist.txt $aux || exit 1
 diff $adminlist $aux || exit 1
@@ -27,7 +27,7 @@ docker cp $container_id:/var/lib/dsta/config/save/blocklist.txt $aux || exit 1
 diff $blocklist $aux || exit 1
 docker rm -fv $container_id > /dev/null
 
-container_id=`docker run -d -e BLOCKLIST="foo,bar" $1 || exit 1`
+container_id=`docker run -d -e BLOCKLIST="foo,bar" $1 dst-server start --update=none || exit 1`
 sleep 5
 docker cp $container_id:/var/lib/dsta/config/save/adminlist.txt $aux 2> /dev/null && exit 1
 docker cp $container_id:/var/lib/dsta/config/save/whitelist.txt $aux 2> /dev/null && exit 1
