@@ -30,7 +30,7 @@ ENV STEAM_HOME="/opt/steam" \
 RUN adduser --disabled-login --gecos "Steam" --home $STEAM_HOME steam
 
 # Install SteamCMD.
-RUN curl -fsSL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC $STEAM_HOME \
+RUN curl -fsSL "https://cdn.steamstatic.com/client/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC $STEAM_HOME \
 	&& gosu steam $STEAM_HOME/steamcmd.sh \
 		+@ShutdownOnFailedCommand 1 \
 		+quit
