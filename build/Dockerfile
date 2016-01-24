@@ -33,7 +33,9 @@ RUN adduser --disabled-login --gecos "Steam" --home $STEAM_HOME steam
 RUN curl -fsSL "https://cdn.steamstatic.com/client/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC $STEAM_HOME \
 	&& gosu steam $STEAM_HOME/steamcmd.sh \
 		+@ShutdownOnFailedCommand 1 \
-		+quit
+		+quit \
+	&& rm -rf $STEAM_HOME/Steam/logs $STEAM_HOME/Steam/appcache/httpcache \
+	&& find $STEAM_HOME/package -type f ! -name "steam_cmd_linux.installed" ! -name "steam_cmd_linux.manifest" -delete
 
 # Install Don't Starve Together Server.
 RUN mkdir -p $DST_HOME \
@@ -44,7 +46,9 @@ RUN mkdir -p $DST_HOME \
 		+login anonymous \
 		+force_install_dir $DST_HOME \
 		+app_update 343050 validate \
-		+quit
+		+quit \
+	&& rm -rf $STEAM_HOME/Steam/logs $STEAM_HOME/Steam/appcache/httpcache \
+	&& find $STEAM_HOME/package -type f ! -name "steam_cmd_linux.installed" ! -name "steam_cmd_linux.manifest" -delete
 
 # Install all the needed scripts.
 COPY /script/* /usr/local/bin/
