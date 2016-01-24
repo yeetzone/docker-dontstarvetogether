@@ -17,7 +17,7 @@ sleep 20
 if [ -z "`docker ps -qf name=$container_id`" ]; then
 	exit 1
 fi
-grep -Fq "Success! App '343050' fully installed." $file2 && exit 1
+grep -Fq "Success! App '343050' already up to date." $file2 && exit 1
 grep -Fq "DownloadMods" $file2 || exit 1
 docker rm -fv $container_id > /dev/null
 
@@ -26,7 +26,7 @@ sleep 60
 if [ -z "`docker ps -qf name=$container_id`" ]; then
 	exit 1
 fi
-grep -Fq "Success! App '343050' fully installed." $file2 || exit 1
+grep -Fq "Success! App '343050' already up to date." $file2 || exit 1
 grep -Fq "DownloadMods" $file2 || exit 1
 docker rm -fv $container_id > /dev/null
 
@@ -35,7 +35,7 @@ sleep 20
 if [ -z "`docker ps -qf name=$container_id`" ]; then
 	exit 1
 fi
-grep -Fq "Success! App '343050' fully installed." $file2 && exit 1
+grep -Fq "Success! App '343050' already up to date." $file2 && exit 1
 grep -Fq "DownloadMods" $file2 && exit 1
 docker rm -fv $container_id > /dev/null
 
@@ -44,7 +44,7 @@ sleep 60
 if [ -z "`docker ps -qf name=$container_id`" ]; then
 	exit 1
 fi
-grep -Fq "Success! App '343050' fully installed." $file2 || exit 1
+grep -Fq "Success! App '343050' already up to date." $file2 || exit 1
 grep -Fq "DownloadMods" $file2 && exit 1
 docker rm -fv $container_id > /dev/null
 
@@ -53,7 +53,7 @@ sleep 20
 if [ -z "`docker ps -qf name=$container_id`" ]; then
 	exit 1
 fi
-grep -Fq "Success! App '343050' fully installed." $file2 && exit 1
+grep -Fq "Success! App '343050' already up to date." $file2 && exit 1
 grep -Fq "DownloadMods" $file2 || exit 1
 docker rm -fv $container_id > /dev/null
 
