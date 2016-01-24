@@ -26,7 +26,7 @@ i=1
 error_count=0
 
 # Run the tests
-while read t
+while read -u 3 t
 do
 	test_name=`echo $t | cut -d'/' -f2`
 	echo "Running $test_name [$i/$test_count]"
@@ -35,7 +35,7 @@ do
 		((error_count++))
 	fi
 	((i++))
-done <<< "`cat $tests`"
+done 3< $tests
 
 rm $tests # TODO trap signal
 
