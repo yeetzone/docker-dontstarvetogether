@@ -50,7 +50,7 @@ RUN mkdir -p $DST_HOME \
 	&& rm -rf $STEAM_HOME/Steam/logs $STEAM_HOME/Steam/appcache/httpcache \
 	&& find $STEAM_HOME/package -type f ! -name "steam_cmd_linux.installed" ! -name "steam_cmd_linux.manifest" -delete
 
-# Install all the needed scripts.
+# Copy common scripts.
 COPY /script/* /usr/local/bin/
 
 # Copy entrypoint script.
