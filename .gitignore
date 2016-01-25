@@ -1,5 +1,2 @@
 # Development
 /.vagrant/
-
-# Project
-/build/docker-compose.yml

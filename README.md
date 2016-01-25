@@ -1,4 +1,4 @@
-# DST:A Dedicated Server [![Build Status](https://travis-ci.org/dst-academy/server.svg?branch=develop)](https://travis-ci.org/dst-academy/server) [![Docker Pulls](https://img.shields.io/docker/pulls/dstacademy/server.svg)](https://hub.docker.com/r/dstacademy/server/)
+# DST:A Dedicated Server [![Build Status](https://travis-ci.org/dst-academy/server.svg?branch=develop)](https://travis-ci.org/dst-academy/server) [![Docker Pulls](https://img.shields.io/docker/pulls/dstacademy/server.svg)](https://hub.docker.com/r/dstacademy/server/) [![Slack Status](http://slack.dst.academy/badge.svg)](http://slack.dst.academy/)
 > Don't Starve Together Academy Dedicated Server for Docker.
 
 This repository provides a `Dockerfile` for building the DST:A Dedicated Server
@@ -23,10 +23,11 @@ If you want to set up your own server, have a look at the [DST:A Suite][suite].
 - [Configuration][docs-configuration]
 - [Usage][docs-usage]
 
-## Frequently Asked Questions
+## Contribution
+Do you want to contribute to the project?
+Check out our [contribution guide][contribution-guide].
 
-- **Does Docker automatically restart a running DST:A Dedicated Server when the host-system is rebooted?**  
-  Yes.
+## Frequently Asked Questions
 
 - **On which operating systems can I run Docker and the DST:A Dedicated Server?**  
   Docker runs natively on Linux, but there are official solutions for running Docker on Windows and OSX.
@@ -48,6 +49,7 @@ If you want to set up your own server, have a look at the [DST:A Suite][suite].
 [docs-usage]: /docs/usage.md
 [website]: http://www.dontstarvetogether.com/
 [suite]: https://github.com/dst-academy/suite
+[contribution-guide]: /CONTRIBUTING.md
 [docker-kitematic]: https://kitematic.com/
 [docker-toolbox]: https://www.docker.com/docker-toolbox
 [reference-dedicated]: http://forums.kleientertainment.com/forum/83-dont-starve-together-beta-dedicated-server-discussion/

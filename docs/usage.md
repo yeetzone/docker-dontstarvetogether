@@ -11,30 +11,45 @@ Basic commands to maintain the DST:A Dedicated Server.
 **Start the Server**  
 Starts the server. On boot the game-server checks for updates and performs them.  
 Docker Engine:
-`docker run -itd -p 10999:10999/udp --name="dst-server" -e SERVER_TOKEN="server-token" dstacademy/server`  
+`docker run -itd -p 10999:10999/udp -e SERVER_TOKEN="server-token" dstacademy/server:latest`  
 Docker Compose:
 `docker-compose up -d`
 
 **Stop the Server**  
 Stops the server.  
 Docker Engine:
-`docker stop dst-server`  
+`docker stop <container>`  
 Docker Compose:
 `docker-compose stop`
 
 **Restart the Server**  
 Restarts the server. On boot the game-server checks for updates and performs them.  
 Docker Engine:
-`docker restart dst-server`  
+`docker restart <container>`  
 Docker Compose:
 `docker-compose restart`
 
 **Remove the Server**  
 Deletes the server.  
 Docker Engine:
-`docker rm -f dst-server`  
+`docker rm -f <container>`  
 Docker Compose:
 `docker-compose rm -f`
+
+**Execute console command**  
+Runs commands on the game's console.  
+Docker Engine:
+`docker exec <container> dst-server console "c_announce('Having fun?')"`
+
+**Print default log**  
+Prints the server's default log.  
+Docker Engine:
+`docker exec <container> dst-server log`
+
+**Print chat log**  
+Prints the server's chat log.  
+Docker Engine:
+`docker exec <container> dst-server log --chat`
 
 ## Advanced Commands
 More advanced commands to maintain the server-image and other stuff.
@@ -57,7 +72,12 @@ Docker Compose:
 Attaches the terminal to a running server which enables input of server [commands][reference-commands]
 and to observe the server output. To detach without stopping the server press `ctrl+p` followed by `ctrl+q`.  
 Docker Engine:
-`docker attach dst-server`
+`docker attach <container>`
+
+**Execute custom command**  
+Runs a custom command in the container.  
+Docker Engine:
+`docker exec <container> echo "Running my custom command."`
 
 [engine-cli]: https://docs.docker.com/engine/reference/commandline/
 [compose-cli]: https://docs.docker.com/compose/reference/
