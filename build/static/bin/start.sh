@@ -5,7 +5,7 @@ usage(){
 }
 
 if [ $# -eq 0 ]; then
-	update=2
+	update=3
 elif [ $1 == "--help" ]; then
 	usage
 	exit 0
@@ -32,7 +32,7 @@ if [ -z "$update" ]; then
 fi
 
 if (((update & 1) != 0)); then
-	update.sh
+	$DSTA_HOME/dst/update.sh
 fi
 
 if (((update & 2) == 0)); then

@@ -10,7 +10,7 @@ trap clean EXIT
 
 file1=`mktemp`
 
-container_id=`docker run -d $1 || exit 1`
+container_id=`docker run -d $1 dst-server start --update=none || exit 1`
 docker cp console/commands.sh $container_id:/
 docker exec $container_id /commands.sh || exit 1
 sleep 20

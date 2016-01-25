@@ -26,23 +26,32 @@ ENV STEAM_HOME="/opt/steam" \
 	DSTA_HOME="/usr/local/lib/dsta" \
 	CONFIG_PATH="/var/lib/dsta/config"
 
-# Install all the needed scripts.
-COPY /script/* /usr/local/bin/
-
 # Add steam user.
 RUN adduser --disabled-login --gecos "Steam" --home $STEAM_HOME steam
 
 # Install SteamCMD.
-RUN curl -fsSL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC $STEAM_HOME \
-	&& steamcmd \
+RUN curl -fsSL "https://cdn.steamstatic.com/client/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC $STEAM_HOME \
+	&& gosu steam $STEAM_HOME/steamcmd.sh \
 		+@ShutdownOnFailedCommand 1 \
-		+quit
+		+quit \
+	&& rm -rf $STEAM_HOME/Steam/logs $STEAM_HOME/Steam/appcache/httpcache \
+	&& find $STEAM_HOME/package -type f ! -name "steam_cmd_linux.installed" ! -name "steam_cmd_linux.manifest" -delete
 
 # Install Don't Starve Together Server.
 RUN mkdir -p $DST_HOME \
 	&& chown steam:steam $DST_HOME \
 	&& sync \
-	&& update.sh
+	&& gosu steam $STEAM_HOME/steamcmd.sh \
+		+@ShutdownOnFailedCommand 1 \
+		+login anonymous \
+		+force_install_dir $DST_HOME \
+		+app_update 343050 validate \
+		+quit \
+	&& rm -rf $STEAM_HOME/Steam/logs $STEAM_HOME/Steam/appcache/httpcache \
+	&& find $STEAM_HOME/package -type f ! -name "steam_cmd_linux.installed" ! -name "steam_cmd_linux.manifest" -delete
+
+# Install all the needed scripts.
+COPY /script/* /usr/local/bin/
 
 # Copy entrypoint script.
 COPY /docker-entrypoint.sh /entrypoint.sh

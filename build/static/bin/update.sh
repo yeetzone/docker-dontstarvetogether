@@ -29,9 +29,9 @@ if [ -z "$update" ]; then
 fi
 
 if (((update & 1) != 0)); then
-	update.sh
+	$DSTA_HOME/dst/update.sh
 fi
 
 if (((update & 2) != 0)); then
-	exec dontstarve_dedicated_server_nullrenderer -only_update_server_mods
+	dontstarve_dedicated_server_nullrenderer -only_update_server_mods
 fi

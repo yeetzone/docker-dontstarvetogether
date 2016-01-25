@@ -41,13 +41,13 @@ cat > $file1 <<- EOF
 usage: dst-server start [--update=all|none|game|mods]
 
    --update=all
-      Update the game and the mods before launch the server.
+      Update the game and the mods before launch the server. This is the default behaviour.
    --update=none
       Update nothing, just start the server.
    --update=game
       Update just the game (no the mods) and launch the server.
    --update=mods
-      Update the mods and launch the server. This is the default behaviour.
+      Update the mods and launch the server.
 EOF
 
 docker run --rm -e SERVER_NAME=bar $1 dst-server help start > $file2 || exit 1
