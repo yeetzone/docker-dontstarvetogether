@@ -5,6 +5,7 @@
 ### Added
 - Add test cases to ensure code functionality.
 - Introduce sub-commands `start`, `update`, `log` and `console`.
+- Add `MODS_FORCE` variable to enable mods for development.
 
 ### Changed
 - Relocate DST files in the image.
