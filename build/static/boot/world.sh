@@ -22,5 +22,5 @@ EOF
 fi
 
 if [ -f $file_world_override ]; then
-	chown steam:steam $file_world_override
+	chown $STEAM_USER:$STEAM_USER $file_world_override
 fi

@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-gosu steam mkdir "$CONFIG_PATH/save"
+gosu $STEAM_USER mkdir "$CONFIG_PATH/save"
 
 create_list(){
 	list=$1
 	file=$2
 	if [ -n "$list" ] && [ ! -f $file ]; then
 		echo $list | tr , '\n' > $file
-		chown steam:steam $file
+		chown $STEAM_USER:$STEAM_USER $file
 	fi
 }
 

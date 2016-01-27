@@ -88,4 +88,4 @@ cat <<- EOF > $file_settings
 	disablecloud = $STEAM_CLOUD_DISABLE
 EOF
 
-chown steam:steam $file_settings
+chown $STEAM_USER:$STEAM_USER $file_settings

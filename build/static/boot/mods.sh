@@ -27,7 +27,7 @@ if [ -n "$MODS" ] && [ ! -f $file_mods_overrides ]; then
 		echo "}" >> $file_mods_overrides
 	fi
 
-	chown steam:steam $file_mods_overrides
+	chown $STEAM_USER:$STEAM_USER $file_mods_overrides
 fi
 
 # Enable mods forcefully for mod development.
@@ -36,5 +36,5 @@ if [ -n "$MODS_FORCE" ]; then
 		echo "ForceEnableMod(\"$mod\")" >> $file_mods_settings
 	done
 
-	chown steam:steam $file_mods_settings
+	chown $STEAM_USER:$STEAM_USER $file_mods_settings
 fi

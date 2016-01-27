@@ -54,11 +54,6 @@ Sets the server's description. Shows up on the public server-list and in-game.
 Defines text to prepend to the server's name.
 - *text*
 
-**SERVER_PORT**  
-Defines the server's public port for players to connect to. Generally it's not needed to change
-the server's port-number, because the external/public port-number can be configured via Docker.
-- *number* *[default: 10999]*
-
 **SERVER_PASSWORD**  
 Defines a server password so only players knowing the password can connect.
 - *text*

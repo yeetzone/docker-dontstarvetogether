@@ -4,7 +4,7 @@ if [ $1 == "dst-server" ]; then
 	set -e
 
 	# Configure the server
-	chown steam:steam $CONFIG_PATH
+	chown $STEAM_USER:$STEAM_USER $CONFIG_PATH
 
 	$DSTA_HOME/boot/settings.sh
 	$DSTA_HOME/boot/lists.sh
