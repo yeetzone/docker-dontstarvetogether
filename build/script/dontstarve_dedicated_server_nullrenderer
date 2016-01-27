@@ -4,13 +4,10 @@ if [ `whoami` != "$STEAM_USER" ]; then
 	exec gosu $STEAM_USER $0 "$@"
 fi
 
-# TODO here we are going to trap the signals
-
-cd $DST_HOME/bin
-
 # We must have at least one writer
 sleep infinity > $DSTA_HOME/console &
 
+cd $DST_HOME/bin
 exec ./dontstarve_dedicated_server_nullrenderer \
 	-console \
 	-backup_logs \
