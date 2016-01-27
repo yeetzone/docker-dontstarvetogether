@@ -4,16 +4,22 @@ if [ `whoami` != "$STEAM_USER" ]; then
 	exec gosu $STEAM_USER $0 "$@"
 fi
 
-# TODO here we are going to trap the signals
+clean_exit(){
+	echo -e "\nc_shutdown(true)" > $DSTA_HOME/console
+}
 
-cd $DST_HOME/bin
+trap clean_exit SIGHUP SIGINT SIGQUIT SIGTERM
 
 # We must have at least one writer
 sleep infinity > $DSTA_HOME/console &
 
-exec ./dontstarve_dedicated_server_nullrenderer \
+cd $DST_HOME/bin
+./dontstarve_dedicated_server_nullrenderer \
 	-console \
 	-backup_logs \
 	-persistent_storage_root `dirname $CONFIG_PATH` \
 	-conf_dir `basename $CONFIG_PATH` \
-	"$@" < $DSTA_HOME/console
+	"$@" < $DSTA_HOME/console &
+
+wait $! # This one is interrupted by the signal
+wait $! # So we wait again to the real finish of dontstarve_dedicated_server_nullrenderer
