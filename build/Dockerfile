@@ -24,7 +24,7 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4
 ARG STEAM_USER="steam"
 ARG STEAM_HOME="/opt/steam"
 ARG DST_HOME="/opt/dst"
-ARG DSTA_HOME="/usr/local/lib/dsta"
+ARG DSTA_HOME="/usr/local/share/dsta"
 ARG CONFIG_PATH="/var/lib/dsta/config"
 
 ENV STEAM_USER="$STEAM_USER" \

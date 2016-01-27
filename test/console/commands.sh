@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-echo foo > /usr/local/lib/dsta/console
-echo bar > /usr/local/lib/dsta/console
+echo foo > /usr/local/share/dsta/console
+echo bar > /usr/local/share/dsta/console
