@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-if [ `whoami` != "steam" ]; then
-	exec gosu steam $0 "$@"
+if [ `whoami` != "$STEAM_USER" ]; then
+	exec gosu $STEAM_USER $0 "$@"
 fi
 
 # TODO here we are going to trap the signals

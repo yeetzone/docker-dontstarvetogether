@@ -15,6 +15,34 @@ if [ -z "$SERVER_NAME" ]; then
 	echo "'$SERVER_NAME' has been set as the server's name."
 fi
 
+source "`dirname "$0"`/aux.sh"
+
+validate_port "SERVER_PORT"
+validate_bool "OFFLINE_ENABLE"
+validate_int "MAX_PLAYERS" 1 64
+validate_int "WHITELIST_SLOTS" 0 64
+validate_bool "PVP_ENABLE" 1 64
+validate_option "GAME_MODE" endless survival wilderness
+validate_option "SERVER_INTENTION" cooperative social competitive madness
+validate_bool "AUTOSAVER_ENABLE"
+validate_option "TICK_RATE" 10 15 30 60
+validate_int "CONNECTION_TIMEOUT" 1 3600000
+validate_bool "VOTE_KICK_ENABLE"
+validate_bool "PAUSE_WHEN_EMPTY"
+validate_port "STEAM_AUTHENTICATION_PORT"
+validate_port "STEAM_MASTER_SERVER_PORT"
+validate_bool "STEAM_GROUP_ONLY"
+
+validate_bool "CONSOLE_ENABLE"
+validate_bool "AUTOCOMPILER_ENABLE"
+validate_bool "MODS_ENABLE"
+
+validate_bool "SHARD_ENABLE"
+validate_bool "SHARD_IS_MASTER"
+validate_port "SHARD_MASTER_PORT"
+
+validate_bool "STEAM_CLOUD_DISABLE"
+
 cat <<- EOF > $file_settings
 	[network]
 	default_server_name = $SERVER_NAME_PREFIX $SERVER_NAME
@@ -60,4 +88,4 @@ cat <<- EOF > $file_settings
 	disablecloud = $STEAM_CLOUD_DISABLE
 EOF
 
-chown steam:steam $file_settings
+chown $STEAM_USER:$STEAM_USER $file_settings

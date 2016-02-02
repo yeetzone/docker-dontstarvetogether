@@ -21,17 +21,24 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4
 	&& rm /usr/local/bin/gosu.asc \
 	&& chmod +x /usr/local/bin/gosu
 
-ENV STEAM_HOME="/opt/steam" \
-	DST_HOME="/opt/dst" \
-	DSTA_HOME="/usr/local/lib/dsta" \
-	CONFIG_PATH="/var/lib/dsta/config"
+ARG STEAM_USER="steam"
+ARG STEAM_HOME="/opt/steam"
+ARG DST_HOME="/opt/dst"
+ARG DSTA_HOME="/usr/local/share/dsta"
+ARG CONFIG_PATH="/var/lib/dsta/config"
+
+ENV STEAM_USER="$STEAM_USER" \
+	STEAM_HOME="$STEAM_HOME" \
+	DST_HOME="$DST_HOME" \
+	DSTA_HOME="$DSTA_HOME" \
+	CONFIG_PATH="$CONFIG_PATH"
 
 # Add steam user.
-RUN adduser --disabled-login --gecos "Steam" --home $STEAM_HOME steam
+RUN adduser --disabled-login --gecos "Steam" --home $STEAM_HOME $STEAM_USER
 
 # Install SteamCMD.
-RUN curl -fsSL "https://cdn.steamstatic.com/client/installer/steamcmd_linux.tar.gz" | gosu steam tar -xzvC $STEAM_HOME \
-	&& gosu steam $STEAM_HOME/steamcmd.sh \
+RUN curl -fsSL "https://cdn.steamstatic.com/client/installer/steamcmd_linux.tar.gz" | gosu $STEAM_USER tar -xzvC $STEAM_HOME \
+	&& gosu $STEAM_USER $STEAM_HOME/steamcmd.sh \
 		+@ShutdownOnFailedCommand 1 \
 		+quit \
 	&& rm -rf $STEAM_HOME/Steam/logs $STEAM_HOME/Steam/appcache/httpcache \
@@ -39,9 +46,9 @@ RUN curl -fsSL "https://cdn.steamstatic.com/client/installer/steamcmd_linux.tar.
 
 # Install Don't Starve Together Server.
 RUN mkdir -p $DST_HOME \
-	&& chown steam:steam $DST_HOME \
+	&& chown $STEAM_USER:$STEAM_USER $DST_HOME \
 	&& sync \
-	&& gosu steam $STEAM_HOME/steamcmd.sh \
+	&& gosu $STEAM_USER $STEAM_HOME/steamcmd.sh \
 		+@ShutdownOnFailedCommand 1 \
 		+login anonymous \
 		+force_install_dir $DST_HOME \
@@ -59,13 +66,15 @@ COPY /docker-entrypoint.sh /entrypoint.sh
 # Copy static files.
 COPY /static $DSTA_HOME
 RUN mkfifo $DSTA_HOME/console \
-	&& chown -R steam:steam $DSTA_HOME \
+	&& chown -R $STEAM_USER:$STEAM_USER $DSTA_HOME \
 	&& mkdir -p `dirname $CONFIG_PATH` \
-	&& chown steam:steam `dirname $CONFIG_PATH`
+	&& chown $STEAM_USER:$STEAM_USER `dirname $CONFIG_PATH`
+
+ARG SERVER_PORT=10999
 
 # Set environment variables.
 ENV SERVER_DESCRIPTION="Powered by DST Academy." \
-	SERVER_PORT=10999 \
+	SERVER_PORT="$SERVER_PORT" \
 	OFFLINE_ENABLE=false \
 	MAX_PLAYERS=4 \
 	WHITELIST_SLOTS=0 \
@@ -90,7 +99,7 @@ ENV SERVER_DESCRIPTION="Powered by DST Academy." \
 	STEAM_CLOUD_DISABLE=true
 
 # Expose default server port.
-EXPOSE 10999/udp
+EXPOSE $SERVER_PORT/udp
 
 # Set up a volume for configuration files.
 VOLUME ["$CONFIG_PATH"]
