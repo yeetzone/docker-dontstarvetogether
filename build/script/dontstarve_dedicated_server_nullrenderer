@@ -14,12 +14,12 @@ trap clean_exit SIGHUP SIGINT SIGQUIT SIGTERM
 sleep infinity > $DSTA_HOME/console &
 
 cd $DST_HOME/bin
-./dontstarve_dedicated_server_nullrenderer \
+{ stdbuf -oL cat $DSTA_HOME/console & stdbuf -oL cat & } | ./dontstarve_dedicated_server_nullrenderer \
 	-console \
 	-backup_logs \
 	-persistent_storage_root `dirname $CONFIG_PATH` \
 	-conf_dir `basename $CONFIG_PATH` \
-	"$@" < $DSTA_HOME/console &
+	"$@" &
 
 wait $! # This one is interrupted by the signal
 wait $! # So we wait again to the real finish of dontstarve_dedicated_server_nullrenderer
