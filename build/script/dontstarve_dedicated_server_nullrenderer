@@ -15,4 +15,4 @@ exec ./dontstarve_dedicated_server_nullrenderer \
 	-conf_dir "." \
 	-cluster `basename $CLUSTER_PATH` \
 	-shard "$SHARD_NAME" \
-	"$@" < $DSTA_HOME/console
+	"$@" < <({ stdbuf -oL cat $DSTA_HOME/console & stdbuf -oL cat & })
