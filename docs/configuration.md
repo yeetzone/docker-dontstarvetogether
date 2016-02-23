@@ -102,13 +102,9 @@ Enables/disables automatic saving of the world's state after each ingame-day.
 Sets the servers tick-rate. A higher tick-rate means a smoother
 gameplay but also more bandwidth is needed and more CPU-power is used.
 - 15 *[default]*
+- 20
 - 30
 - 60
-
-**CONNECTION_TIMEOUT**  
-Defines the time in milliseconds after a non-responding player gets disconnected.
-- *number*  *[default: 5000]*  
-  *Example:* `10000` *(10 seconds)*
 
 **VOTE_KICK_ENABLE**  
 Enables/disables the possibility to kick players via voting.
@@ -150,15 +146,6 @@ Disables/enables the ingame-console for administrators.
 - true *[default]*
 - false
 
-**AUTOCOMPILER_ENABLE**  
-- true *[default]*
-- false
-
-**MODS_ENABLE**  
-Enables/disables mod-support.
-- true *[default]*
-- false
-
 ### Shard
 Configures server-sharding.
 
@@ -188,7 +175,7 @@ Defines the master-server's ip-address for slave-servers.
 **SHARD_MASTER_PORT**  
 Defines the master-server's port. This needs to be set to
 the same port for the master-server and all slave-servers.
-- *port-number*
+- *port-number* *[default: 10888]*
 
 **SHARD_BIND_IP**  
 Configures the IP-address for which to allow incoming shard-connections from.
@@ -200,14 +187,6 @@ Sets a unique and secret cluster key for validating incoming shard-connections.
 This needs to be the same for the master-server and all slave-servers.
 - *text*  
   *Example:* `secret-and-equal-for-all-shards`
-
-### Steam
-Sets Steam-related options.
-
-**STEAM_CLOUD_DISABLE**  
-Enables/diables the Steam Cloud synchronization.
-- true *[default]*
-- false
 
 ### World
 Defines world-related settings.

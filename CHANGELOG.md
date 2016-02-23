@@ -6,6 +6,10 @@
 - Adopt the new file structure based on clusters.
 - Rename environment variable `SERVER_TOKEN` to `TOKEN`.
 - Move the token outside the settings files.
+- Set a default value for `SHARD_MASTER_PORT`: 10888.
+
+### Removed
+- Remove environment variables: `AUTOCOMPILER_ENABLE`, `CONNECTION_TIMEOUT`, `MODS_ENABLE` and `STEAM_CLOUD_DISABLE`.
 
 ## [0.4.0]
 
