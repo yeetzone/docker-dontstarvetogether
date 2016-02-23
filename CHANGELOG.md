@@ -2,6 +2,9 @@
 
 ## [next]
 
+### Added
+- Add environment variables: `LAN_ONLY` and `MAX_SNAPSHOTS`.
+
 ### Changed
 - Adopt the new file structure based on clusters.
 - Rename environment variable `SERVER_TOKEN` to `TOKEN`.

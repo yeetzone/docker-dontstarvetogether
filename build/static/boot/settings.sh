@@ -26,12 +26,14 @@ validate_bool "AUTOSAVER_ENABLE"
 validate_option "TICK_RATE" 15 20 30 60
 validate_bool "VOTE_KICK_ENABLE"
 validate_bool "PAUSE_WHEN_EMPTY"
+validate_bool "LAN_ONLY"
 validate_port "STEAM_AUTHENTICATION_PORT"
 validate_port "STEAM_MASTER_SERVER_PORT"
 validate_bool "STEAM_GROUP_ONLY"
 validate_bool "STEAM_GROUP_ADMINS"
 
 validate_bool "CONSOLE_ENABLE"
+validate_int "MAX_SNAPSHOTS" 0 1024
 
 validate_bool "SHARD_ENABLE"
 validate_bool "SHARD_IS_MASTER"
@@ -55,9 +57,11 @@ if [[ ! -f $file_cluster ]]; then
 		tick_rate = $TICK_RATE
 		offline_server = $OFFLINE_ENABLE
 		whitelist_slots = $WHITELIST_SLOTS
+		lan_only_cluster = $LAN_ONLY
 
 		[MISC]
 		console_enabled = $CONSOLE_ENABLE
+		max_snapshots = $MAX_SNAPSHOTS
 
 		[SHARD]
 		shard_enabled = $SHARD_ENABLE
