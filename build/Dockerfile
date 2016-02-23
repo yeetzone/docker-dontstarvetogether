@@ -73,13 +73,13 @@ RUN mkfifo $DSTA_HOME/console \
 ARG SERVER_PORT=10999
 
 # Set environment variables.
-ENV SERVER_DESCRIPTION="Powered by DST Academy." \
+ENV DESCRIPTION="Powered by DST Academy." \
 	SERVER_PORT="$SERVER_PORT" \
 	MAX_PLAYERS=4 \
 	WHITELIST_SLOTS=0 \
 	PVP_ENABLE=false \
 	GAME_MODE=survival \
-	SERVER_INTENTION=cooperative \
+	INTENTION=cooperative \
 	AUTOSAVER_ENABLE=true \
 	TICK_RATE=15 \
 	VOTE_KICK_ENABLE=true \

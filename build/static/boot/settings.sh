@@ -3,14 +3,14 @@
 file_cluster="$CLUSTER_PATH/cluster.ini"
 file_server="$CLUSTER_PATH/$SHARD_NAME/server.ini"
 
-if [ -z "$SERVER_NAME" ]; then
+if [ -z "$NAME" ]; then
 	selectRandomLine(){
 		mapfile list < $1
 		echo ${list[$RANDOM % ${#list[@]}]}
 	}
 
-	SERVER_NAME="`selectRandomLine $DSTA_HOME/data/adjectives.txt` `selectRandomLine $DSTA_HOME/data/names.txt`"
-	echo "'$SERVER_NAME' has been set as the server's name."
+	NAME="`selectRandomLine $DSTA_HOME/data/adjectives.txt` `selectRandomLine $DSTA_HOME/data/names.txt`"
+	echo "'$NAME' has been set as the cluster's name."
 fi
 
 source "`dirname "$0"`/aux.sh"
@@ -21,7 +21,7 @@ validate_int "MAX_PLAYERS" 1 64
 validate_int "WHITELIST_SLOTS" 0 64
 validate_bool "PVP_ENABLE"
 validate_option "GAME_MODE" endless survival wilderness
-validate_option "SERVER_INTENTION" cooperative social competitive madness
+validate_option "INTENTION" cooperative social competitive madness
 validate_bool "AUTOSAVER_ENABLE"
 validate_option "TICK_RATE" 15 20 30 60
 validate_bool "VOTE_KICK_ENABLE"
@@ -47,10 +47,10 @@ if [[ ! -f $file_cluster ]]; then
 		vote_kick_enabled = $VOTE_KICK_ENABLE
 
 		[NETWORK]
-		cluster_name = $SERVER_NAME_PREFIX $SERVER_NAME
-		cluster_description = $SERVER_DESCRIPTION
-		cluster_intention = $SERVER_INTENTION
-		cluster_password = $SERVER_PASSWORD
+		cluster_name = $NAME_PREFIX $NAME
+		cluster_description = $DESCRIPTION
+		cluster_intention = $INTENTION
+		cluster_password = $PASSWORD
 		autosaver_enabled = $AUTOSAVER_ENABLE
 		tick_rate = $TICK_RATE
 		offline_server = $OFFLINE_ENABLE

@@ -6,7 +6,7 @@ to use `docker-compose` instead, which makes it easier to configure all environm
 
 **Example**:
 ```sh
-docker run -itd -p 10999:10999/udp -e TOKEN="Token" -e SERVER_NAME="Name" -e MAX_PLAYERS=10 dstacademy/server
+docker run -itd -p 10999:10999/udp -e TOKEN="Token" -e NAME="Name" -e MAX_PLAYERS=10 dstacademy/server
 ```
 
 You can chain as many variables as you need. If you want to pass lots of them, it's easier and more
@@ -21,7 +21,7 @@ An `.env` file's contents must look like this and can hold all needed variables:
 ```ini
 # This is a comment
 TOKEN=Token
-SERVER_NAME=Name
+NAME=Name
 MAX_PLAYERS=10
 ```
 
@@ -40,21 +40,21 @@ To [generate a token][howto-token] you need a copy of DST.
 ### Network
 Configures network-related settings.
 
-**SERVER_NAME**  
+**NAME**  
 Sets the server's name. Shows up on the public server-list and in-game.
 Setting a custom server-name is not required but highly recommended.
 If no name is configured, a random name will be generated.
 - *text* *[default: *RANDOM*]*
 
-**SERVER_DESCRIPTION**  
+**DESCRIPTION**  
 Sets the server's description. Shows up on the public server-list and in-game.
 - *text* *[default: Powered by DST-Academy.]*
 
-**SERVER_NAME_PREFIX**  
+**NAME_PREFIX**  
 Defines text to prepend to the server's name.
 - *text*
 
-**SERVER_PASSWORD**  
+**PASSWORD**  
 Defines a server password so only players knowing the password can connect.
 - *text*
 
@@ -86,7 +86,7 @@ Defines which game-mode the server runs on.
 - endless
 - wilderness
 
-**SERVER_INTENTION**  
+**INTENTION**  
 Configures the server's gameplay-intention for players.
 - social
 - cooperative *[default]*

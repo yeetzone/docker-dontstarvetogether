@@ -7,6 +7,7 @@
 - Rename environment variable `SERVER_TOKEN` to `TOKEN`.
 - Move the token outside the settings files.
 - Set a default value for `SHARD_MASTER_PORT`: 10888.
+- Rename environment variables: `SERVER_NAME` to `NAME`, `SERVER_DESCRIPTION` to `DESCRIPTION`, `SERVER_NAME_PREFIX` to `NAME_PREFIX`, `SERVER_PASSWORD` to `PASSWORD` and `SERVER_INTENTION` to `INTENTION`.
 
 ### Removed
 - Remove environment variables: `AUTOCOMPILER_ENABLE`, `CONNECTION_TIMEOUT`, `MODS_ENABLE` and `STEAM_CLOUD_DISABLE`.

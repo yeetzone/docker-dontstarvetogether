@@ -41,12 +41,12 @@ diff $log_txt $aux || exit 1
 docker rm -fv $container_id > /dev/null
 
 echo -n "" > $log_txt
-docker run --rm -e SERVER_NAME=foo $1 dst-server log > $aux 2> $aux1
+docker run --rm -e NAME=foo $1 dst-server log > $aux 2> $aux1
 diff $log_txt $aux || exit 1
 diff $log_txt $aux1 || exit 1
-docker run --rm -e SERVER_NAME=foo $1 dst-server log --server > $aux 2> $aux1
+docker run --rm -e NAME=foo $1 dst-server log --server > $aux 2> $aux1
 diff $log_txt $aux || exit 1
 diff $log_txt $aux1 || exit 1
-docker run --rm -e SERVER_NAME=foo $1 dst-server log --chat > $aux 2> $aux1
+docker run --rm -e NAME=foo $1 dst-server log --chat > $aux 2> $aux1
 diff $log_txt $aux || exit 1
 diff $log_txt $aux1 || exit 1
