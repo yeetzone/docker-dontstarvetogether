@@ -21,7 +21,7 @@ validate_port "SERVER_PORT"
 validate_bool "OFFLINE_ENABLE"
 validate_int "MAX_PLAYERS" 1 64
 validate_int "WHITELIST_SLOTS" 0 64
-validate_bool "PVP_ENABLE" 1 64
+validate_bool "PVP_ENABLE"
 validate_option "GAME_MODE" endless survival wilderness
 validate_option "SERVER_INTENTION" cooperative social competitive madness
 validate_bool "AUTOSAVER_ENABLE"
