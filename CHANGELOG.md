@@ -2,6 +2,9 @@
 
 ## [next]
 
+### Changed
+- Adopt the new file structure based on clusters.
+
 ## [0.4.0]
 
 ### Added

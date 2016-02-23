@@ -5,17 +5,17 @@ usage(){
 }
 
 if [ $# -eq 0 ]; then
-	log=$CONFIG_PATH/log.txt
+	log=$CLUSTER_PATH/$SHARD_NAME/server_log.txt
 elif [ $1 == "--help" ]; then
 	usage
 	exit 0
 elif [ $# -eq 1 ]; then
 	case $1 in
 		--server)
-			log=$CONFIG_PATH/log.txt
+			log=$CLUSTER_PATH/$SHARD_NAME/server_log.txt
 			;;
 		--chat)
-			log=$CONFIG_PATH/log_chat.txt
+			log=$CLUSTER_PATH/$SHARD_NAME/server_log_chat.txt
 			;;
 	esac
 fi

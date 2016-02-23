@@ -16,8 +16,10 @@ aux=`mktemp`
 aux1=`mktemp`
 
 container_id=`docker run -d $1 sleep infinity || exit 1`
-docker cp $log_txt $container_id:/var/lib/dsta/config/log.txt
-docker cp $log_chat_txt $container_id:/var/lib/dsta/config/log_chat.txt
+docker exec $container_id mkdir /var/lib/dsta/cluster/shard
+docker exec $container_id chown steam:steam /var/lib/dsta/cluster/shard
+docker cp $log_txt $container_id:/var/lib/dsta/cluster/shard/server_log.txt
+docker cp $log_chat_txt $container_id:/var/lib/dsta/cluster/shard/server_log_chat.txt
 docker exec $container_id dst-server log > $aux
 diff $log_txt $aux || exit 1
 docker exec $container_id dst-server log --server > $aux

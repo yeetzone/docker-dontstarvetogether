@@ -14,6 +14,8 @@ sleep infinity > $DSTA_HOME/console &
 exec ./dontstarve_dedicated_server_nullrenderer \
 	-console \
 	-backup_logs \
-	-persistent_storage_root `dirname $CONFIG_PATH` \
-	-conf_dir `basename $CONFIG_PATH` \
+	-persistent_storage_root `dirname $CLUSTER_PATH` \
+	-conf_dir "." \
+	-cluster `basename $CLUSTER_PATH` \
+	-shard "$SHARD_NAME" \
 	"$@" < $DSTA_HOME/console

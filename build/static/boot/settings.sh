@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-file_settings="$CONFIG_PATH/settings.ini"
+file_settings="$CLUSTER_PATH/settings.ini"
 if [ -f $file_settings ]; then
 	exit 0
 fi
