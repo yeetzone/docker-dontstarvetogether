@@ -6,7 +6,7 @@ to use `docker-compose` instead, which makes it easier to configure all environm
 
 **Example**:
 ```sh
-docker run -itd -p 10999:10999/udp -e SERVER_TOKEN="Token" -e SERVER_NAME="Name" -e MAX_PLAYERS=10 dstacademy/server
+docker run -itd -p 10999:10999/udp -e TOKEN="Token" -e SERVER_NAME="Name" -e MAX_PLAYERS=10 dstacademy/server
 ```
 
 You can chain as many variables as you need. If you want to pass lots of them, it's easier and more
@@ -20,7 +20,7 @@ docker run -itd --env-file=".env" dstacademy/server
 An `.env` file's contents must look like this and can hold all needed variables:
 ```ini
 # This is a comment
-SERVER_TOKEN=Token
+TOKEN=Token
 SERVER_NAME=Name
 MAX_PLAYERS=10
 ```
@@ -32,7 +32,7 @@ available environment variables correspond to the `settings.ini` variables used 
 ### Account
 Sets account-related options.
 
-**SERVER_TOKEN** *required*  
+**TOKEN** *required*  
 Defines the server's token which is needed to run it.
 To [generate a token][howto-token] you need a copy of DST.
 - *text*

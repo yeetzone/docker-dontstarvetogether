@@ -66,9 +66,6 @@ cat <<- EOF > $file_settings
 	steam_group_only = $STEAM_GROUP_ONLY
 	steam_group_admins = $STEAM_GROUP_ADMINS
 
-	[account]
-	server_token = $SERVER_TOKEN
-
 	[misc]
 	console_enabled = $CONSOLE_ENABLE
 	autocompiler_enabled = $AUTOCOMPILER_ENABLE

@@ -4,6 +4,8 @@
 
 ### Changed
 - Adopt the new file structure based on clusters.
+- Rename environment variable `SERVER_TOKEN` to `TOKEN`.
+- Move the token outside the settings files.
 
 ## [0.4.0]
 
