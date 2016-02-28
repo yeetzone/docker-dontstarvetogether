@@ -4,7 +4,7 @@ if [ $1 == "dst-server" ]; then
 	set -e
 
 	# Configure the server
-	mkdir -p $CLUSTER_PATH/$SHARD_NAME/save
+	mkdir -p $CLUSTER_PATH/$SHARD_NAME
 	chown -R $STEAM_USER:$STEAM_USER $CLUSTER_PATH
 
 	$DSTA_HOME/boot/token.sh

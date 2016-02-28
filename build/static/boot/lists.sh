@@ -10,10 +10,10 @@ create_list(){
 }
 
 # Create the adminlist.txt file.
-create_list "$ADMINLIST" "$CLUSTER_PATH/$SHARD_NAME/save/adminlist.txt"
+create_list "$ADMINLIST" "$CLUSTER_PATH/adminlist.txt"
 
 # Create the whitelist.txt file.
-create_list "$WHITELIST" "$CLUSTER_PATH/$SHARD_NAME/save/whitelist.txt"
+create_list "$WHITELIST" "$CLUSTER_PATH/whitelist.txt"
 
 # Create the blocklist.txt file.
-create_list "$BLOCKLIST" "$CLUSTER_PATH/$SHARD_NAME/save/blocklist.txt"
+create_list "$BLOCKLIST" "$CLUSTER_PATH/blocklist.txt"
