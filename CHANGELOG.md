@@ -3,6 +3,8 @@
 ## [next]
 
 ### Added
+- Add the `-backup_logs` argument to create a backup of the old logs.
+- Implement a environment variable validation.
 - Add environment variables: `LAN_ONLY` and `MAX_SNAPSHOTS`.
 
 ### Changed
