@@ -36,3 +36,7 @@ validate_option(){
 		return 1
 	fi
 }
+
+conf() {
+	[[ -n "$2" ]] && echo "$1 = $2"
+}

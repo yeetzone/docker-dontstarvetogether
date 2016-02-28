@@ -87,9 +87,9 @@ Defines which game-mode the server runs on.
 - wilderness
 
 **INTENTION**  
-Configures the server's gameplay-intention for players.
+Configures the server's gameplay-intention for players. The default value depends on **GAME_MODE**
 - social
-- cooperative *[default]*
+- cooperative
 - competitive
 - madness
 
