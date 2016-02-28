@@ -83,14 +83,18 @@ if [[ ! -f $file_server ]]; then
 		[NETWORK]
 		server_port = $SERVER_PORT
 
-		[SHARD]
-		is_master = $SHARD_IS_MASTER
-		name = $SHARD_NAME
-		shard_id = $SHARD_ID
-
 		[STEAM]
 		master_server_port = $STEAM_MASTER_SERVER_PORT
 		authentication_port = $STEAM_AUTHENTICATION_PORT
+
+		[SHARD]
+		is_master = $SHARD_IS_MASTER
+		name = $SHARD_NAME
 	EOF
+
+	if [[ -n "$SHARD_ID" ]]; then
+		echo "id = $SHARD_ID" >> $file_server
+	fi
+
 	chown $STEAM_USER:$STEAM_USER $file_server
 fi
