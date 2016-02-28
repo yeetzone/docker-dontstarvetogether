@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-file_world_override="$CONFIG_PATH/worldgenoverride.lua"
+file_world_override="$CLUSTER_PATH/$SHARD_NAME/worldgenoverride.lua"
 
 if [ -f $file_world_override ]; then
 	exit 0

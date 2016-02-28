@@ -11,7 +11,7 @@ Basic commands to maintain the DST:A Dedicated Server.
 **Start the Server**  
 Starts the server. On boot the game-server checks for updates and performs them.  
 Docker Engine:
-`docker run -itd -p 10999:10999/udp -e SERVER_TOKEN="server-token" dstacademy/server:latest`  
+`docker run -itd -p 10999:10999/udp -e TOKEN="server-token" dstacademy/server:latest`  
 Docker Compose:
 `docker-compose up -d`
 

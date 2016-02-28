@@ -2,6 +2,21 @@
 
 ## [next]
 
+### Added
+- Add the `-backup_logs` argument to create a backup of the old logs.
+- Implement a environment variable validation.
+- Add environment variables: `LAN_ONLY` and `MAX_SNAPSHOTS`.
+
+### Changed
+- Adopt the new file structure based on clusters.
+- Rename environment variable `SERVER_TOKEN` to `TOKEN`.
+- Move the token outside the settings files.
+- Set a default value for `SHARD_MASTER_PORT`: 10888.
+- Rename environment variables: `SERVER_NAME` to `NAME`, `SERVER_DESCRIPTION` to `DESCRIPTION`, `SERVER_NAME_PREFIX` to `NAME_PREFIX`, `SERVER_PASSWORD` to `PASSWORD` and `SERVER_INTENTION` to `INTENTION`.
+
+### Removed
+- Remove environment variables: `AUTOCOMPILER_ENABLE`, `CONNECTION_TIMEOUT`, `MODS_ENABLE` and `STEAM_CLOUD_DISABLE`.
+
 ## [0.4.0]
 
 ### Added

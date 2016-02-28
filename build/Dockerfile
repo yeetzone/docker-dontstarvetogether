@@ -25,13 +25,13 @@ ARG STEAM_USER="steam"
 ARG STEAM_HOME="/opt/steam"
 ARG DST_HOME="/opt/dst"
 ARG DSTA_HOME="/usr/local/share/dsta"
-ARG CONFIG_PATH="/var/lib/dsta/config"
+ARG CLUSTER_PATH="/var/lib/dsta/cluster"
 
 ENV STEAM_USER="$STEAM_USER" \
 	STEAM_HOME="$STEAM_HOME" \
 	DST_HOME="$DST_HOME" \
 	DSTA_HOME="$DSTA_HOME" \
-	CONFIG_PATH="$CONFIG_PATH"
+	CLUSTER_PATH="$CLUSTER_PATH"
 
 # Add steam user.
 RUN adduser --disabled-login --gecos "Steam" --home $STEAM_HOME $STEAM_USER
@@ -67,23 +67,21 @@ COPY /docker-entrypoint.sh /entrypoint.sh
 COPY /static $DSTA_HOME
 RUN mkfifo $DSTA_HOME/console \
 	&& chown -R $STEAM_USER:$STEAM_USER $DSTA_HOME \
-	&& mkdir -p `dirname $CONFIG_PATH` \
-	&& chown $STEAM_USER:$STEAM_USER `dirname $CONFIG_PATH`
+	&& mkdir -p `dirname $CLUSTER_PATH` \
+	&& chown $STEAM_USER:$STEAM_USER `dirname $CLUSTER_PATH`
 
 ARG SERVER_PORT=10999
 
 # Set environment variables.
-ENV SERVER_DESCRIPTION="Powered by DST Academy." \
+ENV DESCRIPTION="Powered by DST Academy." \
 	SERVER_PORT="$SERVER_PORT" \
-	OFFLINE_ENABLE=false \
 	MAX_PLAYERS=4 \
 	WHITELIST_SLOTS=0 \
 	PVP_ENABLE=false \
 	GAME_MODE=survival \
-	SERVER_INTENTION=cooperative \
+	INTENTION=cooperative \
 	AUTOSAVER_ENABLE=true \
 	TICK_RATE=15 \
-	CONNECTION_TIMEOUT=5000 \
 	VOTE_KICK_ENABLE=true \
 	PAUSE_WHEN_EMPTY=true \
 	STEAM_AUTHENTICATION_PORT=8766 \
@@ -91,18 +89,17 @@ ENV SERVER_DESCRIPTION="Powered by DST Academy." \
 	STEAM_GROUP_ONLY=false \
 	STEAM_GROUP_ADMINS=false \
 	CONSOLE_ENABLE=true \
-	AUTOCOMPILER_ENABLE=false \
-	MODS_ENABLE=true \
 	SHARD_ENABLE=false \
+	SHARD_NAME=shard \
 	SHARD_IS_MASTER=false \
 	SHARD_BIND_IP="0.0.0.0" \
-	STEAM_CLOUD_DISABLE=true
+	SHARD_MASTER_PORT=10888
 
 # Expose default server port.
 EXPOSE $SERVER_PORT/udp
 
 # Set up a volume for configuration files.
-VOLUME ["$CONFIG_PATH"]
+VOLUME ["$CLUSTER_PATH"]
 
 # Set entrypoint and default command.
 ENTRYPOINT ["/entrypoint.sh"]
