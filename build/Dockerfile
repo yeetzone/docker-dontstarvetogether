@@ -21,17 +21,11 @@ RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4
 	&& rm /usr/local/bin/gosu.asc \
 	&& chmod +x /usr/local/bin/gosu
 
-ARG STEAM_USER="steam"
-ARG STEAM_HOME="/opt/steam"
-ARG DST_HOME="/opt/dst"
-ARG DSTA_HOME="/usr/local/share/dsta"
-ARG CLUSTER_PATH="/var/lib/dsta/cluster"
-
-ENV STEAM_USER="$STEAM_USER" \
-	STEAM_HOME="$STEAM_HOME" \
-	DST_HOME="$DST_HOME" \
-	DSTA_HOME="$DSTA_HOME" \
-	CLUSTER_PATH="$CLUSTER_PATH"
+ENV STEAM_USER="steam" \
+	STEAM_HOME="/opt/steam" \
+	DST_HOME="/opt/dst" \
+	DSTA_HOME="/usr/local/share/dsta" \
+	CLUSTER_PATH="/var/lib/dsta/cluster"
 
 # Add steam user.
 RUN adduser --disabled-login --gecos "Steam" --home $STEAM_HOME $STEAM_USER
@@ -70,11 +64,9 @@ RUN mkfifo $DSTA_HOME/console \
 	&& mkdir -p `dirname $CLUSTER_PATH` \
 	&& chown $STEAM_USER:$STEAM_USER `dirname $CLUSTER_PATH`
 
-ARG SERVER_PORT=10999
-
 # Set environment variables.
 ENV DESCRIPTION="Powered by DST Academy." \
-	SERVER_PORT="$SERVER_PORT" \
+	SERVER_PORT="10999" \
 	MAX_PLAYERS=4 \
 	GAME_MODE=survival \
 	VOTE_KICK_ENABLE=true \
