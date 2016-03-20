@@ -20,7 +20,7 @@ Vagrant.configure('2') do |config|
   # VirtualBox
   config.vm.provider :virtualbox do |provider, config|
     provider.gui = false
-    provider.name = 'DST:A Server'
+    provider.name = 'DSTA-Server'
     provider.customize ['modifyvm', :id, '--ostype', 'Ubuntu_64']
     provider.customize ['modifyvm', :id, '--memory', 4096]
     provider.customize ['modifyvm', :id, '--acpi', 'on']
@@ -35,7 +35,7 @@ Vagrant.configure('2') do |config|
   [:vmware_workstation, :vmware_fusion].each do |provider|
     config.vm.provider provider do |provider, config|
       provider.gui = false
-      provider.vmx['displayName'] = 'DST:A Server'
+      provider.vmx['displayName'] = 'DSTA-Server'
       provider.vmx['guestOS'] = 'ubuntu-64'
       provider.vmx['numvcpus'] = 2
       provider.vmx['memsize'] = 4096
@@ -45,7 +45,7 @@ Vagrant.configure('2') do |config|
   # Parallels
   config.vm.provider :parallels do |provider, config|
     provider.gui = false
-    provider.name = 'DST:A Server'
+    provider.name = 'DSTA-Server'
     provider.cpus = 2
     provider.memory = 4096
     provider.optimize_power_consumption = false
