@@ -5,8 +5,8 @@ Vagrant.require_version '>= 1.8.0'
 Vagrant.configure('2') do |config|
 
   # Base
-  config.vm.box = 'bento/ubuntu-15.04'
-  config.vm.box_version = '>= 2.2'
+  config.vm.box = 'boxcutter/ubuntu1510'
+  config.vm.box_version = '>= 2.0'
   config.vm.hostname = 'dsta-server'
 
   # Ports
