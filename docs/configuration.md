@@ -6,7 +6,7 @@ to use `docker-compose` instead, which makes it easier to configure all environm
 
 **Example**:
 ```sh
-docker run -itd -p 10999:10999/udp -e SERVER_TOKEN="Token" -e SERVER_NAME="Name" -e MAX_PLAYERS=10 dstacademy/server
+docker run -itd -p 10999:10999/udp -e TOKEN="Token" -e NAME="Name" -e MAX_PLAYERS=10 dstacademy/server
 ```
 
 You can chain as many variables as you need. If you want to pass lots of them, it's easier and more
@@ -20,8 +20,8 @@ docker run -itd --env-file=".env" dstacademy/server
 An `.env` file's contents must look like this and can hold all needed variables:
 ```ini
 # This is a comment
-SERVER_TOKEN=Token
-SERVER_NAME=Name
+TOKEN=Token
+NAME=Name
 MAX_PLAYERS=10
 ```
 
@@ -32,7 +32,7 @@ available environment variables correspond to the `settings.ini` variables used 
 ### Account
 Sets account-related options.
 
-**SERVER_TOKEN** *required*  
+**TOKEN** *required*  
 Defines the server's token which is needed to run it.
 To [generate a token][howto-token] you need a copy of DST.
 - *text*
@@ -40,26 +40,21 @@ To [generate a token][howto-token] you need a copy of DST.
 ### Network
 Configures network-related settings.
 
-**SERVER_NAME**  
+**NAME**  
 Sets the server's name. Shows up on the public server-list and in-game.
 Setting a custom server-name is not required but highly recommended.
 If no name is configured, a random name will be generated.
 - *text* *[default: *RANDOM*]*
 
-**SERVER_DESCRIPTION**  
+**DESCRIPTION**  
 Sets the server's description. Shows up on the public server-list and in-game.
 - *text* *[default: Powered by DST-Academy.]*
 
-**SERVER_NAME_PREFIX**  
+**NAME_PREFIX**  
 Defines text to prepend to the server's name.
 - *text*
 
-**SERVER_PORT**  
-Defines the server's public port for players to connect to. Generally it's not needed to change
-the server's port-number, because the external/public port-number can be configured via Docker.
-- *number* *[default: 10999]*
-
-**SERVER_PASSWORD**  
+**PASSWORD**  
 Defines a server password so only players knowing the password can connect.
 - *text*
 
@@ -91,10 +86,10 @@ Defines which game-mode the server runs on.
 - endless
 - wilderness
 
-**SERVER_INTENTION**  
-Configures the server's gameplay-intention for players.
+**INTENTION**  
+Configures the server's gameplay-intention for players. The default value depends on **GAME_MODE**
 - social
-- cooperative *[default]*
+- cooperative
 - competitive
 - madness
 
@@ -107,13 +102,9 @@ Enables/disables automatic saving of the world's state after each ingame-day.
 Sets the servers tick-rate. A higher tick-rate means a smoother
 gameplay but also more bandwidth is needed and more CPU-power is used.
 - 15 *[default]*
+- 20
 - 30
 - 60
-
-**CONNECTION_TIMEOUT**  
-Defines the time in milliseconds after a non-responding player gets disconnected.
-- *number*  *[default: 5000]*  
-  *Example:* `10000` *(10 seconds)*
 
 **VOTE_KICK_ENABLE**  
 Enables/disables the possibility to kick players via voting.
@@ -155,15 +146,6 @@ Disables/enables the ingame-console for administrators.
 - true *[default]*
 - false
 
-**AUTOCOMPILER_ENABLE**  
-- true *[default]*
-- false
-
-**MODS_ENABLE**  
-Enables/disables mod-support.
-- true *[default]*
-- false
-
 ### Shard
 Configures server-sharding.
 
@@ -193,7 +175,7 @@ Defines the master-server's ip-address for slave-servers.
 **SHARD_MASTER_PORT**  
 Defines the master-server's port. This needs to be set to
 the same port for the master-server and all slave-servers.
-- *port-number*
+- *port-number* *[default: 10888]*
 
 **SHARD_BIND_IP**  
 Configures the IP-address for which to allow incoming shard-connections from.
@@ -205,14 +187,6 @@ Sets a unique and secret cluster key for validating incoming shard-connections.
 This needs to be the same for the master-server and all slave-servers.
 - *text*  
   *Example:* `secret-and-equal-for-all-shards`
-
-### Steam
-Sets Steam-related options.
-
-**STEAM_CLOUD_DISABLE**  
-Enables/diables the Steam Cloud synchronization.
-- true *[default]*
-- false
 
 ### World
 Defines world-related settings.

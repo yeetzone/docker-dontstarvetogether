@@ -1,63 +1,118 @@
 #!/usr/bin/env bash
 
-file_settings="$CONFIG_PATH/settings.ini"
-if [ -f $file_settings ]; then
-	exit 0
-fi
+file_cluster="$CLUSTER_PATH/cluster.ini"
+file_server="$CLUSTER_PATH/$SHARD_NAME/server.ini"
 
-if [ -z "$SERVER_NAME" ]; then
+if [ -z "$NAME" ]; then
 	selectRandomLine(){
 		mapfile list < $1
 		echo ${list[$RANDOM % ${#list[@]}]}
 	}
 
-	SERVER_NAME="`selectRandomLine $DSTA_HOME/data/adjectives.txt` `selectRandomLine $DSTA_HOME/data/names.txt`"
-	echo "'$SERVER_NAME' has been set as the server's name."
+	NAME="`selectRandomLine $DSTA_HOME/data/adjectives.txt` `selectRandomLine $DSTA_HOME/data/names.txt`"
+	echo "'$NAME' has been set as the cluster's name."
 fi
 
-cat <<- EOF > $file_settings
-	[network]
-	default_server_name = $SERVER_NAME_PREFIX $SERVER_NAME
-	default_server_description = $SERVER_DESCRIPTION
-	server_port = $SERVER_PORT
-	server_password = $SERVER_PASSWORD
-	offline_server = $OFFLINE_ENABLE
-	max_players = $MAX_PLAYERS
-	whitelist_slots = $WHITELIST_SLOTS
-	pvp = $PVP_ENABLE
-	game_mode = $GAME_MODE
-	server_intention = $SERVER_INTENTION
-	enable_autosaver = $AUTOSAVER_ENABLE
-	tick_rate = $TICK_RATE
-	connection_timeout = $CONNECTION_TIMEOUT
-	enable_vote_kick = $VOTE_KICK_ENABLE
-	pause_when_empty = $PAUSE_WHEN_EMPTY
-	steam_authentication_port = $STEAM_AUTHENTICATION_PORT
-	steam_master_server_port = $STEAM_MASTER_SERVER_PORT
-	steam_group_id = $STEAM_GROUP_ID
-	steam_group_only = $STEAM_GROUP_ONLY
-	steam_group_admins = $STEAM_GROUP_ADMINS
+source "`dirname "$0"`/aux.sh"
 
-	[account]
-	server_token = $SERVER_TOKEN
+validate_port "SERVER_PORT"
+validate_bool "OFFLINE_ENABLE"
+validate_int "MAX_PLAYERS" 1 64
+validate_int "WHITELIST_SLOTS" 0 64
+validate_bool "PVP_ENABLE"
+validate_option "GAME_MODE" endless survival wilderness
+validate_option "INTENTION" cooperative social competitive madness
+validate_bool "AUTOSAVER_ENABLE"
+validate_option "TICK_RATE" 15 20 30 60
+validate_bool "VOTE_KICK_ENABLE"
+validate_bool "PAUSE_WHEN_EMPTY"
+validate_bool "LAN_ONLY"
+validate_port "STEAM_AUTHENTICATION_PORT"
+validate_port "STEAM_MASTER_SERVER_PORT"
+validate_bool "STEAM_GROUP_ONLY"
+validate_bool "STEAM_GROUP_ADMINS"
 
-	[misc]
-	console_enabled = $CONSOLE_ENABLE
-	autocompiler_enabled = $AUTOCOMPILER_ENABLE
-	mods_enabled = $MODS_ENABLE
+validate_bool "CONSOLE_ENABLE"
+validate_int "MAX_SNAPSHOTS" 0 1024
 
-	[shard]
-	shard_enable = $SHARD_ENABLE
-	shard_name = $SHARD_NAME
-	shard_id = $SHARD_ID
-	is_master = $SHARD_IS_MASTER
-	master_ip = $SHARD_MASTER_IP
-	master_port = $SHARD_MASTER_PORT
-	bind_ip = $SHARD_BIND_IP
-	cluster_key = $SHARD_CLUSTER_KEY
+validate_bool "SHARD_ENABLE"
+validate_bool "SHARD_IS_MASTER"
+validate_port "SHARD_MASTER_PORT"
 
-	[steam]
-	disablecloud = $STEAM_CLOUD_DISABLE
-EOF
+if [[ ! -f $file_cluster ]]; then
+	exec 4>&1 1>$file_cluster
 
-chown steam:steam $file_settings
+	echo "[GAMEPLAY]"
+	conf "game_mode" "$GAME_MODE"
+	conf "max_players" "$MAX_PLAYERS"
+	conf "pvp" "$PVP_ENABLE"
+	conf "pause_when_empty" "$PAUSE_WHEN_EMPTY"
+	conf "vote_kick_enabled" "$VOTE_KICK_ENABLE"
+
+	echo
+	echo "[NETWORK]"
+	conf "cluster_name" "$NAME_PREFIX $NAME"
+	conf "cluster_description" "$DESCRIPTION"
+	conf "cluster_intention" "$INTENTION"
+	conf "cluster_password" "$PASSWORD"
+	conf "autosaver_enabled" "$AUTOSAVER_ENABLE"
+	conf "lan_only_cluster" "$LAN_ONLY"
+	conf "offline_server" "$OFFLINE_ENABLE"
+	conf "tick_rate" "$TICK_RATE"
+	conf "whitelist_slots" "$WHITELIST_SLOTS"
+
+	if [[ -n "$CONSOLE_ENABLE" ]] || [[ -n "$MAX_SNAPSHOTS" ]]; then
+		echo
+		echo "[MISC]"
+		conf "console_enabled" "$CONSOLE_ENABLE"
+		conf "max_snapshots" "$MAX_SNAPSHOTS"
+	fi
+
+	if [[ "$SHARD_ENABLE" == "true" ]]; then
+		echo
+		echo "[SHARD]"
+		conf "shard_enabled" "$SHARD_ENABLE"
+		conf "bind_ip" "$SHARD_BIND_IP"
+		conf "master_ip" "$SHARD_MASTER_IP"
+		conf "master_port" "$SHARD_MASTER_PORT"
+		conf "cluster_key" "$SHARD_CLUSTER_KEY"
+	fi
+
+	if [[ -n "$STEAM_GROUP_ID" ]] || [[ -n "$STEAM_GROUP_ONLY" ]] || [[ -n "$STEAM_GROUP_ADMINS" ]]; then
+		echo
+		echo "[STEAM]"
+		conf "steam_group_id" "$STEAM_GROUP_ID"
+		conf "steam_group_only" "$STEAM_GROUP_ONLY"
+		conf "steam_group_admins" "$STEAM_GROUP_ADMINS"
+	fi
+
+	exec 1>&4 4>&-
+
+	chown $STEAM_USER:$STEAM_USER $file_cluster
+fi
+
+if [[ ! -f $file_server ]]; then
+	exec 4>&1 1>$file_server
+
+	echo "[NETWORK]"
+	conf "server_port" "$SERVER_PORT"
+
+	if [[ "$SHARD_ENABLE" == "true" ]]; then
+		echo
+		echo "[SHARD]"
+		conf "is_master" "$SHARD_IS_MASTER"
+		conf "name" "$SHARD_NAME"
+		conf "id" "$SHARD_ID"
+	fi
+
+	if [[ -n "$STEAM_MASTER_SERVER_PORT" ]] || [[ -n "$STEAM_AUTHENTICATION_PORT" ]]; then
+		echo
+		echo "[STEAM]"
+		conf "master_server_port" "$STEAM_MASTER_SERVER_PORT"
+		conf "authentication_port" "$STEAM_AUTHENTICATION_PORT"
+	fi
+
+	exec 1>&4 4>&-
+
+	chown $STEAM_USER:$STEAM_USER $file_server
+fi

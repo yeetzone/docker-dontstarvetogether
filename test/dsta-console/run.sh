@@ -17,7 +17,7 @@ docker exec -i $container_id dst-server console "asdf" || exit 1
 docker exec -i $container_id dst-server console "abcde" - "aaaaa" < dsta-console/commands3.txt || exit 1
 docker exec -i $container_id dst-server console "xyz as" "1234" < dsta-console/commands4.txt || exit 1
 sleep 20
-docker cp $container_id:/var/lib/dsta/config/log.txt $file1
+docker cp $container_id:/var/lib/dsta/cluster/shard/server_log.txt $file1
 docker rm -fv $container_id > /dev/null
 
 grep -Fq "ConsoleInput: \"foo 1\"" $file1 || exit 1

@@ -21,19 +21,19 @@ The commands are:
 See 'dst-server help <command>' to read about a specific command.
 EOF
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server > $file2 && exit 1
+docker run --rm -e NAME=bar $1 dst-server > $file2 && exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server help > $file2 || exit 1
+docker run --rm -e NAME=bar $1 dst-server help > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server --help > $file2 || exit 1
+docker run --rm -e NAME=bar $1 dst-server --help > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server --foo 2> $file2 && exit 1
+docker run --rm -e NAME=bar $1 dst-server --foo 2> $file2 && exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server foo 2> $file2 && exit 1
+docker run --rm -e NAME=bar $1 dst-server foo 2> $file2 && exit 1
 diff $file1 $file2 || exit 1
 
 # dst-server start
@@ -50,16 +50,16 @@ usage: dst-server start [--update=all|none|game|mods]
       Update the mods and launch the server.
 EOF
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server help start > $file2 || exit 1
+docker run --rm -e NAME=bar $1 dst-server help start > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server --help start > $file2 || exit 1
+docker run --rm -e NAME=bar $1 dst-server --help start > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server start --help > $file2 || exit 1
+docker run --rm -e NAME=bar $1 dst-server start --help > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server start --help foo > $file2 || exit 1
+docker run --rm -e NAME=bar $1 dst-server start --help foo > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
 # dst-server update
@@ -67,16 +67,16 @@ cat > $file1 <<- EOF
 usage: dst-server update [--all|--game|--mods]
 EOF
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server help update > $file2 || exit 1
+docker run --rm -e NAME=bar $1 dst-server help update > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server --help update > $file2 || exit 1
+docker run --rm -e NAME=bar $1 dst-server --help update > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server update --help > $file2 || exit 1
+docker run --rm -e NAME=bar $1 dst-server update --help > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server update --help foo > $file2 || exit 1
+docker run --rm -e NAME=bar $1 dst-server update --help foo > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
 # dst-server log
@@ -84,16 +84,16 @@ cat > $file1 <<- EOF
 usage: dst-server log [--server|--chat]
 EOF
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server help log > $file2 || exit 1
+docker run --rm -e NAME=bar $1 dst-server help log > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server --help log > $file2 || exit 1
+docker run --rm -e NAME=bar $1 dst-server --help log > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server log --help > $file2 || exit 1
+docker run --rm -e NAME=bar $1 dst-server log --help > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server log --help foo > $file2 || exit 1
+docker run --rm -e NAME=bar $1 dst-server log --help foo > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
 # dst-server log
@@ -105,14 +105,14 @@ The commands are executed in command-line order.
 If command is a single dash ('-') or absent, console reads from the standard input.
 EOF
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server help console > $file2 || exit 1
+docker run --rm -e NAME=bar $1 dst-server help console > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server --help console > $file2 || exit 1
+docker run --rm -e NAME=bar $1 dst-server --help console > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server console --help > $file2 || exit 1
+docker run --rm -e NAME=bar $1 dst-server console --help > $file2 || exit 1
 diff $file1 $file2 || exit 1
 
-docker run --rm -e SERVER_NAME=bar $1 dst-server console --help foo > $file2 || exit 1
+docker run --rm -e NAME=bar $1 dst-server console --help foo > $file2 || exit 1
 diff $file1 $file2 || exit 1

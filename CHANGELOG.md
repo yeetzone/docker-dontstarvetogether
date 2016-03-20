@@ -2,6 +2,33 @@
 
 ## [next]
 
+## [0.5.0]
+
+### Added
+- Add the `backup_logs` argument to create a backup of the old logs.
+- Implement validation for environment variables.
+- Add the environment variable `LAN_ONLY`.
+- Add the environment variable `MAX_SNAPSHOTS`.
+
+### Changed
+- Adopt the new file structure based on clusters.
+- Move the token outside the settings files.
+- Set a default of `10888` for `SHARD_MASTER_PORT`.
+- Use `boxcutter/ubuntu1510` as the Vagrant base-box.
+- Change the Vagrant base-box name to be compatible with more providers.
+- Rename environment variable `SERVER_TOKEN` to `TOKEN`.
+- Rename environment variable `SERVER_NAME` to `NAME`.
+- Rename environment variable `SERVER_DESCRIPTION` to `DESCRIPTION`.
+- Rename environment variable `SERVER_NAME_PREFIX` to `NAME_PREFIX`.
+- Rename environment variable `SERVER_PASSWORD` to `PASSWORD`.
+- Rename environment variable `SERVER_INTENTION` to `INTENTION`.
+
+### Removed
+- Remove environment variable `AUTOCOMPILER_ENABLE`.
+- Remove environment variable `CONNECTION_TIMEOUT`.
+- Remove environment variable `MODS_ENABLE`.
+- Remove environment variable `STEAM_CLOUD_DISABLE`.
+
 ## [0.4.0]
 
 ### Added
@@ -52,7 +79,8 @@
 ### Added
 - Initial release.
 
-[next]: https://github.com/dst-academy/server/compare/v0.4.0...HEAD
+[next]: https://github.com/dst-academy/server/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/dst-academy/server/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/dst-academy/server/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/dst-academy/server/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/dst-academy/server/compare/v0.1.0...v0.2.0
