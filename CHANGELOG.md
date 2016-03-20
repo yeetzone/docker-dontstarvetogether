@@ -3,19 +3,29 @@
 ## [next]
 
 ### Added
-- Add the `-backup_logs` argument to create a backup of the old logs.
-- Implement a environment variable validation.
-- Add environment variables: `LAN_ONLY` and `MAX_SNAPSHOTS`.
+- Add the `backup_logs` argument to create a backup of the old logs.
+- Implement validation for environment variables.
+- Add the environment variable `LAN_ONLY`.
+- Add the environment variable `MAX_SNAPSHOTS`.
 
 ### Changed
 - Adopt the new file structure based on clusters.
-- Rename environment variable `SERVER_TOKEN` to `TOKEN`.
 - Move the token outside the settings files.
-- Set a default value for `SHARD_MASTER_PORT`: 10888.
-- Rename environment variables: `SERVER_NAME` to `NAME`, `SERVER_DESCRIPTION` to `DESCRIPTION`, `SERVER_NAME_PREFIX` to `NAME_PREFIX`, `SERVER_PASSWORD` to `PASSWORD` and `SERVER_INTENTION` to `INTENTION`.
+- Set a default of `10888` for `SHARD_MASTER_PORT`.
+- Use `boxcutter/ubuntu1510` as the Vagrant base-box.
+- Change the Vagrant base-box name to be compatible with more providers.
+- Rename environment variable `SERVER_TOKEN` to `TOKEN`.
+- Rename environment variable `SERVER_NAME` to `NAME`.
+- Rename environment variable `SERVER_DESCRIPTION` to `DESCRIPTION`.
+- Rename environment variable `SERVER_NAME_PREFIX` to `NAME_PREFIX`.
+- Rename environment variable `SERVER_PASSWORD` to `PASSWORD`.
+- Rename environment variable `SERVER_INTENTION` to `INTENTION`.
 
 ### Removed
-- Remove environment variables: `AUTOCOMPILER_ENABLE`, `CONNECTION_TIMEOUT`, `MODS_ENABLE` and `STEAM_CLOUD_DISABLE`.
+- Remove environment variable `AUTOCOMPILER_ENABLE`.
+- Remove environment variable `CONNECTION_TIMEOUT`.
+- Remove environment variable `MODS_ENABLE`.
+- Remove environment variable `STEAM_CLOUD_DISABLE`.
 
 ## [0.4.0]
 
