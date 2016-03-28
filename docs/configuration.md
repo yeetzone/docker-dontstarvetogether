@@ -92,14 +92,14 @@ Defines which game-mode the server runs on.
 - wilderness
 
 **INTENTION**  
-Configures the server's gameplay-intention for players. The default value depends on **GAME_MODE**
+Configures the server's gameplay-intention for players. The default value depends on **GAME_MODE**.
 - social
 - cooperative
 - competitive
 - madness
 
 **AUTOSAVER_ENABLE**  
-Enables/disables automatic saving of the world's state after each ingame-day.
+Enables/disables automatic saving of the world's state after each in-game day.
 - true *[default]*
 - false
 
