@@ -63,6 +63,11 @@ Controls if the server is listed and accessible publicly.
 - true
 - false *[default]*
 
+**LAN_ONLY**  
+Controls if the server is accessible from LAN only.
+- true
+- false *[default]*
+
 **MAX_PLAYERS**  
 Sets the maximum number of allowed players to connect and play simultaneously. Heavily influences
 overall performance and gameplay-experience of the server. Be sure the hardware has enough power
