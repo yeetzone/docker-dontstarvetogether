@@ -2,6 +2,9 @@
 
 ## [next]
 
+### Added
+- Add `LANGUAGE` environment variable for setting the server's language.
+
 ## [0.5.0]
 
 ### Added

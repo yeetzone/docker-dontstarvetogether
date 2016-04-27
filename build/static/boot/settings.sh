@@ -15,6 +15,10 @@ fi
 
 source "`dirname "$0"`/aux.sh"
 
+validate_option "LANGUAGE" \
+	brazilian bulgarian czech danish dutch english finnish french german \
+	greek hungarian italian japanese korean norwegian polish portuguese \
+	romanian russian schinese spanish swedish tchinese thai turkish ukrainian
 validate_port "SERVER_PORT"
 validate_bool "OFFLINE_ENABLE"
 validate_int "MAX_PLAYERS" 1 64
@@ -61,11 +65,12 @@ if [[ ! -f $file_cluster ]]; then
 	conf "tick_rate" "$TICK_RATE"
 	conf "whitelist_slots" "$WHITELIST_SLOTS"
 
-	if [[ -n "$CONSOLE_ENABLE" ]] || [[ -n "$MAX_SNAPSHOTS" ]]; then
+	if [[ -n "$CONSOLE_ENABLE" ]] || [[ -n "$MAX_SNAPSHOTS" ]] || [[ -n "$LANGUAGE" ]]; then
 		echo
 		echo "[MISC]"
 		conf "console_enabled" "$CONSOLE_ENABLE"
 		conf "max_snapshots" "$MAX_SNAPSHOTS"
+		conf "language_code" "$LANGUAGE"
 	fi
 
 	if [[ "$SHARD_ENABLE" == "true" ]]; then

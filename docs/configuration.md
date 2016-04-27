@@ -46,13 +46,42 @@ Setting a custom server-name is not required but highly recommended.
 If no name is configured, a random name will be generated.
 - *text* *[default: *RANDOM*]*
 
+**NAME_PREFIX**  
+Defines text to prepend to the server's name.
+- *text*
+
 **DESCRIPTION**  
 Sets the server's description. Shows up on the public server-list and in-game.
 - *text* *[default: Powered by DST-Academy.]*
 
-**NAME_PREFIX**  
-Defines text to prepend to the server's name.
-- *text*
+**LANGUAGE**
+Sets the server's language.
+- brazilian
+- bulgarian
+- czech
+- danish
+- dutch
+- english *[default]*
+- finnish
+- french
+- german
+- greek
+- hungarian
+- italian
+- japanese
+- korean
+- norwegian
+- polish
+- portuguese
+- romanian
+- russian
+- schinese
+- spanish
+- swedish
+- tchinese
+- thai
+- turkish
+- ukrainian
 
 **PASSWORD**  
 Defines a server password so only players knowing the password can connect.
