@@ -1,5 +1,5 @@
 FROM debian:jessie
-MAINTAINER Thomas Deinhamer <thasmo@gmail.com>
+MAINTAINER DST Academy <support@dst.academy>
 
 # Install dependencies.
 RUN dpkg --add-architecture i386 \
