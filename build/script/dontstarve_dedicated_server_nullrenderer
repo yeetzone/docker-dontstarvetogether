@@ -8,9 +8,8 @@ fi
 sleep infinity > $DSTA_HOME/console &
 
 cd $DST_HOME/bin
+
 exec ./dontstarve_dedicated_server_nullrenderer \
-	-console \
-	-backup_logs \
 	-persistent_storage_root `dirname $CLUSTER_PATH` \
 	-conf_dir "." \
 	-cluster `basename $CLUSTER_PATH` \
