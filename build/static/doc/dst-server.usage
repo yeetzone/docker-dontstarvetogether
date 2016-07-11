@@ -5,5 +5,6 @@ The commands are:
    console  Execute commands in the server console
    update   Update game and/or mods
    log      Show a log
+   version  Show the current server version
 
 See 'dst-server help <command>' to read about a specific command.

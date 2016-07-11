@@ -1,0 +1,8 @@
+usage: dst-server version [<args>]
+
+Print the currently running version of the DST server.
+
+   --upstream
+      Return the currently released upstream version.
+   --check
+      Check if the currently running version is up to date.
