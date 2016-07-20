@@ -3,7 +3,7 @@ MAINTAINER DST Academy <support@dst.academy>
 
 # Install dependencies.
 RUN dpkg --add-architecture i386 \
-	&& apt-get update -y \
+	&& apt-get update \
 	&& apt-get install -y --no-install-recommends \
 		ca-certificates \
 		curl \
