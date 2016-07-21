@@ -4,6 +4,14 @@
 
 ### Added
 - Add `LANGUAGE` environment variable for setting the server's language.
+- Implement the `version` command.
+
+### Changed
+- Update gosu to version 1.9.
+- Use our own `steamcmd` image as base-image.
+
+### Removed
+- Remove deprecated console arguments `console` and `backup_logs`.
 
 ## [0.5.0]
 
