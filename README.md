@@ -6,6 +6,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/dstacademy/server.svg)](https://hub.docker.com/r/dstacademy/server/)
 [![License](https://img.shields.io/github/license/dst-academy/server.svg?maxAge=2592000?style=flat-square)]()
 [![Slack](https://img.shields.io/badge/slack-join-E01563.svg)](https://slack.dst.academy/)
+[![Steam](https://img.shields.io/badge/steam-join-1b2838.svg)](https://steamcommunity.com/groups/dst-academy)
 
 ---
 
