@@ -1,5 +1,13 @@
-# DST:A Dedicated Server [![Build Status](https://travis-ci.org/dst-academy/server.svg?branch=develop)](https://travis-ci.org/dst-academy/server) [![Docker Pulls](https://img.shields.io/docker/pulls/dstacademy/server.svg)](https://hub.docker.com/r/dstacademy/server/) [![Slack Status](http://slack.dst.academy/badge.svg)](http://slack.dst.academy/)
-> Don't Starve Together Academy Dedicated Server for Docker.
+# Don't Starve Together - Dedicated Server
+> Dockerfile for [Don't Starve Together][website].
+
+[![Build Status](https://img.shields.io/travis/dst-academy/server/develop.svg)](https://travis-ci.org/dst-academy/server)
+[![GitHub Release](https://img.shields.io/github/release/dst-academy/server.svg)](https://github.com/dst-academy/server/releases/latest)
+[![Docker Pulls](https://img.shields.io/docker/pulls/dstacademy/server.svg)](https://hub.docker.com/r/dstacademy/server/)
+[![License](https://img.shields.io/github/license/dst-academy/server.svg?maxAge=2592000?style=flat-square)]()
+[![Slack](https://img.shields.io/badge/slack-join-E01563.svg)](https://slack.dst.academy/)
+
+---
 
 This repository provides a `Dockerfile` for building the DST:A Dedicated Server
 for the online multi-player survival game [*Don't Starve Together*][website].
