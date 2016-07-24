@@ -4,17 +4,21 @@ usage(){
 	cat $DSTA_HOME/doc/version.usage
 }
 
+clean_version(){
+	grep -Po -m 1 "\"buildid\"\s*\"(.*)\"" | grep -Po "\d*"
+}
+
 if [ "$1" == "--help" ]; then
 	usage
 	exit 0
 elif [ $# -eq 0 ]; then
-	cat $DST_HOME/steamapps/appmanifest_343050.acf | grep -Po -m 1 "\"buildid\"\s*\"(.*)\"" | grep -Po "\d*"
+	cat $DST_HOME/steamapps/appmanifest_343050.acf | clean_version
 	exit 0
 elif [ $# -eq 1 ]; then
 	case $1 in
 		--upstream)
 			rm -rf $STEAM_HOME/Steam/appcache/*
-			steamcmd +login anonymous +app_info_update 1 +app_info_print 343050 +quit | grep -Po -m 1 "\"buildid\"\s*\"(.*)\"" | grep -Po "\d*"
+			steamcmd +login anonymous +app_info_update 1 +app_info_print 343050 +quit | clean_version
 			exit 0
 			;;
 
