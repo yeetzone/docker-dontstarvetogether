@@ -7,6 +7,9 @@ usage(){
 if [ "$1" == "--help" ]; then
 	usage
 	exit 0
+elif [ $# -eq 0 ]; then
+	cat $DST_HOME/steamapps/appmanifest_343050.acf | grep -Po -m 1 "\"buildid\"\s*\"(.*)\"" | grep -Po "\d*"
+	exit 0
 elif [ $# -eq 1 ]; then
 	case $1 in
 		--upstream)
@@ -28,7 +31,7 @@ elif [ $# -eq 1 ]; then
 			fi
 			;;
 	esac
-else
-	cat $DST_HOME/steamapps/appmanifest_343050.acf | grep -Po -m 1 "\"buildid\"\s*\"(.*)\"" | grep -Po "\d*"
-	exit 0
 fi
+
+usage 1>&2
+exit 1
