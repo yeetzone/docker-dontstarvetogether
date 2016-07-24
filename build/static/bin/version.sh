@@ -25,6 +25,11 @@ elif [ $# -eq 0 ]; then
 	exit 0
 elif [ $# -eq 1 ]; then
 	case $1 in
+		--local)
+			local_version
+			exit 0
+			;;
+
 		--upstream)
 			upstream_version
 			exit 0

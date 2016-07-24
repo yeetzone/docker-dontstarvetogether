@@ -11,6 +11,9 @@ aux1=`mktemp`
 version=`docker run --rm $1 dst-server version || exit 1`
 [[ $version =~ ^[0-9]+$ ]] || ( echo "\$version == $version" && exit 1 )
 
+version=`docker run --rm $1 dst-server version --local || exit 1`
+[[ $version =~ ^[0-9]+$ ]] || ( echo "\$version == $version" && exit 1 )
+
 version=`docker run --rm $1 dst-server version --upstream || exit 1`
 [[ $version =~ ^[0-9]+$ ]] || ( echo "\$version == $version" && exit 1 )
 
@@ -22,10 +25,12 @@ else
 fi
 
 cat > $aux <<- EOF
-usage: dst-server version [--upstream|--check]
+usage: dst-server version [--local|--upstream|--check]
 
 Print the currently running version of the DST server.
 
+   --local
+      Return the local version.
    --upstream
       Return the currently released upstream version.
    --check
