@@ -10,9 +10,13 @@ RUN dpkg --add-architecture i386 \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
-ENV DST_HOME="/opt/dst" \
-	DSTA_HOME="/usr/local/share/dsta" \
-	CLUSTER_PATH="/var/lib/dsta/cluster"
+# Define build arguments.
+ARG DST_HOME
+ENV DST_HOME ${DST_HOME:-"/opt/dst"}
+ARG DSTA_HOME
+ENV DSTA_HOME ${DSTA_HOME:-"/usr/local/share/dsta"}
+ARG CLUSTER_PATH
+ENV CLUSTER_PATH ${CLUSTER_PATH:-"/var/lib/dsta/cluster"}
 
 # Install Don't Starve Together Server.
 RUN mkdir -p $DST_HOME \
