@@ -3,6 +3,7 @@
 ## [next]
 
 ### Added
+- Add `VOTE_ENABLE` environment variable for configuring voting.
 - Add `LANGUAGE` environment variable for setting the server's language.
 - Implement the `version` command.
 
