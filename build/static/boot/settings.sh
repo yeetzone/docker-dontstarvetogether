@@ -28,6 +28,7 @@ validate_option "GAME_MODE" endless survival wilderness
 validate_option "INTENTION" cooperative social competitive madness
 validate_bool "AUTOSAVER_ENABLE"
 validate_option "TICK_RATE" 15 20 30 60
+validate_bool "VOTE_ENABLE"
 validate_bool "VOTE_KICK_ENABLE"
 validate_bool "PAUSE_WHEN_EMPTY"
 validate_bool "LAN_ONLY"
@@ -51,6 +52,7 @@ if [[ ! -f $file_cluster ]]; then
 	conf "max_players" "$MAX_PLAYERS"
 	conf "pvp" "$PVP_ENABLE"
 	conf "pause_when_empty" "$PAUSE_WHEN_EMPTY"
+	conf "vote_enabled" "$VOTE_ENABLE"
 	conf "vote_kick_enabled" "$VOTE_KICK_ENABLE"
 
 	echo

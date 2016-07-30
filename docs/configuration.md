@@ -140,6 +140,11 @@ gameplay but also more bandwidth is needed and more CPU-power is used.
 - 30
 - 60
 
+**VOTE_ENABLE**  
+Enables/disables voting on the server.
+- true *[default]*
+- false
+
 **VOTE_KICK_ENABLE**  
 Enables/disables the possibility to kick players via voting.
 - true *[default]*
