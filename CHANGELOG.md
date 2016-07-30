@@ -12,6 +12,7 @@
 - Use our own `steamcmd` image as base-image.
 
 ### Removed
+- Remove the Vagrantfile.
 - Remove deprecated console arguments `console` and `backup_logs`.
 
 ## [0.5.0]
