@@ -46,13 +46,42 @@ Setting a custom server-name is not required but highly recommended.
 If no name is configured, a random name will be generated.
 - *text* *[default: *RANDOM*]*
 
+**NAME_PREFIX**  
+Defines text to prepend to the server's name.
+- *text*
+
 **DESCRIPTION**  
 Sets the server's description. Shows up on the public server-list and in-game.
 - *text* *[default: Powered by DST-Academy.]*
 
-**NAME_PREFIX**  
-Defines text to prepend to the server's name.
-- *text*
+**LANGUAGE**
+Sets the server's language.
+- brazilian
+- bulgarian
+- czech
+- danish
+- dutch
+- english *[default]*
+- finnish
+- french
+- german
+- greek
+- hungarian
+- italian
+- japanese
+- korean
+- norwegian
+- polish
+- portuguese
+- romanian
+- russian
+- schinese
+- spanish
+- swedish
+- tchinese
+- thai
+- turkish
+- ukrainian
 
 **PASSWORD**  
 Defines a server password so only players knowing the password can connect.
@@ -60,6 +89,11 @@ Defines a server password so only players knowing the password can connect.
 
 **OFFLINE_ENABLE**  
 Controls if the server is listed and accessible publicly.
+- true
+- false *[default]*
+
+**LAN_ONLY**  
+Controls if the server is accessible from LAN only.
 - true
 - false *[default]*
 
@@ -87,14 +121,14 @@ Defines which game-mode the server runs on.
 - wilderness
 
 **INTENTION**  
-Configures the server's gameplay-intention for players. The default value depends on **GAME_MODE**
+Configures the server's gameplay-intention for players. The default value depends on **GAME_MODE**.
 - social
 - cooperative
 - competitive
 - madness
 
 **AUTOSAVER_ENABLE**  
-Enables/disables automatic saving of the world's state after each ingame-day.
+Enables/disables automatic saving of the world's state after each in-game day.
 - true *[default]*
 - false
 
@@ -105,6 +139,11 @@ gameplay but also more bandwidth is needed and more CPU-power is used.
 - 20
 - 30
 - 60
+
+**VOTE_ENABLE**  
+Enables/disables voting on the server.
+- true *[default]*
+- false
 
 **VOTE_KICK_ENABLE**  
 Enables/disables the possibility to kick players via voting.
@@ -219,5 +258,12 @@ Sets the overrides-configuration for all mods. Basically it's just the content f
 `modsoverrides.lua` file. As this value can be pretty large it's recommended to put the
 configuration into a separate file and read it into the variable beforehand.
 - *string*
+
+### Other
+Defines some other settings.
+
+**BACKUP_LOG_COUNT**  
+Enables the backup of server logs when rebooting the server.
+- *number* *[default: 0]*
 
 [howto-token]: http://dont-starve-game.wikia.com/wiki/Guides/Don%E2%80%99t_Starve_Together_Dedicated_Servers#Server_Tokens

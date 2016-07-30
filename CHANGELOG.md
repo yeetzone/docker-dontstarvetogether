@@ -2,6 +2,22 @@
 
 ## [next]
 
+## [0.6.0]
+
+### Added
+- Add `BACKUP_LOG_COUNT` environment variable to configure backups for the log files.
+- Add `VOTE_ENABLE` environment variable for configuring voting.
+- Add `LANGUAGE` environment variable for setting the server's language.
+- Implement the `version` command.
+
+### Changed
+- Update gosu to version 1.9.
+- Use our own `steamcmd` image as base-image.
+
+### Removed
+- Remove the Vagrantfile.
+- Remove deprecated console arguments `console` and `backup_logs`.
+
 ## [0.5.0]
 
 ### Added
@@ -79,7 +95,8 @@
 ### Added
 - Initial release.
 
-[next]: https://github.com/dst-academy/server/compare/v0.5.0...HEAD
+[next]: https://github.com/dst-academy/server/compare/v0.6.0...HEAD
+[0.6.0]: https://github.com/dst-academy/server/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/dst-academy/server/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/dst-academy/server/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/dst-academy/server/compare/v0.2.0...v0.3.0

@@ -15,6 +15,10 @@ fi
 
 source "`dirname "$0"`/aux.sh"
 
+validate_option "LANGUAGE" \
+	brazilian bulgarian czech danish dutch english finnish french german \
+	greek hungarian italian japanese korean norwegian polish portuguese \
+	romanian russian schinese spanish swedish tchinese thai turkish ukrainian
 validate_port "SERVER_PORT"
 validate_bool "OFFLINE_ENABLE"
 validate_int "MAX_PLAYERS" 1 64
@@ -24,6 +28,7 @@ validate_option "GAME_MODE" endless survival wilderness
 validate_option "INTENTION" cooperative social competitive madness
 validate_bool "AUTOSAVER_ENABLE"
 validate_option "TICK_RATE" 15 20 30 60
+validate_bool "VOTE_ENABLE"
 validate_bool "VOTE_KICK_ENABLE"
 validate_bool "PAUSE_WHEN_EMPTY"
 validate_bool "LAN_ONLY"
@@ -47,6 +52,7 @@ if [[ ! -f $file_cluster ]]; then
 	conf "max_players" "$MAX_PLAYERS"
 	conf "pvp" "$PVP_ENABLE"
 	conf "pause_when_empty" "$PAUSE_WHEN_EMPTY"
+	conf "vote_enabled" "$VOTE_ENABLE"
 	conf "vote_kick_enabled" "$VOTE_KICK_ENABLE"
 
 	echo
@@ -61,11 +67,12 @@ if [[ ! -f $file_cluster ]]; then
 	conf "tick_rate" "$TICK_RATE"
 	conf "whitelist_slots" "$WHITELIST_SLOTS"
 
-	if [[ -n "$CONSOLE_ENABLE" ]] || [[ -n "$MAX_SNAPSHOTS" ]]; then
+	if [[ -n "$CONSOLE_ENABLE" ]] || [[ -n "$MAX_SNAPSHOTS" ]] || [[ -n "$LANGUAGE" ]]; then
 		echo
 		echo "[MISC]"
 		conf "console_enabled" "$CONSOLE_ENABLE"
 		conf "max_snapshots" "$MAX_SNAPSHOTS"
+		conf "language_code" "$LANGUAGE"
 	fi
 
 	if [[ "$SHARD_ENABLE" == "true" ]]; then

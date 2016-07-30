@@ -1,42 +1,22 @@
-FROM debian:jessie
-MAINTAINER Thomas Deinhamer <thasmo@gmail.com>
+FROM dstacademy/steamcmd:0.1
+MAINTAINER DST Academy <support@dst.academy>
 
 # Install dependencies.
 RUN dpkg --add-architecture i386 \
-	&& apt-get update -y \
+	&& apt-get update \
 	&& apt-get install -y --no-install-recommends \
-		ca-certificates \
-		curl \
-		lib32gcc1 \
 		lib32stdc++6 \
 		libcurl4-gnutls-dev:i386 \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
-# Install gosu.
-RUN gpg --keyserver pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4 \
-	&& curl -o /usr/local/bin/gosu -fsSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture)" \
-	&& curl -o /usr/local/bin/gosu.asc -fsSL "https://github.com/tianon/gosu/releases/download/1.7/gosu-$(dpkg --print-architecture).asc" \
-	&& gpg --verify /usr/local/bin/gosu.asc \
-	&& rm /usr/local/bin/gosu.asc \
-	&& chmod +x /usr/local/bin/gosu
-
-ENV STEAM_USER="steam" \
-	STEAM_HOME="/opt/steam" \
-	DST_HOME="/opt/dst" \
-	DSTA_HOME="/usr/local/share/dsta" \
-	CLUSTER_PATH="/var/lib/dsta/cluster"
-
-# Add steam user.
-RUN adduser --disabled-login --gecos "Steam" --home $STEAM_HOME $STEAM_USER
-
-# Install SteamCMD.
-RUN curl -fsSL "https://cdn.steamstatic.com/client/installer/steamcmd_linux.tar.gz" | gosu $STEAM_USER tar -xzvC $STEAM_HOME \
-	&& gosu $STEAM_USER $STEAM_HOME/steamcmd.sh \
-		+@ShutdownOnFailedCommand 1 \
-		+quit \
-	&& rm -rf $STEAM_HOME/Steam/logs $STEAM_HOME/Steam/appcache/httpcache \
-	&& find $STEAM_HOME/package -type f ! -name "steam_cmd_linux.installed" ! -name "steam_cmd_linux.manifest" -delete
+# Define build arguments.
+ARG DST_HOME
+ENV DST_HOME ${DST_HOME:-"/opt/dst"}
+ARG DSTA_HOME
+ENV DSTA_HOME ${DSTA_HOME:-"/usr/local/share/dsta"}
+ARG CLUSTER_PATH
+ENV CLUSTER_PATH ${CLUSTER_PATH:-"/var/lib/dsta/cluster"}
 
 # Install Don't Starve Together Server.
 RUN mkdir -p $DST_HOME \
@@ -73,7 +53,8 @@ ENV DESCRIPTION="Powered by DST Academy." \
 	PAUSE_WHEN_EMPTY=true \
 	SHARD_NAME=shard \
 	SHARD_IS_MASTER=false \
-	SHARD_BIND_IP="0.0.0.0"
+	SHARD_BIND_IP="0.0.0.0" \
+	BACKUP_LOG_COUNT=0
 
 # Expose default server port.
 EXPOSE $SERVER_PORT/udp
