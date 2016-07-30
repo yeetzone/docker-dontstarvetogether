@@ -259,4 +259,11 @@ Sets the overrides-configuration for all mods. Basically it's just the content f
 configuration into a separate file and read it into the variable beforehand.
 - *string*
 
+### Other
+Defines some other settings.
+
+**BACKUP_LOG_COUNT**  
+Enables the backup of server logs when rebooting the server.
+- *number* *[default: 0]*
+
 [howto-token]: http://dont-starve-game.wikia.com/wiki/Guides/Don%E2%80%99t_Starve_Together_Dedicated_Servers#Server_Tokens

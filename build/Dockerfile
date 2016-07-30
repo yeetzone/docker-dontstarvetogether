@@ -53,7 +53,8 @@ ENV DESCRIPTION="Powered by DST Academy." \
 	PAUSE_WHEN_EMPTY=true \
 	SHARD_NAME=shard \
 	SHARD_IS_MASTER=false \
-	SHARD_BIND_IP="0.0.0.0"
+	SHARD_BIND_IP="0.0.0.0" \
+	BACKUP_LOG_COUNT=0
 
 # Expose default server port.
 EXPOSE $SERVER_PORT/udp
