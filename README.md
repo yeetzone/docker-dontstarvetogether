@@ -13,8 +13,6 @@
 This repository provides a `Dockerfile` for building the DST:A Dedicated Server
 for the online multi-player survival game [*Don't Starve Together*][website].
 
-If you want to set up your own server, have a look at the [DST:A Suite][suite].
-
 ## Features
 - [x] Configuration via ENV variables.
 - [x] World presets including caves.
@@ -57,7 +55,6 @@ Check out our [contribution guide][contribution-guide].
 [docs-configuration]: /docs/configuration.md
 [docs-usage]: /docs/usage.md
 [website]: http://www.dontstarvetogether.com/
-[suite]: https://github.com/dst-academy/suite
 [contribution-guide]: /CONTRIBUTING.md
 [docker-kitematic]: https://kitematic.com/
 [docker-toolbox]: https://www.docker.com/docker-toolbox
