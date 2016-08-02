@@ -1,5 +1,5 @@
-# Don't Starve Together - Dedicated Server
-> Dockerfile for [Don't Starve Together][website].
+# Don't Starve Together
+> Dockerfile for building a [Don't Starve Together][website] dedicated-server image.
 
 [![Build Status](https://img.shields.io/travis/dst-academy/server/develop.svg)](https://travis-ci.org/dst-academy/server)
 [![GitHub Release](https://img.shields.io/github/release/dst-academy/server.svg)](https://github.com/dst-academy/server/releases/latest)
@@ -50,6 +50,10 @@ Check out our [contribution guide][contribution-guide].
 - [Shards and Migration Portals (Klei Forums)][reference-shards]
 - [Dedicated Server Guide (Wikia)][reference-guide]
 - [Server Console Commands (Wikia)][reference-commands]
+
+---
+
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
 
 [docs-setup]: /docs/setup.md
 [docs-configuration]: /docs/configuration.md
