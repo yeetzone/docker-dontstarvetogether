@@ -1,10 +1,10 @@
 # Don't Starve Together
 > Dockerfile for building a [Don't Starve Together][website] dedicated-server image.
 
-[![Build Status](https://img.shields.io/travis/dst-academy/server/develop.svg)](https://travis-ci.org/dst-academy/server)
-[![GitHub Release](https://img.shields.io/github/release/dst-academy/server.svg)](https://github.com/dst-academy/server/releases/latest)
-[![Docker Pulls](https://img.shields.io/docker/pulls/dstacademy/server.svg)](https://hub.docker.com/r/dstacademy/server/)
-[![License](https://img.shields.io/github/license/dst-academy/server.svg?maxAge=2592000?style=flat-square)](https://github.com/dst-academy/server/blob/develop/LICENSE.md)
+[![Build Status](https://img.shields.io/travis/dst-academy/docker-dontstarvetogether/develop.svg)](https://travis-ci.org/dst-academy/docker-dontstarvetogether)
+[![GitHub Release](https://img.shields.io/github/release/dst-academy/docker-dontstarvetogether.svg)](https://github.com/dst-academy/docker-dontstarvetogether/releases/latest)
+[![Docker Pulls](https://img.shields.io/docker/pulls/dstacademy/dontstarvetogether.svg)](https://hub.docker.com/r/dstacademy/dontstarvetogether/)
+[![License](https://img.shields.io/github/license/dst-academy/docker-dontstarvetogether.svg)](https://github.com/dst-academy/docker-dontstarvetogether/blob/develop/LICENSE.md)
 [![Slack](https://img.shields.io/badge/slack-join-E01563.svg)](https://slack.dst.academy/)
 [![Steam](https://img.shields.io/badge/steam-join-1b2838.svg)](https://steamcommunity.com/groups/dst-academy)
 
