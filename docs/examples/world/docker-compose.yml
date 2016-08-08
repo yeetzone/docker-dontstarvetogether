@@ -1,0 +1,13 @@
+version: "2"
+services:
+  world:
+    image: dstacademy/dontstarvetogether
+    container_name: world
+    hostname: world
+    tty: true
+    stdin_open: true
+    env_file: world.env
+    ports:
+      - "10999:10999/udp"
+    volumes:
+      - ./world:/var/lib/dsta/cluster

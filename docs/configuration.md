@@ -6,7 +6,7 @@ to use `docker-compose` instead, which makes it easier to configure all environm
 
 **Example**:
 ```sh
-docker run -itd -p 10999:10999/udp -e TOKEN="Token" -e NAME="Name" -e MAX_PLAYERS=10 dstacademy/server
+docker run -itd -p 10999:10999/udp -e TOKEN="Token" -e NAME="Name" -e MAX_PLAYERS=10 dstacademy/dontstarvetogether
 ```
 
 You can chain as many variables as you need. If you want to pass lots of them, it's easier and more
@@ -14,7 +14,7 @@ convenient to create an `.env` file and pass it's path to the command.
 
 **Examples**:
 ```sh
-docker run -itd --env-file=".env" dstacademy/server
+docker run -itd --env-file=".env" dstacademy/dontstarvetogether
 ```
 
 An `.env` file's contents must look like this and can hold all needed variables:

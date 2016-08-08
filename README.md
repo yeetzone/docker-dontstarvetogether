@@ -14,31 +14,28 @@ This repository provides a `Dockerfile` for building the DST:A Dedicated Server
 for the online multi-player survival game [*Don't Starve Together*][website].
 
 ## Features
-- [x] Configuration via ENV variables.
-- [x] World presets including caves.
-- [x] Customized world generation.
-- [x] Mods and custom mod-configuration.
-- [x] Connected worlds via sharding.
-- [x] Control the server directly on the CLI.
-- [x] World-persistence on container destruction.
+- [x] Configuration via **ENV** variables.
+- [x] World presets including **caves**.
+- [x] Customized **world generation**.
+- [x] Mods and custom **mod-configuration**.
+- [x] Connected worlds via **sharding**.
+- [x] Control the server directly on the **CLI**.
+- [x] **World-persistence** on container destruction.
 - [ ] Automatic update of game files.
 - [ ] Automatic update of mod files.
-- [x] Sharing game and mod-files between instances.
+- [x] **Sharing** game and mod-files between instances.
 
 ## Documentation
 - [Setup][docs-setup]
 - [Configuration][docs-configuration]
 - [Usage][docs-usage]
+- [Examples][docs-examples]
 
 ## Contribution
 Do you want to contribute to the project?
 Check out our [contribution guide][contribution-guide].
 
 ## Frequently Asked Questions
-
-- **On which operating systems can I run Docker and the DST:A Dedicated Server?**  
-  Docker runs natively on Linux, but there are official solutions for running Docker on Windows and OSX.
-  Have a look at Docker's [Kitematic][docker-kitematic] and Docker's [Toolbox][docker-kitematic].
 
 - **Why does Steam take so long to update the game?**  
   It can happen that Steam takes a really long time to update the game. This is a known problem with
@@ -58,6 +55,7 @@ Check out our [contribution guide][contribution-guide].
 [docs-setup]: /docs/setup.md
 [docs-configuration]: /docs/configuration.md
 [docs-usage]: /docs/usage.md
+[docs-examples]: /docs/examples/
 [website]: http://www.dontstarvetogether.com/
 [contribution-guide]: /CONTRIBUTING.md
 [docker-kitematic]: https://kitematic.com/

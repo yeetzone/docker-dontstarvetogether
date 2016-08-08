@@ -9,7 +9,7 @@ build_error() {
 cd "$( dirname "$0" )"
 
 # Build the image
-image_name=dstacademy/server
+image_name=dstacademy/dontstarvetogether
 docker build -t $image_name ../build || build_error
 
 tests=`mktemp`
