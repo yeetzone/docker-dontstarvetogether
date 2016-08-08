@@ -34,8 +34,8 @@ The *World Generation* configuration defines custom world generation rules. Conf
 is loaded from the `worldgenoverride.yml` file and passed to the start command.
 
 [dsta-servers]: https://github.com/dst-academy/deployment-servers
-[setup-basic]: /basic/
-[setup-multiple]: /multiple/
-[setup-mods]: /mods/
-[setup-shard]: /shard/
-[setup-world]: /world/
+[setup-basic]: ./basic/
+[setup-multiple]: ./multiple/
+[setup-mods]: ./mods/
+[setup-shard]: ./shard/
+[setup-world]: ./world/
