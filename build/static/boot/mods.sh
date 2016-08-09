@@ -8,13 +8,6 @@ IFS=","
 
 # Install and enable regular mods from the Steam workshop.
 if [ -n "$MODS" ] && [ ! -f $file_mods_overrides ]; then
-	echo "" >> $file_mods_setup
-	echo "" >> $file_mods_setup
-
-	for mod in $MODS; do
-		echo "ServerModSetup(\"$mod\")" >> $file_mods_setup
-	done
-
 	if [ -n "$MODS_OVERRIDES" ]; then
 		echo "$MODS_OVERRIDES" > $file_mods_overrides
 	else
