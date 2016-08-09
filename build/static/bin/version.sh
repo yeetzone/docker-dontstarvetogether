@@ -21,7 +21,8 @@ if [ "$1" == "--help" ]; then
 	usage
 	exit 0
 elif [ $# -eq 0 ]; then
-	local_version
+	echo "Local version:    `local_version`"
+	echo "Upstream version: `upstream_version`"
 	exit 0
 elif [ $# -eq 1 ]; then
 	case $1 in
