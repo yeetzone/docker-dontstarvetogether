@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 warning(){
 	echo "[WARNING] $1" 1>&2
 }
