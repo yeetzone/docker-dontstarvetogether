@@ -13,6 +13,10 @@ RUN dpkg --add-architecture i386 \
 # Define build arguments.
 ARG DST_HOME
 ENV DST_HOME ${DST_HOME:-"/opt/dst"}
+ARG DST_BRANCH
+ENV DST_BRANCH ${DST_BRANCH}
+ARG DST_BRANCH_PASSWORD
+ENV DST_BRANCH_PASSWORD ${DST_BRANCH_PASSWORD}
 ARG DSTA_HOME
 ENV DSTA_HOME ${DSTA_HOME:-"/usr/local/share/dsta"}
 ARG CLUSTER_PATH
@@ -26,7 +30,10 @@ RUN mkdir -p $DST_HOME \
 		+@ShutdownOnFailedCommand 1 \
 		+login anonymous \
 		+force_install_dir $DST_HOME \
-		+app_update 343050 validate \
+		+app_update 343050 \
+			$([ -n "$DST_BRANCH" ] && printf %s "-beta $DST_BRANCH") \
+			$([ -n "$DST_BRANCH_PASSWORD" ] && printf %s "-betapassword $DST_BRANCH_PASSWORD") \
+			validate \
 		+quit \
 	&& rm -rf $STEAM_HOME/Steam/logs $STEAM_HOME/Steam/appcache/httpcache \
 	&& find $STEAM_HOME/package -type f ! -name "steam_cmd_linux.installed" ! -name "steam_cmd_linux.manifest" -delete
