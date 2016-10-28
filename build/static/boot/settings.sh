@@ -13,7 +13,7 @@ if [ -z "$NAME" ]; then
 	echo "'$NAME' has been set as the cluster's name."
 fi
 
-source "`dirname "$0"`/aux.sh"
+source "`dirname "$0"`/functions.sh"
 
 validate_option "LANGUAGE" \
 	brazilian bulgarian czech danish dutch english finnish french german \

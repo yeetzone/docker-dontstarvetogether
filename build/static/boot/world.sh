@@ -9,7 +9,7 @@ fi
 if [ -n "$WORLD_OVERRIDES" ]; then
 	echo "$WORLD_OVERRIDES" > $file_world_override
 elif [ -n "$WORLD_PRESET" ]; then
-	source "`dirname "$0"`/aux.sh"
+	source "`dirname "$0"`/functions.sh"
 
 	validate_option "WORLD_PRESET" SURVIVAL_TOGETHER SURVIVAL_TOGETHER_CLASSIC SURVIVAL_DEFAULT_PLUS COMPLETE_DARKNESS DST_CAVE
 
