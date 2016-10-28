@@ -19,8 +19,8 @@ if [ $1 = 'dst-server' ]; then
 		$DSTA_HOME/boot/mods.sh
 	fi
 
-	# Run as user `steam` if the command is `dst-server`.
-	set -- gosu steam "$@"
+	# Run via steam user if the command is `dst-server`.
+	set -- gosu $STEAM_USER "$@"
 fi
 
 # Execute the command.
