@@ -4,7 +4,7 @@
 set -e
 
 # Run boot scripts before starting the server.
-if [ $1 = 'dst-server' ]; then
+if [ "$1" = 'dst-server' ]; then
 
 	# Prepare the shard directory.
 	mkdir -p $CLUSTER_PATH/$SHARD_NAME
