@@ -36,7 +36,7 @@ RUN set -x \
 	&& mkdir -p $DST_HOME \
 	&& chown $STEAM_USER:$STEAM_USER $DST_HOME \
 	&& sync \
-	&& gosu $STEAM_USER $STEAM_HOME/steamcmd.sh \
+	&& gosu $STEAM_USER steamcmd \
 		+@ShutdownOnFailedCommand 1 \
 		+login anonymous \
 		+force_install_dir $DST_HOME \
