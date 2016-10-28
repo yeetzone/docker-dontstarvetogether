@@ -8,4 +8,4 @@ services:
     ports:
       - "10999:10999/udp"
     environment:
-      - SERVER_TOKEN: your-server-token
+      - TOKEN: your-server-token
