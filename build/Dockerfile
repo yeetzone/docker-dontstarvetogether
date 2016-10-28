@@ -22,7 +22,8 @@ ENV DESCRIPTION="Powered by DST Academy." \
 	BACKUP_LOG_COUNT=0
 
 # Install dependencies.
-RUN dpkg --add-architecture i386 \
+RUN set -x \
+	&& dpkg --add-architecture i386 \
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends \
 		lib32stdc++6 \
@@ -31,7 +32,8 @@ RUN dpkg --add-architecture i386 \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install Don't Starve Together Server.
-RUN mkdir -p $DST_HOME \
+RUN set -x \
+	&& mkdir -p $DST_HOME \
 	&& chown $STEAM_USER:$STEAM_USER $DST_HOME \
 	&& sync \
 	&& gosu $STEAM_USER $STEAM_HOME/steamcmd.sh \
@@ -50,7 +52,8 @@ COPY /script/* /usr/local/bin/
 COPY /static $DSTA_HOME
 
 # Create pipe for the game console.
-RUN mkfifo $DSTA_HOME/console \
+RUN set -x \
+	&& mkfifo $DSTA_HOME/console \
 	&& chown -R $STEAM_USER:$STEAM_USER $DSTA_HOME \
 	&& mkdir -p $(dirname $CLUSTER_PATH) \
 	&& chown $STEAM_USER:$STEAM_USER $(dirname $CLUSTER_PATH)
