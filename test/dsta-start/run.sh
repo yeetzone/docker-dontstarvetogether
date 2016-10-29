@@ -17,8 +17,8 @@ sleep 40
 if [ -z "`docker ps -qf name=$container_id`" ]; then
 	exit 1
 fi
-grep -Fq "Success! App '343050' already up to date." $file2 || exit 1
-grep -Fq "DownloadMods" $file2 || exit 1
+grep -Fq "Success! App '343050' already up to date." $file2 && exit 1
+grep -Fq "DownloadMods" $file2 && exit 1
 docker rm -fv $container_id > /dev/null
 
 docker run --name "$container_id" $1 dst-server start --update=all > $file2 &
@@ -61,10 +61,10 @@ docker rm -fv $container_id > /dev/null
 cat > $file1 <<- EOF
 usage: dst-server start [--update=all|none|game|mods]
 
-   --update=all
-      Update the game and the mods before launch the server. This is the default behaviour.
    --update=none
-      Update nothing, just start the server.
+      Update nothing, just start the server. This is the default behaviour.
+   --update=all
+      Update the game and the mods before launch the server.
    --update=game
       Update just the game (no the mods) and launch the server.
    --update=mods

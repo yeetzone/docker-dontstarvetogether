@@ -5,7 +5,7 @@ usage(){
 }
 
 if [ $# -eq 0 ]; then
-	update=3
+	update=0
 elif [ $1 == "--help" ]; then
 	usage
 	exit 0
