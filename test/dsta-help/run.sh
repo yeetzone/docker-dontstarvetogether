@@ -41,10 +41,10 @@ diff $file1 $file2 || exit 1
 cat > $file1 <<- EOF
 usage: dst-server start [--update=all|none|game|mods]
 
-   --update=all
-      Update the game and the mods before launch the server. This is the default behaviour.
    --update=none
-      Update nothing, just start the server.
+      Update nothing, just start the server. This is the default behaviour.
+   --update=all
+      Update the game and the mods before launch the server.
    --update=game
       Update just the game (no the mods) and launch the server.
    --update=mods
