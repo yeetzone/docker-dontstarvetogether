@@ -11,7 +11,6 @@ services:
       - "10999:10999/udp"
     volumes:
       - ./world:/var/lib/dsta/cluster
-
   underworld:
     image: dstacademy/dontstarvetogether
     container_name: underworld
@@ -20,7 +19,7 @@ services:
     stdin_open: true
     env_file: underworld.env
     ports:
-      - "11000:10999/udp"
+      - "11000:11000/udp"
     links:
       - overworld
     volumes:
