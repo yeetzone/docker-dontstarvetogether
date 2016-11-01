@@ -3,7 +3,7 @@
 # Exit immediately on non-zero return codes.
 set -e
 
-# Run start command of only options given.
+# Run start command if only options given.
 if [ "${1:0:1}" = '-' ]; then
 	set -- dst-server start "$@"
 fi
