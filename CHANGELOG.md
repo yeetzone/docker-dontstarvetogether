@@ -2,6 +2,24 @@
 
 ## [next]
 
+### Added
+- Add `DST_BRANCH` and `DST_BRANCH_PASSWORD` build arguments to enable building beta-branch images.
+- Support providing options only on the Docker `CMD` command.
+- Document the `SERVER_PORT` configuration variable.
+
+### Changed
+- Update the base-image to `dstacademy/steamcmd:0.2.1`.
+- Rename the repository name on GitHub and on Docker Hub.
+- Do not update the game and mods by default when starting a server/container.
+
+### Removed
+- Remove the `Vagrantfile`.
+
+### Fixed
+- Update examples documentation to use correct configuration variables.
+- Do not overwrite mod configuration files when the game-files get updated.
+- Use the correct configuration variable for enabling/disabling vote-kicking.
+
 ## [0.6.0]
 
 ### Added
