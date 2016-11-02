@@ -53,7 +53,6 @@ if [[ ! -f $file_cluster ]]; then
 	conf "pvp" "$PVP_ENABLE"
 	conf "pause_when_empty" "$PAUSE_WHEN_EMPTY"
 	conf "vote_enabled" "$VOTE_ENABLE"
-	conf "vote_kick_enabled" "$VOTE_KICK_ENABLE"
 
 	echo
 	echo "[NETWORK]"
@@ -66,6 +65,7 @@ if [[ ! -f $file_cluster ]]; then
 	conf "offline_server" "$OFFLINE_ENABLE"
 	conf "tick_rate" "$TICK_RATE"
 	conf "whitelist_slots" "$WHITELIST_SLOTS"
+	conf "enable_vote_kick" "$VOTE_KICK_ENABLE"
 
 	if [[ -n "$CONSOLE_ENABLE" ]] || [[ -n "$MAX_SNAPSHOTS" ]] || [[ -n "$LANGUAGE" ]]; then
 		echo
