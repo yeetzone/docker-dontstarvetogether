@@ -81,6 +81,10 @@ Sets the server's language.
 Defines a server password so only players knowing the password can connect.
 - *text*
 
+**SERVER_PORT**  
+Defines the port on which the game-server runs inside the Docker container.
+- *number* *[default: 10999]*
+
 **OFFLINE_ENABLE**  
 Controls if the server is listed and accessible publicly.
 - true
