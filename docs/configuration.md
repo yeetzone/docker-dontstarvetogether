@@ -29,16 +29,10 @@ MAX_PLAYERS=10
 Environment variables can be used to customize certain settings of the server. Most of the
 available environment variables correspond to the `settings.ini` variables used by DST.
 
-### Account
-Sets account-related options.
-
 **TOKEN** *required*  
 Defines the server's token which is needed to run it.
 To [generate a token][howto-token] you need a copy of DST.
 - *text*
-
-### Network
-Configures network-related settings.
 
 **NAME**  
 Sets the server's name. Shows up on the public server-list and in-game.
@@ -177,16 +171,10 @@ Enables/disables promoting steam-group officers to server administrators.
 - true
 - false *[default]*
 
-### Misc
-Defines various other configuration options.
-
 **CONSOLE_ENABLE**  
 Disables/enables the ingame-console for administrators.
 - true *[default]*
 - false
-
-### Shard
-Configures server-sharding.
 
 **SHARD_ENABLE**  
 Enables/disables sharding for connecting multiple servers to one big world.
@@ -227,9 +215,6 @@ This needs to be the same for the master-server and all slave-servers.
 - *text*  
   *Example:* `secret-and-equal-for-all-shards`
 
-### World
-Defines world-related settings.
-
 **WORLD_PRESET**  
 Defines some pre-configured world settings for the server.
 - SURVIVAL_TOGETHER *[default]*
@@ -245,9 +230,6 @@ configuration into a separate file and read it into the variable beforehand. Whe
 `WORLD_PRESET` has no effect.
 - *string*
 
-### Mods
-Mods-related settings.
-
 **MODS**  
 Defines mods to install and enable.
 - *CSV of workshop IDs*  
@@ -258,9 +240,6 @@ Sets the overrides-configuration for all mods. Basically it's just the content f
 `modsoverrides.lua` file. As this value can be pretty large it's recommended to put the
 configuration into a separate file and read it into the variable beforehand.
 - *string*
-
-### Other
-Defines some other settings.
 
 **BACKUP_LOG_COUNT**  
 Enables the backup of server logs when rebooting the server.
