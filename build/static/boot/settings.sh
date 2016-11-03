@@ -62,7 +62,7 @@ if [[ ! -f $file_cluster ]]; then
 	conf "cluster_password" "$PASSWORD"
 	conf "autosaver_enabled" "$AUTOSAVER_ENABLE"
 	conf "lan_only_cluster" "$LAN_ONLY"
-	conf "offline_server" "$OFFLINE_ENABLE"
+	conf "offline_cluster" "$OFFLINE_ENABLE"
 	conf "tick_rate" "$TICK_RATE"
 	conf "whitelist_slots" "$WHITELIST_SLOTS"
 	conf "enable_vote_kick" "$VOTE_KICK_ENABLE"
