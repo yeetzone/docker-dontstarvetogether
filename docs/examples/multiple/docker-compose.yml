@@ -6,6 +6,7 @@ services:
     hostname: world-1
     tty: true
     stdin_open: true
+    command: dst-server start --update=all
     env_file: world-1.env
     ports:
       - "10999:10999/udp"
@@ -18,6 +19,7 @@ services:
     hostname: world-2
     tty: true
     stdin_open: true
+    command: dst-server start --update=all
     env_file: world-2.env
     ports:
       - "11000:10999/udp"
@@ -30,6 +32,7 @@ services:
     hostname: world-3
     tty: true
     stdin_open: true
+    command: dst-server start --update=all
     env_file: world-3.env
     ports:
       - "11001:10999/udp"

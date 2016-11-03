@@ -6,6 +6,7 @@ services:
     hostname: overworld
     tty: true
     stdin_open: true
+    command: dst-server start --update=all
     env_file: overworld.env
     ports:
       - "10999:10999/udp"
@@ -17,6 +18,7 @@ services:
     hostname: underworld
     tty: true
     stdin_open: true
+    command: dst-server start --update=all
     env_file: underworld.env
     ports:
       - "11000:11000/udp"
