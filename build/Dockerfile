@@ -16,7 +16,6 @@ ENV CLUSTER_PATH ${CLUSTER_PATH:-"/var/lib/dsta/cluster"}
 # Set environment variables.
 ENV DESCRIPTION="Powered by DST Academy." \
 	SERVER_PORT="10999" \
-	MAX_PLAYERS=4 \
 	GAME_MODE=survival \
 	VOTE_KICK_ENABLE=true \
 	PAUSE_WHEN_EMPTY=true \

@@ -99,7 +99,7 @@ Controls if the server is accessible from LAN only.
 Sets the maximum number of allowed players to connect and play simultaneously. Heavily influences
 overall performance and gameplay-experience of the server. Be sure the hardware has enough power
 to provide a smooth experience for the configured number of players.
-- *number* *[default: 4]*
+- *number* *[default: 16]*
 
 **WHITELIST_SLOTS**  
 Reserves player-slots for administrator and/or other players and adds up to the total number of
