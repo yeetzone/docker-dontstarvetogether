@@ -16,10 +16,7 @@ ENV CLUSTER_PATH ${CLUSTER_PATH:-"/var/lib/dsta/cluster"}
 # Set environment variables.
 ENV DESCRIPTION="Powered by DST Academy." \
 	SERVER_PORT="10999" \
-	VOTE_KICK_ENABLE=true \
-	PAUSE_WHEN_EMPTY=true \
 	SHARD_NAME=shard \
-	SHARD_IS_MASTER=false \
 	SHARD_BIND_IP="0.0.0.0" \
 	BACKUP_LOG_COUNT=0
 
