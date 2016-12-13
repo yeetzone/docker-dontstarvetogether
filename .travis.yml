@@ -5,7 +5,7 @@ services:
   - docker
 
 env:
-  - DOCKER_IMAGE_NAME=dstacademy/server
+  - DOCKER_IMAGE_NAME=dstacademy/dontstarvetogether
 
 script:
   - docker build -t $DOCKER_IMAGE_NAME ./build

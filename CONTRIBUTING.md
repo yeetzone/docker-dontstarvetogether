@@ -31,11 +31,11 @@ Feel free to contact us if you have questions or feedback.
 - Join our [Steam Group][contact-steam].
 - Join our discussion on the [Klei Forums][contact-forums].
 
-[issues-create]: https://github.com/dst-academy/server/issues/new/
-[issues-contribute]: https://github.com/dst-academy/server/labels/contribution
-[file-editorconfig]: https://github.com/dst-academy/server/blob/develop/.editorconfig
-[file-readme]: https://github.com/dst-academy/server/blob/develop/README.md
-[file-changelog]: https://github.com/dst-academy/server/blob/develop/CHANGELOG.md
+[issues-create]: https://github.com/dst-academy/docker-dontstarvetogether/issues/new/
+[issues-contribute]: https://github.com/dst-academy/docker-dontstarvetogether/labels/contribution
+[file-editorconfig]: https://github.com/dst-academy/docker-dontstarvetogether/blob/develop/.editorconfig
+[file-readme]: https://github.com/dst-academy/docker-dontstarvetogether/blob/develop/README.md
+[file-changelog]: https://github.com/dst-academy/docker-dontstarvetogether/blob/develop/CHANGELOG.md
 [contact-slack]: http://slack.dst.academy/
 [contact-steam]: https://steamcommunity.com/groups/dst-academy
 [contact-forums]: http://forums.kleientertainment.com/topic/61674-custom-dedicated-server-with-docker/

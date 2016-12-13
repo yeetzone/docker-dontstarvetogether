@@ -5,7 +5,7 @@ usage(){
 }
 
 if [ $# -eq 0 ]; then
-	update=3
+	update=0
 elif [ $1 == "--help" ]; then
 	usage
 	exit 0
@@ -38,5 +38,11 @@ fi
 if (((update & 2) == 0)); then
 	flag="-skip_update_server_mods"
 fi
+
+$DSTA_HOME/boot/token.sh
+$DSTA_HOME/boot/settings.sh
+$DSTA_HOME/boot/lists.sh
+$DSTA_HOME/boot/world.sh
+$DSTA_HOME/boot/mods.sh
 
 exec dontstarve_dedicated_server_nullrenderer $flag

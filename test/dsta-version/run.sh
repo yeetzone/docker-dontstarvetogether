@@ -8,8 +8,7 @@ trap clean EXIT
 aux=`mktemp`
 aux1=`mktemp`
 
-version=`docker run --rm $1 dst-server version || exit 1`
-[[ $version =~ ^[0-9]+$ ]] || ( echo "\$version == $version" && exit 1 )
+docker run --rm $1 dst-server version >/dev/null || exit 1
 
 version=`docker run --rm $1 dst-server version --local || exit 1`
 [[ $version =~ ^[0-9]+$ ]] || ( echo "\$version == $version" && exit 1 )
@@ -27,7 +26,7 @@ fi
 cat > $aux <<- EOF
 usage: dst-server version [--local|--upstream|--check]
 
-Print the currently running version of the DST server.
+Print the local and upstream version of the DST server.
 
    --local
       Return the local version.

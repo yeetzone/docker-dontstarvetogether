@@ -6,7 +6,7 @@ to use `docker-compose` instead, which makes it easier to configure all environm
 
 **Example**:
 ```sh
-docker run -itd -p 10999:10999/udp -e TOKEN="Token" -e NAME="Name" -e MAX_PLAYERS=10 dstacademy/server
+docker run -itd -p 10999:10999/udp -e TOKEN="Token" -e NAME="Name" -e MAX_PLAYERS=10 dstacademy/dontstarvetogether
 ```
 
 You can chain as many variables as you need. If you want to pass lots of them, it's easier and more
@@ -14,7 +14,7 @@ convenient to create an `.env` file and pass it's path to the command.
 
 **Examples**:
 ```sh
-docker run -itd --env-file=".env" dstacademy/server
+docker run -itd --env-file=".env" dstacademy/dontstarvetogether
 ```
 
 An `.env` file's contents must look like this and can hold all needed variables:
@@ -29,16 +29,10 @@ MAX_PLAYERS=10
 Environment variables can be used to customize certain settings of the server. Most of the
 available environment variables correspond to the `settings.ini` variables used by DST.
 
-### Account
-Sets account-related options.
-
 **TOKEN** *required*  
 Defines the server's token which is needed to run it.
 To [generate a token][howto-token] you need a copy of DST.
 - *text*
-
-### Network
-Configures network-related settings.
 
 **NAME**  
 Sets the server's name. Shows up on the public server-list and in-game.
@@ -87,6 +81,10 @@ Sets the server's language.
 Defines a server password so only players knowing the password can connect.
 - *text*
 
+**SERVER_PORT**  
+Defines the port on which the game-server runs inside the Docker container.
+- *number* *[default: 10999]*
+
 **OFFLINE_ENABLE**  
 Controls if the server is listed and accessible publicly.
 - true
@@ -101,7 +99,7 @@ Controls if the server is accessible from LAN only.
 Sets the maximum number of allowed players to connect and play simultaneously. Heavily influences
 overall performance and gameplay-experience of the server. Be sure the hardware has enough power
 to provide a smooth experience for the configured number of players.
-- *number* *[default: 4]*
+- *number* *[default: 16]*
 
 **WHITELIST_SLOTS**  
 Reserves player-slots for administrator and/or other players and adds up to the total number of
@@ -177,16 +175,10 @@ Enables/disables promoting steam-group officers to server administrators.
 - true
 - false *[default]*
 
-### Misc
-Defines various other configuration options.
-
 **CONSOLE_ENABLE**  
 Disables/enables the ingame-console for administrators.
 - true *[default]*
 - false
-
-### Shard
-Configures server-sharding.
 
 **SHARD_ENABLE**  
 Enables/disables sharding for connecting multiple servers to one big world.
@@ -227,9 +219,6 @@ This needs to be the same for the master-server and all slave-servers.
 - *text*  
   *Example:* `secret-and-equal-for-all-shards`
 
-### World
-Defines world-related settings.
-
 **WORLD_PRESET**  
 Defines some pre-configured world settings for the server.
 - SURVIVAL_TOGETHER *[default]*
@@ -245,9 +234,6 @@ configuration into a separate file and read it into the variable beforehand. Whe
 `WORLD_PRESET` has no effect.
 - *string*
 
-### Mods
-Mods-related settings.
-
 **MODS**  
 Defines mods to install and enable.
 - *CSV of workshop IDs*  
@@ -258,9 +244,6 @@ Sets the overrides-configuration for all mods. Basically it's just the content f
 `modsoverrides.lua` file. As this value can be pretty large it's recommended to put the
 configuration into a separate file and read it into the variable beforehand.
 - *string*
-
-### Other
-Defines some other settings.
 
 **BACKUP_LOG_COUNT**  
 Enables the backup of server logs when rebooting the server.

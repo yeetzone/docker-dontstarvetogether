@@ -2,6 +2,32 @@
 
 ## [next]
 
+## [0.7.0]
+
+### Added
+- Add `DST_BRANCH` and `DST_BRANCH_PASSWORD` build arguments to enable building beta-branch images.
+- Support providing options only on the Docker `CMD` command.
+- Document the `SERVER_PORT` configuration variable.
+
+### Changed
+- Update the base-image to `dstacademy/steamcmd:0.2.1`.
+- Rename the repository name on GitHub and on Docker Hub.
+- Do not update the game and mods by default when starting a server/container.
+- Remove default value for `MAX_PLAYERS` to use the game's default value.
+- Remove default value for `GAME_MODE` to use the game's default value.
+- Remove default value for `VOTE_KICK_ENABLE` to use the game's default value.
+- Remove default value for `PAUSE_WHEN_EMPTY` to use the game's default value.
+- Optimize configuration creation script to handle some options better.
+
+### Removed
+- Remove the `Vagrantfile`.
+
+### Fixed
+- Update examples documentation to use correct configuration variables.
+- Do not overwrite mod configuration files when the game-files get updated.
+- Use the correct configuration variable for enabling/disabling vote-kicking.
+- Rename obsolete setting `offline_server` to `offline_cluster`.
+
 ## [0.6.0]
 
 ### Added
@@ -95,10 +121,11 @@
 ### Added
 - Initial release.
 
-[next]: https://github.com/dst-academy/server/compare/v0.6.0...HEAD
-[0.6.0]: https://github.com/dst-academy/server/compare/v0.5.0...v0.6.0
-[0.5.0]: https://github.com/dst-academy/server/compare/v0.4.0...v0.5.0
-[0.4.0]: https://github.com/dst-academy/server/compare/v0.3.0...v0.4.0
-[0.3.0]: https://github.com/dst-academy/server/compare/v0.2.0...v0.3.0
-[0.2.0]: https://github.com/dst-academy/server/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/dst-academy/server/compare/da19beb5479033b82dd6dc1200bb0cf6724904c3...v0.1.0
+[next]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.6.0...v0.7.0
+[0.6.0]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.5.0...v0.6.0
+[0.5.0]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.4.0...v0.5.0
+[0.4.0]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/dst-academy/docker-dontstarvetogether/compare/da19beb5479033b82dd6dc1200bb0cf6724904c3...v0.1.0

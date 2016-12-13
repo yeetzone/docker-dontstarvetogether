@@ -1,0 +1,28 @@
+version: "2"
+services:
+  overworld:
+    image: dstacademy/dontstarvetogether
+    container_name: overworld
+    hostname: overworld
+    tty: true
+    stdin_open: true
+    command: dst-server start --update=all
+    env_file: overworld.env
+    ports:
+      - "10999:10999/udp"
+    volumes:
+      - ./world:/var/lib/dsta/cluster
+  underworld:
+    image: dstacademy/dontstarvetogether
+    container_name: underworld
+    hostname: underworld
+    tty: true
+    stdin_open: true
+    command: dst-server start --update=all
+    env_file: underworld.env
+    ports:
+      - "11000:11000/udp"
+    links:
+      - overworld
+    volumes:
+      - ./world:/var/lib/dsta/cluster

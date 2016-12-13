@@ -1,6 +1,6 @@
 usage: dst-server version [--local|--upstream|--check]
 
-Print the currently running version of the DST server.
+Print the local and upstream version of the DST server.
 
    --local
       Return the local version.

@@ -1,19 +1,23 @@
 #!/usr/bin/env bash
 
-if [ $1 == "dst-server" ]; then
-	set -e
+# Exit immediately on non-zero return codes.
+set -e
 
-	# Configure the server
+# Run start command if only options given.
+if [ "${1:0:1}" = '-' ]; then
+	set -- dst-server start "$@"
+fi
+
+# Run boot scripts before starting the server.
+if [ "$1" = 'dst-server' ]; then
+
+	# Prepare the shard directory.
 	mkdir -p $CLUSTER_PATH/$SHARD_NAME
 	chown -R $STEAM_USER:$STEAM_USER $CLUSTER_PATH
 
-	if [ "$2" == "start" ]; then
-		$DSTA_HOME/boot/token.sh
-		$DSTA_HOME/boot/settings.sh
-		$DSTA_HOME/boot/lists.sh
-		$DSTA_HOME/boot/world.sh
-		$DSTA_HOME/boot/mods.sh
-	fi
+	# Run via steam user if the command is `dst-server`.
+	set -- gosu $STEAM_USER "$@"
 fi
 
+# Execute the command.
 exec "$@"

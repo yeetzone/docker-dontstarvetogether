@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ../build/static/boot/aux.sh
+source ../build/static/boot/functions.sh
 
 export FOO=""
 validate_bool FOO || exit 1

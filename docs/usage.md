@@ -11,7 +11,7 @@ Basic commands to maintain the DST:A Dedicated Server.
 **Start the Server**  
 Starts the server. On boot the game-server checks for updates and performs them.  
 Docker Engine:
-`docker run -itd -p 10999:10999/udp -e TOKEN="server-token" dstacademy/server:latest`  
+`docker run -itd -p 10999:10999/udp -e TOKEN="server-token" dstacademy/dontstarvetogether`  
 Docker Compose:
 `docker-compose up -d`
 
@@ -55,9 +55,9 @@ Docker Engine:
 More advanced commands to maintain the server-image and other stuff.
 
 **Update the Server-Image**  
-Updates the [`dstacademy/server`][image] image from the Docker Hub if updates are available.  
+Updates the [`dstacademy/dontstarvetogether`][image] image from the Docker Hub if updates are available.  
 Docker Engine:
-`docker pull dstacademy/server`  
+`docker pull dstacademy/dontstarvetogether`  
 Docker Compose:
 `docker-compose pull`
 
@@ -82,4 +82,4 @@ Docker Engine:
 [engine-cli]: https://docs.docker.com/engine/reference/commandline/
 [compose-cli]: https://docs.docker.com/compose/reference/
 [reference-commands]: http://dont-starve-game.wikia.com/wiki/Console/Don't_Starve_Together_Commands
-[image]: https://hub.docker.com/r/dstacademy/server/
+[image]: https://hub.docker.com/r/dstacademy/dontstarvetogether/

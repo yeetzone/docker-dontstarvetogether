@@ -13,7 +13,7 @@ if [ -z "$NAME" ]; then
 	echo "'$NAME' has been set as the cluster's name."
 fi
 
-source "`dirname "$0"`/aux.sh"
+source "`dirname "$0"`/functions.sh"
 
 validate_option "LANGUAGE" \
 	brazilian bulgarian czech danish dutch english finnish french german \
@@ -47,15 +47,6 @@ validate_port "SHARD_MASTER_PORT"
 if [[ ! -f $file_cluster ]]; then
 	exec 4>&1 1>$file_cluster
 
-	echo "[GAMEPLAY]"
-	conf "game_mode" "$GAME_MODE"
-	conf "max_players" "$MAX_PLAYERS"
-	conf "pvp" "$PVP_ENABLE"
-	conf "pause_when_empty" "$PAUSE_WHEN_EMPTY"
-	conf "vote_enabled" "$VOTE_ENABLE"
-	conf "vote_kick_enabled" "$VOTE_KICK_ENABLE"
-
-	echo
 	echo "[NETWORK]"
 	conf "cluster_name" "$NAME_PREFIX $NAME"
 	conf "cluster_description" "$DESCRIPTION"
@@ -63,9 +54,20 @@ if [[ ! -f $file_cluster ]]; then
 	conf "cluster_password" "$PASSWORD"
 	conf "autosaver_enabled" "$AUTOSAVER_ENABLE"
 	conf "lan_only_cluster" "$LAN_ONLY"
-	conf "offline_server" "$OFFLINE_ENABLE"
+	conf "offline_cluster" "$OFFLINE_ENABLE"
 	conf "tick_rate" "$TICK_RATE"
 	conf "whitelist_slots" "$WHITELIST_SLOTS"
+	conf "enable_vote_kick" "$VOTE_KICK_ENABLE"
+
+	if [[ -n "$GAME_MODE" ]] || [[ -n "$MAX_PLAYERS" ]] || [[ -n "$PVP_ENABLE" ]] || [[ -n "$PAUSE_WHEN_EMPTY" ]] || [[ -n "$VOTE_ENABLE" ]]; then
+		echo
+		echo "[GAMEPLAY]"
+		conf "game_mode" "$GAME_MODE"
+		conf "max_players" "$MAX_PLAYERS"
+		conf "pvp" "$PVP_ENABLE"
+		conf "pause_when_empty" "$PAUSE_WHEN_EMPTY"
+		conf "vote_enabled" "$VOTE_ENABLE"
+	fi
 
 	if [[ -n "$CONSOLE_ENABLE" ]] || [[ -n "$MAX_SNAPSHOTS" ]] || [[ -n "$LANGUAGE" ]]; then
 		echo
@@ -75,14 +77,10 @@ if [[ ! -f $file_cluster ]]; then
 		conf "language_code" "$LANGUAGE"
 	fi
 
-	if [[ "$SHARD_ENABLE" == "true" ]]; then
+	if [[ -n "$SHARD_ENABLE" ]]; then
 		echo
 		echo "[SHARD]"
 		conf "shard_enabled" "$SHARD_ENABLE"
-		conf "bind_ip" "$SHARD_BIND_IP"
-		conf "master_ip" "$SHARD_MASTER_IP"
-		conf "master_port" "$SHARD_MASTER_PORT"
-		conf "cluster_key" "$SHARD_CLUSTER_KEY"
 	fi
 
 	if [[ -n "$STEAM_GROUP_ID" ]] || [[ -n "$STEAM_GROUP_ONLY" ]] || [[ -n "$STEAM_GROUP_ADMINS" ]]; then
@@ -104,10 +102,14 @@ if [[ ! -f $file_server ]]; then
 	echo "[NETWORK]"
 	conf "server_port" "$SERVER_PORT"
 
-	if [[ "$SHARD_ENABLE" == "true" ]]; then
+	if [[ -n "$SHARD_ENABLE" ]]; then
 		echo
 		echo "[SHARD]"
 		conf "is_master" "$SHARD_IS_MASTER"
+		conf "bind_ip" "$SHARD_BIND_IP"
+		conf "master_ip" "$SHARD_MASTER_IP"
+		conf "master_port" "$SHARD_MASTER_PORT"
+		conf "cluster_key" "$SHARD_CLUSTER_KEY"
 		conf "name" "$SHARD_NAME"
 		conf "id" "$SHARD_ID"
 	fi
