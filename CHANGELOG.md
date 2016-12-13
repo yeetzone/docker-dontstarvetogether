@@ -11,6 +11,11 @@
 - Update the base-image to `dstacademy/steamcmd:0.2.1`.
 - Rename the repository name on GitHub and on Docker Hub.
 - Do not update the game and mods by default when starting a server/container.
+- Remove default value for `MAX_PLAYERS` to use the game's default value.
+- Remove default value for `GAME_MODE` to use the game's default value.
+- Remove default value for `VOTE_KICK_ENABLE` to use the game's default value.
+- Remove default value for `PAUSE_WHEN_EMPTY` to use the game's default value.
+- Optimize configuration creation script to handle some options better.
 
 ### Removed
 - Remove the `Vagrantfile`.
@@ -19,6 +24,7 @@
 - Update examples documentation to use correct configuration variables.
 - Do not overwrite mod configuration files when the game-files get updated.
 - Use the correct configuration variable for enabling/disabling vote-kicking.
+- Rename obsolete setting `offline_server` to `offline_cluster`.
 
 ## [0.6.0]
 
