@@ -2,6 +2,8 @@
 
 ## [next]
 
+## [0.7.0]
+
 ### Added
 - Add `DST_BRANCH` and `DST_BRANCH_PASSWORD` build arguments to enable building beta-branch images.
 - Support providing options only on the Docker `CMD` command.
@@ -119,7 +121,8 @@
 ### Added
 - Initial release.
 
-[next]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.6.0...HEAD
+[next]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.3.0...v0.4.0
