@@ -20,6 +20,9 @@ ENV DESCRIPTION="Powered by DST Academy." \
 	SHARD_BIND_IP="0.0.0.0" \
 	BACKUP_LOG_COUNT=0
 
+# Add labels.
+LABEL academy.dst.config.update="true"
+
 # Install dependencies.
 RUN set -x \
 	&& dpkg --add-architecture i386 \
