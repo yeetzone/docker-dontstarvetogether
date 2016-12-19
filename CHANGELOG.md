@@ -2,6 +2,9 @@
 
 ## [next]
 
+### Added
+- Add the label `academy.dst.config.update` to the image for supporting auto-update strategies.
+
 ## [0.7.0]
 
 ### Added
