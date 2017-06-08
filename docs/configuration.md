@@ -150,8 +150,8 @@ Enables/disables the possibility to kick players via voting.
 
 **PAUSE_WHEN_EMPTY**  
 Enables/disables pausing of the world when no player is connected.
-- true *[default]*
-- false
+- true
+- false *[default]*
 
 **STEAM_AUTHENTICATION_PORT**  
 Sets the authentication port-number for Steam. Generally it's not needed to change this.
