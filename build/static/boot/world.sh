@@ -16,7 +16,7 @@ elif [ -n "$WORLD_PRESET" ]; then
 	cat <<- EOF > $file_leveldata_override
 return {
   id = "$WORLD_PRESET",
-  version=3,
+  version = 3,
 }
 EOF
 fi
