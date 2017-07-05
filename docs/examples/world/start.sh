@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-export WORLD_OVERRIDES=$(< worldgenoverride.lua)
+export LEVELDATA_OVERRIDES=$(< leveldataoverride.lua)
 docker-compose up -d

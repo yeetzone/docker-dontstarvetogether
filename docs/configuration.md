@@ -227,9 +227,9 @@ Defines some pre-configured world settings for the server.
 - COMPLETE_DARKNESS
 - DST_CAVE
 
-**WORLD_OVERRIDES**  
-Sets the overrides-configuration for world generation. Basically it's just the content for the
-`worldgenoverride.lua` file. As this value can be pretty large it's recommended to put the
+**LEVELDATA_OVERRIDES**  
+Sets the overrides-configuration for level-data. Basically it's just the content for the
+`leveldataoverride.lua` file. As this value can be pretty large it's recommended to put the
 configuration into a separate file and read it into the variable beforehand. When this is set
 `WORLD_PRESET` has no effect.
 - *string*
