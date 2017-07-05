@@ -6,8 +6,8 @@ if [ -f $file_leveldata_override ]; then
 	exit 0
 fi
 
-if [ -n "$WORLD_OVERRIDES" ]; then
-	echo "$WORLD_OVERRIDES" > $file_leveldata_override
+if [ -n "$LEVELDATA_OVERRIDES" ]; then
+	echo "$LEVELDATA_OVERRIDES" > $file_leveldata_override
 elif [ -n "$WORLD_PRESET" ]; then
 	source "`dirname "$0"`/functions.sh"
 

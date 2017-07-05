@@ -20,13 +20,13 @@ return {
 }
 EOF
 
-container_id=`docker run -d -e WORLD_OVERRIDES="foo" $1 dst-server start --update=none || exit 1`
+container_id=`docker run -d -e LEVELDATA_OVERRIDES="foo" $1 dst-server start --update=none || exit 1`
 sleep 5
 docker cp $container_id:/var/lib/dsta/cluster/shard/leveldataoverride.lua $aux || exit 1
 diff $file1 $aux || exit 1
 docker rm -fv $container_id > /dev/null
 
-container_id=`docker run -d -e WORLD_OVERRIDES="foo" -e WORLD_PRESET="bar" $1 dst-server start --update=none || exit 1`
+container_id=`docker run -d -e LEVELDATA_OVERRIDES="foo" -e WORLD_PRESET="bar" $1 dst-server start --update=none || exit 1`
 sleep 5
 docker cp $container_id:/var/lib/dsta/cluster/shard/leveldataoverride.lua $aux || exit 1
 diff $file1 $aux || exit 1
