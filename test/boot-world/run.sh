@@ -15,8 +15,8 @@ file2=`mktemp`
 echo "foo" > $file1
 cat <<- EOF > $file2
 return {
-  preset = "bar",
-  version=3,
+  id = "bar",
+  version = 3,
 }
 EOF
 
