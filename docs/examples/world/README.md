@@ -3,4 +3,4 @@
 
 Starts a single server with customized world generation.
 You can pass a custom world generation configuration by
-setting the `WORLD_OVERRIDES` environment variable.
+setting the `LEVELDATA_OVERRIDES` environment variable.
