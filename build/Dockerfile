@@ -66,6 +66,9 @@ RUN set -x \
 # Copy entrypoint script.
 COPY /docker-entrypoint.sh /
 
+# Set up healthcheck.
+HEALTHCHECK --interval=15m --timeout=30s CMD $DSTA_HOME/version --check
+
 # Expose default server port.
 EXPOSE $SERVER_PORT/udp
 
