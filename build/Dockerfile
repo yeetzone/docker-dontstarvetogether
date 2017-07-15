@@ -1,4 +1,4 @@
-FROM dstacademy/steamcmd:0.2.1
+FROM dstacademy/steamcmd:0.3
 MAINTAINER DST Academy <support@dst.academy>
 
 # Set build arguments.
