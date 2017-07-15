@@ -11,7 +11,7 @@ services:
     ports:
       - "10999:10999/udp"
     volumes:
-      - ./world:/var/lib/dsta/cluster
+      - ./overworld:/var/lib/dsta/cluster
   underworld:
     image: dstacademy/dontstarvetogether
     container_name: underworld
@@ -25,4 +25,4 @@ services:
     links:
       - overworld
     volumes:
-      - ./world:/var/lib/dsta/cluster
+      - ./underworld:/var/lib/dsta/cluster
