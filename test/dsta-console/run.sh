@@ -20,21 +20,21 @@ sleep 20
 docker cp $container_id:/var/lib/dsta/cluster/shard/server_log.txt $file1
 docker rm -fv $container_id > /dev/null
 
-grep -Fq "ConsoleInput: \"foo 1\"" $file1 || exit 1
-grep -Fq "ConsoleInput: \"bar1\"" $file1 || exit 1
+grep -Fq "RemoteCommandInput: \"foo 1\"" $file1 || exit 1
+grep -Fq "RemoteCommandInput: \"bar1\"" $file1 || exit 1
 
-grep -Fq "ConsoleInput: \"foo 2\"" $file1 || exit 1
-grep -Fq "ConsoleInput: \"bar2\"" $file1 || exit 1
+grep -Fq "RemoteCommandInput: \"foo 2\"" $file1 || exit 1
+grep -Fq "RemoteCommandInput: \"bar2\"" $file1 || exit 1
 
-grep -Fq "ConsoleInput: \"asdf\"" $file1 || exit 1
+grep -Fq "RemoteCommandInput: \"asdf\"" $file1 || exit 1
 
-grep -Fq "ConsoleInput: \"abcde\"" $file1 || exit 1
-grep -Fq "ConsoleInput: \"foo 3\"" $file1 || exit 1
-grep -Fq "ConsoleInput: \"bar3\"" $file1 || exit 1
-grep -Fq "ConsoleInput: \"aaaaa\"" $file1 || exit 1
+grep -Fq "RemoteCommandInput: \"abcde\"" $file1 || exit 1
+grep -Fq "RemoteCommandInput: \"foo 3\"" $file1 || exit 1
+grep -Fq "RemoteCommandInput: \"bar3\"" $file1 || exit 1
+grep -Fq "RemoteCommandInput: \"aaaaa\"" $file1 || exit 1
 
-grep -Fq "ConsoleInput: \"xyz as\"" $file1 || exit 1
-grep -Fq "ConsoleInput: \"1234\"" $file1 || exit 1
-grep -Fq "ConsoleInput: \"foo 4\"" $file1 && exit 1
-grep -Fq "ConsoleInput: \"bar4\"" $file1 && exit 1
+grep -Fq "RemoteCommandInput: \"xyz as\"" $file1 || exit 1
+grep -Fq "RemoteCommandInput: \"1234\"" $file1 || exit 1
+grep -Fq "RemoteCommandInput: \"foo 4\"" $file1 && exit 1
+grep -Fq "RemoteCommandInput: \"bar4\"" $file1 && exit 1
 exit 0
