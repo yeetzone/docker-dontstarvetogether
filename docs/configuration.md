@@ -226,6 +226,7 @@ Defines some pre-configured world settings for the server.
 - SURVIVAL_DEFAULT_PLUS
 - COMPLETE_DARKNESS
 - DST_CAVE
+- DST_CAVE_PLUS
 
 **LEVELDATA_OVERRIDES**  
 Sets the overrides-configuration for level-data. Basically it's just the content for the
