@@ -38,7 +38,7 @@ cat $aux | grep "blocklist.txt" | grep -qF "(Success)" || exit 1
 docker rm -fv $container_id >/dev/null
 
 container_id=`docker run -d -e BLOCKLIST="foo,bar" $1 dst-server start --update=none || exit 1`
-sleep 5
+sleep 2
 docker cp $container_id:/var/lib/dsta/cluster/adminlist.txt $aux 2>/dev/null && exit 1
 docker cp $container_id:/var/lib/dsta/cluster/whitelist.txt $aux 2>/dev/null && exit 1
 docker cp $container_id:/var/lib/dsta/cluster/blocklist.txt $aux || exit 1
@@ -52,38 +52,38 @@ test_lists_with_keep(){
 	file_name=$3
 
 	container_id=`docker run -d -v $volume:/var/lib/dsta/cluster -e $variable="foo" $docker_image dst-server start --update=none || exit 1`
-	sleep 5
+	sleep 2
 	docker cp $container_id:/var/lib/dsta/cluster/$file_name.txt $aux || exit 1
 	diff $foo $aux || exit 1
 	docker rm -fv $container_id >/dev/null
 	docker volume rm $volume > /dev/null
 
 	container_id=`docker run -d -v $volume:/var/lib/dsta/cluster -e $variable="foo2" $docker_image dst-server start --update=none --keep-configuration=$keep_flag || exit 1`
-	sleep 5
+	sleep 2
 	docker cp $container_id:/var/lib/dsta/cluster/$file_name.txt $aux || exit 1
 	diff $foo2 $aux || exit 1
 	docker rm -fv $container_id >/dev/null
 
 	container_id=`docker run -d -v $volume:/var/lib/dsta/cluster $docker_image dst-server start --update=none --keep-configuration=$keep_flag || exit 1`
-	sleep 5
+	sleep 2
 	docker cp $container_id:/var/lib/dsta/cluster/$file_name.txt $aux || exit 1
 	diff $foo2 $aux || exit 1
 	docker rm -fv $container_id >/dev/null
 
 	container_id=`docker run -d -v $volume:/var/lib/dsta/cluster -e $variable="foo" $docker_image dst-server start --update=none || exit 1`
-	sleep 5
+	sleep 2
 	docker cp $container_id:/var/lib/dsta/cluster/$file_name.txt $aux || exit 1
 	diff $foo $aux || exit 1
 	docker rm -fv $container_id >/dev/null
 
 	container_id=`docker run -d -v $volume:/var/lib/dsta/cluster -e $variable="foo2" $docker_image dst-server start --update=none --keep-configuration=$keep_flag || exit 1`
-	sleep 5
+	sleep 2
 	docker cp $container_id:/var/lib/dsta/cluster/$file_name.txt $aux || exit 1
 	diff $foo $aux || exit 1
 	docker rm -fv $container_id >/dev/null
 
 	container_id=`docker run -d -v $volume:/var/lib/dsta/cluster $docker_image dst-server start --update=none || exit 1`
-	sleep 5
+	sleep 2
 	docker cp $container_id:/var/lib/dsta/cluster/$file_name.txt $aux 2>/dev/null && exit 1
 	diff $foo $aux || exit 1
 	docker rm -fv $container_id >/dev/null
