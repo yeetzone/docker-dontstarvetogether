@@ -34,7 +34,9 @@ validate_bool "SHARD_ENABLE"
 validate_bool "SHARD_IS_MASTER"
 validate_port "SHARD_MASTER_PORT"
 
-if [[ ! -f $file_cluster ]]; then
+if [[ -f "$file_cluster" ]] && containsElement "cluster" $@ ; then
+	true # no-op
+else
 	if [ -z "$NAME" ]; then
 		selectRandomLine(){
 			mapfile list < $1
@@ -96,7 +98,9 @@ if [[ ! -f $file_cluster ]]; then
 	chown $STEAM_USER:$STEAM_USER $file_cluster
 fi
 
-if [[ ! -f $file_server ]]; then
+if [[ -f "$file_server" ]] && containsElement "server" $@ ; then
+	true # no-op
+else
 	exec 4>&1 1>$file_server
 
 	echo "[NETWORK]"
