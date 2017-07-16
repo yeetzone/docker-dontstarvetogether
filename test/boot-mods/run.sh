@@ -18,16 +18,13 @@ modoverrides2=`mktemp`
 modoverrides3=`mktemp`
 
 cat <<- EOF > $mods_setup1
-
 ServerModSetup("foo")
 EOF
 cat <<- EOF > $mods_setup2
-
 ServerModSetup("foo")
 ServerModSetup("bar")
 EOF
 cat <<- EOF > $mods_setup3
-
 ServerModSetup("foo")
 ServerModSetup("bar")
 EOF
