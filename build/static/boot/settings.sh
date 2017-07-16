@@ -1,19 +1,9 @@
 #!/usr/bin/env bash
 
+source "`dirname "$0"`/functions.sh"
+
 file_cluster="$CLUSTER_PATH/cluster.ini"
 file_server="$CLUSTER_PATH/$SHARD_NAME/server.ini"
-
-if [ -z "$NAME" ]; then
-	selectRandomLine(){
-		mapfile list < $1
-		echo ${list[$RANDOM % ${#list[@]}]}
-	}
-
-	NAME="`selectRandomLine $DSTA_HOME/data/adjectives.txt` `selectRandomLine $DSTA_HOME/data/names.txt`"
-	echo "'$NAME' has been set as the cluster's name."
-fi
-
-source "`dirname "$0"`/functions.sh"
 
 validate_option "LANGUAGE" \
 	brazilian bulgarian czech danish dutch english finnish french german \
@@ -45,6 +35,16 @@ validate_bool "SHARD_IS_MASTER"
 validate_port "SHARD_MASTER_PORT"
 
 if [[ ! -f $file_cluster ]]; then
+	if [ -z "$NAME" ]; then
+		selectRandomLine(){
+			mapfile list < $1
+			echo ${list[$RANDOM % ${#list[@]}]}
+		}
+
+		NAME="`selectRandomLine $DSTA_HOME/data/adjectives.txt` `selectRandomLine $DSTA_HOME/data/names.txt`"
+		echo "'$NAME' has been set as the cluster's name."
+	fi
+
 	exec 4>&1 1>$file_cluster
 
 	echo "[NETWORK]"
