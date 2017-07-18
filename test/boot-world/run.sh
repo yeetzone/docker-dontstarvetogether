@@ -20,7 +20,10 @@ echo "foo" > $file1
 cat <<- EOF > $file2
 return {
   id = "bar",
-  version = 3,
+  location = "forest",
+  name="",
+  desc="",
+  overrides={},
 }
 EOF
 printf "foo\n" >$foo
