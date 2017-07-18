@@ -6,11 +6,14 @@ file_mods_overrides="$CLUSTER_PATH/$SHARD_NAME/modoverrides.lua"
 
 IFS=","
 
-# Install and enable regular mods from the Steam workshop.
-if [ -n "$MODS" ] && [ ! -f $file_mods_overrides ]; then
-	echo "" >> $file_mods_setup
-	echo "" >> $file_mods_setup
+if [[ -f "$file_mods_overrides" ]] && containsElement "mods" $@ ; then
+	exit 0
+fi
 
+rm -f $file_mods_setup $file_mods_settings $file_mods_overrides
+
+# Install and enable regular mods from the Steam workshop.
+if [[ -n "$MODS" ]]; then
 	for mod in $MODS; do
 		echo "ServerModSetup(\"$mod\")" >> $file_mods_setup
 	done

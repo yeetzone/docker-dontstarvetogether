@@ -60,6 +60,7 @@ docker rm -fv $container_id > /dev/null
 # Errors
 cat > $file1 <<- EOF
 usage: dst-server start [--update=all|none|game|mods]
+                        [--keep-configuration=<value[,otherValue>]...>]
 
    --update=none
       Update nothing, just start the server. This is the default behaviour.
@@ -69,6 +70,17 @@ usage: dst-server start [--update=all|none|game|mods]
       Update just the game (no the mods) and launch the server.
    --update=mods
       Update the mods and launch the server.
+   --keep-configuration
+      Select which configuration you don't want to overwrite.
+      You must provide one or more of these values separated by commas:
+      - token
+      - cluster
+      - server
+      - world
+      - adminlist
+      - blocklist
+      - whitelist
+      - mods
 EOF
 docker run --rm $1 dst-server start foo >/dev/null 2> $file2 && exit 1
 diff $file1 $file2 || exit 1
