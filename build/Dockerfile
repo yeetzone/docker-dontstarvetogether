@@ -69,9 +69,6 @@ COPY /docker-entrypoint.sh /
 # Set up healthcheck.
 HEALTHCHECK --interval=5m --timeout=30s --retries=3 CMD dst-server version --check
 
-# Expose default server port.
-EXPOSE $SERVER_PORT/udp
-
 # Set up a volume for configuration files.
 VOLUME ["$CLUSTER_PATH"]
 
