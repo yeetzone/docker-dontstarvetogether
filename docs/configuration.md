@@ -107,6 +107,24 @@ players which can connect to the server. The sum of `MAX_PLAYERS` and `WHITELIST
 how many players can connect to the server simultaneously.
 - *number* *[default: 0]*
 
+**ADMINLIST**  
+Klei UserIDs to add to the adminlist.txt file. Gives players in the list Administrator priveliges.
+A players Klei UserID can be found my clicking "Account" in the bottom right of the main menu.
+- *CSV of Klei UserIDs*  
+  *Example:* `KU_G_cla3ou,KU_yDc5M7bx,KU_ad39dik`
+
+**WHITELIST**  
+Klei UserIDs to add to the whitelist.txt file.
+A players Klei UserID can be found my clicking "Account" in the bottom right of the main menu.
+- *CSV of Klei UserIDs*  
+  *Example:* `KU_G_cla3ou,KU_yDc5M7bx,KU_ad39dik`
+
+**BLOCKLIST**  
+Klei UserIDs to add to the blocklist.txt file.
+A players Klei UserID can be found my clicking "Account" in the bottom right of the main menu.
+- *CSV of Klei UserIDs*  
+  *Example:* `KU_G_cla3ou,KU_yDc5M7bx,KU_ad39dik`
+
 **PVP_ENABLE**  
 Enables/disables PVP, which basically defines if players can attack each other.
 - true
