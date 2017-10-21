@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source "`dirname "$0"`/functions.sh"
+source "$(dirname "$0")/functions.sh"
 
 file_cluster="$CLUSTER_PATH/cluster.ini"
 file_server="$CLUSTER_PATH/$SHARD_NAME/server.ini"
@@ -34,20 +34,20 @@ validate_bool "SHARD_ENABLE"
 validate_bool "SHARD_IS_MASTER"
 validate_port "SHARD_MASTER_PORT"
 
-if [[ -f "$file_cluster" ]] && containsElement "cluster" $@ ; then
+if [[ -f "$file_cluster" ]] && containsElement "cluster" "$@"; then
 	true # no-op
 else
 	if [ -z "$NAME" ]; then
 		selectRandomLine(){
-			mapfile list < $1
-			echo ${list[$RANDOM % ${#list[@]}]}
+			mapfile list < "$1"
+			echo "${list[$RANDOM % ${#list[@]}]}"
 		}
 
-		NAME="`selectRandomLine $DSTA_HOME/data/adjectives.txt` `selectRandomLine $DSTA_HOME/data/names.txt`"
+		NAME="$(selectRandomLine "$DSTA_HOME"/data/adjectives.txt) $(selectRandomLine "$DSTA_HOME"/data/names.txt)"
 		echo "'$NAME' has been set as the cluster's name."
 	fi
 
-	exec 4>&1 1>$file_cluster
+	exec 4>&1 1>"$file_cluster"
 
 	echo "[NETWORK]"
 	conf "cluster_name" "$NAME_PREFIX $NAME"
@@ -95,13 +95,13 @@ else
 
 	exec 1>&4 4>&-
 
-	chown $STEAM_USER:$STEAM_USER $file_cluster
+	chown "$STEAM_USER":"$STEAM_USER" "$file_cluster"
 fi
 
-if [[ -f "$file_server" ]] && containsElement "server" $@ ; then
+if [[ -f "$file_server" ]] && containsElement "server" "$@"; then
 	true # no-op
 else
-	exec 4>&1 1>$file_server
+	exec 4>&1 1>"$file_server"
 
 	echo "[NETWORK]"
 	conf "server_port" "$SERVER_PORT"
@@ -127,5 +127,5 @@ else
 
 	exec 1>&4 4>&-
 
-	chown $STEAM_USER:$STEAM_USER $file_server
+	chown "$STEAM_USER":"$STEAM_USER" "$file_server"
 fi
