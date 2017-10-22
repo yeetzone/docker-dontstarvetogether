@@ -237,20 +237,10 @@ This needs to be the same for the master-server and all slave-servers.
 - *text*  
   *Example:* `secret-and-equal-for-all-shards`
 
-**WORLD_PRESET**  
-Defines some pre-configured world settings for the server.
-- SURVIVAL_TOGETHER *[default]*
-- SURVIVAL_TOGETHER_CLASSIC
-- SURVIVAL_DEFAULT_PLUS
-- COMPLETE_DARKNESS
-- DST_CAVE
-- DST_CAVE_PLUS
-
 **LEVELDATA_OVERRIDES**  
 Sets the overrides-configuration for level-data. Basically it's just the content for the
 `leveldataoverride.lua` file. As this value can be pretty large it's recommended to put the
-configuration into a separate file and read it into the variable beforehand. When this is set
-`WORLD_PRESET` has no effect.
+configuration into a separate file and read it into the variable beforehand.
 - *string*
 
 **MODS**  
