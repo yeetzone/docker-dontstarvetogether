@@ -15,8 +15,7 @@ for the online multi-player survival game [*Don't Starve Together*][website].
 
 ## Features
 - [x] Configuration via **ENV** variables.
-- [x] World presets including **caves**.
-- [x] Customized **world generation**.
+- [x] Customized **world generation** via `leveldataoverride.lua`.
 - [x] Mods and custom **mod-configuration**.
 - [x] Connected worlds via **sharding**.
 - [x] Control the server directly on the **CLI**.
