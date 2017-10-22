@@ -67,7 +67,7 @@ RUN set -x \
 COPY /docker-entrypoint.sh /
 
 # Set up healthcheck.
-HEALTHCHECK --interval=5m --timeout=30s --retries=3 CMD dst-server version --check
+HEALTHCHECK --start-period=15m --interval=5m --timeout=1m --retries=3 CMD dst-server version --check
 
 # Set up a volume for configuration files.
 VOLUME ["$CLUSTER_PATH"]
