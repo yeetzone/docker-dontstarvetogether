@@ -4,7 +4,7 @@ source "$(dirname "$0")/functions.sh"
 
 file_token="$CLUSTER_PATH/cluster_token.txt"
 
-if [[ -f "$file_token" ]] && containsElement "token" "$@"; then
+if [[ -f "$file_token" ]] && containsElement "token" $@; then
 	exit 0
 fi
 
