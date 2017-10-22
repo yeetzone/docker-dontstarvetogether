@@ -21,7 +21,7 @@ validate_int(){
 }
 
 validate_port(){
-	return "$(validate_int "$1" "1" "65535")"
+	return $(validate_int "$1" "1" "65535")
 }
 
 # http://stackoverflow.com/a/8574392/842697
