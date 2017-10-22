@@ -37,8 +37,8 @@ validate_port "SHARD_MASTER_PORT"
 if [[ -f "$file_cluster" ]] && containsElement "cluster" "$@"; then
 	true # no-op
 else
-	if [ -z "$NAME" ]; then
-		selectRandomLine(){
+	if [[ -z "$NAME" ]]; then
+		selectRandomLine() {
 			mapfile list < "$1"
 			echo "${list[$RANDOM % ${#list[@]}]}"
 		}

@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
-usage(){
+usage() {
 	cat "$DSTA_HOME/doc/start.usage"
 }
 
 update=0
-if [ "$#" -eq 0 ]; then
+
+if [[ $# -eq 0 ]]; then
 	true # no-op
-elif [ "$1" == "--help" ]; then
+elif [[ "$1" = "--help" ]]; then
 	usage
 	exit 0
 else

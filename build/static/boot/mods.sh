@@ -18,7 +18,7 @@ if [[ -n "$MODS" ]]; then
 		echo "ServerModSetup(\"$mod\")" >> "$file_mods_setup"
 	done
 
-	if [ -n "$MODS_OVERRIDES" ]; then
+	if [[ -n "$MODS_OVERRIDES" ]]; then
 		echo "$MODS_OVERRIDES" > "$file_mods_overrides"
 	else
 		echo "return {" > "$file_mods_overrides"
@@ -34,7 +34,7 @@ if [[ -n "$MODS" ]]; then
 fi
 
 # Enable mods forcefully for mod development.
-if [ -n "$MODS_FORCE" ]; then
+if [[ -n "$MODS_FORCE" ]]; then
 	for mod in $MODS_FORCE; do
 		echo "ForceEnableMod(\"$mod\")" >> "$file_mods_settings"
 	done
