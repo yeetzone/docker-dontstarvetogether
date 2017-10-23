@@ -2,6 +2,20 @@
 
 ## [next]
 
+### Added
+- Add support for the `leveldataoverride.lua` file via the `LEVELDATA_OVERRIDES` env-variable.
+- Configure the Docker `HEALTHCHECK` command running `dst-server version --check`.
+- Add a `keep-configuration` boot option to define how existing configuration files should be handled.
+
+### Changed
+- Update the base-image to `dstacademy/steamcmd:0.3`.
+- Overwrite configuration files by default when starting a container.
+- Do not expose/configure a default port in the `Dockerfile` anymore.
+
+### Removed
+- Remove the `WORLD_OVERRIDES` env-variable and `worldgenoverride.lua` file.
+- Remove support for the `WORLD_PRESET` env-variable in favor of `LEVELDATA_OVERRIDES`.
+
 ## [0.7.1]
 
 ### Added
