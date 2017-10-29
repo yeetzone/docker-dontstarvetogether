@@ -1,6 +1,16 @@
 FROM dstacademy/steamcmd:0.3
 MAINTAINER DST Academy <support@dst.academy>
 
+# Install dependencies.
+RUN set -x \
+	&& dpkg --add-architecture i386 \
+	&& apt-get update \
+	&& apt-get install -y --no-install-recommends \
+		lib32stdc++6 \
+		libcurl4-gnutls-dev:i386 \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 # Set build arguments.
 ARG DST_HOME
 ENV DST_HOME ${DST_HOME:-"/opt/dst"}
@@ -22,16 +32,6 @@ ENV DESCRIPTION="Powered by DST Academy." \
 
 # Add labels.
 LABEL academy.dst.config.update="true"
-
-# Install dependencies.
-RUN set -x \
-	&& dpkg --add-architecture i386 \
-	&& apt-get update \
-	&& apt-get install -y --no-install-recommends \
-		lib32stdc++6 \
-		libcurl4-gnutls-dev:i386 \
-	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install Don't Starve Together Server.
 RUN set -x \
