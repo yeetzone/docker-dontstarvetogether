@@ -25,6 +25,13 @@ NAME=Name
 MAX_PLAYERS=10
 ```
 
+## Build Arguments
+
+**MODS**  
+Defines mods to install and enable.
+- *CSV of workshop IDs*  
+  *Example:* `378160973,492173795,407705132`
+
 ## Environment Variables
 Environment variables can be used to customize certain settings of the server. Most of the
 available environment variables correspond to the `settings.ini` variables used by DST.
@@ -242,11 +249,6 @@ Sets the overrides-configuration for level-data. Basically it's just the content
 `leveldataoverride.lua` file. As this value can be pretty large it's recommended to put the
 configuration into a separate file and read it into the variable beforehand.
 - *string*
-
-**MODS**  
-Defines mods to install and enable.
-- *CSV of workshop IDs*  
-  *Example:* `378160973,492173795,407705132`
 
 **MODS_OVERRIDES**  
 Sets the overrides-configuration for all mods. Basically it's just the content for the

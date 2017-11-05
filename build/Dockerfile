@@ -50,6 +50,19 @@ RUN set -x \
 	&& rm -rf $STEAM_HOME/Steam/logs $STEAM_HOME/Steam/appcache/httpcache \
 	&& find $STEAM_HOME/package -type f ! -name "steam_cmd_linux.installed" ! -name "steam_cmd_linux.manifest" -delete
 
+ARG MODS
+ENV MODS ${MODS}
+
+# Install mods.
+RUN set -x \
+	&& if [ -n "$MODS" ] ; then \
+		   IFS="," \
+		&& for mod in $MODS; do echo "ServerModSetup(\"$mod\")" >> "$DST_HOME/mods/dedicated_server_mods_setup.lua"; done \
+		&& cd "$DST_HOME/bin" \
+		&& gosu $STEAM_USER ./dontstarve_dedicated_server_nullrenderer -only_update_server_mods \
+		&& rm -r "$STEAM_HOME/.klei" \
+	; fi
+
 # Copy common scripts.
 COPY /script/* /usr/local/bin/
 
