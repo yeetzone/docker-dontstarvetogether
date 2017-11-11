@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [[ "$(whoami)" != "$STEAM_USER" ]]; then
+	exec gosu "$STEAM_USER" "$0" "$@"
+fi
+
 exec steamcmd \
 	+@ShutdownOnFailedCommand 1 \
 	+login anonymous \
