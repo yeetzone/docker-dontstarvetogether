@@ -1,6 +1,16 @@
 FROM dstacademy/steamcmd:0.3
 MAINTAINER DST Academy <support@dst.academy>
 
+# Install dependencies.
+RUN set -x \
+	&& dpkg --add-architecture i386 \
+	&& apt-get update \
+	&& apt-get install -y --no-install-recommends \
+		lib32stdc++6 \
+		libcurl4-gnutls-dev:i386 \
+	&& apt-get clean \
+	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 # Set build arguments.
 ARG DST_HOME
 ENV DST_HOME ${DST_HOME:-"/opt/dst"}
@@ -23,16 +33,6 @@ ENV DESCRIPTION="Powered by DST Academy." \
 # Add labels.
 LABEL academy.dst.config.update="true"
 
-# Install dependencies.
-RUN set -x \
-	&& dpkg --add-architecture i386 \
-	&& apt-get update \
-	&& apt-get install -y --no-install-recommends \
-		lib32stdc++6 \
-		libcurl4-gnutls-dev:i386 \
-	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
 # Install Don't Starve Together Server.
 RUN set -x \
 	&& mkdir -p $DST_HOME \
@@ -49,6 +49,19 @@ RUN set -x \
 		+quit \
 	&& rm -rf $STEAM_HOME/Steam/logs $STEAM_HOME/Steam/appcache/httpcache \
 	&& find $STEAM_HOME/package -type f ! -name "steam_cmd_linux.installed" ! -name "steam_cmd_linux.manifest" -delete
+
+ARG MODS
+ENV MODS ${MODS}
+
+# Install mods.
+RUN set -x \
+	&& if [ -n "$MODS" ] ; then \
+		   IFS="," \
+		&& for mod in $MODS; do echo "ServerModSetup(\"$mod\")" >> "$DST_HOME/mods/dedicated_server_mods_setup.lua"; done \
+		&& cd "$DST_HOME/bin" \
+		&& gosu $STEAM_USER ./dontstarve_dedicated_server_nullrenderer -only_update_server_mods \
+		&& rm -r "$STEAM_HOME/.klei" \
+	; fi
 
 # Copy common scripts.
 COPY /script/* /usr/local/bin/

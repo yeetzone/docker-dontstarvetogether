@@ -59,7 +59,7 @@ docker cp $container_id:/var/lib/dsta/cluster/shard/modoverrides.lua $aux || exi
 diff $modoverrides2 $aux || exit 1
 docker rm -fv $container_id > /dev/null
 
-container_id=`docker run -d  -e MODS="foo,bar" -e MODS_OVERRIDES="xyz" $1 dst-server start --update=none || exit 1`
+container_id=`docker run -d -e MODS="foo,bar" -e MODS_OVERRIDES="xyz" $1 dst-server start --update=none || exit 1`
 sleep 2
 docker cp $container_id:/opt/dst/mods/dedicated_server_mods_setup.lua $aux || exit 1
 tail -n 3 $aux > $aux2

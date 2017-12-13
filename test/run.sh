@@ -14,7 +14,7 @@ docker build -t $image_name ../build || build_error
 
 tests=`mktemp`
 if [ $# -eq 0 ]; then
-	find -mindepth 2 -maxdepth 2 -type f -name run.sh > $tests
+	find . -mindepth 2 -maxdepth 2 -type f -name run.sh > $tests
 else
 	for test_name in "$@"
 	do
