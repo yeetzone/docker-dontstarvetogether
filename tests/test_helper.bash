@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+load dependencies/load
+
 export BUILD="$BATS_TEST_DIRNAME/../build"
 export IMAGE="dstacademy/dontstarvetogether"
 export CONTAINER="dstacademy-test"
