@@ -22,3 +22,7 @@ teardown() {
 	docker rm -fv "$CONTAINER" >/dev/null
 	rm -rf "$TMP"
 }
+
+wait_until_loaded() {
+	docker logs --follow $CONTAINER | sed '/LOADING LUA SUCCESS$/ q' >/dev/null
+}
