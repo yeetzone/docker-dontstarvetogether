@@ -8,7 +8,8 @@ load test_helper
 	docker run -d --name $CONTAINER $IMAGE
 	docker cp "$FIXTURE_ROOT/commands.sh" $CONTAINER:/
 	docker exec $CONTAINER /commands.sh
-	sleep 10
+	wait_until_loaded
+	sleep 1
 	docker cp $CONTAINER:/var/lib/dsta/cluster/shard/server_log.txt "$TMP/server_log.txt"
 	grep -F "RemoteCommandInput: \"foo bar\"" "$TMP/server_log.txt"
 	grep -F "RemoteCommandInput: \"bar\"" "$TMP/server_log.txt"

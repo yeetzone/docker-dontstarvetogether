@@ -2,14 +2,13 @@
 
 load test_helper
 
-SLEEP_TIME=10
-
 @test "dst-server console redirect" {
 	fixtures dsta-console
 
 	docker run -d --name $CONTAINER $IMAGE
 	docker exec -i $CONTAINER dst-server console <"$FIXTURE_ROOT/commands.txt"
-	sleep $SLEEP_TIME
+	wait_until_loaded
+	sleep 1
 	docker cp $CONTAINER:/var/lib/dsta/cluster/shard/server_log.txt "$TMP/server_log.txt"
 
 	grep -F "RemoteCommandInput: \"foo bar\"" "$TMP/server_log.txt"
@@ -21,7 +20,8 @@ SLEEP_TIME=10
 
 	docker run -d --name $CONTAINER $IMAGE
 	docker exec -i $CONTAINER dst-server console - <"$FIXTURE_ROOT/commands.txt"
-	sleep $SLEEP_TIME
+	wait_until_loaded
+	sleep 1
 	docker cp $CONTAINER:/var/lib/dsta/cluster/shard/server_log.txt "$TMP/server_log.txt"
 
 	grep -F "RemoteCommandInput: \"foo bar\"" "$TMP/server_log.txt"
@@ -31,7 +31,8 @@ SLEEP_TIME=10
 @test "dst-server console command" {
 	docker run -d --name $CONTAINER $IMAGE
 	docker exec -i $CONTAINER dst-server console "asdf"
-	sleep $SLEEP_TIME
+	wait_until_loaded
+	sleep 1
 	docker cp $CONTAINER:/var/lib/dsta/cluster/shard/server_log.txt "$TMP/server_log.txt"
 
 	grep -F "RemoteCommandInput: \"asdf\"" "$TMP/server_log.txt"
@@ -42,7 +43,8 @@ SLEEP_TIME=10
 
 	docker run -d --name $CONTAINER $IMAGE
 	docker exec -i $CONTAINER dst-server console "asdf" - "aaaaa" <"$FIXTURE_ROOT/commands.txt"
-	sleep $SLEEP_TIME
+	wait_until_loaded
+	sleep 1
 	docker cp $CONTAINER:/var/lib/dsta/cluster/shard/server_log.txt "$TMP/server_log.txt"
 
 	grep -F "RemoteCommandInput: \"asdf\"" "$TMP/server_log.txt"
@@ -56,7 +58,8 @@ SLEEP_TIME=10
 
 	docker run -d --name $CONTAINER $IMAGE
 	docker exec -i $CONTAINER dst-server console "asdf" "aaaaa" <"$FIXTURE_ROOT/commands.txt"
-	sleep $SLEEP_TIME
+	wait_until_loaded
+	sleep 1
 	docker cp $CONTAINER:/var/lib/dsta/cluster/shard/server_log.txt "$TMP/server_log.txt"
 
 	grep -F "RemoteCommandInput: \"asdf\"" "$TMP/server_log.txt"

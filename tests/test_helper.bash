@@ -23,6 +23,10 @@ teardown() {
 	rm -rf "$TMP"
 }
 
+wait_until_initializing() {
+	docker logs --follow $CONTAINER | sed '/Starting Up$/ q' >/dev/null
+}
+
 wait_until_loaded() {
 	docker logs --follow $CONTAINER | sed '/LOADING LUA SUCCESS$/ q' >/dev/null
 }
