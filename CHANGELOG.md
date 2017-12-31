@@ -2,6 +2,8 @@
 
 ## [next]
 
+## [0.8.0]
+
 ### Added
 - Introduce a `MODS` build-variable to support pre-built images with pre-installed mods.
 - Add support for the `leveldataoverride.lua` file via the `LEVELDATA_OVERRIDES` env-variable.
@@ -142,7 +144,8 @@
 ### Added
 - Initial release.
 
-[next]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.7.1...HEAD
+[next]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.8.0...HEAD
+[0.8.0]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.7.1...v0.8.0
 [0.7.1]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.5.0...v0.6.0
