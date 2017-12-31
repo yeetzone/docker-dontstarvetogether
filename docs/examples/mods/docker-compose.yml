@@ -1,7 +1,10 @@
 version: "2"
 services:
   world:
-    image: dstacademy/dontstarvetogether
+    build:
+      context: https://github.com/dst-academy/docker-dontstarvetogether.git#:build
+      args:
+        MODS: 378160973,492173795,407705132
     container_name: world
     hostname: world
     tty: true

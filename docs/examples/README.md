@@ -31,7 +31,7 @@ connected to each other via sinkholes and stairs in each world.
 
 ### [World Generation][setup-world]
 The *World Generation* configuration defines custom world generation rules. Configuration
-is loaded from the `worldgenoverride.yml` file and passed to the start command.
+is loaded from the `leveldataoverride.yml` file and passed to the start command.
 
 [dsta-servers]: https://github.com/dst-academy/deployment-servers
 [setup-basic]: ./basic/

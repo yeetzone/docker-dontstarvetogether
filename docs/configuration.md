@@ -25,6 +25,13 @@ NAME=Name
 MAX_PLAYERS=10
 ```
 
+## Build Arguments
+
+**MODS**  
+Defines mods to install and enable.
+- *CSV of workshop IDs*  
+  *Example:* `378160973,492173795,407705132`
+
 ## Environment Variables
 Environment variables can be used to customize certain settings of the server. Most of the
 available environment variables correspond to the `settings.ini` variables used by DST.
@@ -107,6 +114,24 @@ players which can connect to the server. The sum of `MAX_PLAYERS` and `WHITELIST
 how many players can connect to the server simultaneously.
 - *number* *[default: 0]*
 
+**ADMINLIST**  
+Klei UserIDs to add to the adminlist.txt file. Gives players in the list Administrator priveliges.
+A players Klei UserID can be found my clicking "Account" in the bottom right of the main menu.
+- *CSV of Klei UserIDs*  
+  *Example:* `KU_G_cla3ou,KU_yDc5M7bx,KU_ad39dik`
+
+**WHITELIST**  
+Klei UserIDs to add to the whitelist.txt file.
+A players Klei UserID can be found my clicking "Account" in the bottom right of the main menu.
+- *CSV of Klei UserIDs*  
+  *Example:* `KU_G_cla3ou,KU_yDc5M7bx,KU_ad39dik`
+
+**BLOCKLIST**  
+Klei UserIDs to add to the blocklist.txt file.
+A players Klei UserID can be found my clicking "Account" in the bottom right of the main menu.
+- *CSV of Klei UserIDs*  
+  *Example:* `KU_G_cla3ou,KU_yDc5M7bx,KU_ad39dik`
+
 **PVP_ENABLE**  
 Enables/disables PVP, which basically defines if players can attack each other.
 - true
@@ -150,8 +175,8 @@ Enables/disables the possibility to kick players via voting.
 
 **PAUSE_WHEN_EMPTY**  
 Enables/disables pausing of the world when no player is connected.
-- true *[default]*
-- false
+- true
+- false *[default]*
 
 **STEAM_AUTHENTICATION_PORT**  
 Sets the authentication port-number for Steam. Generally it's not needed to change this.
@@ -219,25 +244,11 @@ This needs to be the same for the master-server and all slave-servers.
 - *text*  
   *Example:* `secret-and-equal-for-all-shards`
 
-**WORLD_PRESET**  
-Defines some pre-configured world settings for the server.
-- SURVIVAL_TOGETHER *[default]*
-- SURVIVAL_TOGETHER_CLASSIC
-- SURVIVAL_DEFAULT_PLUS
-- COMPLETE_DARKNESS
-- DST_CAVE
-
-**WORLD_OVERRIDES**  
-Sets the overrides-configuration for world generation. Basically it's just the content for the
-`worldgenoverride.lua` file. As this value can be pretty large it's recommended to put the
-configuration into a separate file and read it into the variable beforehand. When this is set
-`WORLD_PRESET` has no effect.
+**LEVELDATA_OVERRIDES**  
+Sets the overrides-configuration for level-data. Basically it's just the content for the
+`leveldataoverride.lua` file. As this value can be pretty large it's recommended to put the
+configuration into a separate file and read it into the variable beforehand.
 - *string*
-
-**MODS**  
-Defines mods to install and enable.
-- *CSV of workshop IDs*  
-  *Example:* `378160973,492173795,407705132`
 
 **MODS_OVERRIDES**  
 Sets the overrides-configuration for all mods. Basically it's just the content for the

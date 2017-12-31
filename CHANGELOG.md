@@ -2,6 +2,24 @@
 
 ## [next]
 
+## [0.8.0]
+
+### Added
+- Introduce a `MODS` build-variable to support pre-built images with pre-installed mods.
+- Add support for the `leveldataoverride.lua` file via the `LEVELDATA_OVERRIDES` env-variable.
+- Configure the Docker `HEALTHCHECK` command running `dst-server version --check`.
+- Add a `keep-configuration` boot option to define how existing configuration files should be handled.
+
+### Changed
+- Update the base-image to `dstacademy/steamcmd:0.3`.
+- Overwrite configuration files by default when starting a container.
+- Do not expose/configure a default port in the `Dockerfile` anymore.
+- Refactor tests to use `bats`.
+
+### Removed
+- Remove the `WORLD_OVERRIDES` env-variable and `worldgenoverride.lua` file.
+- Remove support for the `WORLD_PRESET` env-variable in favor of `LEVELDATA_OVERRIDES`.
+
 ## [0.7.1]
 
 ### Added
@@ -126,7 +144,8 @@
 ### Added
 - Initial release.
 
-[next]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.7.1...HEAD
+[next]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.8.0...HEAD
+[0.8.0]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.7.1...v0.8.0
 [0.7.1]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/dst-academy/docker-dontstarvetogether/compare/v0.5.0...v0.6.0
