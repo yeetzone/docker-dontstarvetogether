@@ -1,7 +1,7 @@
 version: "2"
 services:
   overworld:
-    image: dstacademy/dontstarvetogether
+    image: dstacademy/dontstarvetogether:0.8
     container_name: overworld
     hostname: overworld
     tty: true
@@ -130,7 +130,7 @@ services:
     volumes:
       - ./overworld:/var/lib/dsta/cluster
   underworld:
-    image: dstacademy/dontstarvetogether
+    image: dstacademy/dontstarvetogether:0.8
     container_name: underworld
     hostname: underworld
     tty: true
