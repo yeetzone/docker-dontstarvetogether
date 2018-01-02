@@ -1,7 +1,7 @@
 version: "2"
 services:
   world-1:
-    image: dstacademy/dontstarvetogether
+    image: dstacademy/dontstarvetogether:0.8
     container_name: world-1
     hostname: world-1
     tty: true
@@ -14,7 +14,7 @@ services:
       - ./world-1:/var/lib/dsta/cluster
 
   world-2:
-    image: dstacademy/dontstarvetogether
+    image: dstacademy/dontstarvetogether:0.8
     container_name: world-2
     hostname: world-2
     tty: true
@@ -27,7 +27,7 @@ services:
       - ./world-2:/var/lib/dsta/cluster
 
   world-3:
-    image: dstacademy/dontstarvetogether
+    image: dstacademy/dontstarvetogether:0.8
     container_name: world-3
     hostname: world-3
     tty: true
