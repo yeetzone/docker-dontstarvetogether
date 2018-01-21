@@ -2,7 +2,7 @@ version: "2"
 services:
   world:
     build:
-      context: https://github.com/dst-academy/docker-dontstarvetogether.git#:build
+      context: https://github.com/dst-academy/docker-dontstarvetogether.git#v0.8.0:build
       args:
         MODS: 378160973,492173795,407705132
     container_name: world
