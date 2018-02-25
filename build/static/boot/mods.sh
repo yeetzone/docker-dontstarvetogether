@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source "$(dirname "$0")/functions.sh"
+
 file_mods_setup="$DST_HOME/mods/dedicated_server_mods_setup.lua"
 file_mods_settings="$DST_HOME/mods/modsettings.lua"
 file_mods_overrides="$CLUSTER_PATH/$SHARD_NAME/modoverrides.lua"
