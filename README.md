@@ -5,8 +5,8 @@
 [![GitHub Release](https://img.shields.io/github/release/dst-academy/docker-dontstarvetogether.svg)](https://github.com/dst-academy/docker-dontstarvetogether/releases/latest)
 [![Docker Pulls](https://img.shields.io/docker/pulls/dstacademy/dontstarvetogether.svg)](https://hub.docker.com/r/dstacademy/dontstarvetogether/)
 [![License](https://img.shields.io/github/license/dst-academy/docker-dontstarvetogether.svg)](https://github.com/dst-academy/docker-dontstarvetogether/blob/develop/LICENSE.md)
-[![Slack](https://img.shields.io/badge/slack-join-E01563.svg)](https://slack.dst.academy/)
-[![Steam](https://img.shields.io/badge/steam-join-1b2838.svg)](https://steamcommunity.com/groups/dst-academy)
+[![Steam](https://img.shields.io/badge/steam-join-1b2838.svg)](https://d3a7.link/steam)
+[![Discord](https://discordapp.com/api/guilds/215170368959283200/embed.png)](https://d3a7.link/discord)
 
 ---
 
