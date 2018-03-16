@@ -2,6 +2,9 @@
 
 ## [next]
 
+### Changed
+- Update base image to `dstacademy/steamcmd:0.4`.
+
 ## [0.8.0]
 
 ### Added
