@@ -1,4 +1,4 @@
-FROM dstacademy/steamcmd:0.3
+FROM dstacademy/steamcmd:0.4
 MAINTAINER DST Academy <support@dst.academy>
 
 # Install dependencies.
