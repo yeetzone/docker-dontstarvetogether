@@ -36,8 +36,7 @@ ENV DESCRIPTION="Powered by DST Academy." \
 LABEL academy.dst.config.update="true"
 
 # Install Don't Starve Together.
-COPY --from=BASE /opt/dst $DST_HOME
-RUN chown -R $STEAM_USER:$STEAM_USER $DST_HOME
+COPY --from=BASE --chown=$STEAM_USER:$STEAM_USER /opt/dst $DST_HOME
 
 ARG MODS
 ENV MODS ${MODS}
