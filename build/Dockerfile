@@ -1,4 +1,4 @@
-FROM dstacademy/dontstarvetogether-base:local as BASE
+FROM dstacademy/dontstarvetogether-base:next as BASE
 
 FROM dstacademy/steamcmd:0.4
 MAINTAINER DST Academy <support@dst.academy>
