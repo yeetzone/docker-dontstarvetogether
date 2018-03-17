@@ -37,7 +37,7 @@ LABEL academy.dst.config.update="true"
 
 # Install Don't Starve Together.
 COPY --from=BASE /opt/dst $DST_HOME
-RUN chmod -R $STEAM_USER:$STEAM_USER $DST_HOME
+RUN chown -R $STEAM_USER:$STEAM_USER $DST_HOME
 
 ARG MODS
 ENV MODS ${MODS}
