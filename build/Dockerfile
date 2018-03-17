@@ -1,3 +1,5 @@
+FROM dstacademy/dontstarvetogether-base:local as BASE
+
 FROM dstacademy/steamcmd:0.4
 MAINTAINER DST Academy <support@dst.academy>
 
@@ -33,22 +35,8 @@ ENV DESCRIPTION="Powered by DST Academy." \
 # Add labels.
 LABEL academy.dst.config.update="true"
 
-# Install Don't Starve Together Server.
-RUN set -x \
-	&& mkdir -p $DST_HOME \
-	&& chown $STEAM_USER:$STEAM_USER $DST_HOME \
-	&& sync \
-	&& gosu $STEAM_USER steamcmd \
-		+@ShutdownOnFailedCommand 1 \
-		+login anonymous \
-		+force_install_dir $DST_HOME \
-		+app_update 343050 \
-			$([ -n "$DST_BRANCH" ] && printf %s "-beta $DST_BRANCH") \
-			$([ -n "$DST_BRANCH_PASSWORD" ] && printf %s "-betapassword $DST_BRANCH_PASSWORD") \
-			validate \
-		+quit \
-	&& rm -rf $STEAM_HOME/Steam/logs $STEAM_HOME/Steam/appcache/httpcache \
-	&& find $STEAM_HOME/package -type f ! -name "steam_cmd_linux.installed" ! -name "steam_cmd_linux.manifest" -delete
+# Install Don't Starve Together.
+COPY --from=BASE /opt/dst $DST_HOME
 
 ARG MODS
 ENV MODS ${MODS}
