@@ -1,27 +1,41 @@
-FROM dstacademy/steamcmd:0.4
+FROM dstacademy/dontstarvetogether-base
 MAINTAINER DST Academy <support@dst.academy>
 
-# Install dependencies.
-RUN set -x \
-	&& dpkg --add-architecture i386 \
-	&& apt-get update \
-	&& apt-get install -y --no-install-recommends \
-		lib32stdc++6 \
-		libcurl4-gnutls-dev:i386 \
-	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# Install gosu.
+ENV GOSU_VERSION 1.10
+RUN set -ex; \
+	\
+	fetchDeps=' \
+		ca-certificates \
+		wget \
+	'; \
+	apt-get update; \
+	apt-get install -y --no-install-recommends $fetchDeps; \
+	rm -rf /var/lib/apt/lists/*; \
+	\
+	dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')"; \
+	wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch"; \
+	wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch.asc"; \
+	\
+# verify the signature
+	export GNUPGHOME="$(mktemp -d)"; \
+	gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4; \
+	gpg --batch --verify /usr/local/bin/gosu.asc /usr/local/bin/gosu; \
+	rm -r "$GNUPGHOME" /usr/local/bin/gosu.asc; \
+	\
+	chmod +x /usr/local/bin/gosu; \
+# verify that the binary works
+	gosu nobody true; \
+	\
+	apt-get purge -y --auto-remove $fetchDeps
 
 # Set build arguments.
-ARG DST_HOME
-ENV DST_HOME ${DST_HOME:-"/opt/dst"}
-ARG DST_BRANCH
-ENV DST_BRANCH ${DST_BRANCH}
-ARG DST_BRANCH_PASSWORD
-ENV DST_BRANCH_PASSWORD ${DST_BRANCH_PASSWORD}
 ARG DSTA_HOME
 ENV DSTA_HOME ${DSTA_HOME:-"/usr/local/share/dsta"}
 ARG CLUSTER_PATH
 ENV CLUSTER_PATH ${CLUSTER_PATH:-"/var/lib/dsta/cluster"}
+ARG MODS
+ENV MODS ${MODS}
 
 # Set environment variables.
 ENV DESCRIPTION="Powered by DST Academy." \
@@ -33,34 +47,14 @@ ENV DESCRIPTION="Powered by DST Academy." \
 # Add labels.
 LABEL academy.dst.config.update="true"
 
-# Install Don't Starve Together Server.
-RUN set -x \
-	&& mkdir -p $DST_HOME \
-	&& chown $STEAM_USER:$STEAM_USER $DST_HOME \
-	&& sync \
-	&& gosu $STEAM_USER steamcmd \
-		+@ShutdownOnFailedCommand 1 \
-		+login anonymous \
-		+force_install_dir $DST_HOME \
-		+app_update 343050 \
-			$([ -n "$DST_BRANCH" ] && printf %s "-beta $DST_BRANCH") \
-			$([ -n "$DST_BRANCH_PASSWORD" ] && printf %s "-betapassword $DST_BRANCH_PASSWORD") \
-			validate \
-		+quit \
-	&& rm -rf $STEAM_HOME/Steam/logs $STEAM_HOME/Steam/appcache/httpcache \
-	&& find $STEAM_HOME/package -type f ! -name "steam_cmd_linux.installed" ! -name "steam_cmd_linux.manifest" -delete
-
-ARG MODS
-ENV MODS ${MODS}
-
 # Install mods.
 RUN set -x \
 	&& if [ -n "$MODS" ] ; then \
 		   IFS="," \
 		&& for mod in $MODS; do echo "ServerModSetup(\"$mod\")" >> "$DST_HOME/mods/dedicated_server_mods_setup.lua"; done \
 		&& cd "$DST_HOME/bin" \
-		&& gosu $STEAM_USER ./dontstarve_dedicated_server_nullrenderer -only_update_server_mods \
-		&& rm -r "$STEAM_HOME/.klei" \
+		&& gosu $DST_USER ./dontstarve_dedicated_server_nullrenderer -only_update_server_mods \
+		&& rm -r "$DST_HOME/.klei" \
 	; fi
 
 # Copy common scripts.
@@ -72,9 +66,9 @@ COPY /static $DSTA_HOME
 # Create pipe for the game console.
 RUN set -x \
 	&& mkfifo $DSTA_HOME/console \
-	&& chown -R $STEAM_USER:$STEAM_USER $DSTA_HOME \
+	&& chown -R $DST_USER:$DST_USER $DSTA_HOME \
 	&& mkdir -p $(dirname $CLUSTER_PATH) \
-	&& chown $STEAM_USER:$STEAM_USER $(dirname $CLUSTER_PATH)
+	&& chown $DST_USER:$DST_USER $(dirname $CLUSTER_PATH)
 
 # Copy entrypoint script.
 COPY /docker-entrypoint.sh /
