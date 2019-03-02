@@ -47,7 +47,7 @@ Check out our [contribution guide][contribution-guide].
 - [Shards and Migration Portals (Klei Forums)][reference-shards]
 - [Dedicated Server Guide (Wikia)][reference-guide]
 - [Server Console Commands (Wikia)][reference-commands]
-
+- [DST Server Deploy Script][reference-script]
 ---
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
@@ -65,3 +65,4 @@ Check out our [contribution guide][contribution-guide].
 [reference-shards]: http://forums.kleientertainment.com/topic/59174-understanding-shards-and-migration-portals/
 [reference-guide]: http://dont-starve-game.wikia.com/wiki/Guides/Don%E2%80%99t_Starve_Together_Dedicated_Servers
 [reference-commands]: http://dont-starve-game.wikia.com/wiki/Console/Don't_Starve_Together_Commands
+[reference-script]: https://gitlab.com/lego_engineer/dst-server-deploy
