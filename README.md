@@ -50,19 +50,19 @@ Check out our [contribution guide][contribution-guide].
 - [DST Server Deploy Script][reference-script]
 ---
 
-[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
 [docs-setup]: /docs/setup.md
 [docs-configuration]: /docs/configuration.md
 [docs-commands]: /docs/commands.md
 [docs-usage]: /docs/usage.md
 [docs-examples]: /docs/examples/
-[website]: http://www.dontstarvetogether.com/
+[website]: https://www.dontstarvetogether.com/
 [contribution-guide]: /CONTRIBUTING.md
 [docker-kitematic]: https://kitematic.com/
 [docker-toolbox]: https://www.docker.com/docker-toolbox
-[reference-dedicated]: http://forums.kleientertainment.com/forum/83-dont-starve-together-beta-dedicated-server-discussion/
-[reference-shards]: http://forums.kleientertainment.com/topic/59174-understanding-shards-and-migration-portals/
-[reference-guide]: http://dont-starve-game.wikia.com/wiki/Guides/Don%E2%80%99t_Starve_Together_Dedicated_Servers
-[reference-commands]: http://dont-starve-game.wikia.com/wiki/Console/Don't_Starve_Together_Commands
+[reference-dedicated]: https://forums.kleientertainment.com/forum/83-dont-starve-together-beta-dedicated-server-discussion/
+[reference-shards]: https://forums.kleientertainment.com/topic/59174-understanding-shards-and-migration-portals/
+[reference-guide]: https://dont-starve-game.wikia.com/wiki/Guides/Don%E2%80%99t_Starve_Together_Dedicated_Servers
+[reference-commands]: https://dont-starve-game.wikia.com/wiki/Console/Don't_Starve_Together_Commands
 [reference-script]: https://gitlab.com/lego_engineer/dst-server-deploy
