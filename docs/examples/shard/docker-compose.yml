@@ -21,7 +21,6 @@ services:
           min_playlist_position=0,
           name="Default",
           numrandom_set_pieces=4,
-          ordered_story_setpieces={ "Sculptures_1", "Maxwell5" },
           override_level_string=false,
           overrides={
             alternatehunt="default",
@@ -52,9 +51,11 @@ services:
             frograin="default",
             goosemoose="default",
             grass="default",
+            has_ocean=true,
             houndmound="default",
             hounds="default",
             hunt="default",
+            keep_disconnected_tiles=true,
             krampus="default",
             layout_mode="LinkNodesByKeys",
             liefs="default",
@@ -68,6 +69,8 @@ services:
             meteorspawner="default",
             moles="default",
             mushroom="default",
+            no_joining_islands=true,
+            no_wormholes_to_disconnected_tiles=true,
             penguins="default",
             perd="default",
             petrification="default",
@@ -98,7 +101,7 @@ services:
             wildfires="default",
             winter="default",
             world_size="default",
-            wormhole_prefab="wormhole"
+            wormhole_prefab="wormhole" 
           },
           random_set_pieces={
             "Sculptures_2",
@@ -119,11 +122,12 @@ services:
             "Maxwell7",
             "Warzone_1",
             "Warzone_2",
-            "Warzone_3"
+            "Warzone_3" 
           },
           required_prefabs={ "multiplayer_portal" },
+          required_setpieces={ "Sculptures_1", "Maxwell5" },
           substitutes={  },
-          version=3
+          version=4 
         }
     ports:
       - "10999:10999/udp"
@@ -178,7 +182,6 @@ services:
             monkey="default",
             mushroom="default",
             mushtree="default",
-            petrification="default",
             prefabswaps_start="default",
             reeds="default",
             regrowth="default",
@@ -199,11 +202,11 @@ services:
             wormattacks="default",
             wormhole_prefab="tentacle_pillar",
             wormlights="default",
-            worms="default"
+            worms="default" 
           },
           required_prefabs={ "multiplayer_portal" },
           substitutes={  },
-          version=3
+          version=4 
         }
     ports:
       - "11000:11000/udp"
