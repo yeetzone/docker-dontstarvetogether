@@ -1,0 +1,3 @@
+dontstarvetogether start
+
+Starts the server.
