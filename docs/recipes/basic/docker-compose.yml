@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   overworld:
-    image: yeetzone/dontstarvetogether:next
+    image: yeetzone/dontstarvetogether
     container_name: overworld
     hostname: overworld
     environment:
@@ -16,7 +16,7 @@ services:
         volume:
           nocopy: true
   data:
-    image: yeetzone/dontstarvetogether-data:next
+    image: yeetzone/dontstarvetogether-data
     volumes:
       - type: volume
         source: data

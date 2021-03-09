@@ -1,4 +1,4 @@
-FROM yeetzone/dontstarvetogether-base:next
+FROM yeetzone/dontstarvetogether-base
 MAINTAINER YEET Zone <support@yeet.zone>
 
 # Set build arguments.
