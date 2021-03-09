@@ -25,9 +25,8 @@ COPY /entrypoint.sh /
 RUN set -ex \
 	&& mkfifo "$STEAM_HOME/console" \
 	&& mkdir -p "$STORAGE_PATH/$CLUSTER_NAME/$SHARD_NAME" \
-	&& chown -R "$STEAM_USER":"$STEAM_USER" "$STEAM_HOME/console" \
+	&& chown -R "$STEAM_USER":"$STEAM_USER" "$STEAM_HOME" \
 	&& chown -R "$STEAM_USER":"$STEAM_USER" "$STORAGE_PATH" \
-	&& chown -R "$STEAM_USER":"$STEAM_USER" "$STEAM_HOME/scripts" \
 	&& chmod +x /usr/local/bin/dontstarvetogether \
 	&& chmod +x /entrypoint.sh
 
