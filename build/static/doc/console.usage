@@ -1,5 +1,0 @@
-usage: dst-server console [command ...]
-
-The console utility executes commands in the Don't Starve Together server console.
-The commands are executed in command-line order.
-If command is a single dash ('-') or absent, console reads from the standard input.
