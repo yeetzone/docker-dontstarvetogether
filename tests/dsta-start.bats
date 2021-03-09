@@ -2,8 +2,8 @@
 
 load test_helper
 
-@test "dst-server start" {
-	docker run -d --name $CONTAINER $IMAGE dst-server start
+@test "dontstarvetogether start" {
+	docker run -d --name $CONTAINER $IMAGE dontstarvetogether start
 	wait_until_loaded
 	if [ -z "`docker ps -qf name=$container_id`" ]; then
 		false
@@ -13,8 +13,8 @@ load test_helper
 	refute_line --partial "DownloadMods"
 }
 
-@test "dst-server start --update=none" {
-	docker run -d --name $CONTAINER $IMAGE dst-server start --update=none
+@test "dontstarvetogether start --update=none" {
+	docker run -d --name $CONTAINER $IMAGE dontstarvetogether start --update=none
 	wait_until_loaded
 	if [ -z "`docker ps -qf name=$container_id`" ]; then
 		false
@@ -24,8 +24,8 @@ load test_helper
 	refute_line --partial "DownloadMods"
 }
 
-@test "dst-server start --update=all" {
-	docker run -d --name $CONTAINER $IMAGE dst-server start --update=all
+@test "dontstarvetogether start --update=all" {
+	docker run -d --name $CONTAINER $IMAGE dontstarvetogether start --update=all
 	wait_until_loaded
 	if [ -z "`docker ps -qf name=$container_id`" ]; then
 		false
@@ -35,8 +35,8 @@ load test_helper
 	assert_line --partial "DownloadMods"
 }
 
-@test "dst-server start --update=game" {
-	docker run -d --name $CONTAINER $IMAGE dst-server start --update=game
+@test "dontstarvetogether start --update=game" {
+	docker run -d --name $CONTAINER $IMAGE dontstarvetogether start --update=game
 	wait_until_loaded
 	if [ -z "`docker ps -qf name=$container_id`" ]; then
 		false
@@ -46,8 +46,8 @@ load test_helper
 	refute_line --partial "DownloadMods"
 }
 
-@test "dst-server start --update=mods" {
-	docker run -d --name $CONTAINER $IMAGE dst-server start --update=mods
+@test "dontstarvetogether start --update=mods" {
+	docker run -d --name $CONTAINER $IMAGE dontstarvetogether start --update=mods
 	wait_until_loaded
 	if [ -z "`docker ps -qf name=$container_id`" ]; then
 		false
@@ -57,26 +57,26 @@ load test_helper
 	assert_line --partial "DownloadMods"
 }
 
-@test "dst-server start fails with unknow value in flag" {
+@test "dontstarvetogether start fails with unknow value in flag" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server start --update=foo
+	run docker run --rm $IMAGE dontstarvetogether start --update=foo
 	assert_failure
 	cat "$FIXTURE_ROOT/start" | assert_output
 }
 
-@test "dst-server start fails with unknown flag" {
+@test "dontstarvetogether start fails with unknown flag" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server start --game
+	run docker run --rm $IMAGE dontstarvetogether start --game
 	assert_failure
 	cat "$FIXTURE_ROOT/start" | assert_output
 }
 
-@test "dst-server start fails with parameter" {
+@test "dontstarvetogether start fails with parameter" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server start asd
+	run docker run --rm $IMAGE dontstarvetogether start asd
 	assert_failure
 	cat "$FIXTURE_ROOT/start" | assert_output
 }

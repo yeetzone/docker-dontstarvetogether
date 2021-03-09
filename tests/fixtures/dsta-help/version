@@ -1,4 +1,4 @@
-usage: dst-server version [--local|--upstream|--check]
+usage: dontstarvetogether version [--local|--upstream|--check]
 
 Print the local and upstream version of the DST server.
 

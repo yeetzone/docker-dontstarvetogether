@@ -2,24 +2,24 @@
 
 load test_helper
 
-@test "dst-server version" {
-	docker run --rm $IMAGE dst-server version
+@test "dontstarvetogether version" {
+	docker run --rm $IMAGE dontstarvetogether version
 }
 
-@test "dst-server version --local" {
-	run docker run --rm $IMAGE dst-server version --local
+@test "dontstarvetogether version --local" {
+	run docker run --rm $IMAGE dontstarvetogether version --local
 	assert_success
 	assert_output --regexp '^[0-9]+$'
 }
 
-@test "dst-server version --upstream" {
-	run docker run --rm $IMAGE dst-server version --upstream
+@test "dontstarvetogether version --upstream" {
+	run docker run --rm $IMAGE dontstarvetogether version --upstream
 	assert_success
 	assert_output --regexp '^[0-9]+$'
 }
 
-@test "dst-server version --check" {
-	run docker run --rm $IMAGE dst-server version --check
+@test "dontstarvetogether version --check" {
+	run docker run --rm $IMAGE dontstarvetogether version --check
 	if [ $status -eq 0 ]; then
 		assert_output "Version is up to date."
 	else
@@ -27,10 +27,10 @@ load test_helper
 	fi
 }
 
-@test "dst-server version unknown flag" {
+@test "dontstarvetogether version unknown flag" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server version --foo
+	run docker run --rm $IMAGE dontstarvetogether version --foo
 	assert_failure
 	cat "$FIXTURE_ROOT/version" | assert_output
 }

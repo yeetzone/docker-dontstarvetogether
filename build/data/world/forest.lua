@@ -86,7 +86,7 @@ return {
     wildfires="default",
     winter="default",
     world_size="default",
-    wormhole_prefab="wormhole" 
+    wormhole_prefab="wormhole"
   },
   random_set_pieces={
     "Sculptures_2",
@@ -107,10 +107,10 @@ return {
     "Maxwell7",
     "Warzone_1",
     "Warzone_2",
-    "Warzone_3" 
+    "Warzone_3"
   },
   required_prefabs={ "multiplayer_portal" },
   required_setpieces={ "Sculptures_1", "Maxwell5" },
   substitutes={  },
-  version=4 
+  version=4
 }

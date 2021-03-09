@@ -9,11 +9,11 @@ load test_helper
 }
 
 @test "docker-entrypoint.sh successed if the command successed" {
-	run $BUILD/docker-entrypoint.sh true
+	run $BUILD/entrypoint.sh true
 	assert_success
 }
 
 @test "docker-entrypoint.sh fails if the command fails" {
-	run $BUILD/docker-entrypoint.sh false
+	run $BUILD/entrypoint.sh false
 	assert_failure
 }

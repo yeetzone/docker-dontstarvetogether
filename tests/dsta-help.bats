@@ -13,169 +13,169 @@ load test_helper
 	cat "$FIXTURE_ROOT/dst-server" | assert_output
 }
 
-@test "dst-server help" {
+@test "dontstarvetogether help" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server help
+	run docker run --rm $IMAGE dontstarvetogether help
 	assert_success
 	cat "$FIXTURE_ROOT/dst-server" | assert_output
 }
 
-@test "dst-server --help" {
+@test "dontstarvetogether --help" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server --help
+	run docker run --rm $IMAGE dontstarvetogether --help
 	assert_success
 	cat "$FIXTURE_ROOT/dst-server" | assert_output
 }
 
-@test "dst-server with unknown argument" {
+@test "dontstarvetogether with unknown argument" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server foo
+	run docker run --rm $IMAGE dontstarvetogether foo
 	assert_failure
 	cat "$FIXTURE_ROOT/dst-server" | assert_output
 }
 
-@test "dst-server with unknown flag" {
+@test "dontstarvetogether with unknown flag" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server --foo
+	run docker run --rm $IMAGE dontstarvetogether --foo
 	assert_failure
 	cat "$FIXTURE_ROOT/dst-server" | assert_output
 }
 
 #####
-# dst-server start
+# dontstarvetogether start
 #####
-@test "dst-server help start" {
+@test "dontstarvetogether help start" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server help start
+	run docker run --rm $IMAGE dontstarvetogether help start
 	assert_success
 	cat "$FIXTURE_ROOT/start" | assert_output
 }
 
-@test "dst-server --help start" {
+@test "dontstarvetogether --help start" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server --help start
+	run docker run --rm $IMAGE dontstarvetogether --help start
 	assert_success
 	cat "$FIXTURE_ROOT/start" | assert_output
 }
 
-@test "dst-server start --help" {
+@test "dontstarvetogether start --help" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server start --help
+	run docker run --rm $IMAGE dontstarvetogether start --help
 	assert_success
 	cat "$FIXTURE_ROOT/start" | assert_output
 }
 
 #####
-# dst-server update
+# dontstarvetogether update
 #####
-@test "dst-server help update" {
+@test "dontstarvetogether help update" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server help update
+	run docker run --rm $IMAGE dontstarvetogether help update
 	assert_success
 	cat "$FIXTURE_ROOT/update" | assert_output
 }
 
-@test "dst-server --help update" {
+@test "dontstarvetogether --help update" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server --help update
+	run docker run --rm $IMAGE dontstarvetogether --help update
 	assert_success
 	cat "$FIXTURE_ROOT/update" | assert_output
 }
 
-@test "dst-server update --help" {
+@test "dontstarvetogether update --help" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server update --help
+	run docker run --rm $IMAGE dontstarvetogether update --help
 	assert_success
 	cat "$FIXTURE_ROOT/update" | assert_output
 }
 
 #####
-# dst-server log
+# dontstarvetogether log
 #####
-@test "dst-server help log" {
+@test "dontstarvetogether help log" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server help log
+	run docker run --rm $IMAGE dontstarvetogether help log
 	assert_success
 	cat "$FIXTURE_ROOT/log" | assert_output
 }
 
-@test "dst-server --help log" {
+@test "dontstarvetogether --help log" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server --help log
+	run docker run --rm $IMAGE dontstarvetogether --help log
 	assert_success
 	cat "$FIXTURE_ROOT/log" | assert_output
 }
 
-@test "dst-server log --help" {
+@test "dontstarvetogether log --help" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server log --help
+	run docker run --rm $IMAGE dontstarvetogether log --help
 	assert_success
 	cat "$FIXTURE_ROOT/log" | assert_output
 }
 
 #####
-# dst-server console
+# dontstarvetogether console
 #####
-@test "dst-server help console" {
+@test "dontstarvetogether help console" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server help console
+	run docker run --rm $IMAGE dontstarvetogether help console
 	assert_success
 	cat "$FIXTURE_ROOT/console" | assert_output
 }
 
-@test "dst-server --help console" {
+@test "dontstarvetogether --help console" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server --help console
+	run docker run --rm $IMAGE dontstarvetogether --help console
 	assert_success
 	cat "$FIXTURE_ROOT/console" | assert_output
 }
 
-@test "dst-server console --help" {
+@test "dontstarvetogether console --help" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server console --help
+	run docker run --rm $IMAGE dontstarvetogether console --help
 	assert_success
 	cat "$FIXTURE_ROOT/console" | assert_output
 }
 
 #####
-# dst-server version
+# dontstarvetogether version
 #####
-@test "dst-server help version" {
+@test "dontstarvetogether help version" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server help version
+	run docker run --rm $IMAGE dontstarvetogether help version
 	assert_success
 	cat "$FIXTURE_ROOT/version" | assert_output
 }
 
-@test "dst-server --help version" {
+@test "dontstarvetogether --help version" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server --help version
+	run docker run --rm $IMAGE dontstarvetogether --help version
 	assert_success
 	cat "$FIXTURE_ROOT/version" | assert_output
 }
 
-@test "dst-server version --help" {
+@test "dontstarvetogether version --help" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server version --help
+	run docker run --rm $IMAGE dontstarvetogether version --help
 	assert_success
 	cat "$FIXTURE_ROOT/version" | assert_output
 }

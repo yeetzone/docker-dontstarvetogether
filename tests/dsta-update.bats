@@ -2,78 +2,78 @@
 
 load test_helper
 
-@test "dst-server update" {
+@test "dontstarvetogether update" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server update
+	run docker run --rm $IMAGE dontstarvetogether update
 	assert_success
 	assert_line "Success! App '343050' already up to date."
 	assert_line --partial "DownloadMods"
 }
 
-@test "dst-server update --all" {
+@test "dontstarvetogether update --all" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server update --all
+	run docker run --rm $IMAGE dontstarvetogether update --all
 	assert_success
 	assert_line "Success! App '343050' already up to date."
 	assert_line --partial "DownloadMods"
 }
 
-@test "dst-server update --game" {
+@test "dontstarvetogether update --game" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server update --game
+	run docker run --rm $IMAGE dontstarvetogether update --game
 	assert_success
 	assert_line "Success! App '343050' already up to date."
 	refute_line --partial "DownloadMods"
 }
 
-@test "dst-server update --mods" {
+@test "dontstarvetogether update --mods" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server update --mods
+	run docker run --rm $IMAGE dontstarvetogether update --mods
 	assert_success
 	refute_line "Success! App '343050' already up to date."
 	assert_line --partial "DownloadMods"
 }
 
-@test "dst-server update -- too much flags 1" {
+@test "dontstarvetogether update -- too much flags 1" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server update --game --mods
+	run docker run --rm $IMAGE dontstarvetogether update --game --mods
 	assert_failure
 	cat $FIXTURE_ROOT/update | assert_output
 }
 
-@test "dst-server update -- too much flags 2" {
+@test "dontstarvetogether update -- too much flags 2" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server update --all --game
+	run docker run --rm $IMAGE dontstarvetogether update --all --game
 	assert_failure
 	cat $FIXTURE_ROOT/update | assert_output
 }
 
-@test "dst-server update -- repeat flags" {
+@test "dontstarvetogether update -- repeat flags" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server update --game --game
+	run docker run --rm $IMAGE dontstarvetogether update --game --game
 	assert_failure
 	cat $FIXTURE_ROOT/update | assert_output
 }
 
-@test "dst-server update -- Unknown argument" {
+@test "dontstarvetogether update -- Unknown argument" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server update foo
+	run docker run --rm $IMAGE dontstarvetogether update foo
 	assert_failure
 	cat $FIXTURE_ROOT/update | assert_output
 }
 
-@test "dst-server update -- Unknown flag" {
+@test "dontstarvetogether update -- Unknown flag" {
 	fixtures dsta-help
 
-	run docker run --rm $IMAGE dst-server update --foo
+	run docker run --rm $IMAGE dontstarvetogether update --foo
 	assert_failure
 	cat $FIXTURE_ROOT/update | assert_output
 }

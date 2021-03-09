@@ -1,4 +1,4 @@
-usage: dst-server start [--update=all|none|game|mods]
+usage: dontstarvetogether start [--update=all|none|game|mods]
                         [--keep-configuration=<value[,otherValue>]...>]
 
    --update=none

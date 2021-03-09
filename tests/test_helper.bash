@@ -3,8 +3,8 @@
 load dependencies/load
 
 export BUILD="$BATS_TEST_DIRNAME/../build"
-export IMAGE="dstacademy/dontstarvetogether"
-export CONTAINER="dstacademy-test"
+export IMAGE="yeetzone/dontstarvetogether"
+export CONTAINER="yeetzone-test"
 export TMP="$BATS_TEST_DIRNAME/tmp"
 
 fixtures() {

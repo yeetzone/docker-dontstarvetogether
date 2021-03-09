@@ -1,4 +1,4 @@
-usage: dst-server console [command ...]
+usage: dontstarvetogether console [command ...]
 
 The console utility executes commands in the Don't Starve Together server console.
 The commands are executed in command-line order.

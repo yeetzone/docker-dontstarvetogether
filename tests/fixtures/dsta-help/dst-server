@@ -1,4 +1,4 @@
-usage: dst-server [--help] <command> [<args>]
+usage: dontstarvetogether [--help] <command> [<args>]
 
 The commands are:
    start    Start the server
@@ -7,4 +7,4 @@ The commands are:
    log      Show a log
    version  Show the current server version
 
-See 'dst-server help <command>' to read about a specific command.
+See 'dontstarvetogether help <command>' to read about a specific command.

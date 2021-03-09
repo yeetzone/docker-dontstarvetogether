@@ -19,7 +19,6 @@ docker run -itd --env-file=.env yeetzone/dontstarvetogether
 
 An `.env` file's contents must look like this and can hold all needed variables:
 ```ini
-# This is a comment
 TOKEN=token
 NAME=name
 MAX_PLAYERS=10
@@ -259,6 +258,7 @@ Enables the backup of server logs when rebooting the server.
 
 **ENCODE_USER_PATH**  
 Enables path encoding to be compatible with case-insensitive operating systems.
-- *boolean* *[default: true]*
+- true *[default]*
+- false
 
 [howto-token]: https://dontstarve.fandom.com/wiki/Guides/Don%E2%80%99t_Starve_Together_Dedicated_Servers#Server_Tokens

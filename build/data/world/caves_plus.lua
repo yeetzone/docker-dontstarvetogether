@@ -56,9 +56,9 @@ return {
     wormattacks="default",
     wormhole_prefab="tentacle_pillar",
     wormlights="rare",
-    worms="default" 
+    worms="default"
   },
   required_prefabs={ "multiplayer_portal" },
   substitutes={  },
-  version=4 
+  version=4
 }
