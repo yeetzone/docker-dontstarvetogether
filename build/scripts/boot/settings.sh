@@ -26,6 +26,7 @@ validate_port "STEAM_AUTHENTICATION_PORT"
 validate_port "STEAM_MASTER_SERVER_PORT"
 validate_bool "STEAM_GROUP_ONLY"
 validate_bool "STEAM_GROUP_ADMINS"
+validate_bool "ENCODE_USER_PATH"
 
 validate_bool "CONSOLE_ENABLE"
 validate_int "MAX_SNAPSHOTS" 0 1024
@@ -98,6 +99,10 @@ if [[ ! -f "$file_server" ]]; then
 
 	echo "[NETWORK]"
 	conf "server_port" "$SERVER_PORT"
+
+	echo
+	echo "[ACCOUNT]"
+	conf "encode_user_path" "$ENCODE_USER_PATH"
 
 	if [[ -n "$SHARD_ENABLE" ]]; then
 		echo
