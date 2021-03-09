@@ -6,7 +6,7 @@ to use `docker-compose` instead, which makes it easier to configure all environm
 
 **Example**:
 ```sh
-docker run -itd -p 10999:10999/udp -e TOKEN="Token" -e NAME="Name" -e MAX_PLAYERS=10 dstacademy/dontstarvetogether
+docker run -itd -p 10999:10999/udp -e TOKEN="token" -e NAME="name" -e MAX_PLAYERS=10 yeetzone/dontstarvetogether
 ```
 
 You can chain as many variables as you need. If you want to pass lots of them, it's easier and more
@@ -14,23 +14,16 @@ convenient to create an `.env` file and pass it's path to the command.
 
 **Examples**:
 ```sh
-docker run -itd --env-file=".env" dstacademy/dontstarvetogether
+docker run -itd --env-file=.env yeetzone/dontstarvetogether
 ```
 
 An `.env` file's contents must look like this and can hold all needed variables:
 ```ini
 # This is a comment
-TOKEN=Token
-NAME=Name
+TOKEN=token
+NAME=name
 MAX_PLAYERS=10
 ```
-
-## Build Arguments
-
-**MODS**  
-Defines mods to install and enable.
-- *CSV of workshop IDs*  
-  *Example:* `378160973,492173795,407705132`
 
 ## Environment Variables
 Environment variables can be used to customize certain settings of the server. Most of the
@@ -244,11 +237,15 @@ This needs to be the same for the master-server and all slave-servers.
 - *text*  
   *Example:* `secret-and-equal-for-all-shards`
 
-**LEVELDATA_OVERRIDES**  
-Sets the overrides-configuration for level-data. Basically it's just the content for the
+**LEVELDATA**  
+Sets the configuration for level-data. Basically it's just the content for the
 `leveldataoverride.lua` file. As this value can be pretty large it's recommended to put the
 configuration into a separate file and read it into the variable beforehand.
-- *string*
+- classic
+- forest
+- forest_plus
+- caves
+- caves_plus
 
 **MODS_OVERRIDES**  
 Sets the overrides-configuration for all mods. Basically it's just the content for the
@@ -260,4 +257,8 @@ configuration into a separate file and read it into the variable beforehand.
 Enables the backup of server logs when rebooting the server.
 - *number* *[default: 0]*
 
-[howto-token]: http://dont-starve-game.wikia.com/wiki/Guides/Don%E2%80%99t_Starve_Together_Dedicated_Servers#Server_Tokens
+**ENCODE_USER_PATH**  
+Enables path encoding to be compatible with case-insensitive operating systems.
+- *boolean* *[default: true]*
+
+[howto-token]: https://dontstarve.fandom.com/wiki/Guides/Don%E2%80%99t_Starve_Together_Dedicated_Servers#Server_Tokens

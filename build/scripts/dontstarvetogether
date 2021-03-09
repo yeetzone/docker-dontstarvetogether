@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 0 ]]; then
+	echo "command missing"
+	exit 1
+fi
+
+command="$STEAM_HOME/scripts/command/$1/script.sh"
+
+if [[ -f "$command" ]]; then
+	shift
+	exec "$command" "$@"
+fi

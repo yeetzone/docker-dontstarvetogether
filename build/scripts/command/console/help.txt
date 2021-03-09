@@ -1,0 +1,5 @@
+dontstarvetogether console [commands]
+
+`execute` runs `commands` on the in-game console.
+The commands are executed in command-line order.
+If `commands` is a single dash ('-') or absent, console reads from the standard input.
