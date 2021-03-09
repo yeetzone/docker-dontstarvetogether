@@ -18,6 +18,7 @@ ENV BACKUP_LOG_COUNT=0
 # Copy files.
 COPY /scripts/dontstarvetogether /usr/local/bin/
 COPY /scripts/ $STEAM_HOME/scripts/
+COPY /data/ $STEAM_HOME/data/
 COPY /entrypoint.sh /
 
 # Set permissions.

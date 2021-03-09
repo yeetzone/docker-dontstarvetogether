@@ -42,7 +42,7 @@ if [[ ! -f "$file_cluster" ]]; then
 			echo "${list[$RANDOM % ${#list[@]}]}"
 		}
 
-		NAME="$(selectRandomLine "$STEAM_HOME"/scripts/data/adjectives.txt) $(selectRandomLine "$STEAM_HOME"/scripts/data/names.txt)"
+		NAME="$(selectRandomLine "$STEAM_HOME"/data/adjectives.txt) $(selectRandomLine "$STEAM_HOME"/data/names.txt)"
 	fi
 
 	exec 4>&1 1>"$file_cluster"
