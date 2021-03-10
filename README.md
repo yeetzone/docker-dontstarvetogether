@@ -22,6 +22,10 @@ The image is hosted on `Docker Hub` named [`yeetzone/dontstarvetogether`][hub].
 - [Commands][docs-commands]
 - [Recipes][docs-recipes]
 
+## Support
+- [Discord][support-discord]
+- [Discussions][support-github]
+
 ---
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
@@ -29,5 +33,7 @@ The image is hosted on `Docker Hub` named [`yeetzone/dontstarvetogether`][hub].
 [docs-configuration]: /docs/configuration.md
 [docs-commands]: /docs/commands.md
 [docs-recipes]: /docs/recipes.md
+[support-discord]: https://go.yeet.zone/discord
+[support-github]: yeetzone/docker-dontstarvetogether/discussions
 [hub]: https://hub.docker.com/r/yeetzone/dontstarvetogether
 [website]: https://www.dontstarvetogether.com/
