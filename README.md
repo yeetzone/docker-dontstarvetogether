@@ -34,6 +34,6 @@ The image is hosted on `Docker Hub` named [`yeetzone/dontstarvetogether`][hub].
 [docs-commands]: /docs/commands.md
 [docs-recipes]: /docs/recipes.md
 [support-discord]: https://go.yeet.zone/discord
-[support-github]: yeetzone/docker-dontstarvetogether/discussions
+[support-github]: https://github.com/yeetzone/docker-dontstarvetogether/discussions
 [hub]: https://hub.docker.com/r/yeetzone/dontstarvetogether
 [website]: https://www.dontstarvetogether.com/
