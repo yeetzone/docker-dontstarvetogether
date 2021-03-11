@@ -14,28 +14,26 @@ Maybe it has already been reported by someone else.
 We'd like to encourage you to contribute code and we do appreciate all help
 on making this a better project. Especially look out for issues tagged with
 [`contribution`][issues-contribute], which are free to grab and work on.
-Give as a shout if you consider working on one.
+Let us know if you consider working on one.
 
 To stay on track we ask you to respect the following **contribution rules**:
 
-- Fork the repository when working on a feature or bugfix.
-- Create PRs based on the `develop` branch.
+- Fork the repository when working on a contribution.
+- Create pull requests for the `master` branch only.
 - Use an `editorconfig` compliant editor and/or respect the [settings][file-editorconfig].
-- Update the [`CHANGELOG`][file-changelog] and [`README`][file-readme] files if relevant.
+- Update the [`CHANGELOG`][file-changelog], [`README`][file-readme] or documentation, if relevant.
 
 ## Contact
 
 Feel free to contact us if you have questions or feedback.
 
-- Join our [Slack Channel][contact-slack].
-- Join our [Steam Group][contact-steam].
-- Join our discussion on the [Klei Forums][contact-forums].
+- Join our [Discord][contact-discord] server.
+- Join [discussions][contact-discussions] on GitHub.
 
-[issues-create]: https://github.com/dst-academy/docker-dontstarvetogether/issues/new/
-[issues-contribute]: https://github.com/dst-academy/docker-dontstarvetogether/labels/contribution
-[file-editorconfig]: https://github.com/dst-academy/docker-dontstarvetogether/blob/develop/.editorconfig
-[file-readme]: https://github.com/dst-academy/docker-dontstarvetogether/blob/develop/README.md
-[file-changelog]: https://github.com/dst-academy/docker-dontstarvetogether/blob/develop/CHANGELOG.md
-[contact-slack]: http://slack.dst.academy/
-[contact-steam]: https://steamcommunity.com/groups/dst-academy
-[contact-forums]: http://forums.kleientertainment.com/topic/61674-custom-dedicated-server-with-docker/
+[issues-create]: https://github.com/yeetzone/docker-dontstarvetogether/issues/new/
+[issues-contribute]: https://github.com/yeetzone/docker-dontstarvetogether/labels/contribution
+[file-editorconfig]: https://github.com/yeetzone/docker-dontstarvetogether/blob/develop/.editorconfig
+[file-readme]: https://github.com/yeetzone/docker-dontstarvetogether/blob/develop/README.md
+[file-changelog]: https://github.com/yeetzone/docker-dontstarvetogether/blob/develop/CHANGELOG.md
+[contact-discord]: https://go.yeet.zone/discord
+[contact-discussions]: http://forums.kleientertainment.com/topic/61674-custom-dedicated-server-with-docker/
