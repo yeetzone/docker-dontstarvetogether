@@ -17,16 +17,15 @@ ENV BACKUP_LOG_COUNT=0
 
 # Copy files.
 COPY /scripts/dontstarvetogether /usr/local/bin/
-COPY /scripts/ $STEAM_HOME/scripts/
-COPY /data/ $STEAM_HOME/data/
+COPY /scripts/ "$STEAM_HOME/scripts/"
+COPY /data/ "$STEAM_HOME/data/"
 COPY /entrypoint.sh /
 
 # Set permissions.
 RUN set -ex \
 	&& mkfifo "$STEAM_HOME/console" \
-	&& mkdir -p "$STORAGE_PATH/$CLUSTER_NAME/$SHARD_NAME" \
 	&& chown -R "$STEAM_USER":"$STEAM_USER" "$STEAM_HOME" \
-	&& chown -R "$STEAM_USER":"$STEAM_USER" "$STORAGE_PATH" \
+	&& chmod -R +x "$STEAM_HOME/scripts/" \
 	&& chmod +x /usr/local/bin/dontstarvetogether \
 	&& chmod +x /entrypoint.sh
 
