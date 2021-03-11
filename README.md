@@ -1,12 +1,12 @@
 # Don't Starve Together
-> Dockerfile for building a [Don't Starve Together][website] dedicated server image.
+> Dockerfile for building a `[Don't Starve Together][website]` dedicated server image.
 
 ---
 
 This repository provides a `Dockerfile` for building a dedicated server
 for the online multi-player survival game [*Don't Starve Together*][website].
 
-The image is hosted on `Docker Hub` named [`yeetzone/dontstarvetogether`][hub].
+`Docker Hub` hosts our image [`yeetzone/dontstarvetogether`][hub].
 
 ## Features
 - Configuration via **environment** variables.
@@ -18,17 +18,18 @@ The image is hosted on `Docker Hub` named [`yeetzone/dontstarvetogether`][hub].
 - World **persistence** via volumes.
 
 ## Documentation
-- [Configuration][docs-configuration]
-- [Commands][docs-commands]
-- [Recipes][docs-recipes]
+- [Configuration][docs-configuration] · *Overview of options for customizing the server.*
+- [Commands][docs-commands] · *List of available CLI commands to manage the server.*
+- [Recipes][docs-recipes] · *Collection of pre-defined server setups.*
 
 ## Support
-- [Discord][support-discord]
-- [Discussions][support-github]
+- [Discord][support-discord] · *Join our Discord server if you have questions.*
+- [Discussions][support-github] · *Use GitHub discussions to suggest changes or ask questions.*
 
 ---
 
-[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com/)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com/)
 
 [docs-configuration]: /docs/configuration.md
 [docs-commands]: /docs/commands.md
