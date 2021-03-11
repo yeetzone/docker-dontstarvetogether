@@ -111,68 +111,68 @@ source $BUILD/static/boot/functions.sh
 	assert_failure
 }
 
-@test "Test validate_option 1" {
+@test "Test validate_enum 1" {
 	export FOO=""
-	run validate_option FOO a b c
+	run validate_enum FOO a b c
 	assert_success
 }
 
-@test "Test validate_option 2" {
+@test "Test validate_enum 2" {
 	export FOO="a"
-	run validate_option FOO a b c
+	run validate_enum FOO a b c
 	assert_success
 }
 
-@test "Test validate_option 3" {
+@test "Test validate_enum 3" {
 	export FOO="b"
-	run validate_option FOO a b c
+	run validate_enum FOO a b c
 	assert_success
 }
 
-@test "Test validate_option 4" {
+@test "Test validate_enum 4" {
 	export FOO="c"
-	run validate_option FOO a b c
+	run validate_enum FOO a b c
 	assert_success
 }
 
-@test "Test validate_option 5" {
+@test "Test validate_enum 5" {
 	export FOO="d"
-	run validate_option FOO a b c
+	run validate_enum FOO a b c
 	assert_failure
 }
 
-@test "Test validate_option 6" {
+@test "Test validate_enum 6" {
 	export FOO="1"
-	run validate_option FOO a b c
+	run validate_enum FOO a b c
 	assert_failure
 }
 
-@test "Test validate_option 7" {
+@test "Test validate_enum 7" {
 	export FOO="1"
-	run validate_option FOO 1 2 3
+	run validate_enum FOO 1 2 3
 	assert_success
 }
 
-@test "Test validate_option 8" {
+@test "Test validate_enum 8" {
 	export FOO="2"
-	run validate_option FOO 1 2 3
+	run validate_enum FOO 1 2 3
 	assert_success
 }
 
-@test "Test validate_option 9" {
+@test "Test validate_enum 9" {
 	export FOO="3"
-	run validate_option FOO 1 2 3
+	run validate_enum FOO 1 2 3
 	assert_success
 }
 
-@test "Test validate_option 10" {
+@test "Test validate_enum 10" {
 	export FOO="4"
-	run validate_option FOO 1 2 3
+	run validate_enum FOO 1 2 3
 	assert_failure
 }
 
-@test "Test validate_option 11" {
+@test "Test validate_enum 11" {
 	export FOO="a"
-	run validate_option FOO 1 2 3
+	run validate_enum FOO 1 2 3
 	assert_failure
 }

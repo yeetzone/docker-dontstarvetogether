@@ -5,16 +5,16 @@ source "$(dirname "$0")/functions.sh"
 file_cluster="$STORAGE_PATH/$CLUSTER_NAME/cluster.ini"
 file_server="$STORAGE_PATH/$CLUSTER_NAME/$SHARD_NAME/server.ini"
 
-validate_option "LANGUAGE" en de it fr es pt pl ru ko zh zhr
+validate_enum "LANGUAGE" en de it fr es pt pl ru ko zh zhr
 validate_port "SERVER_PORT"
 validate_bool "OFFLINE_ENABLE"
 validate_int "MAX_PLAYERS" 1 64
 validate_int "WHITELIST_SLOTS" 0 64
 validate_bool "PVP_ENABLE"
-validate_option "GAME_MODE" endless survival wilderness
-validate_option "INTENTION" cooperative social competitive madness
+validate_enum "GAME_MODE" endless survival wilderness
+validate_enum "INTENTION" cooperative social competitive madness
 validate_bool "AUTOSAVER_ENABLE"
-validate_option "TICK_RATE" 15 20 30 60
+validate_enum "TICK_RATE" 15 20 30 60
 validate_bool "VOTE_ENABLE"
 validate_bool "VOTE_KICK_ENABLE"
 validate_bool "PAUSE_WHEN_EMPTY"

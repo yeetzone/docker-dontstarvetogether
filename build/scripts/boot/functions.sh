@@ -33,7 +33,7 @@ containsElement() {
   return 1
 }
 
-validate_option() {
+validate_enum() {
 	local v=${!1}
 
 	if [[ -n "$v" ]] && ! containsElement "$v" "${@:2}"; then
