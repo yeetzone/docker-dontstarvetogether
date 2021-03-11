@@ -49,32 +49,17 @@ Sets the server's description. Shows up on the public server-list and in-game.
 
 **LANGUAGE**
 Sets the server's language.
-- brazilian
-- bulgarian
-- czech
-- danish
-- dutch
-- english *[default]*
-- finnish
-- french
-- german
-- greek
-- hungarian
-- italian
-- japanese
-- korean
-- norwegian
-- polish
-- portuguese
-- romanian
-- russian
-- schinese
-- spanish
-- swedish
-- tchinese
-- thai
-- turkish
-- ukrainian
+- en *[default]*
+- de
+- it
+- fr
+- es
+- pt
+- pl
+- ru
+- ko
+- zh
+- zhr
 
 **PASSWORD**  
 Defines a server password so only players knowing the password can connect.

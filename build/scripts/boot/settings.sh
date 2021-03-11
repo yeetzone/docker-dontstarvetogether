@@ -5,10 +5,7 @@ source "$(dirname "$0")/functions.sh"
 file_cluster="$STORAGE_PATH/$CLUSTER_NAME/cluster.ini"
 file_server="$STORAGE_PATH/$CLUSTER_NAME/$SHARD_NAME/server.ini"
 
-validate_option "LANGUAGE" \
-	brazilian bulgarian czech danish dutch english finnish french german \
-	greek hungarian italian japanese korean norwegian polish portuguese \
-	romanian russian schinese spanish swedish tchinese thai turkish ukrainian
+validate_option "LANGUAGE" en de it fr es pt pl ru ko zh zhr
 validate_port "SERVER_PORT"
 validate_bool "OFFLINE_ENABLE"
 validate_int "MAX_PLAYERS" 1 64
@@ -52,6 +49,7 @@ if [[ ! -f "$file_cluster" ]]; then
 	conf "cluster_description" "$DESCRIPTION"
 	conf "cluster_intention" "$INTENTION"
 	conf "cluster_password" "$PASSWORD"
+	conf "cluster_language" "$LANGUAGE"
 	conf "autosaver_enabled" "$AUTOSAVER_ENABLE"
 	conf "lan_only_cluster" "$LAN_ONLY"
 	conf "offline_cluster" "$OFFLINE_ENABLE"
@@ -69,12 +67,11 @@ if [[ ! -f "$file_cluster" ]]; then
 		conf "vote_enabled" "$VOTE_ENABLE"
 	fi
 
-	if [[ -n "$CONSOLE_ENABLE" ]] || [[ -n "$MAX_SNAPSHOTS" ]] || [[ -n "$LANGUAGE" ]]; then
+	if [[ -n "$CONSOLE_ENABLE" ]] || [[ -n "$MAX_SNAPSHOTS" ]]; then
 		echo
 		echo "[MISC]"
 		conf "console_enabled" "$CONSOLE_ENABLE"
 		conf "max_snapshots" "$MAX_SNAPSHOTS"
-		conf "language_code" "$LANGUAGE"
 	fi
 
 	if [[ -n "$SHARD_ENABLE" ]]; then
