@@ -28,7 +28,7 @@ To stay on track we ask you to respect the following **contribution rules**:
 Feel free to contact us if you have questions or feedback.
 
 - Join our [Discord][contact-discord] server.
-- Join [discussions][contact-discussions] on GitHub.
+- Use the [discussions][contact-discussions] on GitHub.
 
 [issues-create]: https://github.com/yeetzone/docker-dontstarvetogether/issues/new/
 [issues-contribute]: https://github.com/yeetzone/docker-dontstarvetogether/labels/contribution
@@ -36,4 +36,4 @@ Feel free to contact us if you have questions or feedback.
 [file-readme]: https://github.com/yeetzone/docker-dontstarvetogether/blob/develop/README.md
 [file-changelog]: https://github.com/yeetzone/docker-dontstarvetogether/blob/develop/CHANGELOG.md
 [contact-discord]: https://go.yeet.zone/discord
-[contact-discussions]: http://forums.kleientertainment.com/topic/61674-custom-dedicated-server-with-docker/
+[contact-discussions]: https://github.com/yeetzone/docker-dontstarvetogether/discussions
