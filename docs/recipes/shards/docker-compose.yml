@@ -7,9 +7,26 @@ services:
     depends_on:
       - data
     env_file:
+      - overworld.env
       - local.env
     ports:
       - "10999:10999/udp"
+    volumes:
+      - type: volume
+        source: data
+        target: /data
+        read_only: true
+  underworld:
+    image: yeetzone/dontstarvetogether
+    container_name: underworld
+    hostname: underworld
+    depends_on:
+      - data
+    env_file:
+      - underworld.env
+      - local.env
+    ports:
+      - "11000:11000/udp"
     volumes:
       - type: volume
         source: data
