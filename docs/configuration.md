@@ -31,21 +31,21 @@ available environment variables correspond to the `settings.ini` variables used 
 **TOKEN** *required*  
 Defines the server's token which is needed to run it.
 To [generate a token][howto-token] you need a copy of DST.
-- *text*
+- *string*
 
 **NAME**  
 Sets the server's name. Shows up on the public server-list and in-game.
 Setting a custom server-name is not required but highly recommended.
 If no name is configured, a random name will be generated.
-- *text* *[default: *RANDOM*]*
+- *string* *[default: *RANDOM*]*
 
 **NAME_PREFIX**  
 Defines text to prepend to the server's name.
-- *text*
+- *string*
 
 **DESCRIPTION**  
 Sets the server's description. Shows up on the public server-list and in-game.
-- *text* *[default: Powered by DST-Academy.]*
+- *string* *[default: Powered by DST-Academy.]*
 
 **LANGUAGE**
 Sets the server's language.
@@ -63,7 +63,7 @@ Sets the server's language.
 
 **PASSWORD**  
 Defines a server password so only players knowing the password can connect.
-- *text*
+- *string*
 
 **SERVER_PORT**  
 Defines the port on which the game-server runs inside the Docker container.
@@ -189,7 +189,7 @@ Enables/disables sharding for connecting multiple servers to one big world.
 
 **SHARD_NAME**  
 Sets a unique name for this server-shard.
-- *text*
+- *string*
 
 **SHARD_ID**  
 Sets a unique shard ID for this server-shard.
