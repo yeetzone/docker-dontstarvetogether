@@ -1,0 +1,39 @@
+version: "3.9"
+services:
+  world:
+    image: yeetzone/dontstarvetogether
+    container_name: world
+    hostname: world
+    depends_on:
+      - data
+    env_file:
+      - world.env
+      - local.env
+    environment:
+      WORLD_CONFIGURATION: |
+        return {
+          override_enabled = true,
+          overrides = {
+            krampus = "often",
+            season_start = "summer",
+            world_size = "huge",
+            regrowth = "veryfast",
+            extrastartingitems = "20",
+          },
+        }
+    ports:
+      - "10999:10999/udp"
+    volumes:
+      - type: volume
+        source: data
+        target: /data
+        read_only: true
+  data:
+    image: yeetzone/dontstarvetogether-data
+    volumes:
+      - type: volume
+        source: data
+        target: /data
+        read_only: true
+volumes:
+  data:
