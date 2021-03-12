@@ -218,18 +218,24 @@ Generally this should not be changed to work with Docker properly.
 **SHARD_CLUSTER_KEY**  
 Sets a unique and secret cluster key for validating incoming shard-connections.
 This needs to be the same for the master-server and all slave-servers.
-- *text*  
+- *string*  
   *Example:* `secret-and-equal-for-all-shards`
 
-**LEVELDATA**  
-Sets the configuration for level-data. Basically it's just the content for the
-`leveldataoverride.lua` file. As this value can be pretty large it's recommended to put the
+**WORLD_PRESET**  
+Sets a pre-defined preset in the `worldgenoverride.lua` file.
+- SURVIVAL_TOGETHER_CLASSIC
+- SURVIVAL_TOGETHER *[default]*
+- SURVIVAL_DEFAULT_PLUS
+- DST_CAVE
+- DST_CAVE_PLUS
+- COMPLETE_DARKNESS
+- MOD_MISSING
+
+**WORLD_CONFIGURATION**  
+Sets the configuration for world generation. Basically it's just the content for the
+`worldgenoverride.lua` file. As this value can be pretty large it's recommended to put the
 configuration into a separate file and read it into the variable beforehand.
-- classic
-- forest
-- forest_plus
-- caves
-- caves_plus
+- *string*
 
 **MODS_OVERRIDES**  
 Sets the overrides-configuration for all mods. Basically it's just the content for the

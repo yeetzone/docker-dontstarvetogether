@@ -1,12 +1,13 @@
 version: "3.9"
 services:
-  overworld:
+  world:
     image: yeetzone/dontstarvetogether
-    container_name: overworld
-    hostname: overworld
+    container_name: world
+    hostname: world
     depends_on:
       - data
     env_file:
+      - world.env
       - local.env
     ports:
       - "10999:10999/udp"
