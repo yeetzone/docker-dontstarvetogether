@@ -26,6 +26,10 @@ for the online multi-player survival game [*Don't Starve Together*][website].
 - [Discord][support-discord] · *Join our Discord server if you have questions.*
 - [Discussions][support-github] · *Use GitHub discussions to suggest changes or ask questions.*
 
+## Contribution
+Do you want to contribute to the project?
+Check out our [contribution guide][contribution-guide].
+
 ---
 
 [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com/)
@@ -36,5 +40,6 @@ for the online multi-player survival game [*Don't Starve Together*][website].
 [docs-recipes]: /docs/recipes.md
 [support-discord]: https://go.yeet.zone/discord
 [support-github]: https://github.com/yeetzone/docker-dontstarvetogether/discussions
+[contribution-guide]: /CONTRIBUTING.md
 [hub]: https://hub.docker.com/r/yeetzone/dontstarvetogether
 [website]: https://www.dontstarvetogether.com/
