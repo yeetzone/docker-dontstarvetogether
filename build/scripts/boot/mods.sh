@@ -3,8 +3,8 @@
 source "$(dirname "$0")/functions.sh"
 
 file_setup="$STEAM_PATH/mods/dedicated_server_mods_setup.lua"
+file_configuration="$STORAGE_PATH/$CLUSTER_NAME/$SHARD_NAME/modoverrides.lua"
 file_settings="$STEAM_PATH/mods/modsettings.lua"
-file_overrides="$STORAGE_PATH/$CLUSTER_NAME/$SHARD_NAME/modoverrides.lua"
 
 IFS=","
 
@@ -16,18 +16,18 @@ if [[ -n "$MODS" ]]; then
 		echo "ServerModSetup(\"$mod\")" >> "$file_setup"
 	done
 
-	rm -f "$file_overrides"
+	rm -f "$file_configuration"
 
-	if [[ -n "$MODS_OVERRIDES" ]]; then
-		echo "$MODS_OVERRIDES" > "$file_overrides"
+	if [[ -n "$MODS_CONFIGURATION" ]]; then
+		echo "$MODS_CONFIGURATION" > "$file_configuration"
 	else
-		echo "return {" > "$file_overrides"
+		echo "return {" > "$file_configuration"
 
 		for mod in $MODS; do
-			echo "  [\"workshop-$mod\"] = { enabled = true }," >> "$file_overrides"
+			echo "  [\"workshop-$mod\"] = { enabled = true }," >> "$file_configuration"
 		done
 
-		echo "}" >> "$file_overrides"
+		echo "}" >> "$file_configuration"
 	fi
 fi
 

@@ -237,10 +237,15 @@ Sets the configuration for world generation. Basically it's just the content for
 configuration into a separate file and read it into the variable beforehand.
 - *string*
 
-**MODS_OVERRIDES**  
-Sets the overrides-configuration for all mods. Basically it's just the content for the
-`modsoverrides.lua` file. As this value can be pretty large it's recommended to put the
-configuration into a separate file and read it into the variable beforehand.
+**MODS**  
+Defines mods to install and enable.
+- *string*, CSV of workshop IDs  
+  *Example:* `378160973,492173795,407705132`
+
+**MODS_CONFIGURATION**  
+Sets the configuration for all mods. Basically it's just the content for the
+`modsoverrides.lua` file. As this value can be pretty large it's recommended to
+put the configuration into a separate file and read it into the variable beforehand.
 - *string*
 
 **BACKUP_LOG_COUNT**  

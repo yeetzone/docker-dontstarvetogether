@@ -9,5 +9,8 @@ Configure and run a basic server.
 [**Server Cluster Recipe**](cluster/)  
 Configure and run a server cluster for a forest and cave world.
 
+[**Server Mods Recipe**](mods/)  
+Configure and run a modded server.
+
 [**Custom World Generation Recipe**](world/)  
 Configure custom world generation.
