@@ -102,10 +102,6 @@ if [[ ! -f "$file_server" ]]; then
 	conf "encode_user_path" "$ENCODE_USER_PATH"
 
 	if [[ -n "$SHARD_ENABLE" ]]; then
-		if [[ -z "$SHARD_CLUSTER_KEY" ]]; then
-			SHARD_CLUSTER_KEY=$(openssl rand -base64 64 | tr -d '\n')
-		fi
-
 		echo
 		echo "[SHARD]"
 		conf "is_master" "$SHARD_IS_MASTER"
