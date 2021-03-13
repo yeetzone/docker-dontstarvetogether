@@ -202,7 +202,7 @@ Defines whether this server is the main server.
 - false *[default]*
 
 **SHARD_MASTER_IP**  
-Defines the master-server's ip-address for slave-servers.
+Defines the master-server's IP address for slave-servers.
 - *ip-address*
 
 **SHARD_MASTER_PORT**  
