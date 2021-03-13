@@ -15,7 +15,6 @@ services:
       - type: volume
         source: data
         target: /data
-        read_only: true
   underworld:
     image: yeetzone/dontstarvetogether
     container_name: underworld
@@ -31,13 +30,11 @@ services:
       - type: volume
         source: data
         target: /data
-        read_only: true
   data:
     image: yeetzone/dontstarvetogether-data
     volumes:
       - type: volume
         source: data
         target: /data
-        read_only: true
 volumes:
   data:
