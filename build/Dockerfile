@@ -27,7 +27,8 @@ RUN set -ex \
 	&& chown -R "$STEAM_USER":"$STEAM_USER" "$STEAM_HOME" \
 	&& chmod -R +x "$STEAM_HOME/scripts/" \
 	&& chmod +x /usr/local/bin/dontstarvetogether \
-	&& chmod +x /entrypoint.sh
+	&& chmod +x /entrypoint.sh \
+	&& sync
 
 # Set up healthcheck.
 HEALTHCHECK --start-period=15m --interval=5m --timeout=1m --retries=3 CMD dontstarvetogether version --check
