@@ -24,7 +24,6 @@ COPY /entrypoint.sh /
 # Set permissions.
 RUN set -ex \
 	&& mkfifo "$STEAM_HOME/console" \
-	&& chown -R "$STEAM_USER":"$STEAM_USER" "$STEAM_HOME" \
 	&& chmod -R +x "$STEAM_HOME/scripts/" \
 	&& chmod +x /usr/local/bin/dontstarvetogether \
 	&& chmod +x /entrypoint.sh \
