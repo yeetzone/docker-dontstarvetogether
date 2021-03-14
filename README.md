@@ -37,7 +37,7 @@ Check out our [contribution guide][contribution-guide].
 
 [docs-configuration]: /docs/configuration.md
 [docs-commands]: /docs/commands.md
-[docs-recipes]: /docs/recipes.md
+[docs-recipes]: /docs/recipes/
 [support-discord]: https://go.yeet.zone/discord
 [support-github]: https://github.com/yeetzone/docker-dontstarvetogether/discussions
 [contribution-guide]: /CONTRIBUTING.md
