@@ -42,4 +42,4 @@ WORKDIR "$STEAM_PATH/bin"
 ENTRYPOINT ["/entrypoint.sh"]
 
 # Set command.
-CMD ["dontstarvetogether", "start"]
+CMD ["dontstarvetogether", "start", "--update"]

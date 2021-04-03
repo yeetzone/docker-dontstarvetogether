@@ -7,18 +7,11 @@ control it and get information about it, while it's running.
 Start the DST server.
 
 **Options**
-* `--update=[none|all|game|mods]` Enable or disable running updates on boot.
-* `--keep-configuration=[token|cluster|server|world|mods|adminlist|whitelist|blocklist]` Configure overwriting of files.
+* `--update` Enable or disable running updates on boot.
 
 **Examples**
-* `dontstarvetogether start` Start the server, do not run updates and overwrite existing configuration files.
-* `dontstarvetogether start --update=all` Start the server and update the game and mods on every boot/reboot.
-* `dontstarvetogether start --update=game` Start the server and update the game on every boot/reboot only.
-* `dontstarvetogether start --update=mods` Start the server and update installed mods on every boot/reboot.
-* `dontstarvetogether start --update=none` Start the server and don't update the game or mods.
-* `dontstarvetogether start --keep-configuration` Start the server and do not overwrite any existing files.
-* `dontstarvetogether start --keep-configuration=token` Start the server and overwrite existing files except the token-file.
-* `dontstarvetogether start --keep-configuration=token,world` Start the server without overwriting token and world files.
+* `dontstarvetogether start` Start the server, do not update.
+* `dontstarvetogether start --update` Start the server and update the game files.
 
 ## `version`
 Print the game's version.
