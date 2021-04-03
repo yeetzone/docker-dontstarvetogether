@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  world:
+    image: yeetzone/dontstarvetogether
+    container_name: world
+    hostname: world
+    labels:
+      autoheal: "true"
+    depends_on:
+      - data
+    env_file:
+      - world.env
+      - local.env
+    ports:
+      - "10999:10999/udp"
+    volumes:
+      - type: volume
+        source: data
+        target: /data
+  health:
+    image: willfarrell/autoheal
+    container_name: health
+    hostname: health
+    env_file:
+      - health.env
+      - local.env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+  data:
+    image: yeetzone/dontstarvetogether-data
+    volumes:
+      - type: volume
+        source: data
+        target: /data
+volumes:
+  data:

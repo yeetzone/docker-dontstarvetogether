@@ -14,3 +14,6 @@ Configure and run a modded server.
 
 [**Custom World Generation Recipe**](world/)  
 Configure custom world generation.
+
+[**Update Server Recipe**](update/)  
+Configures and runs a server with auto-update.
