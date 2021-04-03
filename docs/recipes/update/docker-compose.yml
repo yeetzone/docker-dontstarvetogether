@@ -4,6 +4,7 @@ services:
     image: yeetzone/dontstarvetogether
     container_name: world
     hostname: world
+    restart: always
     labels:
       autoheal: "true"
     depends_on:
