@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-ls -al $STEAM_PATH
-
 if [[ "$1" = "--help" ]]; then
 	cat "$STEAM_HOME/scripts/command/start/help.txt"
 	exit 0
