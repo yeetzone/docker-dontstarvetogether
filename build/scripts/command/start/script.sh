@@ -18,6 +18,8 @@ fi
 sleep infinity > "$STEAM_HOME/console" &
 
 exec dontstarve_dedicated_server_nullrenderer \
+	-skip_update_server_mods \
+	-ugc_directory "$STEAM_PATH/ugc_mods/" \
 	-persistent_storage_root "$(dirname "$STORAGE_PATH")" \
 	-conf_dir "$(basename "$STORAGE_PATH")" \
 	-cluster "$CLUSTER_NAME" \
