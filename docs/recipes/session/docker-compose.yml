@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  world:
+    image: yeetzone/dontstarvetogether
+    container_name: world
+    hostname: world
+    depends_on:
+      - data
+    env_file:
+      - world.env
+      - local.env
+    ports:
+      - "10999:10999/udp"
+    volumes:
+      - type: volume
+        source: data
+        target: /data
+      - type: volume
+        source: storage
+        target: /opt/storage/
+  data:
+    image: yeetzone/dontstarvetogether-data
+    volumes:
+      - type: volume
+        source: data
+        target: /data
+volumes:
+  data:
+  storage:

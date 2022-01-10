@@ -12,6 +12,9 @@ Configure and run a server cluster for a forest and cave world.
 [**Server Mods Recipe**](mods/)  
 Configure and run a modded server.
 
+[**Persistent Session Recipe**](session/)  
+Configure and run a server with persistent session.
+
 [**Custom World Generation Recipe**](world/)  
 Configure custom world generation.
 
